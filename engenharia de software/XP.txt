@@ -1,0 +1,128 @@
+==
+XP - Extreme Programming
+
+!!!	o cliente conduz o desenvolvimento a partir do feedback que recebe do sistema
+	sua presenca viabiliza a simplicidade do processo em diversos aspectos, especialmente na comunicacao
+
+!	framework com 4 atividades:
+		planejamento
+		projeto
+		codificacao
+		teste
+
+	[metodologia agil] de desenvolvimento de software
+	para ser usado em equipes pequenas e pequenos projetos
+	todos os requisitos sao expressos como cenarios (historias do usuario)
+	abordagem orientada a objetos eh a favorita do XP
+	programadores:
+		trabalham em pares
+		desenvolvem testes para cada tarefa ANTES da escrita do codigo
+	cliente: envolvimento em [tempo integral]
+	usa-se o TDD: primeiro cria-se o teste e soh depois desenvolve-se a funcionalidade
+	todos participam de todas as atividades, nao ha especializacao, e sim, multidisciplinariedade
+	pequenos e frequentes releases do sistema
+
+
+Processo para desenvolver um incremento:
+	1. Avaliar o sistema
+	2. Selecionar cenario para a versao atual
+	3. Dividir historias em tarefas
+	4. Planejar versao
+	5. Desenvolver, integrar e testar software
+	6. Liberar software
+
+Praticas:
+
+	planejamento incremental	requisitos sao registrados em cartoes de historias
+	pequenos releases frequentes	desenvolver primeiro o conjunto minimo util de funcionalidade que agrega valor ao negocio
+	projeto simples			realizado um projeto simples de modo que atenda aos requisitos atuais e nada mais
+	desenvolvimento test-first	primeiro se escreve o teste, depois se faz a implementacao. usa-se o TDD no XP!
+	refactoring			os desenvolvedores recriam o codigo assim que os aprimoramentos forem encontrados
+	programacao em pares		desenvolvedores trabalham em pares, um verificando o codigo do outro. utilizam o [mesmo computador de trabalho]
+	propriedade coletiva		qualquer um pode mudar qualquer coisa. desenvolvedores trabalham em todas as areas do sistema
+	integracao continua		concluiu o trabalho em uma tarefa, ele deve ser integrado ao sistema. depois da integracao, os testes
+	ritmo sustentavel		nao trabalhar grandes quantidades de horas, pois ha reducao da produtividade e qualidade do codigo
+!!	metaforas			para facilitar a comunicacao, a equipe se comunica por meio de metaforas (que fazem sentido para eles)
+	cliente (on-site)		um representante do usuario final do sistema deve estar DISPONIVEL EM TEMPO INTEGRAL. cliente eh membro da equipe!
+	reunioes em pe			reunioes sao realizadas em pe para nao perder o foco nos assuntos e produzir reunioes mais rapidas
+	time coeso			equipe de desenvolvimento eh formada por pessoas engajadas e multidisciplinares (habilidades para diversas tarefas)
+	jogo do planejamento		planejamento de release e das iteracoes sao feitos com base nas historias.
+					conta com a colaboracao de toda a equipe de desenvolvimento (incluindo o cliente)
+
+
+a gerencia eh dividida em 2 papeis:
+	treinador (coach)
+		escolhe o que vai agregar valor ao seu negocio
+		escolhe o que deve ser feito primeiro e o que deve ser adiado
+	rastreador (tracker)
+		coleta metricas sobre o que esta sendo desenvolvido
+		confronta isso com as metricas estimadas
+		identifica possiveis divergencias
+
+	esses papeis podem ser executados pela mesma pessoa
+
+
+
+5 valores fundamentais: (CorSim ComFeRe)
+
+	Coragem
+		desenvolvedores devem estar confortaveis ao refatorar seu codigo, quando necessario
+		pode ser que seja necessario ter coragem de jogar fora um codigo ou remover um codigo obsoleto, mesmo que tenha sido trabalhoso faze-lo
+		coragem tambem no sentido de persistencia, ate conseguir o resultado desejado
+	Simplicidade
+		deve-se comecar pela solucao mais simples. funcionalidades adicionais podem ser acrescentadas depois
+		deve-se desenvolver somente o que tem utilidade hoje
+		implementacao apenas de requisitos atuais
+	Comunicacao
+		eh exigido comunicar os requisitos de sistema para os desenvolvedores
+		alto grau de comunicacao:
+			metaforas comuns + colaboracao dos usuarios + comunicacao verbal frequente + feedback
+	Feedback
+		testes retornando o estado do sistema apos implementacao de mudancas
+		feedback instantaneo dos clientes, ja que participam do desenvolvimento de testes
+		tambem quando o cliente traz um novo requisito, recebe um feedback de tempo e orcamento
+	Respeito
+		brotherhood
+		respeito pelos outros e auto-respeito
+		membros devem respeitar seu proprio trabalho, sempre se esforcando para oferecer alta qualidade
+		ninguem na equipe deve se sentir desvalorizado ou ignorado
+		deve rolar sempre alto nivel de motivacao
+
+5 principios basicos !!!!!
+(devem ser seguidos por equipes que forem usar o XP)
+
+	feedback rapido			retorno tempestivo do cliente
+	abracar mudancas		mudancas devem ser bem-vindas e ocorrerao de acordo com o melhor entendimento do projeto
+	presumir simplicidade		todo problema deve ser tratado para ser resolvido da forma mais simples possivel. evitar firulas!
+	mudancas incrementais		a solucao deve ser aperfeicoada a cada iteracao de modo a satisfazer, ao fim, as expectativas do usuario
+	trabalho de qualidade		a qualidade jamais deve ser comprometida. essa eh uma das razoes para codificar os testes antes da codificacao do sistema
+
+
+
+	incrementos sao entregues para os clientes a cada 2 semanas
+!!	a cada compilacao: executar todos os testes automatizados existentes + os testes da nova funcionalidade
+	a nova compilacao sera aceita somente se todos os testes forem executados com sucesso
+
+
+mudancas:
+	o XP nao antecipa mudancas futuras para o software porque muitas vezes elas nem ocorrem
+	implementa-las tenderia a degradar o software. foco no presente!
+	solucao: [refatoramento constante]. a equipe procura por possiveis melhorias no software, implementado-as imediatamente
+!!	portanto, o software deve sempre ser facil de compreender e alterar quando novas historias de usuario sao implementadas
+
+
+historias:
+	o XP recomenda que assim que as historias forem desenvolvidas e o trabalho preliminar seja feito, a equipe NAO AVANCE para o codigo
+	ao inves disso, deve desenvolver uma serie de testes unitarios
+	  > que exercitarao cada uma das historias que devem ser incluidas na release atual
+
+
+eliminacao de desperdicios:
+	busca reduzir, o maximo possivel, o volume de trabalho executado e os subprodutos envolvidos nesse trabalho
+	deve-se concentrar os esforcos apenas no que pode produzir um resultado objetivo ao cliente final
+
+
+pair programming:
+	geralmente a dupla consiste de alguem que manja do codigo e outra pessoa funcionando como instrutor
+	novato fica codificando e o instrutor acompanha, ajudando
+	assim, o programa sempre eh revisto por duas pessoas
