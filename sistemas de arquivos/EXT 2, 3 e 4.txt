@@ -1,0 +1,151 @@
+=-=-=-=-=-=-=-=-=-=
+Sistema de arquivos
+
+	estrutura que indica como os dados devem ser gravados em dispositivos de armazenamento
+	possibilita determinar o espaco disponivel e ocupado em disco,
+	  > e gerenciar como partes de um arquivo podem ficar "distribuidas" nas areas de armazenamento
+	determina tambem como os dados podem ser acessados, copiados, movidos, renomeados, protegidos e eliminados
+
+	sistemas Unix tratam diretorios como arquivos especificos
+	diretorios sao disponibilizados para manipulacao atraves do comando # mount
+		-> o mount ocorre durante o processo de inicializacao do SO
+	Linux consegue trabalhar com [varios sistemas de arquivos] em um *mesmo disco*
+!!		-> armazena essa lista de sistemas de arquivos no arquivo /etc/fstab
+	lista de sistemas de arquivos que estao EFETIVAMENTE em uso: /etc/mtab  -->>  "tabela mount"
+	um bit no cabecalho do sistema de arquivos eh zerado para indicar que esta sendo usado
+
+	problema: corrompimento de dados em arquivos
+	pode ser causado, por ex, por queda de energia ou desligamento incorreto
+	ferramenta "fsck" (file system check) verifica se houve erros
+
+
+Journaling:
+
+	o fsck funciona, mas pode nao ser satisfatorio (a correcao de erros pode levar muito tempo)
+	solucao: journaling, que acompanha mudancas ANTES que sejam feitas (ex: gravacao/atualizacao de dados)
+	essas informacoes sobre mudancas sao armazenadas em uma parte separada do sistema de arquivos, chamada Journal
+	por que eh uma solucao eficiente?
+		os registros de logs sao escritos ANTES que as mudancas ocorram efetivamente
+		assim, caso ocorra algum desligamento incorreto, por ex, os dados das mudancas estao salvos no Journal
+		isso reduz drasticamente os riscos de perdas de dados
+
+
+criar cada um dos 3:
+	ext 2		# mke2fs
+	ext 3		# mkfs.ext3		ou  # mke2fs -j
+	ext 4		# mkfs.ext4		ou  # mke2fs -t
+
+
+
+=====
+Ext 2
+
+	tamanho max de particao		32 TB
+	tamanho max de arquivo		2 TB
+
+	nomes de arquivos ate 255 caracteres
+!!	nao inclui nenhum sistema de tolerancia a falhas
+	fsck deve ser usado para verificar todos os blocos do sistema de arquivos, procurando por inconsistencias
+		->  no Windows: scandisk
+	o teste do fsck DEMORA MUITO
+
+
+
+=====
+Ext 3 - O MAIS USADO: estabilidade
+
+	eh basicamente o EXT2 com recursos de journaling
+	compativel com EXT2
+
+	suporta journaling
+	limite de diretorios	32.000
+!!	enderecos de 32 bits	\__ tanto o [tamanho max da particao] quanto o [tamanho max dos arquivos]
+	blocos de ate 8 KB	/	dependem do tamanho dos blocos
+	assim,
+		tamanho max de particao		32 TB	(o mesmo do ext2)
+		tamanho max de arquivo		2 TB
+
+	JBD - Journaling Block Device
+		camada com o proposito de implementar journaling em qq dispositivo com base em [blocos de dados]
+		eh quem efetivamente gerencia o Journal
+		funciona como uma entidade independente, permitindo que outros sistemas de arquivos tambem a usem
+		funcionamento:
+			ao inves de armazenar as alteracoes em bytes, grava os blocos completos modificados
+			assim, armazena em memoria "replicas" completas dos blocos modificados para rastrear operacoes pendentes
+			desvantagem: Journal acaba ficando maior
+
+	modos de operacao: "Jow"
+		Journal
+			grava todas as mudancas nos sistemas de arquivos  -->>  dados & metadata
+			mais lento dos 3 modos
+			mais confiavel: maior capacidade de evitar perda de dados
+
+		Ordered (default)
+			journaling padrao do EXT3
+			escreve somente os [metadados] dos arquivos
+			melhor relacao entre desempenho e confiabilidade
+			
+		Writeback
+			o mais rapido, mas o menos confiavel
+			tambem escreve somente os metadados, mas utiliza o processo de escrita do sistema de arquivos em uso para gravacao
+
+		o Ordered eh o padrao, mas pode-se especificar o modo que se quer usar
+		/etc/fstab  -->>  muda-se o modo neste arquivo
+		ex:
+			/dev/hda5 /mnt/hda5 ext3 data=writeback 0 2
+
+
+
+=====
+Ext 4
+
+	http://www.ibm.com/developerworks/br/library/l-anatomy-ext4/
+	http://www.hardware.com.br/artigos/ext4/
+
+!!	enderecos de 48 bits
+	tamanho max de particao		1 EB (exabyte)
+	tamanho max de arquivo		16 TB
+	limite de diretorios		64.000
+
+	novas funcionalidades:
+		alocacao tardia - delayed allocation (otimiza a alocacao dos blocos)
+		journal checksum: verificacao de integridade do journal  -->>  maior tolerancia a falhas que o ext3
+		alocacao multibloco
+		fsck mais rapido
+		melhores timestamps
+
+	compativel com o ext2 e ext3
+	eh possivel desligar a funcao de journaling
+	possui recursos de journaling muito confiaveis
+	journaling com aprimoramento de checksum
+	uma unica extensao em ext4 pode mapear ate 128MB de espaco contiguo com um bloco de 4KB de tamanho
+	pre-alocacao:
+		permite pre-alocacao de espaco em disco para um arquivo
+	a indexacao de quantidade de diretorios foi aumentada
+	undelete:
+		suporte 'a recuperacao de arquivos, permitindo que arquivos sejam recuperados
+!	checagem mais rapida do sistema de arquivos  -->>  fsck mais rapido pois pula partes nao usadas do HD
+	melhorias na pre-alocacao  -->>  programa vai usar posteriormente espaco no HD, entao reserva esse espaco
+	limite de diretorios = limite do espaco em disco
+	alocacao tardia - alocate-on-flush  -->>  reduz a fragmentacao, melhora o desempenho
+
+
+
+inode
+	identificador de cada arquivo ou pasta, com informacoes sobre ele
+	ex: permissoes, data de acesso, data de modificacao, localizacao..
+
+badblock
+	area danificada de um disco que nao pode mais ser utilizada, pois o dano eh permanente
+	esse tipo de dano pode ser causado por desligamentos forcados, formatacoes erradas, esbarroes no HD, falta de energia..
+
+
+
+EB > PB > TB > GB > MB > KB > Byte	-->>  1 EB = 1024 x 1024 x GB
+
+Byte	2^0
+KiB	2^10
+MiB	2^20
+GiB	2^30
+TiB	2^40
+...
