@@ -1,0 +1,384 @@
+====
+ITIL
+
+	glossario ITIL: http://www.pmgacademy.com/pt/glossario-itil/177-biblioteca-de-midia-definitiva-bmd
+
+	IT Infrastructure Library
+	*guia de boas praticas*, biblioteca que diz O QUE FAZER
+	integra a TI e negocios
+
+processo:
+	deve produzir [resultados especificos]
+	ser orientado ao cliente, com o objetivo de CRIACAO DE VALOR PARA O CLIENTE
+	ser mensuravel
+	responder a eventos especificos
+
+papeis:
+	DONO do processo
+	GERENTE do processo
+
+PRINCIPAL OBJETIVO da ITIL:
+	prover um conjunto de [PRATICAS de gerenciamento de servicos de TI]
+	  testadas e comprovadas no mercado
+	  tanto para organizacoes que ja possuem operacoes de TI em andamento e pretendem empreender
+	  quanto para a criacao de novas operacoes
+
+
+Gerenciamento de servicos:
+	conjunto especializado de habilidades organizacionais para fornecer VALOR aos clientes na forma de servicos
+
+
+===========
+Matriz RACI
+
+	Responsible				pode haver mais de um responsible por atividade
+	Accountable (prestador de contas)	toda atividade deve ter [um e somente um] accountable
+	Consulted				pode haver mais de um consulted por atividade. um consulted pode estar em mais de uma atividade
+	Informed
+
+
+
+26 processos
+
+
+__________
+ESTRATEGIA
+
+4 Ps:
+	perspectiva	define a visao e missao da organizacao. ex: Google enxergando o mercado para o Gmail (1 GB de espaco)
+	posicao		imagem que pretende passar para o cliente e para o mercado
+	plano		estrategia de competitividade
+	padrao		procedimentos da organizacao
+
+a itil mede [o valor de um servico] pela sua
+	utilidade	faz o que se espera?
+	garantia	faz com qualidade?
+
+tipos de provedores de servico:
+	tipo 1: especializado	setor de TI proprio para o marketing, TI proprio para o RH, TI proprio para a administracao...
+	tipo 2: geral		setor de TI compartilhado entre todos os setores da empresa
+	tipo 3: terceirizado	provedor de servicos externo. existe, porem, a dependencia com o terceiro
+
+consolidacao do SERVICE LEVEL PACKAGE (SLP)
+	descreve o que a empresa quer ofecerecer
+	com qual nivel de qualidade ela vai oferecer (utilidade + garantia)
+
+	$ gerenciamento da estrategia de servicos de TI
+
+	$ gerenciamento de portfolios de servicos:
+		PORTFOLIO de servicos	CONJUNTO TOTAL de servicos
+		funil			servicos sob consideracao, ou em desenvolvimento
+		catalogo		servicos prontos pra usar	!! cliente somente enxerga este !!
+		servicos aposentados	organizacao nao usa mais
+
+	$ gerenciamento de demanda:
+		destaca-se o PAN: Padroes de Atividade de Negocios
+		rastreia demandas. ex: cartoes virtuais
+
+	$ gerenciamento financeiro:
+		TCO - total cost of ownership	estimativa para avaliar custos diretos e indiretos
+		ROI - return of investment
+		PBP - payback period		periodo a partir do qual o investimento eh recuperado pelo lucro
+		NPV - net present value		indica se vale a pena investir: compara investimentos iniciais com retornos futuros
+		IRR - internal return rate	calcula a taxa de juros para a qual o dinheiro sendo investido seria equivalente a usa-lo em um novo projeto
+
+	$ gerenciamento do relacionamento com o negocio
+
+
+_______
+DESENHO
+
+4 Ps:
+	pessoas
+	processos
+	produtos
+	parceiros
+
+estrategias de SOURCING:
+
+	in-sourcing				propria organizacao desenvolve o servico. total controle, mas altos custos
+	out-sourcing				organizacao externa desenvolve e mantem o servico. menor controle
+	co-sourcing/multi-sourcing		terceiriza de [diversos fornecedores], buscando obter o melhor de cada um, em partes BEM DEFINIDAS
+	parceria (entre terceirizados)		multiplas organizacoes, mas todas elas FAZEM O MESMO SERVICO
+	business process sourcing		uma organizacao fornece e gerencia totalmente os processos de negocio de outra. ex: call centers
+	knowlegde process sourcing		terceirizacao de expertise e conhecimento
+	application service provision		acordo com um ASP (provedor de servicos de aplicacao). reduz custo, utilizando aplicacoes compartilhadas
+	nuvem					contratacao de servicos na nuvem. reduz custos. inapropriada para sistemas criticos do negocio
+	multi-vendor sourcing			contratacao multipla de VARIOS TIPOS DE SOURCING
+
+pacote consolidado eh o SERVICE DESIGN PACKAGE
+	detalha todos os ASPECTOS e REQUISITOS do servico a ser implementado
+
+	$ coordenacao do desenho
+		esclarece como criar um alinhamento com o estagio de Estrategia de Servico
+		cria os Pacotes de Desenho de Servico
+		coordena os outros processos
+
+	$ gerenciamento do catalogo de servicos
+		o catalogo sao os servicos que o cliente enxerga
+		gerencia entao esses servicos do catalogo
+
+	$ gerenciamento do nivel de servico:
+		assegurar que todos os servicos prestados e suas performances sejam mensurados de forma consistente
+		::
+		requisitos de nivel de servico (SLR)	coleta e compreende as exigencias de nivel de servico dos clientes
+		acordo de nivel de servico (SLA)	acordo entre [provedor de servico] e [cliente], definindo metas/responsabilidades de ambas as partes
+		acordo de nivel operacional (OLA)	acordo entre [provedor de servico] e [outra parte da mesma organizacao]
+		contratos de suporte			contrato formal entre [provedor de servico] de TI e [um terceiro (fornecedor)]
+		plano de melhoria de servico
+
+		SLA - Service Level Agreement
+			eh o acordo entre o provedor de servicos e o cliente
+			"oh, cliente, nos vamos te entregar tudo isso aqui"
+			o SLA descreve o servico de TI, documentos com metas de nivel de servico
+			estabelece as responsabilidades das duas partes: provedor de servicos e cliente
+			nao eh um documento estatico: ele pode SIM sofrer modificacoes de acordo com a necessidade de atendimento
+			um SLA unico pode contemplar:
+				- varios servicos de TI
+				- multiplos clientes
+			deve ser escrito em linguagem clara e objetiva, de forma compreensivel pela area de negocio
+		q	deve informar formas de medicao do seu cumprimento e atendimento (indicadores de qualidade)
+			contem:
+				servicos disponiveis
+				niveis alternativos de qualidade
+				custos dos servicos
+
+	$ gerenciamento da DISPONIBILIDADE
+		visa assegurar que os servicos de TI possuam nivel de disponibilidade compativel com os niveis acordados, a um custo justificavel
+		MTTR, MTTRS, MTBF, MTBSI (= medium time before service incidents: tempo medio entre a ocorrencia de incidentes)
+	def:	"otimizar a capacidade de infraestrutura de TI para prover, a custo efetivo,
+		 um nivel de disponibilidade que [permita o negocio atingir seus objetivos]"
+
+	$ gerenciamento da CAPACIDADE
+		INFRAESTRUTURA compativel com a demanda atual e futura
+	def:	"responsavel por garantir que a capacidade de um servico de TI e da infraestrutura de TI
+		 sao capazes de entregar as Metas de Nivel de Servico acordadas a um custo efetivo em prazos adequados"
+		threshold:
+			valor limiar que determina a partir de qual momento um determinado servico ou componente se encontra fora do padrao
+
+	$ gerenciamento da CONTINUIDADE do servico de TI
+		se preocupa com a RECUPERACAO DE DESASTRES em tempo habil para a continuidade do negocio
+		continuidade = recuperacao de desastres!
+		continuidade = deu merda, mas bora analisar o estrago e dar jeito de botar o trem pra funcionar de novo (cold/warm/hot standy)
+	def:	"processo de gerenciamento dos recursos que, logicamente ordenados,
+		 garantam a manutencao dos servicos que suportam os negocios da organizacao dentro de niveis de servico acordados.
+		 deve incluir o suporte MINIMO necessario para a continuidade das operacoes no caso de uma [interrupcao]"
+
+		analise de impacto no negocio (BIA = business impact analysis)
+		busca-se identificar:
+			perda de renda
+			danos 'a reputacao
+			perda de vantagem competitiva
+			perda de "market share"
+		!! o resultado da BIA sao informacoes importantes a serem oferecidas para o PLANEJAMENTO DA CAPACIDADE !!
+
+		recuperacao de desastres:
+			cold standby, warm standby, hot standby
+
+	$ gerenciamento da seguranca da informacao
+		objetivo: garantir que informacoes confiaveis e seguras estejam disponiveis atraves do ciclo de vida do servico
+		abraca conceitos de autenticidade, nao repudio, confidencialidade
+		-> baseado na ISO 27001
+
+	$ gerenciamento de fornecedores
+		classificados em estrategicos, taticos e operacionais
+
+
+_________
+TRANSICAO
+
+	$ planejamento e suporte 'a transicao
+		planeja a transicao do servico e coordena os recursos que ela exige
+		objetivo:
+			planejar e coordenar os recursos adequados para construir, liberar,
+			  testar e implementar um servico novo ou modificado em producao
+			  dentro do prazo, custo e qualidade requeridos
+
+	$ gerencimento de mudancas
+		mudanca padrao (de baixo risco)		ex: solicitacao da instalacao de um aplicativo
+		emergencial				ex: correcao de falha de seguranca
+		normal					ex: qq mudanca q nao seja padrao nem emergencial, como o lancamento de versao de uma aplicacao
+		Comite Consultivo de Mudancas:
+			equipe que avalia, prioriza e autoriza mudancas
+
+	$ gerenciamento de ativos de servico e da configuracao
+		lida com itens de configuracao (IC)
+		processo que rastreia e informa o valor e a propriedade de ativos financeiros em todo seu ciclo de vida
+		possui a Biblioteca de Midia Definitiva (DML):
+			local onde em que as versoes definitivas e autorizadas
+			  de todos os itens de configuracao de software sao armazenadas de maneira segura
+			pode conter itens de configuracao associados, como licencas e documentacao
+			eh uma area unica de armazenamento logico, mesmo que existam diversas localidades
+			deve ser registrada no Sistema de Gestao de Configuracao (SGC)
+
+		MODELO EM V:
+			o servico vai sendo desenvolvido do mais generico ao mais especifico
+			os testes validam do mais especifico ao mais generico
+			http://s24.postimg.org/p6ifn92ph/modelo_em_V.png
+
+	$ gerenciamento da liberacao e distribuicao/implantacao
+		bigbang x por fase
+		push x pull
+		automatizada x manual
+		objetivo: garantir que implantacoes de servicos sejam gerenciadas de acordo com os requerimentos definidos no ciclo de desenho de servico
+
+	$ validacao e teste do servico
+		checa a QUALIDADE do servico liberado
+
+	$ gerenciamento de conhecimento
+		informacao certa, para pessoa certa, no momento certo
+
+	$ avaliacao de mudancas
+
+
+________
+OPERACAO - a galera que cuida das picas
+
+objetivo:
+	coordenar e CONDUZIR as atividades e processos necessarios
+	  para entregar e gerenciar os servicos de acordo com os niveis requeridos pelos clientes e pelo negocio
+
+	tudo que da dor de cabeca, do DIA-A-DIA
+
+	problema	(busca por sua causa)
+	incidente	(interrupcao nao planejada)
+	alerta
+	evento		(qq coisa)
+
+topicos:
+	requisicao de servico (solicitacao padrao)
+	solucao de contorno (workaround = solucao paliativa)
+	erro conhecido
+	base de erros conhecidos
+
+
+	$ gerenciamento de incidentes
+		objetivo:
+			restaurar a operacao do servico normal o mais rapido possivel,
+			  procurando cumprir os acordos de nivel de servico
+		fluxo de incidentes: http://bit.ly/1cO1Dec
+		devem ser:
+			detectados, registrados, categorizados, priorizados, escalados, investigado e diagnosticado, resolvido, fechado
+		ciclo de vida de um incidente:
+			1. deteccao
+			2. diagnostico
+			3. reparo
+			4. recuperacao
+			5. restauracao
+
+	$ gerenciamento de problema
+		objetivo de evitar que incidentes ocorram, resolvendo a [causa raiz] dos problemas
+		faz a ANALISE DA CAUSA RAIZ, por meio das tecnicas:
+			analise temporal (rastro cronologico)
+			5 por ques
+			analise da dor
+			kepner e tregoe
+			isolamento da falha
+			diagrama de ishikawa...
+		atividades chave:
+			controlar problemas
+			controlar erros
+			gerenciar proativamente problemas
+			fornecer informacoes gerenciais sobre a qualidade e as operacoes de gerencia de problemas
+
+
+	$ gerenciamento de eventos
+		evento:
+			qualquer mudanca de estado que tem importancia para a gestao
+			> de um ativo de configuracao ou um servico de TI
+		exs:
+			um usuario logou no sistema
+			um backup agendado nao ocorreu
+			o sistema esta sendo acessado pelo dobro de usuarios do que o normal
+			um usuario nao autorizado acessou um local de rede
+			um sistema esta mais lento que o normal...
+
+		https://www.portalgsti.com.br/2013/01/gerenciamento-de-eventos-x-gerenciamento-de-incidentes-da-itil.html
+		http://www.netwall.com.br/blog/gerenciamento-de-eventos/
+
+	$ execucao/cumprimento de requisicoes
+		lida com solicitacoes de usuarios
+		requisicoes de servico = pedidos para mudancas rotineiras, ou acesso a servico de TI
+
+	$ gerenciamento de acesso
+		administra privilegios de acesso, restringindo acesso nao autorizado
+
+
+
+Operacoes eh o unico estagio que possui [funcoes]:
+
+	CENTRAL DE SERVICOS			service desk. negada liga pra central de servicos pra resolver as tretas
+	gerenciamento TECNICO			equipes que fornecem conhecimento tecnico e fornecem gerenciamento de infraestrutura de TI
+	gerenciamento de APLICATIVO		administra os aplicativos ao longo de seu ciclo de vida
+	gerenciamento de OPERACOES DE TI	executa atividades operacionais do dia a dia
+
+
+requisicao de servico = solicitacao padrao:
+	solicitacao de informacao
+	solicitacao de aconselhamento
+	realizacao de uma mudanca padrao
+	acesso a um servico de TI
+	reset de uma senha
+
+------------
+Service Desk
+	foco principal:
+		reestabelecer o servico ao normal [o mais rapido possivel]
+		minimizar o impacto negativo que um incidente pode causar nas operacoes de negocio
+
+	tem como premissa ser o ponto inicial e unico de contato para os usuarios dos servicos de TI
+	eh responsavel por dar tratamento inicial a todos os incidentes e solicitacoes de servicos
+	o atendente pode resolver o problema ou acionar a area pertinente para a solucao
+
+	eh uma unidade funcional responsavel por lidar com diversos tipos de eventos de servico,
+	  acionados por ligacoes telefonicas, interface web ou eventos de infraestrutura reportados automaticamente
+
+	dentre suas responsabilidades especificas, incluem-se:
+		. registrar detalhes relevantes de incidentes/solicitacoes de servico, categorizando-os e os priorizando
+		. prover suporte de primeiro nivel (first-line), realizando investigacoes e diagnosticos iniciais,
+			bem como resolvendo incidentes/solicitacoes de servico dentro de sua capacidade
+		. escalar incidentes/solicitacoes de servico que nao podem ser resolvidos dentro do prazo acordado
+		. manter os usuarios informados sobre o progresso de suas solicitacoes (comunicacao)
+		. fechar todos os incidentes resolvidos, solicitacoes e outras chamadas
+
+	gerencia:
+		- requisicoes de servicos
+		- contato entre provedor de servicos e os usuarios
+		- comunicacao com os usuarios
+		- incidentes nos servicos
+
+	rola priorizacao de incidentes:
+		normalmente pode ser determinada levando em conta tanto a urgencia do incidente (o quao rapido a empresa precisa de uma resolucao)
+		  quanto o nivel de impacto que o incidente esta causando
+		fatores que contribuem para niveis de impacto:
+			. risco para a integridade fisica
+			. numero de servicos afetados
+			. nivel de perdas financeiras
+			. efeito sobre a reputacao da empresa
+			. violacoes regulamentares ou legais
+		a priorizacao pode ser dinamica, mutavel:
+			se as circunstancias mudarem, ou se um incidente nao for resolvido dentro do prazo definido no SLA,
+			  a prioridade pode ser alterada para refletir a nova situacao
+
+	no service desk, os usuarios sao atendidos por
+		[atendentes especializados focados em resolver o problema]
+		esses atendentes podem acionar outras areas de TI
+
+
+___________________
+MELHORIA CONTINUADA
+
+proposito:
+	descrever como adaptar continuamente os servicos de TI a um ambiente de negocios que vive em CONSTANTE evolucao
+
+tem somente um unico processo, inspirado no PDCA (Plan-Do-Check-Act):
+
+	7-step improvement process:
+		identificar a estrategia de melhoria
+		definir o que vai medir
+		coletar os dados
+		processar dados
+		analisar dados e informacoes
+		apresentar e usar a informacao
+		implantar melhoria
+
