@@ -1,0 +1,25 @@
+============
+Analise SWOT
+
+	S	Strengths	pontos fortes		vantagens internas da empresa em relacao 'as concorrentes
+	W	Weakness	fraquezas		caracteristicas internas que impedem um bom desempenho
+	O	Opportunities	oportunidades		aspectos positivos com potencial de fazer crescer a vantagem competitiva da empresa
+	T	Threats		ameacas			fatores do ambiente externo, fora do controle da organizacao
+
+	ferramenta utilizada para fazer analise de cenario,
+	  sendo usada como base para gestao e planejamento estrategico de uma empresa
+
+	tecnica que avalia os pontos fortes (Strength) e fracos (Weakness)
+	  presentes no ambiente interno da organizacao,
+	  em comparacao com as oportunidades (Opportunities) e ameacas (Threats) presentes no ambiente externo
+
+	permite analisar a competitividade da empresa quando verifica se ha pontos fortes suficientes
+	  para aproveitar oportunidades identificadas, e permite analisar a seguranca quando verifica
+	  se ha ameacas que possam explorar pontos fracos da organizacao
+
+	objetivos:
+		- efetuar uma sintese das analises internas e externas
+		- identificar elementos chave para a gestao da empresa, o que implica estabelecer prioridades de atuacao
+		- preparar opcoes estrategicas: riscos/problemas para resolver
+		- fortalecer os pontos positivos, indicar quais pontos deve melhorar,
+			mostrar as chances de crescimento

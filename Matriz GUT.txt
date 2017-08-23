@@ -1,0 +1,71 @@
+==========
+Matriz GUT
+
+	GUT = Gravidade, Urgencia e Tendencia
+
+	eh uma ferramenta de auxilio na priorizacao de resolucao de problemas
+
+	utilizada para priorizacao de acoes, com base
+		na Gravidade dos problemas
+		na Urgencia para seu tratamento
+		e na Tendencia de evolucao do problema caso nada seja feito
+
+	porque fazer e o que usar:
+		com uma Matriz GUT pode-se ter auxilio em estrategias, planejamento estrategico
+		  ou mesmo na aplicacao em conjunto com ferramentas como a analise SWOT, Diagrama de Pareto,
+		  Diagrama de Ishikawa ou Ciclo PDCA.
+
+	sao 3 atributos de classificacao de problemas, vistos a seguir
+
+	GRAVIDADE
+		eh analisada pela consideracao da intensidade ou impacto que o problema pode causar se nao solucionado
+		tais danos podem ser avaliados quantitativa ou qualitativamente
+		um problema grave pode ocasionar, por exemplo, na falencia da empresa, perda de clientes importantes, ...
+		pontuacao da gravidade varia de 1 a 5 seguindo o seguinte criterio:
+			1 - sem gravidade
+			2 - pouco grave
+			3 - grave
+			4 - muito grave
+			5 - extremamente grave
+
+	URGENCIA
+		eh analisada pela pressao do tempo que existe para resolver determinada situacao
+		basicamente leva em consideracao o prazo para se resolver um determinado problema
+		pode se considerar como problemas urgentes [prazos definidos por lei] ou o [tempo de resposta para clientes]
+		a pontuacao da urgencia varia de 1 a 5 seguindo o seguinte criterio:
+			1 - pode esperar
+			2 - pouco urgente
+			3 - urgente, merece atencao no curto prazo
+			4 - muito urgente
+			5 - necessita de acao imediata
+
+	TENDENCIA
+		eh analisada pelo padrao ou tendencia de evolucao da situacao
+		pode-se analisar problemas, considerando o desenvolvimento que ele tera na ausencia de uma acao efetiva para soluciona-lo
+		representa o potencial de crescimento do problema, a probabilidade do problema se tornar maior com o passar do tempo
+			1 - nao ira mudar
+			2 - ira piorar a longo prazo
+			3 - ira piorar a medio prazo
+			4 - ira piorar a curto prazo
+			5 - ira piorar rapidamente
+
+	como montar a Matriz GUT:
+		Passo 1 - listar os problemas
+		Passo 2 - classificar os problemas para cada uma das 3 variaveis (Gravidade, Urgencia e Tendencia)		
+		Passo 3 - fazer o ranking dos principais problemas (multiplicando as 3 notas)
+		Passo 4 - analisar entao os pontos fracos (ranking principais problemas)
+		Passo 5 - elaborar planos de acao com prazos e responsaveis para solucionar ou diminuir os problemas
+
+	motivos para se usar a matriz GUT:
+		- contribui para a tomada de decisao estrategica
+		- facilita a alocacao de recursos nos problemas mais importantes e que podem ocasionar mais danos
+		- ferramenta de apoio para o problema estrategico
+		- implementacao simples
+		- formato de matriz facilita preenchimento e visualizacao dos atributos GUT
+		- permite uma priorizacao de resolucao de problemas de forma assertiva
+		- foco na diminuicao de problemas mais serios
+		- pode ser aliada a outras ferramentas, como o Diagrama de Pareto ou de Causa e Efeito (Ishikawa)
+
+
+
+http://www.sobreadministracao.com/matriz-gut-guia-completo/

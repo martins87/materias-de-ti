@@ -1,0 +1,45 @@
+=========================
+BSC - Balanced Score-card
+
+quadrix:
+	"enfoque que traduz a missao e a visao das organizacoes
+	 em um conjunto abrangente de metricas de desempenho
+	 que serve de base para um sistema de medicao e gerenciamento generico"
+
+	tecnica que visa integracao e balanceamento de todos os principais INDICADORES DE DESEMPENHO da empresa
+
+	este modelo traduz [a missao e a estrategia] de uma empresa em [OBJETIVOS e MEDIDAS intangiveis]
+
+	o metodo auxilia os gestores a desenvolver bem uma estrategia do principio ao fim,
+	e depois fazer com que CADA UM na organizacao esteja ENVOLVIDO a IMPLEMENTA-LA
+
+	os indicadores devem traduzir a ESTRATEGIA da empresa, e devem ser utilizados para auxiliar qualquer um
+	  > na organizacao a tentar atingir as prioridades estrategicas
+
+baseia-se em 4 perspectivas:
+	financeira			"para sermos bem sucedidos financeiramente, como devemos ser vistos pelos nossos ACIONISTAS?"
+	clientes			"para alcancarmos nossa visao, como deveriamos ser vistos pelos nossos CLIENTES?"
+	processos internos		"para satisfazermos nossos clientes e acionistas, em que processos de negocio devemos ser excelentes?"
+	aprendizado/crescimento		"para alcancarmos nossa visao, como sustentaremos nossa capacidade de mudar e melhorar?"
+
+no caso de TI:
+	contribuicao para o negocio	valor agregado ao negocio pelos investimentos em TI
+	orientacao para os clientes	avaliacao dos usuarios sobre os produtos e servicos de TI
+	excelencia operacional		EFICIENCIA e EFICACIA dos processos associados aos produtos e servicos de TI
+	orientacao futura		capacidade de atendimento 'as FUTURAS DEMANDAS por produtos e servicos de TI
+
+Kaplan e Norton definem 4 processos gerenciais que permitem aos gestores identificar os indicadores:
+	esclarecer e traduzir a visao e a estrategia
+	comunicar e associar objetivos e medidas estrategicas
+	planejar e estabelecer metas
+	melhorar feedback e o aprendizado estrategico
+
+=======
+resumo:
+	o BSC traduz a MISSAO e ESTRATEGIA da empresa em OBJETIVOS e MEDIDAS intangiveis
+
+baseia-se em 4 perspectivas:
+	financeira
+	clientes
+	processos internos
+	aprendizado/crescimento

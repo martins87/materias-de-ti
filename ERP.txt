@@ -1,0 +1,10 @@
+===
+ERP
+
+	Enterprise Resource Planning
+
+	integra todos os departamentos e funcoes de uma companhia atraves de um unico sistema computadorizado
+	com uma unica base de dados, serve 'as necessidades particulares de todos os usuarios
+	com ele, todas as areas corporativas sao informadas e preparam-se de forma integrada para o evento,
+		das compras 'a producao passando pelo almoxarifado, chegando ate mesmo 'a area de marketing,
+		que pode, assim, ter informacoes para mudar algo nas campanhas publicitarias de seus produtos

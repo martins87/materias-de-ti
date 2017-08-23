@@ -1,0 +1,36 @@
+====
+PDCA
+
+	metodo iterativo de gestao de 4 passos
+	utilizado para o controle e melhoria de processos e produtos
+	busca o alcance das metas da organizacao
+
+	PLAN - Planejar
+		estabelecer os objetivos e processos necessarios para entregar resultados de acordo com o projetado
+		consiste no estabelecimento de objetivos e de processos fundamentais para garantir os resultados
+	DO - Desenvolver/Executar
+		implementar o plano, executar o processo, fazer o produto
+	CHECK - Checar/Conferir/Verificar
+		estudar o resultado (medido e coletado no passo anterior) e compara-lo em relacao aos resultados esperados
+	ACT - Atuar/Ajustar/Agir
+		tomar acoes corretivas sobre as diferencas significativas entre os resultados reais e planejados
+	
+
+
+
+exemplo do PDCA na ISO 27001:
+
+	Plan
+		estabelecer o sistema de gestao de seginfo (ISMS) ou SGSI
+		foco nas politicas e objetivos globais DA ORGANIZACAO
+	Do
+		implementar e operar o SGSI
+		implementar e operar a politica, controles, processos e procedimentos do SGSI
+	Check
+		monitorar e revisar o SGSI
+		avaliar e, quando aplicavel, medir o desempenho de um processo frente 'a politica, objetivos e experiencia pratica do SGSI
+	Act
+		manter e melhorar
+		os resultados das atividades de auditoria interna do SGSI sao entrada nesta etapa
+		-> executar as acoes corretivas e preventivas, com base nos resultados da auditoria interna do SGSI
+		objetivo de alcancar a melhoria continua

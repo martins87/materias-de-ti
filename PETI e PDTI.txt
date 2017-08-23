@@ -1,0 +1,51 @@
+====
+PETI
+
+	Planejamento Estrategico de TI
+
+	auxilia a TI a trazer valor para o negocio,
+	  a partir de investimento tecnologico
+
+	busca, por meio de alinhamento com os valores, missao e objetivos estrategicos da organizacao,
+	  tracar o caminho a ser seguido pela Direcao de TI
+
+	decisoes que fazem parte do processo de criacao do PETI:
+		- investimentos de TI
+		- infraestrutura de TI
+		- arquitetura de TI
+		- metas para a area e para os profissionais (individualmente)
+
+	sao decisoes de nivel macro, tratam dos principios da TI
+
+	se nao existe uma estrategia clara de negocio,
+	  cabe ao corpo gestor da TI realizar uam leitura do negocio e,
+	  a partir dai, partir de premissas para construcao do PETI
+
+
+====
+PDTI
+
+	Plano Diretor de TI
+
+resumo:
+	plano para definir a evolucao da TI em uma organizacao
+	eh uma estrutura na qual vc desdobra a estrategia em macro projetos
+	esses projetos vao guiar a porra toda
+
+	eh o instrumento gestao da TI envolvendo diagnostico, planejamento, abrangendo habilidades,
+	  competencias, hardware, software, redes, sistemas de informacao, infraestrutura e pessoal
+	  -> para atender 'as necessidades de informacao com acoes estrategicas, taticas e operacionais necessarias 'a instituicao
+
+	identifica os meios necessarios (estruturas, processos, recursos humanos e materiais),
+	  e planeja a sua implementacao no nivel tatico, de forma a contemplar o desenvolvimento da organizacao
+
+	nao deve ser um documento independente
+	deve estar vinculado 'a visao de futuro do PETI
+
+	no PDTI deve ser contemplada uma analise de maturidade dos Processos de Governanca ATUAIS
+	assim como fazemos um check-up anual,
+	  essa analise de maturidade deve servir para identificar forcas, fraquezas, riscos e oportunidades
+
+	eh importante ter o panorama atual de maturidade
+	  e o plano de crescimento da maturidade dos processos, por prioridade estrategica
+
