@@ -1,0 +1,141 @@
+=========
+ISO 27002
+
+define a Seginfo como:
+	protecao da informacao de varios tipos de ameacas para
+		- garantir a continuidade do negocio
+		- minimizar o risco ao negocio
+		- maximizar o retorno sobre os investimentos e as oportunidades de negocio.
+
+
+estabelece o [codigo de pratica] para a Gestao da Seguranca da Informacao
+	-> mais no fim do arquivo encontram-se exemplos de codigo de praticas para a seginfo
+
+objetivos: CID
+	confidencialidade		garantia que o acesso seja obtido apenas por pessoas autorizadas  -->>  restricao!
+	integridade			salvaguarda da exatidao e completeza da informacao e dos metodos de processamento
+	disponibilidade			garantia que os usuarios autorizados obtenham acesso 'a informacao e aos ativos sempre que necessario
+
+
+Glossario
+
+	ativo					qualquer elemento que possua valor para a organizacao
+	controle				forma de gerenciar o risco, seja ele uma politica, diretriz, procedimento, pratica...
+	evento					ocorrencia que indica uma PROBABILIDADE de violacao da politica, ou falha de controles
+	incidente				evento ou uma serie de eventos indesejados ou inesperados COM GRANDE PROBABILIDADE de ameacar a seginfo
+	politica				recomendacoes formais da direcao da organizacao
+	recurso de processamento de info.	qq sistema que processe informacoes, servico ou infraestrutura, incluindo as instalacoes em que estao instalados
+	risco					probabilidade de um evento + suas consequencias
+	ameaca					causa potencial de um incidente nao desejado
+	vulnerabilidade				fragilidade que pode ser explorada
+
+
+______
+Riscos
+
+	o risco deve ser analisado e avaliado
+	a organizacao deve identificar, quantificar e priorizar os riscos com base em criterios para aceitacao dos riscos
+	deve tambem trata-los, por meio da aceitacao, mitigacao, transferencia ou prevencao
+
+	lidar com riscos -> MATE
+
+	M	mitigar		aplicar controles para REDUZIR os riscos
+	A	aceitar		conhecer e objetivamente aceitar os riscos, sabendo que atende claramente 'a politica da organizacao
+	T	transferir	transferir os riscos associados para outras partes, por ex: seguradores ou fornecedores
+	E	evitar		evitar, NAO PERMITINDO ACOES que poderiam causar a ocorrencia de riscos
+
+	mitigar != evitar
+		mitigar  -->>  minimizar o risco a um nivel aceitavel. ex: firewalls
+		evitar   -->>  eliminacao do risco. ex: cortar o acesso da empresa 'a Internet
+
+______________________
+Politica e Organizacao
+
+	direcao deve [criar um documento da politica de seginfo]
+		-> deve ser divulgado a todos da organizacao
+	o comprometimento com a seginfo deve vir desde a alta direcao da empresa
+	politica de seguranca deve ser revisada periodicamente
+	responsabilidades devem ser definidas de maneira clara
+
+________________
+Gestao de ativos
+
+	todos os ativos devem ser identificados. deve haver um inventario de ativos
+	todo ativo deve ter um proprietario
+	a informacao deve receber uma classificacao, para receber um nivel adequado de protecao
+	o proprietario do ativo eh o responsavel pela manutencao dos controles sobre os seus ativos
+
+__
+RH
+
+	-> se preocupa com funcionarios, fornecedores e terceiros
+	todos devem ser conscientizados da importancia da seginfo
+	papeis e responsabilidades devem ser definidos
+	termos e condicoes contratuais podem ser estabelecidos
+	funcionarios que mudarem de local de trabalho:
+		devem DEVOLVER ativos sob sua responsabilidade,
+		bem como terem seus direitos de acesso revistos ou revogados
+
+________________
+Seguranca Fisica
+
+	-> se preocupa em prevenir acesso fisico nao autorizado, evitando danos e violacoes 'as informacoes da organizacao
+	instalacoes criticas de processamento da informacao devem estar em areas seguras, com barreiras de controle de acesso adequados
+	registros de entrada e saida de funcionarios
+	terceiros soh entram com autorizacao e monitoramento
+	direitos de acesso a areas seguras devem ser revistos periodicamente
+	protecao contra desastres naturais: incendios, enchentes, terremotos, explosoes..
+	equipamentos devem ser protegidos contra ameacas do meio ambiente e contra ameacas fisicas
+
+____________
+Comunicacoes
+
+	preocupacao de garantir que recursos de processamento da informacao sejam operados corretamente
+	documentos que descrevem os procedimentos de operacao desses recursos devem ser criados e mantidos atualizados
+	copias de seguranca devem ser armazenadas remotamente, distantes o suficiente para estarem seguras (ex: nao armazenar backup na outra torre do WTC)
+	pode-se utilizar criptografia em copias cuja confidencialidade seja importante
+	redes de computadores devem ser gerenciadas
+	comercio eletronico em redes publicas deve ser protegido de atividades fraudulentas
+
+__________________
+Controle de acesso
+
+	-> o acesso 'a informacao deve ser controlado
+	basear-se na regra "tudo eh proibido, menos o permitido"
+	o ID de usuario deve ser capaz de assegurar a responsabilidade dele por suas acoes
+	a concessao de uso e privilegios deve ser restrita e controlada
+	concessao de senhas deve ser controlada por processos formais
+	usuario deve assinar declaracao quando receber senha, responsabilizando-se pela confidencialidade da mesma
+	senhas temporarias devem ser modificadas periodicamente
+	sistema deve obrigar o usuario a escolhar senhas fortes
+	mesa de trabalho e tela limpa devem ser adotadas para evitar vazamento de informacoes
+
+______________________
+Sistemas de informacao
+
+	as informacoes devem ser protegidas por meios criptograficos
+	acesso aos arquivos de sistema e programas de codigo-fonte devem ser controlados
+	cuidados devem ser tomados para que dados sensiveis nao sejam expostos em ambientes de testes de sistema
+
+__________
+Incidentes
+
+	fragilidades devem ser informadas de modo a receberem o tratamento adequado
+	responsabilidades e procedimentos devem ser definidos para o tratamento de eventos e fragilidades
+
+_________________________________
+Gestao da continuidade do negocio
+
+	-> as atividades de negocio NAO PODEM PARAR diante de falhas ou desastres
+	um processo de gestao deve ser desenvolvido para assegurar a continuidade do negocio
+	planos de continuidade do negocio devem ser desenvolvidos, com identificacao de procedimentos para a recuperacao do desastre
+
+____________
+Conformidade
+
+	deve-se evitar violacao de leis criminais, violacao de estatutos..
+	nao 'a pirataria: direitos de propriedade intelectual devem ser respeitados  -->>  comprar a licenca do Oracle, Windows original
+	seguir normas e compliance!
+	dados devem ser protegidos conforme legislacoes relevantes
+	controles criptograficos devem ser usados em conformidade com todas as leis, acordos e regulamentos
+

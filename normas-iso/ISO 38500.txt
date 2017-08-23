@@ -1,0 +1,51 @@
+Visa [promover o uso eficaz, eficiente e aceitavel da TI] para
+
+	garantir aos stakeholders confiabilidade na governanca corporativa da TI na organizaacao
+	informar e orientar os dirigentes quanto ao uso da TI nas organizacoes
+	fornecer uma base para uma avaliacao objetiva da governanca corporativa de TI
+
+
+
+tem por objetivo fornecer uma estrutura de principios para os dirigentes
+	> utilizarem na avaliacao, direcao e monitoramento do uso da TI em suas organizacoes
+
+
+o COBIT 5 adota toda a norma ISO 38500 no dominio EDM - Avaliar, Dirigir e Monitorar
+
+
+=-=-=-=-=-=-
+6 principios de boa governanca corporativa de TI:
+
+	Estrategia
+		similar ao conceito de alinhamento estrategico
+		a estrategia de negocio da organizacao considera as capacidades atuais e futuras da TI
+		os planos estrategicos de TI contemplam as necessidades atuais e continuas do negocio
+
+	Conformidade
+		a TI deve estar alinhada 'as legislacoes e marcos regulatorios
+		politicas e praticas sao definidas, implementas e fiscalizadas
+
+	Desempenho
+		a TI se adequa 'as necessidades da organizacao para fornecer servicos com qualidade para atender aos requisitos atuais e futuros
+
+	Comportamento Humano
+		as politicas, praticas e decisoes de TI respeitam o comportamento humano,
+		> considerando as necessidades atuais e futuras de todas as pessoas envolvidas nos processos
+
+	Aquisicao
+		as aquisicoes de TI sao realizadas por motivos validos, com base em analises apropriadas, com tomada de decisao clara e transparente
+		beneficios, oportunidades, custos e riscos sao equilibrados no curto, medio e longo prazo
+
+	Responsabilidade
+		individuos e grupos na organizacao compreendem e aceitam suas responsabilidades com respeito ao fornecimento e 'a demanda de TI
+		os reponsaveis pelas acoes tambem tem autoridade para desempenhar tais acoes
+
+
+
+3 tarefas essenciais: EDM
+
+	Avaliar			avaliar o uso atual e futuro da TI  -->>  Evaluate
+	Dirigir			orientar a preparacao e a implementacao de [planos e politicas] para assegurar que a TI atenda aos objetivos do negocio  -->>  Direct
+	Monitorar		monitorar o cumprimento destas politicas em relacao aos planos  -->>  Monitor
+
+

@@ -1,0 +1,122 @@
+=========
+ISO 22301 / 2012
+
+	Gestao de CONTINUIDADE de negocios
+
+	oferece a melhor estrutura para a gestao da continuidade de negocios em uma organizacao
+
+	substituiu a BS 25999-2 (BS = British Standards Institution) -> essa era de 2006
+	sao dois padroes mto similares, mas a ISO 22301 pode ser considerada como uma atualizacao
+	ate 2014, todas as organizacoes tiveram que se atualizar para a ISO 22301
+
+	aceito em todo o mundo, por institutos de normalizacao nacionais em 163 paises
+
+	qq organizacao pode implementar o padrao
+	com ou sem fins lucrativos
+	publicas ou privadas
+	grandes ou pequenas
+
+	como trata da CONTINUIDADE DE NEGOCIOS, tem relacao com as seguintes perguntas:
+	E se...
+		- a rede de sua empresa, e-mail, internet ou um sistema critico ficar indisponivel por X minutos/horas/dias?
+		- um incendio destruir documentos importantes (internos ou de clientes)?		
+		- uma pessoa chave da sua equipe ficar doente? Ou receber uma proposta de emprego bem superior?
+		- seu principal fornecedor nao cumprir o que foi acordado?
+		- um cliente nao tiver condicoes de efetuar o pagamento para sua empresa?
+
+____________
+NOVOS TERMOS
+
+	incidente disruptivo
+		um evento que interrompe as operacoes de negocios
+
+	informacoes documentadas
+		informacoes que precisam ser controladas e mantidas por uma organizacao
+		  > e a midia em que sao armazenadas
+
+	maxima interrupcao aceitavel (MAO)
+		o tempo que levaria para impactos adversos se tornarem aceitaveis
+		-> esse impactos podem surgir como resultado de nao fornecer um produto/servico ou executar uma atividade
+
+	objetivo de continuidade de negocios minimo (MBCO)
+		"o minimo que a organizacao tem que oferecer DURANTE uma merda"
+		nivel minimo de servicos/produtos que sao aceitaveis
+		  > para a organizacao para alcancar seus objetivos de negocios durante uma disrupcao
+
+	perda de dados maxima
+		ponto em que as informacoes usadas em uma atividade devem ser restauradas
+		  > para permitir que a atividade opere apos ser retomada
+		tambem conhecido como [objetivo de ponto de recuperacao]
+
+	correcao
+		acao para eliminar uma nao-conformidade detectada
+
+
+__________
+BENEFICIOS
+
+	- identificar e gerenciar ameacas atuais e futuras aos seus negocios
+	- adotar uma atitude pro-ativa para minimizar o impacto de incidentes
+	- manter funcoes criticas em funcionamento durante periodos de crise
+	- minimizar o tempo de inatividade durante incidentes e melhorar o tempo de recuperacao
+	- demonstrar resiliencia aos clientes, fornecedores e em solicitacoes de propostas
+
+	. protecao de valor para os acionistas
+	. melhor compreensao do negocio, obtido atraves da identificacao e analise de riscos
+	. resiliencia operacional que resulta da implementacao de reducao de risco
+	. tempo de inatividade eh reduzido quando processos alternativos e solucoes alternativas sao identificadas
+	. documentos e registros vitais podem ser mantidos e protegidos
+	. preservacao no mercado, garantindo a continuidade da prestacao de servicos
+	. melhoria da seguranca em geral
+
+	"a gestao de continuidade de negocios ira reduzir a probabilidade de incidentes disruptivos,
+	 e se algum chegar a ocorrer, a organizacao estara pronta para responder de forma apropriada,
+	 reduzindo drasticamente o dano em potencial de tal incidente"
+
+
+
+__________
+CICLO PDCA
+
+	os elementos da continuidade de negocios na ISO 22301 sao melhor descritos por meio do ciclo PDCA
+
+	Estabelecer (Planeje)
+	---------------------
+	 . Contexto da organizacao
+	 . Lideranca
+	 . Planejamento
+	 . Suporte
+
+
+	Implementar e operar (Faca)
+	---------------------------
+	 . Planejamento e controle operacional
+	 . Analise de impacto nos negocios
+	 . Analise/avaliacao de riscos
+	 . Estrategia de continuidade de negocios
+	 . Procedimentos de continuidade de negocios
+	 . Exercicios e testes
+
+
+	Monitoramento e revisao (Verifique)
+	-----------------------------------
+	 . Monitoramento, medida, analise e avaliacao
+	 . Auditoria interna
+	 . Analise critica da gestao
+
+
+	Manutencao e melhoria (Aja)
+	---------------------------
+	 . Nao-conformidade e acao corretiva
+	 . Melhoria continua
+
+
+_________
+CONCLUSAO
+
+	a 22301 nao eh mto diferente da BS 25999-2 na maioria das areas-chave da continuidade de negocios,
+	  > como analise de impacto nos negocios, estrategia ou planejamento
+	as maiores diferencas se encontram na parte de gestao do padrao:
+		-> a ISO 22301 coloca mto mais enfase em compreender os requisitos, definir objetivos e medir o desempenho
+	portanto, sera aceita com mais facilidade pela alta administracao
+

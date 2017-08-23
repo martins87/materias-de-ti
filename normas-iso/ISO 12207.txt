@@ -1,0 +1,140 @@
+=========
+ISO 12207
+
+	primeira versao publicada em 1995
+	a ISO 12207 eh para [desenvolvimento e manutencao de software]
+		
+	estabelece uma [arquitetura comum] para os processos do [ciclo de vida do software]
+	cobre o ciclo de vida do software desde a concepcao de ideias ate sua descontinuacao
+
+	aplica-se 'a aquisicao de sistemas, produtos e servicos de software,
+		> para o fornecimento, o desenvolvimento, a operacao e a manutencao de produtos de software,
+		> quer sejam executados interna ou externamente a uma organizacao
+
+	fundamentada em 2 principios basicos:
+		- modularidade			minimo acoplamento, maxima coesao
+		- responsabilidade		responsavel unico por processo, facilitando a aplicacao da norma em projetos
+
+	objetivo:
+		"fornecer uma estrutura unica
+		> para que TODOS envolvidos com o desenvolvimento de software
+		> utilizem uma LINGUAGEM COMUM
+		> que eh estabelecida na forma de processos bem definidos"
+	ou
+		"definir um conjunto de processos para facilitar a comunicacao
+		> entre clientes, fornecedores e outras partes interessadas
+		> no ciclo de vida de um software"
+
+	estrutura:
+		Processo	possuem proposito e resultado. cada processo possui pelo menos uma atividade
+		Atividade	unidades de construcao que agrupam tarefas relacionadas
+		Tarefa		clausula detalhada para implementacao de um processo
+		Nota		usada quando eh necessaria explicacao para melhor descrever a intencao de um processo
+
+
+	a ISO 12207 possui duas secoes principais para tratar os processos de software:
+
+		1. Processos de Contexto do Sistema
+
+			tratam de um produto ou servico de software, ou um sistema de software que opera independentemente (standalone)
+			agrupados em:
+				- Processos Contratuais
+				- Processos Organizacionais Capacitadores de Projeto
+				- Processos de Projeto
+				- Processos Tecnicos
+			subprocessos dos Processos de Contexto do Sistema:
+				https://s31.postimg.org/5fosvt157/processos_contextuais.png
+
+			. Processos Contratuais
+				Aquisicao
+				Fornecimento
+
+			. Processos Organizacionais
+				Gestao de Modelo de Ciclo de vida
+				Gestao de Infraestrutura
+				Gestao de Portfolio de Projetos
+				Gestao de Recursos Humanos
+				Gestao de Qualidade
+
+			. Processos de Projeto
+				Planejamento de Projeto
+				Controle e avaliacao do projeto
+				Tomada de Decisao
+				Gestao de Risco
+				Gestao de Configuracao
+				Gestao da Informacao
+				Gestao da Medicao
+
+			. Processos Tecnicos
+				Definicao de requisitos dos stakeholders
+				Analises dos requisitos do sistema
+				Projeto de arquitetura de sistema
+				Implementacao
+				Integracao de sistema
+				Teste de qualificacao de sistema
+				Instalacao do software
+				Suporte de aceitacao de software
+				Operacao de software
+				Manutencao de software
+				Desativacao de software
+
+		2. Processos Especificos de Software
+			para uso na implementacao de um produto ou servico de software que eh um elemento de um sistema maior
+
+
+	classifica os processos em:
+		fundamentais		instanciados de acordo com a situacao
+		de apoio		devem existir independentemente da organizacao e do projeto
+		organizacionais		devem existir independentemente da organizacao e do projeto
+
+
+______________________
+Processos FUNDAMENTAIS / PRIMARIOS
+
+	tambem podem ser chamados de Processos PRIMARIOS
+
+	constituem um conjunto de processos que atendem as partes fundamentais:
+		pessoa ou organizacao/adquirente, fornecedora, desenvolvedora, operadora ou mantenedora do software
+
+"FODAM":
+
+	Fornecimento/suprimento
+	Operacao
+	Desenvolvimento
+	Aquisicao
+	Manutencao
+
+
+__________________
+Processos DE APOIO
+
+	auxiliam um ou outro processo e contribuem para o sucesso e qualidade do projeto
+	podem ser realizados, quando necessario, por outro processo
+
+	Documentacao			desenvolver e manter registradas as informacoes do software produzidas por um processo
+	Gerencia de Configuracao	estabelecer e manter a integridade de todos os produtos de trabalho
+	Garantia da Qualidade		fornecer garantia de que produtos de trabalho e processos estao de acordo com condicoes pre-definidas
+	Verificacao			confirmar adesao aos requisitos especificados
+	Validacao			confirmar adesao a requisitos de um uso especifico pretendido para o produto de trabalho de software
+	Revisao conjunta		manter um entendimento em comum com os stakeholders
+	Auditoria			determinar, de forma independente, conformidade com requisitos, planos e contratos
+
+
+_________________________
+Processos ORGANIZACIONAIS - "GIMT"
+
+	empregados por uma organizacao para estabelecer e implementar uma estrutura subjacente
+		> e melhorar continuamente a estrutura e os processos
+
+	Gerencia			organizar, monitorar e controlar a iniciacao e execucao de processos
+	Infra-estrutura			manter uma infra-estrutura necessarai para apoiar a execucao de processos
+	Melhoria			estabelecer, avaliar, medir, controlar e melhorar um processo de ciclo de vida de software
+	Treinamento
+
+
+___________________
+Processos ADAPTACAO
+
+	trata-se da retirada de processos e tarefas inefetivos ou nao-aplicaveis,
+	bem como a inclusao de outros que nao pertencem 'a norma
+

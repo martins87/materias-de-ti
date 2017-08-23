@@ -1,0 +1,201 @@
+=========
+ISO 27001
+
+	padrao para SGSI - Sistema de Gestao da Seguranca da Informacao
+	cobre TODOS OS TIPOS DE ORGANIZACOES, por exemplo: comerciais, governamentais, sem fins lucrativos...
+
+	trata dos REQUISITOS dos SGSIs
+
+	descreve como colocar em pratica um sgsi AVALIADO e CERTIFICADO de forma independente
+	credibilidade!
+	assim, vc pode demonstrar compromisso e conformidade com as melhores praticas globais
+->	seus clientes, fornecedores e stakeholders verao que seginfo eh parte fundamental na operacao de sua empresa
+
+	usada normalmente em conjunto com a 27002, mas pode ser possivel o uso de outros controles em substituicao 'a 27002
+	objetivo:
+		adocao de processos para mitigar e gerenciar os riscos da organizacao
+
+	o SGSI eh independente de marcas ou fabricantes tecnologicos -> cada empresa faz do jeito que lhe for conveniente
+	eh holistico, trata de diversas areas na empresa como:
+		telecomunicacoes
+		protecao do meio fisico
+		RH
+		continuidade de negocio
+		...
+
+PDCA:
+
+	Plan
+		estabelecer o sistema de gestao de seginfo (ISMS) ou SGSI
+		foco nas politicas e objetivos globais DA ORGANIZACAO
+	Do
+		implementar e operar o SGSI
+		implementar e operar a politica, controles, processos e procedimentos do SGSI
+	Check
+		monitorar e revisar o SGSI
+		avaliar e, quando aplicavel, medir o desempenho de um processo frente 'a politica, objetivos e experiencia pratica do SGSI
+	Act
+		manter e melhorar
+		os resultados das atividades de auditoria interna do SGSI sao entrada nesta etapa
+		-> executar as acoes corretivas e preventivas, com base nos resultados da auditoria interna do SGSI
+		objetivo de alcancar a melhoria continua
+
+	!! para aplicar a 27001, precisa da 27002 (17799) !!
+
+
+
+_________
+CONCEITOS
+
+
+EIOMAMM:
+	estabelecer, implementar, operar, monitorar, analisar criticamente, manter e melhorar o SGSI
+
+Ativo
+	qq coisa que tenha valor para a organizacao
+
+Disponibilidade
+	estar acessivel e utilizavel por uma entidade autorizada
+	!! tem a ver com o simples fato de a informacao estar disponivel a pessoas autorizadas !!
+
+Confidencialidade
+	propriedade de que a informacao [nao esteja disponivel] ou revelada a individuos, entidades ou processos [nao autorizados]	
+	!! tem a ver com restricao: SOMENTE a pessoas autorizadas !!
+
+Integridade
+	propriedade de [salvaguarda da exatidao e completeza] de ativos
+
+Seguranca da informacao
+	preservacao da [confidencialidade, integridade e disponibilidade] da informacao
+	outras propriedades tambem envolvidas:
+		autenticidade, responsabilidade, nao repudio, confiabilidade
+
+Evento de seginfo
+	ocorrencia identificada de um estado de sistema, servico ou rede,
+	  indicando uma [possivel violacao da politica de seginfo ou falha de controles],
+	  ou uma situacao previamente desconhecida, que possa ser relevante para a seginfo
+	::
+	possivel violacao da politica de seginfo ou falha de controles  -->>  Evento
+
+Incidente de seginfo
+	simples evento (ou uma serie de eventos) de seginfo [indesejados ou inesperados]
+	> que tenham uma [grande probabilidade] de comprometer as operacoes do negocio e ameacar a seginfo
+	!! deu merda !!
+
+SGSI
+	a parte do sistema de gestao global, baseado na abordagem de riscos do negocio,
+	> para EIOMAMM
+
+Risco residual
+	risco remanescente [apos o tratamento] de riscos
+
+Aceitacao do risco
+	decisao de aceitar um risco
+
+Analise de riscos
+	uso sistematico de informacoes para
+		- identificar fontes
+		- estimar o risco
+	quantitativo!!
+
+Analise e Avaliacao de riscos
+	processo completo de analise e avaliacao de riscos
+
+Avaliacao de riscos
+	processo de comparar o risco estimado com criterios de risco predefinidos
+	  para [determinar a importancia dos riscos]
+
+Gestao de riscos
+	atividades coordenadas para direcionar e controlar uma organizacao no que se refere a riscos
+
+Tratamento do risco
+	processo de selecao e implementacao de medidas para modificar um risco
+
+Declaracao de aplicabilidade
+	declaracao documentada que descreve/detalha os objetivos de controle e controles
+	  que sao pertinentes e aplicaveis ao SGSI da organizacao
+
+	-> declaracao do que se aplica ao SGSI
+
+	:: 
+	lista os objetivos de controle - os aplicaveis e os nao-aplicaveis
+!	lista TODOS os objetivos de controle:
+		- objetivos de controle que estao DENTRO
+		- objetivos de controle que estao FORA
+!	os que nao forem aplicaveis, a gente JUSTIFICA a sua ausencia
+
+Requisitos gerais
+	a organizacao deve EIOMAMM um SGSI documentado dentro do contexto
+	> das atividades de negocio globais da organizacao e os riscos que ela enfrenta
+	.
+	deve ser voltado para os riscos DA ORGANIZACAO!
+
+
+
+===========
+Estabelecer o SGSI
+===========
+
+a organizacao DEVE:
+	definir o escopo e os limites do SGSI nos termos das [caracteristicas do negocio]
+	definir uma politica do SGSI nos termos das [caracteristicas do negocio]
+	definir a abordagem de analise/avaliacao dos riscos
+	identificar os riscos
+	analisar e avaliar os riscos
+	identificar e avaliar as opcoes de tratamento de riscos
+	selecionar os objetivos de controle para o tratamento de riscos
+!	obter a aprovacao da direcao dos riscos residuais propostos
+	obter autorizacao da direcao para implementar e operar o SGSI
+!!	preparar uma declaracao de aplicabilidade -> documentacao que descreve os objetivos de controle pertinentes ao negocio
+
+
+
+====================
+Implementar e operar o SGSI
+====================
+
+a organizacao DEVE:
+	formular um plano de tratamento de riscos
+	implementar o plano de tratamento de riscos -> considerar $$$ e atribuicao de papeis e responsabilidades
+	implementar os controles selecionados
+	definir como medir a eficacia dos controles -> aqui soh ha a definicao, soh vai medir la pra frente!
+	implementar programas de [conscientizacao e treinamento]
+	gerenciar os recursos para o SGSI
+	implementar procedimentos e controles capazes de detectar prontamente os eventos de seginfo -> resposta imediata tambem!
+
+
+
+=================================
+MONitorar e ANAlisar criticamente o SGSI
+=================================
+
+visa garantir que os objetivos tracados estao sendo atendidos pelo SGSI
+
+a organizacao DEVE:
+	executar procedimentos para detectar erros, identificar tentativas de violacao [bem sucedidas]
+	determinar se as acoes tomadas foram eficazes
+	realizar analises criticas regulares  -->>  nao ha prazo! mas tem que analisar regularmente
+	medir a eficacia dos controles  -->>  antes foi definido como medir. aqui mede de fato
+	analisar criticamente os [riscos residuais e riscos aceitaveis] identificados
+	conduzir auditorias INTERNAS a intervalos planejados
+	realizar analises criticas regulares para garantir que o [escopo] permanece adequado
+	atualizar os planos de seginfo, levando em consideracao os resultados obtidos das analises criticas
+	registrar acoes e eventos que possam ter um impacto na eficacia ou no desempenho do SGSI
+
+	procedimentos de monitoracao e analise critica:
+		identificar prontamente tentativas e violacoes de seguranca bem sucedidas, incidentes de seginfo, detectar erros nos resultados de processamento
+		ajudar a detectar eventos de seginfo e assim prevenir incidentes de seginfo pelo uso de indicadores
+		determinar se as atividades de seginfo delegadas a pessoas sao executadas conforme esperados
+		determinar se as acoes tomadas para solucionar uma violacao de seginfo foram eficazes
+
+
+=================
+Manter e melhorar o SGSI
+=================
+
+a organizacao DEVE:
+	implementar as melhorias identificadas
+	executar as acoes preventivas e corretivas apropriadas -> usar como referencia as licoes aprendidas de outras organizacoes, assim como da propria
+	comunicar as acoes e melhorias a todas as [partes interessadas] -> se relevante, obter a concordancia sobre como proceder
+	assegurar que as melhorias atinjam os objetivos pretendidos
+

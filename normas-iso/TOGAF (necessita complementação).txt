@@ -1,0 +1,22 @@
+TOGAF = The Open Group of Architecture Framework
+
+objetivos do TOGAF:
+	fornecer metodos e ferramentas para auxiliar na aceitacao, producao e no uso de uma arquitetura empresarial
+	permitir a implantacao da interoperabilidade entre [arquiteturas e componentes]
+	garantir a protecao de ativos que possibilitem a reutilizacao de componentes de arquiteturas
+	padronizar um metodo para o desenvolvimento de uma arquitetura empresarial
+	garantir a reutilizacao de ativos de processos
+
+
+beneficios:
+	conduzir a uma operação mais eficiente de TI, visto que uma estrutura melhor definida
+	..e a mobilidade e a modularidade da infraestrutura da TI levam a uma operação muito mais eficiente
+
+	melhorar o retorno dos investimentos existentes e redução de riscos para futuros investimentos,
+	..sendo que as estruturas de sistemas existentes e planejadas são claramente definidas
+
+	propiciar aquisições mais rápidas, fáceis e baratas, pois há estratégia clara para aquisições e migrações futuras,
+	..resultando em decisões de compras mais simples e processo de aquisição mais rápido
+
+	flexibilidade para o crescimento e a reestruturação do negócio,
+	..pois é mais fácil assegurar acesso a informações integradas por toda a organização

@@ -1,0 +1,32 @@
+=================
+RESUMO DAS NORMAS
+
+27001
+	prove um modelo para estabelecer, implementar, operar, monitorar, analisar criticamente, manter e melhorar um SGSI
+
+27002
+	codigo de [melhores praticas] para a gestado da seginfo
+	estabelece diretrizes e principios gerais para a gestao da seginfo em uma organizacao
+	prove diretrizes gerais sobre as metas geralmente aceitas para a gestao da seginfo
+
+27003
+	diretrizes [mais especificas] para implementacao do SGSI
+
+27004
+	metricas e relatorios do SGSI
+
+27005
+	trata da gestao de RISCOS da seginfo
+	fornece diretrizes para o processo de gestao de riscos de seginfo (GRSI) em uma organizacao
+	prove indicacoes para implementacao, monitoramente e melhoria continua do sistema de controles
+
+27006
+	estabelece requisitos e diretrizes para AUDITORIA de um SGSI
+
+27010
+	gestao de seginfo para Comunicacoes Inter Empresariais
+
+15999/22313
+	gestao de continuidade de negocios
+	especifica os requisitos de um plano para manter a operacao em funcionamento em caso de alguma ocorrencia grave
+	trata de processos fundamentais para retorno 'a operacao normal, minimizando os prejuizos

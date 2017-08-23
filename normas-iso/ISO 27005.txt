@@ -1,0 +1,24 @@
+=========
+ISO 27005
+
+	trata da Gestao de Riscos de Seginfo
+
+	[fornece diretrizes] para o processo de Gestao de Riscos de Seguranca da Informacao (GRSI)
+	conformidade (conceitual) com os requisitos da NBR ISO/IEC 27001
+
+!	no entanto, NAO descreve uma metodologia especifica para a gestao de riscos
+
+	uma organização deve definir sua propria abordagem ao processo de riscos, considerando escopo, contexto e o setor de atividade economica
+	aplicavel a qualquer organizacao
+	tem como referencias normativas as normas 27001 e 27002
+
+	os processos de gestao de riscos de seginfo sao:
+		- definicao do contexto
+		- processo de avaliacao de riscos
+		- tratamento de riscos
+		- aceitacao do risco
+		- comunicacao e consulta do risco
+		- monitoramento e analise critica de riscos
+
+questoes:
+	http://bit.ly/2psWDHg

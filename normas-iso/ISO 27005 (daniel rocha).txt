@@ -1,0 +1,152 @@
+NBR ISO/IEC 27005
+
+Fornece diretrizes para o processo de Gestão de Riscos de Segurança da Informação (GRSI).
+Conformidade (conceitual) com os resquisitos da NBR ISO/IEC 27001
+Uma organização deve definir sua propria abordagem ao processo de riscos, considerando: Escopo, contexto e o setor de atividade economica.
+Aplicável a qualquer organização.
+
+Tem como referencias normativas as normas 27001 e 27002.
+
+!! Não inclui uma metodologia especifica para a GRSI
+
+Interesse: Gestores e pessoal envolvidos com a GRSI em uma organização, quando aplicavel, tambem aos envolvidos em entidades externas que dão suporte a essa atividade
+
+-> Termos e Definições
+Impacto – mudança adversa no nível obtido dos objetivos de negócios;
+Riscos de segurança da informação – a possibilidade de uma ameaça explorar vulnerabilidades de um ativo ou de um conjunto de ativos, prejudicando a organização
+Risco: Combinação da probabilidade de um evento e de suas conseqüências. Mas só há risco se houver a combinação ameaça-vulnerabilidade
+Ação de evitar o risco – decisão de não se envolver ou agir de forma a se retirar de uma situação de risco
+Comunicação do risco – troca ou compartilhamento de informação sobre risco entre o tomador de decisão e outras partes envolvidas;
+Estimativa de riscos – processo utilizado para atribuir valores à probabilidade e consequências de um risco;
+Identificação de riscos – processo para localizar, listar e caracterizar elementos do risco;
+Redução do risco – ações tomadas para reduzir a probabilidade, as consequências negativas ou ambas associadas a um risco;
+Retenção do risco – aceitação do ônus da perda ou do benefício do ganho associado a um determinado risco. (Contraditorio a 27001 e 27002)
+Transferência do risco – compartilhamento com uma outra entidade do ônus da perda associado a um risco
+
+-> Organização das atividades de GRSI
+1. Entrada: Informações sobre a organização
+2. Ação: definição de criterios basicos, escopo, limites e papeis para operar a Gestão de Riscos
+3. Diretrizes para implementação: determinar um proposito
+4. Saída: especificação de escopo e limites, criterios basicos e organização responsavel.
+
+A GRSI deve : 
+	* Estar alinhada, através de abordagem sistemática, à gestão de riscos corporativos.
+	* Ser um processo contínuo, que envolva Definição de Contexto, Avaliação e Tratamento dos Riscos;
+	* Ser aplicado a toda organização, a uma parte dela, ou a algum controle específico.
+
+-> Atividades de GRSI
+D - : Definição do Contexto
+A - : Análise e Avaliação de Riscos
+T - : Tratamento do Risco
+A - : Aceitação do risco
+C - : Comunicação do Risco
+M - : Monitoramento e análise crítica dos riscos
+
+-> Processos de GRSI (PDCA)
+Planejar: Definição do contexto, Analise/Avaliaçao de riscos, Definição do plano de tratamento do risco, Aceitação do risco.
+Executar: Implementação do plano de tratamento do risco
+Verificar: Monitoramento continuo e analise critica de risco
+Agir: Manter e melhorar o processo de GRSI.
+
+-> DEFINIÇÂO DE ESCOPO
+-> Criterios Basicos
+	* Critérios para avaliação de riscos – para permitir abordagem contínua consistente e estabelecer prioridades;
+	* Critérios de impacto – especificados em função do montante dos danos ou custos causados por um evento relacionado com a segurança da informação;
+	* Critérios para aceitação do risco – dependem das políticas, metas e objetivos da organização, bem como do interesse das partes interessadas.
+
+-> Escopo e Limites
+	* Assegurar que todos os ativos relevantes sejam considerados na análise/avaliação de riscos
+	* Os limites precisam ser identificados para permitir o reconhecimento dos riscos que possam ir além desses limites.
+
+-> Organização para GRSI
+
+!! A organização das operações é um dos recursos necessários para EIOMAMM o SGSI (ABNT NBR ISO/IEC 27001:2006)
+
+- Desenvolvimento do processo adequado à organização;
+- Identificação e análise das partes interessadas;
+- Definição dos papéis e responsabilidades (internas e externas à organização)
+- Definição de alçadas para tomada de decisões;
+- Especificação dos registros a serem mantidos.
+
+-> ANALISE E AVALIAÇÂO DE RISCOS
+Análise/Avaliação de Riscos: A análise de riscos inclui identificar riscos, estimar qualitativa e quantitativamente os riscos,
+	avaliar probabilidades, consequências e identicar o nível de risco.
+
+* Entrada: contexto definido
+* Ação: riscos sejam identificados, quantificados ou descritos qualitativamente.
+* Diretrizes:	Determinar o valor dos ativos e as consequencias possiveis;
+		Identificar as ameaças e vulnerabilidades e os controles existentes;
+		Priorizar os riscos derivados.
+* Saida: Lista de risco avaliado, ordenado por prioridade.
+
+* Análise de riscos
+	Fases de Identificação de riscos (AACVC):
+		- Identificação dos ativos;
+		- Identificação das ameaças;
+		- Identificação dos controles existentes;
+		- Identificação das vulnerabilidades;
+		- Identificação das consequências.
+	
+	Estimativa de risco:
+		– estimativa qualitativa: escala de atributos
+		– estimativa quantitativa: valores numericos, usa referencia historica dos incidentes.
+		– avaliação das consequências: consequencia para cada cenario.
+		– avaliação das probabilidades: probabilidade dos cenarios incidente.
+		– nível: estiva o nivel para cada risco e produz uma lista.
+* Avaliação de riscos
+	- O nível dos riscos é comparado com os critérios de avaliação de riscos e com os critérios para a a aceitação do risco;
+	- É produzida uma lista de riscos ordenados por prioridade e associados aos cenários de incidentes que os provocam.
+
+->Tratamento do Risco de SI
+
+	* Entrada: uma lista de riscos ordenados por prioridade e associados aos cenários de incidentes que os causam.
+	* Ação: definicao de controles para reduzir, reter, evitar ou transferir os riscos.
+	* Diretrizes: Opções para o tratamento do risco: redução, retenção, evitar e a transferência.
+		!! não são mutuamente exclusivas.
+		!! Um único tratamento pode ser efetivo contra mais de um risco.
+	* Saída: O plano de tratamento de risco e os riscos residuais, sujeitos à decisão de aceitação por parte dos gestores da organização.
+
+-> Aceitação do Risco de SI
+	* Entrada: o plano de tratamento do risco e a análise/avaliação do risco residual sujeito à decisão dos gestores.
+	* Ação: convém que a decisão de aceitar os riscos seja feita e formalmente registrada.
+	* Diretrizes: 
+		- Convém que os planos de tratamento do risco descrevam como os riscos avaliados serão tratados para atender os critérios de aceitação;
+		- Convém que os gestores responsáveis façam análise crítica e aprovem os planos propostos de tratamento de risco
+			dos riscos residuais resultantes e que registrem as condições associadas a essa aprovação.
+		- Assim, convém que o tomador de decisão justifique e comente sua decisão de não seguir os critérios normais para aceitar os riscos;
+	* Saída: lista de riscos aceitos e uma justificativa para os riscos que não satisfizerem os critérios normais de aceitação
+
+-> Comunicação do Risco de SI
+	* Entrada: todas as informações sobre os riscos provenientes da gestão de riscos.
+	* Ação: convém que o tomador de decisões e demais partes interessadas troquem e compartilhem as informações sobre riscos.
+	* Diretrizes: 
+		- Obter consenso sobre como gerenciar os riscos, desenvolva planos de comunicação dos riscos
+		- Uma comissão de riscos pode ser formada, de modo a discutir prioridades, tratamento e aceitação de riscos.
+	* Saída: entendimento (conhecimento/percepção) contínuo do processo de gestão de riscos de SI e dos resultados obtidos.
+
+-> Monitoramento e Análise Crítica dos Riscos de SI
+	...
+
+-> Monitoramento e Análise Crítica dos Fatores de Risco
+	* Entrada: todas as informações sobre os riscos obtidas através da gestão de riscos.
+	* Ação: Riscos e seus fatores, tais como: Valores dos ativos, impactos, ameaças, vulnerabilidades e probabilidade de ocorrências
+	* Diretrizes: Monitoramento constante. Pode fornecer dados de entrada à analise crítica.
+	* Saída: alinhamento contínuo da gestão de riscos com os objetivos de negócios da organização e com os critérios para aceitação do risco
+
+-> Monitoramento, Analise Crítica e Melhoria do Processo de GRSI
+	* Entrada: todas as informações sobre os riscos obtidas através das atividades de gestão de riscos.
+	* Ação: continuamente monitorando, analisando criticamente e melhorando
+	* Diretrizes: O processo de gestão de riscos de segurança da informação, em modificação ou acréscimo da abordagem, metodologia ou ferramentas utilizadas.
+	* Saída: atualização do processo de GRSI ou a garantia permanente da relevância deste para os objetivos de negócios da organização
+
+!! Não esquecer
+	Vulnerabilidade: Fraqueza ou deficiência que pode ser explorada por uma ameaça.
+
+	Ameaça: algo que possa provocar danos à segurança da informação, prejudicar as ações da empresa e sua sustentação no negócio,
+		mediante a exploração de uma determinada vulnerabilidade.
+
+	Em um processo de análise de riscos em TI, uma avaliação da vulnerabilidade depende das avaliações do ativo e das ameaças.
+	Os processos que fazem parte da análise/avaliação de riscos são identificação de riscos, estimativa de riscos e avaliação de riscos.
+	Analise de risco quantitativa: O método que atribui valores monetários para os itens na avaliação de risco.
+	As opções completas para tratamento do risco são: mitigar (risk reduction), aceitar (risk retention), transferir (risk transfer), evitar (risk avoidance)
+
