@@ -1,0 +1,133 @@
+======
+BACKUP
+
+	copia de dados de forma que seja armazenada em local diferente de onde esta o dado original,
+	  para que, se necessario, a informacao seja recuperada
+
+	pode ser:
+		manual
+		via software
+		cloud storage (armazenamento em nuvem: dropbox, yunio, google drive)
+
+	processo:
+		1 selecionar ativos (dados)
+		2 definir midia
+			magneticos	HD, fitas LTO/DAT
+			optico		cd, dvd, bluray
+			flash		pen drive, cartoes de memoria, SSD (substituto do hd)
+		3 definir tipo/periodicidade
+		4 definir local de armazenamento : preferencialmente LONGE do original
+
+	.bkf = backup file
+
+	--------------
+!!!	dados marcados:
+		dados que foram marcados no backup normal ou incremental
+		estes [nao sofreram alteracao] ate o momento de realizacao de um novo backup
+		-> se nao sofreram alteracao, nao sao novos (e nao precisa fazer copia deles)
+		marcados = foram copiados
+
+		marcado = ja perdeu o cabaço	ja foi feito backup
+		desmarcado = virgem, novo	arquivo alterado/novo
+
+		marcado...para ir para o backup
+
+
+_____
+TIPOS
+
+	------
+	normal (completo / total / global)
+		realiza uma copia de todos os dados para a midia, NAO IMPORTANDO o conteudo do ultimo backup
+		normalmente eh executado qndo se cria o conjunto de backup pela 1a vez
+		como copia todos os dados, eh mto [demorado e trabalhoso]
+		agiliza o processo de restauracao, pois somente um backup sera restaurado
+		quando eh feito um backup completo, ele limpa todos os marcadores
+			-> ou seja, todos ficam sendo como novos :)
+
+	-----------
+	incremental
+		copia os arquivos que foram criados/alterados desde o ultimo backup incremental
+		arquivos originais (nao alterados) continuam armazenados no ultimo backup normal
+		tem como referencia: ultimo backup incremental
+		marca os dados copiados, pois assim nao os copiara no prox incremental
+		na restauracao tem-se:
+			ultimo backup completo/normal
+			TODOS os backups incrementais (todas as versoes)
+		no processo de restauracao devemos ter:
+			- ultimo backup completo
+			- TODOS os backups incrementais desde o ultimo backup normal/total
+		vantagens:
+			se consegue restaurar todas as versoes ate o ultimo backup completo
+		desvantagens:
+			ocupa mais espaco
+	!	apos a realizacao do backup, ele TIRA a marcacao. ou seja, no proximo TODOS os arquivos existentes serao "antigos"
+
+	-----------
+	diferencial
+		copia todos os arquivos que foram criados/alterados [desde o ultimo backup completo/total]
+		mais lento de ser gerado, contudo [mais facil de ser recuperado]
+		tem como referencia: ultimo backup completo
+		nao marca os dados copiados, pois se quer TODOS os dados alterados/novos desde o ultimo backup normal/completo
+		na restauracao tem-se:
+			ultimo backup completo/normal
+			ultimo backup diferencial
+		para restaurar os dados a partir do backup diferencial deve-se ter:
+			- ultimo backup completo
+			- ultimo backup diferencial
+		vantagens:
+			mais facil de ser recuperado
+			ocupa menos espaco que o backup incremental
+		desvantagens:
+			nao se tem todas as versoes desde o ultimo backup completo
+
+
+!	1o backup incremental e 1o backup incremental tem o mesmo conteudo
+	apresentam diferencas entre si a partir da 2a e da 3a iteracao
+
+	-----
+	delta
+		soh faz a copia dos dados reais que foram modificados nos arquivos
+		processo mais rapido, ocupa menos espaco
+		processo de restauracao mais lento e complexo
+
+	------
+	diario
+		copia arquivos que foram alterados durante o dia
+
+	-----
+	copia (auxiliar ou de seguranca)
+		copia os arquivos SELECIONADOS
+
+
+ex pratico:
+
+	eh feito backup completo/normal com os arquivos X, Y e Z
+	temos entao agora as diferencas entre o incremental e o diferencial...
+
+						backup incremental		backup diferencial
+	arquivos Y1 e R sao adicionados		Y1, R				Y1, R
+	adicionados Z2 e P			Z2, P				Y1, R, Z2, P
+
+
+______
+TABELA
+
+	Tipo		Quais dados copia?	 Marca os dados copiados?	Restauracao - do que precisa?
+	-----------------------------------------------------------------------------------------------------------------------
+	Normal		Todos				   SIM			Ultimo normal
+	Incremental	Somente os desmarcados		   SIM			Normal + todos incrementais
+	Diferencial	Somente os desmarcados		   nao			Normal + ultimo diferencial
+	Diario		Alterados no dia		   nao			Todos os backups diarios
+	de Copia	Todos				   nao			A copia
+
+
+_____________________
+CONCEITOS DE QUESTOES
+
+	sistema de espelhamento de disco (como um RAID 1) se utilizaria um backup Normal
+
+	o processo de backup SEMPRE COMECA com um backup normal
+
+	testes de restauracao (restore) devem ser periodicos e com o objetivo de garantir a qualidade dos backups
+	-> deve-se garantir o sucesso do procedimento
