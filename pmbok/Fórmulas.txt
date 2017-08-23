@@ -1,0 +1,48 @@
+PERT - Program Evaluation Review Technique
+
+	famosa "Estimativa dos 3 pontos"
+	utiliza 3 estimativas para definir UMA FAIXA APROXIMADA para
+		duracao ou custo de uma atividade
+
+	pode ser usada nos processos
+
+		- Estimar as duracoes das atividades
+		- Estimar os custos
+
+	PERT = ( 4M + O + P )/6
+
+onde
+	PERT = tE = duracao/custo esperado
+	M = mais provavel
+	O = melhor cenario
+	P = pior cenario
+
+---------------------------------------------------------------------
+
+CPI = Cost Performance Index
+	
+	indice que mostra o andamento do projeto em relacao aos custos
+
+	CPI = EV / AC
+
+		EV = earned value
+		AC = actual cost
+
+		se CPI < 1	organizacao esta gastando mais do que o planejado	"over budget"
+		se CPI > 1	organizacao esta gastando menos do que o planejado	"under budget"
+
+
+
+
+SPI = Schedule Performance Index
+
+	indice que mostra o andamento do projeto em relacao ao cronograma
+
+	SPI = EV / PV
+
+		EV = earned value
+		PV = planned value
+
+		se SPI < 1	organizacao esta atrasada em relacao ao cronograma	"behind schedule"
+		se SPI > 1	organizacao esta adiantada em relacao ao cronograma	"ahead of schedule"
+

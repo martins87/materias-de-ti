@@ -1,0 +1,120 @@
+http://escritoriodeprojetos.com.br/grupos-de-processos-de-gerenciamento-de-projetos.aspx
+
+
+INICIACAO
+	integracao:
+		desenvolver o termo de abertura			nomeia um gerente do projeto
+	stakeholders:
+		identificar as partes interessadas
+
+PLANEJAMENTO
+	escopo:
+		planejar o gerenciamento do escopo
+		coletar os requisitos
+			define e documenta as funcoes e funcionalidades do projeto e do produto,
+			  > necessarias para atender as necessidades e expectativas dos Stakeholders
+			tecnica que pode ser usada:
+!				Delphi, onde se objetiva chegar a um consenso entre Stakeholders sobre requisitos
+		definir o escopo
+			saidas:
+				declaracao do escopo do projeto		descricao do escopo
+									entregas
+									criterios de aceitacao do projeto
+		criar a EAP - subdividir as principais entregas em componentes menores e mais facilmente gerenciaveis
+			entradas:
+				plano de gerenciamento do escopo
+				declaracao do ESCOPO do projeto
+				documentacao dos requisitos
+				fatores ambientais da empresa
+				ativos de processos organizacionais
+			saidas:
+				linha de base do escopo
+				atualizacoes nos documentos do projeto
+	tempo:
+		planejar o gerenciamento do cronograma
+		definir as atividades
+		sequenciar as atividades
+			entradas:
+				lista de atividades
+			saidas:
+				diagrama de rede
+		estimar os recursos das atividades
+		estimar a duracao das atividades
+		desenvolver o cronograma
+	custos:
+		planejar o gerenciamento dos custos
+		estimar os custos
+		determinar o orcamento
+	qualidade:
+		planejar o gerenciamento de qualidade
+	recursos humanos:
+		planejar o gerenciamento dos recursos humanos
+	comunicacoes:
+		planejar o gerenciamento das comunicacoes
+	aquisicoes:
+		planejar o gerenciamento das aquisicoes
+	partes interessadas:
+		planejar o gerenciamento das partes interessadas
+	riscos:
+		planejar o gerenciamento dos riscos
+		identificar os riscos
+		realizar a analise qualitativa dos riscos
+		realizar a analise quantitativa dos riscos
+		planejar a resposta aos riscos
+
+EXECUCAO
+	integracao:
+		orientar e gerenciar o trabalho do projeto	https://escritoriodeprojetos.com.br/orientar-e-gerenciar-o-trabalho-do-projeto
+	recursos humanos:
+		mobilizar a equipe do projeto
+		desenvolver a equipe do projeto
+		GERENCIAR a equipe do projeto
+	qualidade:
+		realizar a garantia da qualidade : rola auditoria dos requisitos de qualidade, pra garantir que a porra seja boa mesmo
+	comunicacoes:
+		GERENCIAR as comunicacoes do projeto
+	aquisicoes:
+		conduzir as aquisicoes
+	partes interessadas:
+		GERENCIAR o envolvimento das partes interessadas
+
+MONITORAMENTO E CONTROLE
+	integracao:
+		monitorar e controlar o trabalho do projeto
+		realizar o controle integrado de mudancas		realizado desde o inicio do projeto ate seu final
+	escopo:
+!!		VALIDAR o escopo
+		controlar o escopo
+	tempo:
+		controlar o cronograma
+	custos:
+		controlar o orcamento
+	qualidade:
+		controlar a qualidade
+	comunicacoes:
+		controlar as comunicacoes
+	riscos:
+		controlar os riscos
+	aquisicoes:
+		controlar aquisicoes
+	partes interessadas:
+		controlar o envolvimento das partes interessadas
+
+ENCERRAMENTO
+	integracao:
+		encerrar o projeto ou fase
+	aquisicoes:
+		encerrar as aquisicoes
+
+
+
+
+
+Fatores ambientais:
+	tolerancia aos riscos das partes interessadas
+
+
+Diagrama de rede:
+	desenho dos inter-relacionamentos das ATIVIDADES
+	primeiro cria-se a lista das atividades
+
