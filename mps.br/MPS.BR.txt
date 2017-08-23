@@ -1,0 +1,224 @@
+======
+MPS.BR
+
+	o CMMI br hu3hu3hu3
+	MPS.BR = modelo de Melhoria de Processo do Software Brasileiro  -->>  Software!!
+	mantido pela SOFTEX, entidade paraestatal com interesse na excelencia do software brasileiro  -->>  www.softex.br
+	pode-se baixar GRATUITAMENTE os pdfs do modelo
+
+	modelo de qualidade de processos [voltado para a realidade brasileira]
+	especialmente focado em pequenas e medias empresas  -->>  mas pode ser pra grandes tambem, cuidado!
+	custo acessivel =)
+
+motivos de ter o MPS.BR:
+	CMMI eh muito caro: uma avaliacao pode chegar a 1 milhao de dolares
+	no CMMI eh necessario mto tempo e esforco para alcancar niveis razoaveis de maturidade
+	as empresas BR precisam ser competitivas no mercado de desenvolvimento de software
+
+vantagens:
+	melhoria de processos mais gradual
+	7 niveis mais "suaves" de se alcancar: do G ao A (o melhor)
+	compatibilidade total com CMMI e normas internacionais ISO
+	muitas licitacoes governamentais ja exigem niveis de maturidade MPS.BR
+
+desvantagens:
+	a certificacao MPS.BR ainda nao eh competitiva internacionalmente
+	pouco conhecida la fora
+
+
+Base tecnica para a definicao do modelo
+	CMMI-DEV
+		todos os requisitos das areas de processo do CMMI-DEV estao presentes no MPS.BR
+	ISO 12207
+		estabelece uma arquitetura comum para os processos do ciclo de vida do software
+		lembrando que a ISO 12207 eh para [desenvolvimento e manutencao de software]
+	ISO 15504
+		normas para avaliacao e melhoria de processos de software
+
+
+
+3 componentes: RefAvaNeg
+	MOdelo de Referencia	(MR-MPS)	Guia Geral / Guia de Implementacao / Guia de Aquisicao
+	METodo de Avaliacao	(MA-MPS)	Guia de Avaliacao
+	MOdelo de Negocio	(MN-MPS)	Documentos do Programa
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Metodo de Avaliacao (MA-MPS)
+	orienta a execucao de uma avaliacao de conformidade ao modelo
+	descrito pelo Guia de Avaliacao
+	passos:
+		1. Contratar a Avaliacao			pesquisa instituicoes avaliadoras e estabelece um contrato para realizar avaliacao
+		2. Preparar a realizacao da avaliacao		obtem autorizacao e realiza uma avaliacao p/ verificar se a empresa esta na maturidade pretendida
+		3. Conduzir a avaliacao final			eh a avaliacao propriamente dita. realiza e comunica os resultados
+		4. Documentar os resultados da avaliacao	reune a documentacao da avaliacao final e envia os resultados p/ base de dados da SOFTEX
+
+!! importante:
+	eh permitido se excluir resultados de determinado processo
+	ex1: uma fabrica de testes nao precisa do processo Desenvolver Requisitos, pois nao desenvolve nada
+	ex2: essa fabrica de testes tbm pode excluir o processo Projeto e Construcao do Produto
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-
+Modelo de Negocio (MN-MPS)
+	descreve regras de negocio para a implementacao do modelo
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Modelo de Referencia (MR-MPS) : GIA
+	eh o MPS.BR em essencia
+
+	!!! Guia Geral !!!		!! contem os requisitos que as empresas tem que satisfazer para estar em conformidade com o MPS.BR !!
+	Guia de Implementacao		apenas carater informativo. sugere formas de implementar cada um dos niveis do MR-MPS
+	Guia de Aquisicao		apenas carater informativo. contem boas praticas para aquisicao de software e servicos correlatos
+
+	-> Capacidade do processo:
+		caracteristica da habilidade do processo de atingir os objetivos de negocio atuais ou futuros
+
+	-> Atributo de processo - AP:
+		quanto mais atributos, mais capaz eh o processo
+		caracteristica mensuravel da capacidade do processo aplicavel a qq processo
+		cada AP tem um ou varios Resultados do Atributo de Processo (RAP)  -->>  eh como se fossem as Metas Genericas do CMMI
+
+		AP 1.1 - O processo eh executado
+		AP 2.1 - O processo eh gerenciado
+		AP 2.2 - Os produtos de trabalho do processo sao gerenciados
+		AP 3.1 - O processo eh definido
+		AP 3.2 - O processo esta implementado
+		AP 4.1 - O processo eh medido
+		AP 4.2 - O processo eh controlado
+		AP 5.1 - O processo eh objeto de melhorias e inovacoes
+		AP 5.2 - O processo eh otimizado continuamente
+
+	-> Resultado esperado do processo
+		resultado observavel do sucesso do alcance do proposito do processo
+		como se fosse as Metas Especificas do CMMI
+
+
+	Niveis de Maturidade:
+		A	Em otimizacao
+		B	Gerenciado quantitativamente
+		C	Definido
+		D	* Largamente definido
+		E	* Parcialmente definido
+		F	Gerenciado
+		G	* Parcialmente gerenciado
+
+
+
+=-=-=-=-=-=-=-=-=-=-
+NIVEIS DE MATURIDADE
+
+	G - Parcialmente Gerenciado
+
+		GRE - Gerencia de Requisitos
+		GPR - Gerencia de Projetos
+
+		APs: 1.1, 2.1
+
+		Gerencia de Requisitos:
+			Somente GERENCIA! Nao identifica, valida, refina, elabora, define, etc. nada!
+			!	o processo DESENVOLVIMENTO DE REQUISITOS que faz a porra toda	     !
+			proposito:
+				gerenciar os requisitos do produto e dos componentes do produto e do projeto
+				> e identificar inconsistencias entre os requisitos, os planos do projeto e os produtos de trabalho do projeto
+			resultados esperados:
+				- requisitos sao entendidos, avaliados e aceitos junto aos fornecedores de requisitos, utilizando criterios objetivos
+				- mudancas nos requisitos sao gerenciadas ao longo do projeto
+				- a rastreabilidade bidirecional entre os requisitos e os produtos de trabalho eh estabelecida e mantida
+				- o comprometimento da equipe tecnica com os requisitos aprovados eh obtido
+				- revisoes sao realizadas visando corrigir inconsistencias em relacao aos requisitos
+
+
+	F - Gerenciado
+
+		*GPP - Gerencia de Portfolio de Projetos			-->> processo novo
+		MED - Medicao
+		GQA - Garantia da Qualidade
+		GCO - Gerencia de Configuracao
+		AQU - Aquisicao						pode ser excluido, desde que nao executado pela organizacao
+
+		APs: 1.1, 2.1, 2.2
+
+		*** GPP - Gerencia de Portfolio de Projetos
+			iniciar e manter projetos que sejam necessarios, de forma a atender os objetivos estrategicos da organizacao
+			resultados esperados:
+				as oportunidades de negocio e os investimentos sao identificados e priorizados
+				os recursos e orcamentos para cada projeto sao identificados e alocados
+				projetos que atendem aos requisitos de sua aprovacao sao mantidos, outros cancelados
+
+			eh permitida a exclusao deste processo, desde que a unica atividade da organizacao seja [evolucao de produto]
+
+
+
+	E - Parcialmente Definido
+
+		*GRU - Gerencia de Reutilizacao				-->> processo novo
+		GPR - Gerencia de Projetos (evolucao)
+		GRH - Gerencia de Recursos Humanos			Treinamento, mas tambem Aquisicao de Pessoal e Gerenciamento de Conhecimento
+		DFP - Definicao do Processo Organizacional
+		AMP - Avaliacao e Melhoria do Processo Organizacional
+
+		APs: 1.1., 2.1, 2.2, 3.1, 3.2
+
+		*** GRU - Gerencia de Reutilizacao
+			gerenciar o ciclo de vida dos ativos reutilizaveis
+			resultados esperados:
+				uma estrategia de gerencia de ativos reutilizaveis eh documentada
+				os dados de utilizacao dos ativos reutilizaveis sao registrados
+				os usuarios de ativos reutilizaveis sao notificados sobre problemas e atualizacoes sobre os ativos
+
+
+
+	D - Largamente Definido
+
+		DRE - Desenvolvimento de Requisitos
+		PCP - Projeto e Construcao do Produto
+		ITP - Integracao do Produto
+		VER - Verificacao
+		VAL - Validacao
+
+		APs: 1.1., 2.1, 2.2, 3.1, 3.2
+
+		Desenvolvimento de Requisitos:
+			resultados esperados:
+				- necessidades, expectativas e restricoes do cliente sao identificadas
+				- requisitos funcionais e nao-funcionais sao refinados, elaborados e alocados
+				- interfaces internas e externas do produto sao definidas
+				- requisitos sao VALIDADOS!
+
+
+
+	C - Definido
+
+		*DRU - Desenvolvimento para Reutilizacao		-->> processo novo
+		GRI - Gerencia de Riscos
+		GDE - Gerencia de Decisoes
+
+		APs: 1.1., 2.1, 2.2, 3.1, 3.2
+
+		*** DRU - Desenvolvimento para Reutilizacao
+			identificar oportunidades de reutilizacao sistematica de ativos e desenvolve-los a partir da engenharia de dominio (especificar cada caso)
+			resultados esperados:
+				o dominio da aplicacao eh estudado, detectando oportunidades de reutilizacao
+				um programa de reutilizacao eh planejado!
+				ativos do dominio sao especificados, adquiridos ou desenvolvidos e mantidos por todo o seu ciclo de vida
+
+
+	B - Gerenciado quantitativamente
+
+		GPR - Gerencia de Projetos (evolucao)
+
+		APs: 1.1, 2.1, 2.2, 3.1, 3.2, 4.1, 4.2
+		4.1	o processo eh medido		\__ equivalem ao processo do CMMI "Desempenho dos processos da organizacao"
+		4.2	o processo eh controlado	/
+
+	A - Em otimizacao
+
+		APs: 1.1, 2.1, 2.2, 3.1, 3.2, 4.1, 4.2, 5.1, 5.2
+		5.1	o processo eh objeto de melhorias e inovacoes	\__ tratam do conteudo dos processos "Implantacao de inovacoes na organizacao"
+		5.2	o processo eh otimizado continuamente		/				   e "Analise e resolucao de causas"
+
