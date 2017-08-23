@@ -1,0 +1,60 @@
+====
+RAID
+	https://codingsec.net/2016/08/difference-raid-0-raid-1-raid-5-raid-10/
+	se refere 'a juncao de varios discos formando uma unidade que eh transparente para o usuario
+
+
+RAID 0
+	grava nos 2 discos da dupla
+	+ escrita mais rapida
+	- se um disco falhar, perde-se os dados
+	tecnica chamada "disk stripping"
+
+RAID 1
+	espelhamento de dados -> 0 1 0		o 1 aqui finge que eh um espelho :D
+	copia-se o conteudo de um disco no outro
+	perde-se em velocidade mas ganha-se em redundancia
+	o espelhamento constitui um backup automatico feito por hardware, executado automaticamente pela PLACA-MAE
+		-> nao necessita nenhum tipo de configuracao no SO para que seja realizado
+
+RAID 10
+	combinacao do RAID 0 e RAID 1
+	cria-se um RAID 0 com duplas de RAID 1 (espelhamento)
+	redundancia e rapidez
+
+RAID 3
+	utiliza um disco inteiro EXCLUSIVAMENTE para paridade
+
+RAID 5
+	no minimo 3 discos
+!	informacoes de paridade sao [distribuidas nos discos]
+	caso um disco falhe ainda se pode recuperar os dados
+
+
+
+--------------
+menos cobrados:
+
+RAID 2
+	possui controle de erros com ECC - Error Correcting Code
+	necessita de discos dedicados 'as informacoes de controle de erros (ECC)
+
+RAID 6
+	semelhante ao RAID 5, porem usa o dobro de bits de paridade
+	garante a integridade dos dados caso ate 2 discos falhem [ao mesmo tempo]
+
+
+
+-=-=-=-
+Questao!
+-=-=-=-
+	tem-se 6 discos com capacidade total de 12 TB
+	qual a capacidade total disponivel para armazenamento caso se utilize RAID 5 e RAID 6 com esses discos?
+	->
+		6 discos com total de 12 GTB da 2TB para cada disco
+		RAID 5:
+			dos 6 discos, 1 disco fica para paridade e os restantes para armazenamento
+			assim, temos 5 x 2TB = 10TB
+		RAID 6:
+			dos 6 discos, 2 ficam para paridade e os restantes para armazenamento
+			assim, temos 4 x 2TB = 8TB
