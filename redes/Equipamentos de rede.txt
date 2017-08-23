@@ -1,0 +1,152 @@
+=-=-=-=-=-=-=-=-=-=-
+EQUIPAMENTOS DE REDE
+
+
+repetidor
+	camada FISICA
+	repetem o sinal que recebem, levando a locais onde o sinal chegaria fraco
+	oferecem "ganho de sinal"
+!!	somente 2 DUAS portas: entrada e saida
+
+
+
+hub
+	camada FISICA
+	repetidor local
+	topografia estrela
+!!	-> propagam bits entre as interfaces de rede 'as quais estao ligados de forma indiscriminada (nao ha qualquer tipo de filtragem)
+	na pratica funciona como barramento, pois ocupa toda a linha qndo manda mensagens aos nós
+	ocorrem COLISOES, pois ha disputa por meio de transmissao
+
+
+
+ponte/bridge
+	camada ENLACE
+	utilizadas antigamente para conectar duas LANs
+	funcionalidade atual: interligar micros de rede cabeada a micros em rede wireless, criando uma unica rede
+!!	somente 2 DUAS portas
+
+
+
+switch (comutador)
+	camada ENLACE (porem os switches L3 sao da camada 3: REDE)
+	realiza a [comutacao de quadros] em uma mesma rede
+	-> estabelecem comunicacao ponto-a-ponto com as portas de destino (cada uma) evitando dessa forma a colisao e excesso de trafego
+		claro, pois esta eh a falha do hub, que manda as mensagens para todo mundo
+		o switch evita o broadcast estabelecendo comunicacao ponto-a-ponto com cada porta! =)
+!!	analisa o cabecalho dos quadros e os direciona para o destino
+	topografia estrela, direcionando ativamente o quadro para o endereco destino
+	mantem uma tabela de enderecos, pela qual eh mais inteligente que o hub
+	realiza o chaveamento das conexoes entre os computadores por meio do endereco MAC
+!!	pode controlar o acesso por meio de enderecos MAC: somente os autorizados em cada porta podem acessar a rede
+
+	2 categorias de switches:
+		nao gerenciaveis
+			realizam o encaminhamento basico dos quadros em suas portas com a filtragem em suas tabelas CAM
+		gerenciaveis
+			podem ate rotear pacotes, passando a funcionar como switch L3
+			tambem:
+				realizar limitacao de velocidade em suas portas
+				implementar recursos inteligentes para redes logicas em anel
+				monitorar portas e gerar alarmes...
+	::
+	representado por um quadrado
+tipos:
+	switch store-and-forward
+		armazena cada quadro de entrada em sua totalidade, antes de examina-lo e encaminha-lo
+		depois que o quadro inteiro chega, examina sua integridade. se estiver danificado, eh imediatamente descartado
+		leva vantagem no tratamento de quadros danificados, em relacao ao cut-through
+
+	switch cut-through
+		tao logo identifique o endereco de destino, comeca a encaminhar o quadro de entrada antes que ele chegue todo
+		assim que recebe o quadro, avalia apenas os primeiros 6 bytes em busca do endereco MAC destino para o encaminhamento
+
+
+
+roteador
+	camada REDE, representado por um circulo
+	analisa o cabecalho do pacote, e, segundo seus algoritmos, escolhe a ROTA MAIS ADEQUADA para encaminha-lo
+	podem ser usados os 2 protocolos:
+		OSPF (open shortest path first)
+			atualmente um dos mais empregados, eh um protocolo do tipo IGP - Interior Gateway Protocol
+			algoritmo: [menor rota]
+			baseado no [link state] / estado do enlace
+			protocolo intra-AS (Autonomous System)
+			seus pacotes sao enviados diretamente usando-se a camada de rede
+			.
+			constroi uma tabela que informa as rotas possiveis
+			atualiza sua tabela, enviando-a para outros nós e recebendo informacoes ATUALIZADAS
+			possui um mapa de conectividade de toda a rede
+			esse mapa eh montado como um grafo e pode ser estendido como uma topologia virtual da rede
+			.
+			com essas informacoes, cada no consegue descobrir sozinho qual a melhor rota para determinado destino
+
+		RIP (routing information protocol)
+			utiliza o conceito de FLOODING, escolhendo o caminho menor e atualizando com esse valor
+
+		BGP (Border Gateway Protocol)
+			protocolo de roteamento interdominio, que opera interligando os diferentes AS (Autonomous Systems)
+			funciona baseado no algoritmo [vetor-distancia]
+			utiliza conceito de grafos para mapear redes e politicas -> complexo!!
+
+	dois tipos de algoritmos dinamicos (=regras calculadas e alteradas dinamicamente pelos roteadores):
+		vetor de distancia
+			cada roteador mantem informacoes de distancias (custos) a partir de si mesmo ate qq outro roteador da rede
+
+		link state
+			cada no constroi um mapa de conectividade de toda a rede. calcula-se entao o melhor caminho
+			maior escalabilidade para GRANDES redes
+
+
+
+gateway
+!	camada de Aplicacao (7)
+	"portao de entrada"
+	pode ser uma maquina com duas (ou mais) placas de rede, ou um dispositivo dedicado, utilizado para unir duas redes UNIR DUAS REDES
+	existem diversos usos possiveis. exs:
+		interligar duas redes que utilizam protocolos diferentes
+		compartilhar a conexao com a Internet entre varias estacoes de trabalho
+	gateways podem ser:
+		roteador
+		servidor proxy
+		roteador wireless
+	o default gateway (padrao) eh justamente o micro da rede que tem a conexao
+	eh ele que os outros consultarao quando precisarem acessar qualquer coisa da Internet
+	o default gateway aqui de casa: 192.168.1.1
+	# "tracert <site>" mostra o caminho na Internet ate chegar ao <site>
+	# "ipconfig /all" mostra as configuracoes completas de rede da maquina
+
+	para adicionar uma rota default com o endereco default de gateway, fazer:
+		route add 0.0.0.0 mask 0.0.0.0 192.168.1.1  -->>  se 192.168.1.1 for o gateway
+
+Examples
+
+	To display the entire contents of the IP routing table, type:
+		route print
+
+	To display the routes in the IP routing table that begin with 10., type:
+		route print 10.*
+
+	To add a default route with the default gateway address of 192.168.12.1, type:
+		route add 0.0.0.0 mask 0.0.0.0 192.168.12.1
+
+	To add a route to the destination 10.41.0.0 with the subnet mask of 255.255.0.0
+	> and the next hop address of 10.27.0.1, type:
+		route add 10.41.0.0 mask 255.255.0.0 10.27.0.1
+
+	To add a persistent route to the destination 10.41.0.0 with the subnet mask of 255.255.0.0
+	> and the next hop address of 10.27.0.1, type:
+		route -p add 10.41.0.0 mask 255.255.0.0 10.27.0.1
+
+	To add a route to the destination 10.41.0.0 with the subnet mask of 255.255.0.0,
+	> the next hop address of 10.27.0.1, and the cost metric of 7, type:
+		route add 10.41.0.0 mask 255.255.0.0 10.27.0.1 metric 7
+
+	To add a route to the destination 10.41.0.0 with the subnet mask of 255.255.0.0,
+	> the next hop address of 10.27.0.1, and using the interface index 0x3, type:
+		route add 10.41.0.0 mask 255.255.0.0 10.27.0.1 if 0x3
+
+	To delete the route to the destination 10.41.0.0 with the subnet mask of 255.255.0.0, type:
+		route delete 10.41.0.0 mask 255.255.0.0
+
+

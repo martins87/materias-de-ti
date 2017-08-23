@@ -1,0 +1,22 @@
+WAN
+	interligam computadores em cidades, paises e ate continentes distintos
+	geralmente sao as redes publicas ou de grandes companhias que prestam servicos ISP (por ex Embratel)
+	infraestrutura dispendiosa:
+		cabos submarinos, sistemas de radio terrestre ou satelite, centrais comutadoras..
+	ex:
+		infraestrutura da rede mundial (Internet)
+
+MAN
+	nome dados 'as redes que ocupam o perimetro de uma cidade
+	sao mais rapidas e permitem que empresas com filiais em bairros diferentes se conectem entre si
+	exs:
+		conectar diversos predios de um orgao publico em uma mesma cidade
+		operadoras de redes de TV a cabo, que percebem que com algumas mudancas no sistema,
+			podem oferecer servicos da Internet de mao dupla em partes nao utilizadas no espectro
+
+LAN
+	geografia limitada: interligam computadores de uma sala, predio ou conjunto de predios
+	taxas de transmissao oferecidas: 10Mbps, 100Mbps, 1Gbps
+	exs:
+		redes locais corporativas
+		redes internas de um predio de uma faculdade

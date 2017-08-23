@@ -1,0 +1,56 @@
+Padroes 802.11a, b, g, n
+
+
+
+-> Padroes 802.11a
+•Opera na faixa de frequência 5 GHz
+	–Maior perda de sinal a 5 GHz porque a esta frequencia o sinal e absorvido com mais facilidade
+	–Alcance mais curto
+•Taxa de transmissão teórica: 54 Mbps
+	–Taxa real é menor, perto da metade
+•64 utilizadores por Ponto de Acesso (AP)
+	–incompatibidade com os padrões no que diz respeito a Access Points 802.11 b e g,
+•Menos suscetível a interferência do meio porque a frequência é usada por poucos aparelhos
+•Necessário mais energia a 5 Ghz (bateria)
+•Opera em SHF e não UHF como os demais padrões de wi-fi
+
+
+-> Padrão 802.11b
+•Opera na faixa de frequência 2.4 GHz
+•Taxa de transmissão teórica: 11 Mbps
+•32 utilizadores por ponto de acesso
+•Primeiro padrão a disseminar no Brasil
+•Alta interferência tanto na transmissão como na recepção de sinais, porque funcionam a 2,4 GHz
+•Alcance médio indoor: 35mt
+•Muito suscetível a interferência
+	– Opera na faixa de frequência de vários aparelhos
+		*Bluetooth; Fornos de micro-ondas; telefones sem fio; equipamentos médicos
+
+->Padrão 802.11g
+•Opera na faixa de frequência 2.4 GHz
+	–802.11 g interopera com 802.11 b
+•Taxa de transmissão teórica: 54 Mbps
+•Padrão mais comum na atualidade
+•32 utilizadores por ponto de acesso
+•Muito suscetível a interferência
+	–Mesma forma do padrão 802.11b
+•Suporta comunicação com dispositivos 802.11b, com velocidade setada pelo padrão inferior
+•Pode alcançar até 108Mbps com uso de compactação proprietária
+•Alcance médio indoor: 25mt
+
+-> Padrão 802.11n
+
+•2,4 GHz e/ou 5 GHz
+•Alcance 2 X maior
+	–Várias antenas
+•Menos suscetível a interferência
+•64 utilizadores por ponto de acesso
+•Padrão já definido
+	–Fabricantes usaram por certo tempo draft, Atualmente existem versões comerciais operando em tais velocidades
+	–65 Mbps a 600 Mbps
+	–Necessidade de atualização de firmware
+•Alcance médio aparentemente maior que os padrões anteriores
+•Uso do MIMO (multiple-input multiple-output)
+•Diversos fluxos de transmissão: (2x2), (2x3), (3x3), (4x4)
+•Velocidade nominal subiu de 54 para 300 megabits (600 megabits nos APs 4x4, capazes de transmitir 4 fluxos simultâneos)
+•Uso de múltiplos fluxos de transmissão torna o alcance do sinal quase duas vezes maior.

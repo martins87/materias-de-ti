@@ -1,0 +1,51 @@
+=-=-=-=-=-=-
+Fibra optica
+	repetidores necessarios a cada 50km
+	resistencia total 'a interferencia eletromagnetica
+	sem risco de choque eletrico
+	capacidade de transmissao de dados MAIS ALTAS -> bandwidth maior ~= 10 Gbps
+	alto custo
+	exige pessoal especializado para instalacao
+	largura de banda MAIOR
+	dificilmente eh interceptada
+	repetidores necessarios somente a cada 50 km de distancia em linhas longas
+
+	>> monomodo			WAN -> fibra optica monomodo
+		mais caro $$$
+		nucleo menor
+		maior banda passante
+		maior alcance
+		transmissao de sinais de ate 120km
+		sao mais utilizadas para aplicacoes de redes de longa distancia (WAN)
+		geralmente usado Laser como fonte de geracao de sinal
+
+	>> multimodo
+		faixa maxima de transmissao de 2km
+		possuem nucleos maiores
+		permitem acoplamento mais simples de conectores e emendas
+		mais maleaveis
+		custo menor
+		permite o uso de fontes luminosas de baixa ocorrencia, como LED
+		muito usado para poucas distancias por causa do baixo preco
+
+!!	cabos de fibra optica de 2 ou 4 fibras utilizados em cabeamento horizontal
+!!	> devem suportar [raio de curvatura] de 25mm sem carga mecanica
+
+conectores:
+	ST (straight tip)	conector antigo, popular com fibras multimodo. conector tipo baioneta
+	SC			conector simples e eficiente. sistema simples de encaixe e oferece pouca perda de sinal. popular em redes Gigabit
+	LC (lucent connector)	conector miniaturizado. mais comumente usado em 10 Gigabit Ethernet
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=
+LED x Laser semicondutor:
+					LED		Laser semicondutor
+
+	taxa de dados			baixa		alta
+	tipo de fibra			multimodo	modo unico ou multimodo
+	distancia			curta		longa
+	duracao				longa		curta
+	sensibilidade 'a temperatura	insignificante	substancial
+	custo				baixo custo	alto $$$
+
+

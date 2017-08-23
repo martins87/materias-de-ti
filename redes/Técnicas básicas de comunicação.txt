@@ -1,0 +1,246 @@
+neste subtopico:
+	meios de transmissao
+	tipos de redes qnto 'a forma de integracao
+	tipos de conexoes das redes
+	transmissao de sinais
+	redes sem fio
+	falar de bluetooth, infravermelho e outras formas de transmissao!!!
+
+
+
+====================
+MEIOS DE TRANSMISSAO
+
+	fazem referencia ao meio fisico e sua composicao
+		> no momento da transmissao dos fluxos de bits em uma rede de comunicacao
+	possuem especialidades em termos de alcance, frequencia de operacao, custo, largura de banda, retardo e facilidade de uso
+
+	- Guiados
+		dependem de um meio fisico para ocorrer a transmissao
+		ex: cabo metalico, cabo par trancado, fibra optica..
+
+	- Nao-guiados
+		nao precisam de meio fisico
+		ex: ondas de radio, ondas eletromagneticas..
+
+
+
+============================================
+TIPOS DE REDES QUANTO 'A FORMA DE INTEGRACAO
+
+	redes par-a-par (P2P - peer-to-peer)
+		sem hierarquia ou exclusividade no fornecimento das informacoes trafegadas
+		todos os computadores sao iguais e por isso sao chamados de pares
+		nao possui servidor dedicado para fornecimento de informacoes ou atendimento de requisicoes
+	!	cada computador funciona como cliente e como servidor de forma dinamica
+		-> http://www.assignmenthelp.net/images/p2p-network-assignment.jpg
+
+	redes cliente-servidor
+		surge aqui o computador responsavel por fornecer informacoes de forma centralizada, o qual denomina-se:
+			- servidor dedicado, quando fornece apenas um servico
+			- servidor compartilhado, quando fornece varios servicos em um mesmo dispositivo
+		utiliza-se servidores dedicados para servicos ou conjunto de servicos especificos,
+		ex: servidor de arquivo e impressao, servidor de correio eletronico, servidor de comunicacao, etc.
+
+
+
+===========================
+TIPOS DE CONEXOES DAS REDES
+
+	aqui sao definidas como sao feitas [as conexoes] entre as maquinas
+	os tipos basicos podem ser divididos em 2..
+
+	conexao ponto-a-ponto
+		tipo mais simples, onde os terminais estao ligados entre si por uma linha unica de comunicacao
+		nao eh o mais adequado para uma grande quantidade de conexoes
+		caso todos terminais estejam conectados entre si, a quantidade total de conexoes eh dada pela formula:
+			C = n*(n-1)/2
+			onde n eh a quantidade de computadores e C a quantidade de conexoes
+
+	conexao multiponto
+		caracterizada por varios terminais [ligados ao mesmo meio fisico], proporcionando a devida escalabilidade da rede
+		as mensagens sao trafegadas por difusao = informacao chega a todos os pontos conectados
+		problema gerado com a difusao: colisao!
+
+
+
+=====================
+TRANSMISSAO DE SINAIS
+
+	-----------------
+	Sinais analogicos
+		eh continuo variando em funcao do tempo
+		ex: medicao de velocidade (utilizando ponteiros) ou temperatura (utilizando mercurio)
+		eh capaz entao de mapear todos os possiveis valores dentro de uma faixa
+
+	---------------
+	Sinais digitais
+		depende de uma devida codificacao para valores discretos (descontinuos)
+		soh pode assumir determinados valores (degraus ou saltos)
+
+	-----------------
+	Ondas ~.~.~.~.~.~
+		sao uma das formas de representar sinais
+		os principais parametros de uma onda sao:
+			comprimento de onda	determina a distancia de um ciclo de sinal (ja que eh periodico) ^v
+			frequencia		representa a quantidade de ciclos realizados por um periodo de tempo
+		esses 2 parametros sao suficientes para determinar a velocidade de propagacao do sinal em um meio
+		principais tipos de ondas:
+			senoidais, quadradas, triangulares, dente de serra
+
+	-----------------------------
+	Formas de degradacao de sinal
+		atenuacao
+			[reducao gradativa da amplitude] do sinal, de forma que ele eh prejudicado
+			pode haver restauracao do sinal nos elementos da rede (ex: por repetidor)
+			a atenuacao ocorre
+				- devido 'a absorcao de energia pelo meio,
+				- ou pela dispersao devido 'as variacoes nos comprimentos de onda
+		ruido
+			interferencias externas ou internas que *degradam o sinal*
+			o ruido eh somado ao sinal original, causando sua deformacao
+			exs:
+				ruido termico, presente em qualquer sistema
+				ruido de intermolacao (entre frequencias diferentes em um mesmo meio)
+				crosstalk (linha cruzada) - interferencia entre canais proximos
+
+			tanto o ruido quanto a atenuacao sao mais facilmente identificaveis em meios guiados
+				> pois eh possivel estudar as propriedades do meio com vistas a entender
+				> as faixas de frequencia mais suscetiveis a interferencias
+
+		reflexao/eco
+			interferencia ocorrida pela reflexao do sinal no destino
+			sua ocorrencia eh devida pela falta de casamento de impedancia dos meios e das fontes
+!!!!! fazer!
+	--------------------
+	Tipos de codificacao
+		http://bit.ly/1X15R78
+		http://br.ccm.net/contents/691-transmissao-de-dados-a-transmissao-numerica-de-dados
+		http://www.logicengenharia.com.br/mcamara/alunos/moddig_Nrz%26Manch.PDF
+		http://bit.ly/1WypJi9
+
+		NRZI
+	!	Manchester
+		Differential Manchester
+
+	
+
+	Banda base
+		reflete a largura de frequencia ORIGINAL de um determinado sinal
+		(sinais podem ser modulados para operarem em uma banda/frequencia diferente)
+		"sinal esta sendo transmitido em banda BASE" = sinal esta no seu formato original
+
+	Banda larga/passante
+		eh o sinal MODULADO para trafegar em determinada faixa de frequencia
+		atraves dessas tecnicas eh possivel *adaptar o sinal* ou varios sinais para um mesmo meio
+		ex de equipamento que realiza esse procedimento: MODEM
+
+	----------------
+	LARGURA DE BANDA
+		diferenca entre a maior e menor frequencia que pode ser utilizada em um determinado meio ou canal
+		menor frequencia |<------->| maior frequencia
+		essa limitacao pode ser
+			- fisica, devido 'as caracteristicas do canal
+			- ou criada artificialmente atraves do uso de FILTROS (definir frequencia max e min)
+		largura de banda esta relacionada (diretamente proporcional) com a taxa de transmissao suportada por um meio
+		-> maior largura de banda, maior taxa de transmissao!
+
+	-------------------------------------
+	Classificacao da propagacao de sinais
+		a frequencia de operacao dos sinais pode ainda nos dizer a forma como os sinais sao propagados (radiados)
+
+		Ondas de superficie
+			se aplicam a sinais abaixo de 2 MHz
+			sao ondas que atuam rente 'a superficie terrestre, atingindo longas distancias
+
+		Ondas ionosfericas
+			se aplicam a sinais entre 2 e 30 MHz
+			sua propagacao depende de sucessivas reflexoes na ionosfera ou camadas superiores da atmosfera
+
+		Ondas diretas
+			se aplicam a sinais acima de 30 MHz
+			exemplo classico: microondas e infravermelho
+		
+
+
+=============
+REDES SEM FIO
+
+	meio de propagacao nao guiado
+	meio de comunicacao eh o proprio ar por intermedio da propagacao de ondas eletromagneticas
+	essas redes sao conhecidass pela terminologia WLAN (wireless LAN)
+	sao amplamente utilizadas por uma serie de vantages:
+		praticidade na instalacao	dispensa utilizacao de cabos, necessidade de obras e diversos cabeamentos
+		escalabilidade			faceis de configurar e remanejar. permite propagacao de repeticao de sinal com novos equipamentos
+		confiabilidade			com uma quantidade menor de equipamentos e cabos, geram MENOS PONTOS DE FALHA
+		mobilidade			permite deslocamento de usuarios enquanto conectados ao Access Point
+
+	-----------------------------
+	Obstaculos 'as redes wireless
+		superficies metalicas: grades, janelas, portas metalicas, lajes, vigas..
+		materiais densos, como CONCRETO e PEDRA
+		corpos com grande concentracao de agua, como aquarios, pessoas (somos 70% agua)
+		fornos de microondas, pois operam a 2.4 GHz (a mesma das redes wireless)
+		telefones sem fio (2.4 GHz) tambem interferem, mesmo em menor grau
+
+	---------------------------
+	Topologias de redes sem fio
+		Ad-Hoc / Independent Basic Service Sets (IBSS)
+			rede que nao possui no central
+			basicamente eh uma peer-to-peer
+			imaginar:
+				(   No   ()   No   )
+				(         ) eh a area do sinal de cada um dos nos
+				() eh o ponto onde os sinais se interceptam e a conexao eh possivel
+			aumento de nos na rede pode levar a interferencia e falhas na comunicacao
+
+		BSS (Basic Service Set)
+			unico Access Point, ao qual varios dispositivos se comunicam
+			ex: a rede domestica, com um roteador
+			possui um unico identificador (SSID)
+
+		ESS (Extended Service Set)
+			varias BSS interligadas por seus APs
+			apesar de existirem varios APs, o SSID eh [O MESMO PARA TODOS], pois eh a mesma rede
+			ex: rede de aeroportos
+
+	------------------------------
+	Problemas das redes LAN sem fio
+		apresentam atenuacao multiponto
+		alguns pontos interferem nos outros
+
+	----------------------
+	Padroes criptograficos
+
+		WEP (wired equivalent privacy)
+			vulneravel!!!!
+			algoritmo RC4 para criptografia
+			funcao de deteccao de erros CRC-32
+
+		TKIP (temporal key integrity protocol)
+			algoritmo de criptografia baseado em chaves que se alteram a cada novo envio de pacote
+			mudanca de chaves garante mais seguranca
+			tambem utiliza o RC4
+
+		WPA e WPA2:  Wi-fi protected access
+			segue o padrao 802.11i
+			substitui formalmente o WEP
+			utiliza o AES (advanced encryptation standard) junto com o TKIP com chave de 256 bits, sendo uma ferramenta mais poderosa
+
+		nivel de seguranca:
+			WPA2 com AES  >  WPA com AES  >  WPA com TKIP  >  WEP
+
+		ATENCAO!!!
+			a certificacao Wi-fi eh exclusiva para equipamentos que oferecem
+		-> PELO MENOS a protecao WPA
+
+
+
+============================
+OUTRAS FORMAS DE TRANSMISSAO
+
+	bluetooth
+	infravermelho
+	...
+
+

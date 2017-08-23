@@ -1,0 +1,207 @@
+=-=-=-=-=-=-=-=-
+CAMADA DE REDE
+
+	a PDU da camada de rede, que eh o PACOTE, tambem pode ser chamada de DATAGRAM
+	possui como caracteristica a capacidade de encaminhar os datagrams entre 2 dispositivos
+		> que se encontram em redes distintas,
+		> diferentemente da camada de enlace que interliga pontos em uma mesma rede
+
+	esta camada eh capaz de aplicar diversas tecnicas de roteamento e encaminhamento de pacotes,
+		> podendo ou nao garantir um nivel minimo de qualidade de servico (QoS)
+
+	possui ainda a capacidade de fragmentar pacotes e remonta-los entre os nos
+		> de forma a adequa-los 'as capacidades do enlace,
+		> o que eh chamado de MTU (Max Transfer Unit)
+
+	possui a capacidade de trocar mensagens de controle entre os nos
+	sao os ROTEADORES que atuam nesta camada que permitem a interligacao entre as diversas redes
+		> atraves da utilizacao de enderecos logicos,
+		> premissa para que os roteadores sejam capazes de identificar os pontos na rede e realizar o roteamento
+
+
+============
+ROTEAMENTO
+
+	diversas sao as tecnicas de roteamento, com caracteristicas distintas que podem ser exploradas de acordo com os perfis das redes
+	no entanto, todas elas possuem em comum a utilizacao de tabelas de roteamento,
+		> que nada mais eh do que uma tabela de informacoes que mapeiam os dispositivos e as redes
+	assim, quando um roteador precisa encaminhar um pacote para algum destino,
+		> ele realiza uma consulta 'a sua tabela para obter informacoes sobre qual interface deve ser usada
+
+
+
+===============================
+PROTOCOLOS DA CAMADA DE REDE...
+
+-----
+IPsec
+	protocolo de criptografia da camada de rede
+	prove seguranca no nivel da camada IP
+	parte OBRIGATORIA do IPv6
+	garante a integridade das partes, evitando ataques como o *man-in-the-middle*	
+	junto com o L2TP (Layer 2 Tunneling Protocol) forma o L2TP/IPsec
+	define dois protocolos de seguranca designados Cabecalho de Autenticacao (AH) e Encapsulating Security Payload (ESP)
+	cada um desses dois define seu proprio formato para o cabecalho IPsec no pacote IPsec
+	pode ser usado com cabecalho AH ou ESP, mas nao os dois ao mesmo tempo: OU UM OU OUTRO!
+	permite escolher [qualquer algoritmo de criptografia], ate mesmo nenhum algoritmo (sem seguranca)
+
+	AH: cabecalho de autenticacao
+		proporciona autenticacao e integridade, utilizando algoritmos como MD5 ou SHA-1
+		NAO PROPORCIONA Confidencialidade
+
+	ESP: encapsulamento seguro do payload
+		A	autenticacao (opcional)
+		I	integridade (opcional)
+		Confidencialidade
+
+		para confidencialidade suporta DES e 3-DES
+		para autenticacao e integridade suporta, assim como o AH, MD5 e SHA-1
+
+	bizu:
+		AH possui 2 letras, assim fornece autenticacao e integridade
+		ESP possui 3 letras -> fornece entao a trinca CIA
+
+
+---------------------------------
+NAT - Network Address Translation
+	da um endereco IP (local) a cada uma das maquinas de uma rede privada que possui um roteador
+	ex: o ISP (internet service provider) fornece o IP 179.222.92.80 para a casa (fica sendo o IP do roteador)
+	> o roteador fica entao com o IP 192.168.0.1 (por ex) e as demais maquinas da casa ficam com os IPs 192.168.0.2, 192.168.0.3...
+solucao:
+	fazer um mapeamento baseado no IP interno e na porta local do computador, gerando um numero de [16 bits] de uma tabela hash
+	este numero eh entao escrito na porta do router
+	o pacote enviado para fora leva o IP global do router e na porta de origem o numero gerado pelo NAT
+	assim, o computador que receber este pacote sabe para onde tem que enviar a resposta
+	quando o router recebe a resposta faz a operacao inversa, procurando na sua tabela uma entrada que corresponda aos bits do campo da porta
+	ao encontrar a entrada, eh feito o direcionamento para o computador dentro da rede interna
+
+
+-----
+DHCP:
+	oferece configuracao dinamica de terminais, com concessao de enderecos IP de host, mascara de sub-rede, default gateway...
+	- host envia um pacote UDP em broadcast com uma requisicao DHCP para a porta 67
+	- os servidores DHCP que capturarem o pacote irao responder para a porta 68 do host com um pacote de configuracoes
+	- o pacote de configuracoes contem no minimo: endereco IP, mascara de rede e outros dados opcionais, como gateway, servidores de DNS...
+	o servidor DHCP tem uma tabela com IPS disponiveis para ser usados. qndo um IP eh requisitado, a maquina marca esse IP da tabela como sendo usado
+	os IPs ficam disponiveis por 24horas. qndo dá 12horas de uso, a maquina faz um novo pedido, agora de renovacao
+!!	o cliente DHCP que faz a requisicao soh vai receber o pacote de configuracao se se enquadrar em alguns criterios	!!
+	opera de 3 formas:
+		automatica		uma quantidade de enderecos IP eh definida para ser utilizada
+		dinamica		semelhante 'a automatica, mas possui limite de tempo para uso dos IPs. admin determina o tempo conforme quer
+		manual			aloca um endereco IP conforme o MAC de cada placa de rede, de forma que cada computador utiliza apenas esse IP
+
+	
+---
+IP:
+	responsavel por atribuir o endereco
+	IPv4 - cabecalho com 32 bits - 2^8 * 2^8 * 2^8 * 2^8 ~= 4 bilhoes de enderecos
+		IP estatico/fixo: nao muda
+		IP dinamico: muda. DHCP cuida disso
+
+	IPv6 - cabecalho com 128 bits - 56 octilhoes
+!!		IPsec obrigatorio!
+		header nao tem mais checksum -> o IPv6 confia nas camadas superiores para a percepcao de erros
+		introduz capacidade de QoS utilizando para isso o campo [Flow Label]
+		a fragmentacao deixa de ser realizada pelos roteadores e passa a ser processada pelos hosts emissores
+		o ARP foi abandonado, sendo substituidos pelas mensagens [Neighbor Discovery]
+		o IGMP foi substituido por mensagens [Multcast Listner Discovery]
+		enderecos broadcast nao existem mais! somente:
+			unicast
+				de retorno		endereco ::1 - conhecido como Loopback
+				nao especificado	endereco ::
+			multicast
+			anycast (busca o host mais proximo, dentro de um grupo de hosts)
+		suporta pacotes de 1280 bytes, sem fragmentacao
+
+		hexadecimal, inclusive case sensitive (a != A)
+		PROVEDORES (Oi Velox, GVT) que se preocupam com migracao v4 para v6
+		pode omitir zeros 'a esquerda
+		zeros continuos por ::
+		caracteristicas:
+			janela auto ajustavel
+			descoberta de vizinhos
+			deteccao automatica de gateway inativo
+			notificacoes de congestionamento
+
+
+	http://s21.postimg.org/6stt8hq4n/ipv4_x_ipv6.png
+								No de Enderecos por Rede:
+	classe A		1.0.0.0 a 127.0.0.0		16 777 216
+	classe B		128.0.0.0 a 191.255.0.0		65 536
+	classe C		192.0.0.0 a 223.255.255.0	256
+
+	Faixas de endereco para NAT:
+		10.0.0.0/8
+		172.16.0.0/12
+		192.168.0.0/16
+
+	como eh obtido o IP?
+		provedor da um IP para a maquina acessar a internet
+
+	como rastrear hacker?
+		por meio de arquivos de log, acessa o provedor, ve qual ip e vai na casa do mano
+
+
+----
+ICMP - Internet Control Message Protocol
+
+	fornece relatorios de erros para a fonte original (que enviou a mensagem)
+	monitora erros de transmissao
+	tipos de mensagens:
+		parameter problem
+		destination unreachable
+		echo, echo reply
+		time exceeded
+	!!
+	ping: aplicacao mais famosa do ICMP
+	outra famosa: Traceroute
+
+	alguns firewalls bloqueiam as respostas (ICMP reply), dificultando o ping e o tracerout (tracert)
+	uma das razoes eh para bloquear ataques de negacao de servico
+	o hacker envia dados de ping ate o sistema nao ter a capacidade de administrar suas proprias funcoes
+
+
+---
+ARP
+	utilizado para traduzir endereco IP em endereco MAC
+	o emissor difunde em broadcast um pacote ARP com o endereco IP de outro host e espera como resposta um endereco MAC respectivo
+	-> no IPv6 o ARP foi substituido pelo NDP - Neighbor Discovery Protocol
+
+
+
+=-=-=-=-=-=-=-=
+MASCARA DE REDE
+
+	numero de 32 bits usado em um IP para separar a parte correspondente 'a rede publica, 'a sub rede e aos hosts
+	uma sub rede eh uma divisao de uma rede de computadores: faixa de enderecos logicos reservada para uma organizacao
+
+	endereco de rede:
+		divisao entre [endereco de rede] e [endereco do host] - algo como um endereco postal composto de cidade e rua, respectivamente
+
+	mascara de sub rede:
+		serve para indicar qual parte do IP se refere 'a rede e qual parte se refere ao host
+		Classe A: 255.0.0.0	= 11111111.0.0.0		> mais hosts possiveis para a sub rede
+		Classe B: 255.255.0.0	= 11111111.11111111.0.0
+		Classe C: 255.255.255.0	= 11111111.11111111.11111111.0	> menos hosts possiveis para a sub rede
+
+		a porcao da rede eh o AND entre um endereco qualquer da rede e a mascara. ex:
+		Endereço completo	192.168.5.10	11000000.10101000.00000101.00001010
+		Máscara da sub rede	255.255.255.0	11111111.11111111.11111111.00000000	>> essa mascara tbm poderia ser escrita /24 pois sao 3 octetos
+		---------------------------------------------------------------------------
+		Porção da rede		192.168.5.0	11000000.10101000.00000101.00000000
+
+	!	as mascaras de sub rede nao precisam preencher um octeto certinho,
+	!	podem ser, por ex, 255.255.255.192 = 11111111.11111111.11111111.11000000 = /26
+
+	achar o numero de hosts em funcao da mascara:
+		se a mascara for, por exemplo, /24 = 11111111.11111111.11111111.0 = 255.255.255.0
+		> o numero de hosts vai ser a porcao de 0s da mascara.
+		no caso, teremos 2^8 - 2 = 254 hosts
+		tiramos 2 pq o primeiro endereco eh o endereco da rede e o ultimo o endereco de broadcast
+
+		mais facil:
+		mascara = /24
+		32 - 24 = 8
+		numero de hosts = 2^8 - 2 = 254 hosts
+
+

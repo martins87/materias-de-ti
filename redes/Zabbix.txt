@@ -1,0 +1,37 @@
+por que monitorar?
+
+	controle total e centralizado do parque computacional
+	analise mais detalhada de cada dispositivo de rede
+	relatorios detalhados dos problemas ocorridos
+	caso ocorra desastre, melhora significativa no tempo de acao
+	melhora significativa em seguranca da informacao
+	aviso ou resolvimento automatico de algum problema ocorrido
+
+o que é o Zabbix?
+
+	software que monitora diversos parametros de uma rede, como integridade e desempenho dos servidores
+	oferece relatorios e visualizacao de dados de recursos com base nos dados armazenados
+	mecanismos de notificacao: alertas sobre eventos. permite uma reacao rapida para os problemas
+!!	escrito e distribuido sob a GNU GPL versao 2: seu codigo fonte eh distribuido gratuitamente e esta disponivel para o publico em geral
+
+vantagens:
+
+	open source
+	ferramenta multiplataforma, podendo operar no Linux, Windows, MAC OSX...
+	acesso via interface Web ou pelo cliente especifico do Zabbix
+	suporte para SNMP (v1, v2)
+	monitoramento distribuido com administracao centralizada na web
+	permissoes flexiveis de usuario
+	interface baseada na web
+
+	possibilidade de monitorar servicos simples sem a necessidade de instalacao de agentes (HTTP, POP3, IMAP, SSH)
+	suporte nativo ao SNMP
+	integracao com banco de dados (MySQL, Oracle, PostgreSQL..)
+	suporte à arquitetura de 32 e 64 bits
+	alertas via e-mail, Jabber ou SMS
+
+	possibilidade de criacao de templates para mapeamento dos objetos
+		ex: para diversos equipamentos de um mesmo fabricante, pode-se criar um template padrao e importa-lo para cada objeto
+
+
+https://www.youtube.com/watch?v=2S6wkd-W8qU

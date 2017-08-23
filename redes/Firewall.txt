@@ -1,0 +1,141 @@
+========
+FIREWALL
+
+	serve para implementar a politica de acesso a uma rede
+	possibilita realizar a monitoracao do trafego, controle, autenticacao,
+		> alem da capacidade de se gerar registros (logs), alertas e trilhas de auditoria
+	deve ser capaz de interpretar o trafego que passa por ele e avaliar se a informacao eh legitima ou maliciosa
+	assim, os administradores configuram diversas regras que retratam a politica de seguranca e acesso da rede
+
+!	nao eh caracteristica nativa dos firewalls exercer a funcao de antivirus
+	em solucoes modernas, ha a implementacao de antivirus de forma conjugada em um mesmo equipamente ou appliance,
+		> no entanto, nao eh o seu papel nativo !!!
+
+	------------------------
+	DMZ - Demilitarized Zone
+		tambem conhecida como [rede de perimetro]
+		a ideia eh criar uma area de servicos comuns que podem ser acessados
+			- tanto por usuarios externos (Internet - redes nao confiaveis)
+			- quanto por usuarios internos (Intranet - rede confiavel)
+		a vulnerabilidade se encontra exatamente nos servidores que possibilitam acessos externos
+		assim, tira-se esses servidores da rede interna para, caso sejam comprometidos,
+			> evitar que comprometa tambem os usuarios e servicos internos
+		uma evolucao desse modelo eh a utilizacao de 2 firewalls conforme arranjo da imagem abaixo:
+			http://s32.postimg.org/zf4a6jp79/dmz_firewall.png
+		algumas formas de arranjo de firewalls sao descritas a seguir
+
+			Dual-homed host
+				formado por um elemento que atua como firewall e possui duas interfaces,
+					> sendo uma para a rede externa e uma para a rede interna
+				-> http://s32.postimg.org/3whan9is5/dual_homed_host.png
+
+			Screened host
+				formado por um firewall e um Bastion Host (servidor que fornece servicos para a rede externa)
+				especificamente customizado para acessos externos a servicos de forma segura
+				-> http://s32.postimg.org/5m5la7txx/screened_host.png
+
+			Screened-subnet host
+				modelo de uma subrede de seguranca (DMZ) ou rede de perimetro,
+					> a partir da utilizacao de DOIS FIREWALLS
+				essa implementacao pode-se dar tambem de forma virtual,
+					> onde, a partir de um unico firewall fisico,
+					> cria-se dois virtuais com interfaces fisicas distintas que isolam as redes
+				-> http://s32.postimg.org/jbvkst45x/screened_subnet_host.png
+
+	---------------
+	DEEP INSPECTION
+		"inspecao profunda"
+		recurso que verifica o conteudo dos pacotes
+		impede, portanto, ataques que se utilizem do conteudo dos pacotes trafegados
+
+	-------------------------
+	Autenticacao/certificacao
+		podem ser considerados para autenticacao de usuarios ou dispositivos:
+			senhas, certificados digitais, tokens, smartcards, biometria..
+		para o caso de certificados digitais pode-se utilizar a infraestrutura de chaves publicas
+
+	--------------------
+	filtragem de pacotes (packet filter)
+		atua nas camadas de REDE/TRANSPORTE
+		realiza filtro de enderecos e portas (IP origem, porta, IP destino, porta)
+		analisa o [cabecalho] de pacotes, autorizando ou bloqueando seu curso
+	!	esta vulneravel ao IP spoofing (atacante se passa por outro host)
+
+	--------
+	stateful
+		guarda conhecimento da camada de TRANSPORTE e informacoes de sessao
+		nao examina informacoes de aplicacao
+
+	--------------
+	firewall proxy
+	!	atua na camada de APLICACAO
+		atua como intermediario em uma comunicacao
+		nao permite a comunicacao direta entre o cliente e o servidor: fica no meio do caminho entre os dois
+		verifica o conteudo da solicitacao de acordo com politicas definidas e cria uma nova conexao com o servidor
+		2 conexoes: cliente com o proxy, proxy com o servidor
+		ANALISA LISTAS NEGRAS que possuem os nomes de aplicacoes bloqueadas
+		analisa todos os dados do pacote >> todas as camadas, ate a camada de aplicacao
+		pode ser utilizado para uma politica de acesso de clientes internos aos servicos externos,
+		  > bem como para acesso de clientes externos aos servicos internos
+	!	desse modo, NAO HA COMUNICACAO DIRETA entre os clientes e servidores
+		menos vulneravel a ip spoofing (acesso por meio de ip falso)
+		https://s32.postimg.org/44mi9wgzp/proxy1.jpg
+		https://s32.postimg.org/yakwoonwl/proxy2.jpg
+
+	------------
+	Bastion Host
+		servidor especializado para fornecer servicos ao publico externo
+		possui regras de seguranca mais rigidas para mitigar os possiveis riscos de comprometimento
+		devem ser instalados EXCLUSIVAMENTE os servicos e recursos NECESSARIOS
+			> para o provimento das funcionalidades esperadas,
+			> reduzindo assim as possibilidades de surgimento de vulnerabilidades
+
+	---------
+	Honey pot
+		servidor criado especificamente para obter informacoes a respeito de possiveis atacantes
+		como o proprio nome diz, eh um "pote de mel" para atrair atacantes
+		a ideia eh REPLICAR TODOS OS SERVICOS e principais elementos de implementacao de servicos neste servidor,
+			> porem, SEM DADOS SIGILOSOS que possam gerar dano ou lesao 'a instituicao
+		busca-se ainda deixar algumas vulnerabilidades especificas como *atrativos* para os atacantes
+		alem disso, implementa-se uma serie de elementos com vistas a
+			> monitorar, rastrear e OBTER O MAXIMO DE INFORMACOES SOBRE O ATACANTE
+
+	---
+	NAT
+		Network Address Translation
+		da um endereco IP (local) a cada uma das maquinas de uma rede privada que possui um roteador
+		ex: o ISP (internet service provider) fornece o IP 179.222.92.80 para sua conexao (fica sendo o IP do roteador)
+		    o roteador fica entao com o IP 192.168.0.1 (por ex) e as demais maquinas da casa ficam com os IPs 192.168.0.2, 192.168.0.3...
+	    problema:
+		para a Internet, esses IPs 192.168.0.2, 192.168.0.3 nao sao reais
+		assim, nao ha como hosts externos se comunicarem com essas maquinas da rede interna por esses enderecos
+	    solucao:
+		fazer um mapeamento baseado no IP interno e na porta local do computador, gerando um numero de [16 bits] de uma tabela hash
+		este numero eh entao escrito na porta do router
+		o pacote enviado para fora leva o IP global do router e na porta de origem o numero gerado pelo NAT
+		assim, o computador que receber este pacote sabe para onde tem que enviar a resposta
+		quando o router recebe a resposta faz a operacao inversa, procurando na sua tabela uma entrada que corresponda aos bits do campo da porta
+		ao encontrar a entrada, eh feito o direcionamento para o computador dentro da rede interna
+		
+		-> apesar de ter sido criado para resolver o problema do esgotamento de enderecos IPv4,
+		   o NAT possibilitou a criacao de uma camada de seguranca atraves do conceito de [seguranca por obscuridade]
+		   dessa forma, usuarios externos nao conseguem identificar em um primeiro momento
+			> os enderecos internos de uma rede corporativa pois soh tera acesso ao endereco publico utilizado por essa rede
+
+	---
+	VPN
+		a rede privada virtual pode ser criada com uma terminacao no firewall
+		desse modo, pode-se exemplificar com 2 cenarios:
+			1 - tunel seguro entre os firewalls da matriz e da filial, permitindo assim
+				> a extensao da rede interna da matriz ate a rede da filial *atraves da VPN*
+			2 - estabelecimento de um tunel seguro a partir de um empregado da empresa que esteja externo 'a rede.
+				assim, este pode criar um tunel diretamente no firewall da empresa para ter acesso aos recursos internos
+
+========
+IPTABLES
+
+	firewall do tipo filtro de pacotes dinamico
+	o IPtables eh a ferramenta ou front-end que implementa o firewall NetFilter de ambientes Linux
+
+	...continuar!
+

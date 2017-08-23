@@ -1,0 +1,25 @@
+CLOUD COMPUTING
+
+	grandes servidores virtuais
+
+	SaaS (software as a service) : uso via web - google drive, photoshop online, gmail
+	PaaS (plataforma) : banco de dados, web-service
+	IaaS (infraestrutura) : utilizacao de percentagem de servidor, aluguel de infraestrutura
+	DaaS (development) : plataforma de desenvolvimento online - Xcode da Apple
+	CaaS (communication)
+	EaaS (tudo) pacotao
+
+	baseada em servico
+		servicos sob medida, atender necessidades especificas
+	escalavel e elastica
+		servico tem capacidade de aumentar ou diminuir, de acordo com a necessidade
+	compartilhada
+		divisao entre varios usuarios
+	medida por uso
+		diferentes modelos de pagamento
+		provedor pode cobrar por uso, por numero de usuarios, criar planos limitados, etc.
+		pagamento feito pelo uso do servico
+
+CLOUD STORAGE
+	armazenamento de dados em nuvem
+	yunio, google drive, dropbox, iCloud

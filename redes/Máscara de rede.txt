@@ -1,0 +1,56 @@
+=-=-=-=-=-=-=-=
+MASCARA DE REDE
+
+	numero de 32 bits usado em um IP para separar a parte correspondente 'a rede publica, 'a subrede e aos hosts
+	uma subrede eh uma divisao de uma rede de computadores: faixa de enderecos logicos reservada para uma organizacao
+
+	endereco de rede:
+		divisao entre [endereco de rede] e [endereco do host]
+		algo como um endereco postal composto de cidade e rua, respectivamente
+
+	mascara de subrede:
+		serve para indicar qual parte do IP se refere 'a rede e qual parte se refere ao host
+		Classe A: 255.0.0.0	= 11111111.0.0.0		> mais hosts possiveis para a sub rede
+		Classe B: 255.255.0.0	= 11111111.11111111.0.0
+		Classe C: 255.255.255.0	= 11111111.11111111.11111111.0	> menos hosts possiveis para a sub rede
+
+		a porcao da rede eh o AND entre um endereco qualquer da rede e a mascara. ex:
+		Endereço completo	192.168.5.10	11000000.10101000.00000101.00001010
+		Máscara da sub rede	255.255.255.0	11111111.11111111.11111111.00000000	>> a mascara tbm poderia ser escrita /24
+		---------------------------------------------------------------------------
+		Porção da rede		192.168.5.0	11000000.10101000.00000101.00000000
+
+!!		as mascaras de sub rede nao precisam preencher um octeto certinho,
+!!		podem ser, por ex, 255.255.255.192 = 11111111.11111111.11111111.11000000 = /26
+
+	achar o numero de hosts em funcao da mascara:
+		se a mascara for, por exemplo, /24 = 11111111.11111111.11111111.0 = 255.255.255.0
+			> o numero de hosts vai ser a porcao de 0s da mascara.
+		no caso, teremos (2^8 - 2) = 254 hosts
+		tiramos 2 pq o primeiro endereco eh o endereco da rede e o ultimo o endereco de broadcast
+
+		mais facil:
+		mascara = /24
+		32 - 24 = 8
+		numero de hosts = 2^8 - 2 = 254 hosts
+
+__________________
+Questao discursiva
+
+	orgao recebe o endereco IP 192.169.2.0/27 para ser utilizado em sua rede interna
+	por questoes tecnicas e operacionais, necessita de 6 sub-redes, com 30 hosts
+
+	- Como se encontra a mascara de rede?
+	- O que significa /27?
+	- Como determinar as sub-redes e os hosts de cada sub-rede?
+	- Como encontrar o endereco de rede e broadcast das sub-redes?
+
+
+
+
+
+
+
+
+
+

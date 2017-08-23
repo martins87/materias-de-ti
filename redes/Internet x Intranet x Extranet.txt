@@ -1,0 +1,33 @@
+INTERNET
+
+	rede mundial de computadores
+	funcionamento baseado na pilha de protocolos TCP/IP
+
+
+INTRANET
+
+	restrita a um local fisico
+	tambem eh uma rede de computadores, que disponibiliza um conjunto de servicos analogo 'a internet
+	eh uma rede fechada, interna e exclusiva
+	razao:
+		empresas, orgaos publicos e outros tipos de organizacoes normalmente possuem intranets,
+			pois precisam de uma rede para manter seus servicos, como Portais Corporativos e outros recursos online.
+		por questao de seguranca, nao ha interesse que tais servicos estejam disponiveis para livre acesso na internet
+
+	tanto eh possivel que uma intranet esteja conectada 'a internet,
+		assim como eh possivel que esteja desconectada, sendo os computadores ligados somente uns aos outros
+
+	pode existir tambem o caso de ser possivel o acesso 'a internet,
+		mas os computadores da intranet sao protegidos de forma a nao serem acessiveis de fora.
+	ou seja, pode acessar a internet mas os computadores da intranet estao protegidos de acessos da internet
+
+
+EXTRANET
+
+	funciona como uma extensao da intranet a computadores que estejam fora dos dominios fisicos da intranet
+	ex: parceiros, clientes, fornecedores, funcionarios precisam precisam acessar alguns servicos da intranet, mesmo fora da organizacao
+	ex: poder marcar ferias no sistema da organizacao, mas soh poder MARCAR PONTO por computadores na intranet
+	acessos:
+		1. por meio de usuario e senha, para garantir a autenticidade do usuario
+		2. por meio de VPN, que cria uma conexao segura tunelada com o dispositivo fora da intranet e a intranet
+

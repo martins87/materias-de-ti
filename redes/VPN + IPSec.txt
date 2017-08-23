@@ -1,0 +1,36 @@
+===
+VPN
+ |	permite interconexao de diversas redes locais usando uma infraestrutura publica, como a Internet
+ |	simula um enlace privado, com seguranca, mas que trafega atraves de conexoes publicas compartilhadas (inseguras)
+ |	tunelamento criptografico (por causa das informacoes privadas trafegadas)
+ |	protocolos de tunelamento oferecem confidencialidade (sigilo), integridade e autenticacao
+ |	IPsec (camada de Rede) eh um dos protocolos de criptografia que podem ser usados
+ |
+ ----->	L2TP (Layer 2 tunneling protocol)
+ |		protocolo de encapsulamento da Internet padrao da industria
+ |		nao prove confidencialidade nem autenticidade nem integridade, assim, deve ser usado junto com o IPsec, que provê essas 3 qualidades
+ |		o tunel L2TP pode carregar quadros Ethernet, PPP ou datagramas IP
+ |		o pacote L2TP eh enviado por meio de pacote UDP
+ ----->	IPsec
+		camada 3 de REDE
+		junto com o L2TP forma o L2TP/IPsec
+		define dois protocolos de seguranca designados Cabecalho de Autenticacao (AH) e Encapsulating Security Payload (ESP)
+		cada um desses dois define seu proprio formato para o cabecalho IPsec no pacote IPsec
+		pode ser usado com cabecalho AH ou ESP, mas nao os dois ao mesmo tempo: OU UM OU OUTRO!
+		permite escolher [qualquer algoritmo de criptografia], ate mesmo nenhum algoritmo (sem seguranca)
+
+		AH: cabecalho de autenticacao
+			proporciona autenticacao e integridade, utilizando algoritmos como MD5 ou SHA-1
+			NAO PROPORCIONA Confidencialidade
+
+		ESP: encapsulamento seguro do payload
+			A	autenticacao (opcional)
+			I	integridade (opcional)
+			Confidencialidade
+
+			para confidencialidade suporta DES e 3-DES
+			para autenticacao e integridade suporta, assim como o AH, MD5 e SHA-1
+
+		bizu:
+			AH possui 2 letras, assim fornece autenticacao e integridade
+			ESP possui 3 letras -> fornece entao a trinca CIA

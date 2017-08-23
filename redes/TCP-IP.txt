@@ -1,0 +1,61 @@
+==================
+ARQUITETURA TCP/IP
+
+	eh a implementacao pratica do modelo OSI
+	definiu uma [pilha de protocolos] a serem usados para garantir a interoperabilidade das redes
+
+	surgiu como uma rede academica
+	eh sucessor da ARPANET, desenvolvida pela agencia de estudos ARPA
+	hoje se tornou um padrao na Internet, sendo que a esmagadora maioria das redes implementa essa arquitetura,
+		> o que permite um bom funcionamento da Internet em termos de interoperabilidade
+
+	diferentemente do modelo OSI, possui apenas 4 camadas (conforme RFC 793)
+!	alguns autores falam em 5 camadas, mas apresentam dessa forma apenas por didatica
+
+	as 3 camadas superiores do modelo OSI (Aplicacao, Apresentacao e Sessao) aqui estao com o nome Aplicacao
+	as 2 camadas inferiores do modelo OSI (Enlace e Fisica) aqui estao com o nome "Acesso 'a Rede"
+
+!!!	BIZU:
+		para decorar as 7 camadas do modelo OSI, basta decorar o mnemonico AASTREF
+		na arquitetura de protocolos TCP/IP, lembre-se da sua tia: ATIA
+			A	Apresentacao
+			T	Transporte
+			I	Internet (ou Rede)
+			A	Acesso 'a Rede
+		ou A³TIA²,
+			lembrando da supressao das 3 camadas superiores na camada Aplicacao
+			e da supressao das 2 camadas inferiores na camada Acesso 'a Rede
+
+	como algumas camadas foram agregadas em uma soh, suas funcionalidades originais estao agora presentes na nova camada
+	ou seja, as funcionalidades das camadas Aplicacao, Apresentacao e Sessao estao agora presentes na camada Aplicacao
+	o mesmo para as camadas Enlace e Fisica, agora na camada Acesso 'a Rede
+
+	imagem comparando camadas OSI e TCP/IP:
+		http://s32.postimg.org/iv5o5sbet/tcpip.png
+
+	--------------------------------
+	Alguns protocolos das 4 camadas:
+		APLICACAO		SMTP, POP3, IMAP, DNS, FTP, HTTP, HTTPS, SNMP, Telnet/SSH
+		TRANSPORTE		TCP, UDP
+		INTERNET		IP, ARP, RARP, IGMP, ICMP
+		ACESSO 'A REDE		protocolos fisicos: Ethernet, Token Ring, Frame Relay, ATM..
+
+	----------------------------------
+	Importante observacao conceitual !
+		errado:
+			"protocolo TCP/IP"
+		certo:
+			"a ARQUITETURA de Protocolos TCP/IP"
+			"os protocolos TCP (camada transporte) e IP (internet/rede) fazem parte da arquitetura TCP/IP"
+
+	---------------------------------
+	Atencao a nomenclaturas em provas
+		algumas questoes podem apresentar as camadas da arquitetura TCP/IP com outros nomes
+		assim, esta correto:
+			Camada 4 - Aplicacao
+			Camada 3 - Transporte
+			Camada 2 - Internet, Inter-redes ou Rede
+			Camada 1 - Acesso 'a Rede, Interface ou Host/Rede
+		atentar para isso!!!
+		atencao aos numeros das camadas tbm, pois agora sao diferentes das do modelo OSI
+

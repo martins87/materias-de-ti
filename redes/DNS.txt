@@ -1,0 +1,63 @@
+--------
+DNS : 53
+	domain name service
+	sistema de gerenciamento de nomes HIERARQUICO
+	opera segundo duas definicoes:
+		examinar e atualizar seu banco de dados
+		resolver nomes de dominios em enderecos de rede IP: localhost em 127.0.0.1
+	tabela associando nomes e IPs
+	exemplo:
+		um programa de e-mail (thunderbird) chama o RESOLVER, passando o nome como parametro (ex: martinsda@gmail.com)
+		RESOLVER envia um pacote UDP (velocidade) a um servidor DNS local
+		o DNS local procura o nome e retorna o endereco IP ao RESOLVER
+		RESOLVER retorna o endereco IP ao programa de e-mail que fez a chamada
+		de posse do endereco IP o cliente entao estabelece uma conexao TCP com o destino
+
+	hierarquia de dominios:
+		os nomes do DNS sao processados da direita para a esquerda
+		usam pontos como separadores
+		existem dominios para cada pais (br, pt, fr, de, ...)
+			> e mais os "seis grandes": edu, com, mil, gov, org, net
+
+		https://infrasemmisterios.files.wordpress.com/2012/05/dns.jpg
+		https://technet.microsoft.com/cc160825.fig01(en-us).gif
+		http://www.cisco.com/web/about/security/images/csc_child_pages/domain-name-space.gif
+
+	zona direta:
+		nomes -> IP
+
+	zona inversa/reversa:
+		IP -> nomes
+		inverte a ordem dos octetos do ip
+
+	cada zona tem um servidor/arquivo AUTORITARIO, que eh o arquivo principal DNS daquela zona
+	cada outro servidor/arquivo sera chamado [secundario]
+	transferencia de zona:
+		copia do arquivo de zona do servidor primario para os servidores secundarios
+		completa (AXFR) ou incremental (IXFR)
+
+
+Registros DNS:
+	A		registro central de um DNS. possui os enderecos IPs relativos aos respectivos nomes de servidor. localhost -> 127.0.0.1
+
+	AAAA		executa a mesma funcao que A, porem para um endereco IPv6
+
+	PTR		pointer. aponta o caminho inverso: dado um endereco IP retorna o nome de servidor relacionado a ele
+
+	MX		aponta os servidores responsaveis pelo recebimento de e-mail em um dominio
+			quando ha mais de um servidor responsavel, eh possivel estabelecer prioridade entre esses servidores
+
+	CNAME		canonic name. especifica um apelido (alias) para o hostname (A). eh uma forma de redirecionamento
+
+	SPF		Sender Policy Framework. tentativa de controle de falsos e-mails
+			permite ao administrador de um dominio definir os enderecos das maquinas autorizadas a enviar mensagens desse dominio
+
+	TXT		text. permite incluir um texto curto em um hostname. tecnica utilizada para implementar o SPF
+
+	NS		Name Server. especifica servidores DNS para o dominio ou subdominio
+			pelo menos 2 registros NS devem ser definidos para cada dominio: geralmente um primario e um secundario
+
+	SOA		start of authority. indica o responsavel por um dominio
+
+	SRV		service. permite definir localizacao de servicos disponiveis em um dominio, inclusive seus protocolos e portas
+

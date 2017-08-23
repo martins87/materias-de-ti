@@ -1,0 +1,365 @@
+neste subtopico:
+	equipamentos - repetidor, hub, ponte, switch, roteador, gateway
+	fibra optica
+	cabeamento estruturado
+	cabos par trancado
+	
+
+
+=-=-=-=-=-=-=-=-=-=-
+EQUIPAMENTOS DE REDE
+
+---------
+repetidor
+	camada FISICA
+	repetem o sinal que recebem, levando a locais onde o sinal chegaria fraco
+	oferecem "ganho de sinal"
+!!	somente 2 DUAS portas: entrada e saida
+
+
+---
+hub
+	camada FISICA
+	repetidor local
+	topografia estrela
+!!	-> propagam bits entre as interfaces de rede 'as quais estao ligados de forma indiscriminada (nao ha qualquer tipo de filtragem)
+	na pratica funciona como barramento, pois ocupa toda a linha qndo manda mensagens aos nós
+	ocorrem COLISOES, pois ha disputa por meio de transmissao
+
+
+------------
+ponte/bridge
+	camada ENLACE
+	utilizadas antigamente para conectar duas LANs
+	funcionalidade atual: interligar micros de rede cabeada a micros em rede wireless, criando uma unica rede
+!!	somente 2 DUAS portas
+
+
+------
+switch
+	camada ENLACE (porem os switches L3 sao da camada 3: REDE)
+	realiza a [comutacao de quadros] em uma mesma rede
+	-> estabelecem comunicacao ponto-a-ponto com as portas de destino (cada uma) evitando dessa forma a colisao e excesso de trafego
+		claro, pois esta eh a falha do hub, que manda as mensagens para todo mundo
+		o switch evita o broadcast estabelecendo comunicacao ponto-a-ponto com cada porta! =)
+!!	analisa o cabecalho dos quadros e os direciona para o destino
+	topografia estrela, direcionando ativamente o quadro para o endereco destino
+	mantem uma tabela de enderecos, pela qual eh mais inteligente que o hub
+	realiza o chaveamento das conexoes entre os computadores por meio do endereco MAC
+!!	pode controlar o acesso por meio de enderecos MAC: somente os autorizados em cada porta podem acessar a rede
+
+	2 categorias de switches:
+		nao gerenciaveis
+			realizam o encaminhamento basico dos quadros em suas portas com a filtragem em suas tabelas CAM
+		gerenciaveis
+			podem ate rotear pacotes, passando a funcionar como switch L3
+			tambem:
+				realizar limitacao de velocidade em suas portas
+				implementar recursos inteligentes para redes logicas em anel
+				monitorar portas e gerar alarmes...
+	::
+	representado por um quadrado
+tipos:
+	switch store-and-forward
+		armazena cada quadro de entrada em sua totalidade, antes de examina-lo e encaminha-lo
+		depois que o quadro inteiro chega, examina sua integridade. se estiver danificado, eh imediatamente descartado
+		leva vantagem no tratamento de quadros danificados, em relacao ao cut-through
+
+	switch cut-through
+		tao logo identifique o endereco de destino, comeca a encaminhar o quadro de entrada antes que ele chegue todo
+		assim que recebe o quadro, avalia apenas os primeiros 6 bytes em busca do endereco MAC destino para o encaminhamento
+
+
+--------
+roteador
+	camada REDE, representado por um circulo
+	analisa o cabecalho do pacote, e, segundo seus algoritmos, escolhe a ROTA MAIS ADEQUADA para encaminha-lo
+	podem ser usados os 2 protocolos:
+		OSPF (open shortest path first)
+			atualmente um dos mais empregados, eh um protocolo do tipo IGP - Interior Gateway Protocol
+			algoritmo: [menor rota]
+			baseado no [link state] / estado do enlace
+			protocolo intra-AS (Autonomous System)
+			seus pacotes sao enviados diretamente usando-se a camada de rede
+			.
+			constroi uma tabela que informa as rotas possiveis
+			atualiza sua tabela, enviando-a para outros nós e recebendo informacoes ATUALIZADAS
+			possui um mapa de conectividade de toda a rede
+			esse mapa eh montado como um grafo e pode ser estendido como uma topologia virtual da rede
+			.
+			com essas informacoes, cada no consegue descobrir sozinho qual a melhor rota para determinado destino
+
+		RIP (routing information protocol)
+			utiliza o conceito de FLOODING, escolhendo o caminho menor e atualizando com esse valor
+
+		BGP (Border Gateway Protocol)
+			protocolo de roteamento interdominio, que opera interligando os diferentes AS (Autonomous Systems)
+			funciona baseado no algoritmo [vetor-distancia]
+			utiliza conceito de grafos para mapear redes e politicas -> complexo!!
+
+	dois tipos de algoritmos dinamicos (=regras calculadas e alteradas dinamicamente pelos roteadores):
+		vetor de distancia
+			cada roteador mantem informacoes de distancias (custos) a partir de si mesmo ate qq outro roteador da rede
+
+		link state
+			cada no constroi um mapa de conectividade de toda a rede. calcula-se entao o melhor caminho
+			maior escalabilidade para GRANDES redes
+
+
+-------
+gateway
+	camada de Aplicacao (7)
+	"portao de entrada"
+	pode ser uma maquina com duas (ou mais) placas de rede, ou um dispositivo dedicado, utilizado para unir duas redes
+	existem diversos usos possiveis. exs:
+		interligar duas redes que utilizam protocolos diferentes
+		compartilhar a conexao com a Internet entre varias estacoes de trabalho
+	gateways podem ser:
+		roteador
+		servidor proxy
+		roteador wireless
+	o default gateway (padrao) eh justamente o micro da rede que tem a conexao
+	eh ele que os outros consultarao quando precisarem acessar qualquer coisa da Internet
+	o default gateway aqui de casa: 192.168.1.1
+	# "tracert <site>" mostra o caminho na Internet ate chegar ao <site>
+	# "ipconfig /all" mostra as configuracoes completas de rede da maquina
+
+
+
+=-=-=-=-=-=-
+FIBRA OPTICA
+	repetidores necessarios a cada 50km
+	resistencia total 'a interferencia eletromagnetica
+	sem risco de choque eletrico
+	capacidade de transmissao de dados MAIS ALTAS -> bandwidth maior ~= 10 Gbps
+	alto custo
+	exige pessoal especializado para instalacao
+	largura de banda MAIOR
+	dificilmente eh interceptada
+	repetidores necessarios somente a cada 50 km de distancia em linhas longas
+
+	>> monomodo			WAN -> fibra optica monomodo
+		mais caro $$$
+		nucleo menor
+		maior banda passante
+		maior alcance
+		transmissao de sinais de ate 120km
+		sao mais utilizadas para aplicacoes de redes de longa distancia (WAN)
+		geralmente usado Laser como fonte de geracao de sinal
+
+	>> multimodo
+		faixa maxima de transmissao de 2km
+		possuem nucleos maiores
+		permitem acoplamento mais simples de conectores e emendas
+		mais maleaveis
+		custo menor
+		permite o uso de fontes luminosas de baixa ocorrencia, como LED
+		muito usado para poucas distancias por causa do baixo preco
+
+!!	cabos de fibra optica de 2 ou 4 fibras utilizados em cabeamento horizontal
+!!	> devem suportar [raio de curvatura] de 25mm sem carga mecanica
+
+conectores:
+	ST (straight tip)	conector antigo, popular com fibras multimodo. conector tipo baioneta
+	SC			conector simples e eficiente. sistema simples de encaixe e oferece pouca perda de sinal. popular em redes Gigabit
+	LC (lucent connector)	conector miniaturizado. mais comumente usado em 10 Gigabit Ethernet
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=
+LED x Laser semicondutor:
+					LED		Laser semicondutor
+
+	taxa de dados			baixa		alta
+	tipo de fibra			multimodo	modo unico ou multimodo
+	distancia			curta		longa
+	duracao				longa		curta
+	sensibilidade 'a temperatura	insignificante	substancial
+	custo				baixo custo	alto $$$
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-
+CABEAMENTO ESTRUTURADO
+
+	http://s11.postimg.org/wkejfmu03/cabeamento.png
+
+	0. Interligacao Externa					faz a interligacao entre predios distintos
+	1. Entrada do Edificio (EF - Entrance Facilities)	ponto de interligacao entre o cabeamento externo e o interno (intra-edificio)
+	2. Sala de Equipamentos	(ER - Equipment Room)		area reservada aos principais equipamentos ativos da rede: servidores, roteadores, PABX..
+	3. Cabeamento Backbone (BC - Backbone Cabling)		interliga as salas de telecomunicacaoes 'as salas de equipamentos
+	4. Sala de Telecomunicacoes (Telecommunications Room)	acomoda equipamentos e terminadores de distribuicao. interliga o backbone ao horizontal
+	5. Cabeamento Horizontal (HC - Horizontal Cabling)	interliga a sala de telecomunicacoes 'as areas de trabalho (geralmente mesmo andar do predio)
+	6. Area de Trabalho (WA - Work Area)			area fisica destinada aos postos de trabalho (computadores, impressoras, telefones...)
+
+patch cords: (pigtail)
+	interligam os switches ao patch panel, geralmente em um mesmo rack
+	essa conexao permite versatilidade na manutencao e mudanca de segmentos e hosts diretamente no rack
+	nao deve ser maior que 6 metros
+	produzidos em varias cores, para serem distinguidos
+
+cabeamento horizontal:
+	toda sua extensao possui limite de 90m, desde o patch panel na sala de telecomunicacoes 'a tomada de distribuicao na area de trabalho
+
+tomadas:
+	devem possuir pelo menos 2 tipos de acesso: voz e dados
+	deve haver pelo menos uma tomada para cada area de trabalho de 10m2
+	comprimento maximo do cabo da tomada ate o computador: 3 metros
+
+
+regra 5-4-3:
+	define a forma de distribuicao de repetidores na rede
+	5 segmentos no total
+	4 repetidores
+	3 segmentos populados por maquinas
+
+
+
+raio de curvatura MINIMO
+	+ para instalacao de cabo de fibra optica multimodo
+	+ de 2 fibras
+	+ utilizado no sistema de cabeamento horizontal
+	+ sem carga mecanica:
+		25mm
+
+para cabos de 2 ou 4 fibras sob uma carga de 222N:
+	50mm
+
+todos os demais cabos de plantas internas devem suportar um raio de curvatura:
+	10 vezes o diamentro externo do cabo -> sem nenhuma carga
+	15 vezes o diamentro externo do cabo -> com carga ate o limite avaliado
+	
+
+
+
+cabo coaxial:	http://bit.ly/1I2Gtnf									
+		http://bit.ly/19DPOXl
+
+
+==================
+Cabos par trancado:
+
+Cat5		UTP		ate 100MHz		Fast Ethernet 100 Mbps, mas tbm Gigabit Ethernet			^ maior flexibilidade, menos rigidos
+Cat5e *		UTP		ate 125MHz		Gigabit Ethernet							|
+Cat6		UTP		ate 400MHz		Gigabit Ethernet 10 Gbps	max 55m em redes 10 Gps Ethernet	|
+Cat6a		UTP		ate 625MHz											|
+Cat 7		UTP**		ate 700MHz
+											|
+*e de Enhanced (melhorado)
+**UTP = unshielded twisted pair = cabos SEM BLINDAGEM
+
+
+blindagem:
+	UTP	unshielded twisted pair
+	FTP	foiled twisted pair			nao trata o crosstalk (interferencia entre os pares de cabos)
+	STP	shielded twisted pair			blindagem para cada par. reduz o crosstalk
+	SSTP	screened shielded twisted pair		blindagem envolta dos pares e em cada par. deve ser usado em ambientes com mta interferencia externa
+
+!!	maior a faixa de frequencia, menor a atenuacao		!!
+
+
+STP (Shielded Twisted Pair)
+
+	https://desamarrandoarede.files.wordpress.com/2012/04/preview0051.png
+	https://miguelpape.files.wordpress.com/2010/11/stp.jpg
+	.
+	nao ultrapassa 100m
+	pode ser full-duplex
+	indicado para ambientes com influencia de RUIDO EXTERNO
+	mais caro $$$ e pesado
+
+
+
+cross-over
+	eh um cabo de par trancado modificado para redes ponto-a-ponto
+
+	http://4.bp.blogspot.com/-TYluWC9rQ08/Td8C5DGa29I/AAAAAAAAAHY/GWocyOHpDpI/s1600/25.jpg
+
+
+
+Importante:
+!!	Cat 5, 5e, 6, 6a... todos possuem 4 pares trancados!!!
+	Cat6 sao MAIS RIGIDOS
+!!	todos os cabos de par trancado possuem a limitacao de 100m
+	Cat6 podem ser usados em Fast Ethernet, mas fazer isso eh burrice, ja que:
+		ele tem capacidade para Gigabit Ethernet
+		e o Cat5 eh mais barato para Fast Ethernet
+
+
+
+Cabeamento Ethernet:
+	Nome		Cabo			Tamanho max	Tecnologia/velocidade		Vantagens
+
+	10Base5		coaxial grosso		500m		Ethernet 10Mbps			obsoleto, cabo original
+	10Base2		coaxial fino		185m		Ethernet 10Mbps			sem necessidade de hubs
+	10Base-T	par trancado		100m		Ethernet 10Mbps			sistema mais economico
+	10Base-F	fibra optica		2km		Ethernet 10Mbps			melhor entre edificios
+
+
+Padrao		Comprimento de onda	Distancia	Caracteristicas
+
+100 BASE-SX	850 nm			550 m		Fibra optica multimodo
+100 BASE-FX	1310 nm			400m ou 2km	Fibra optica multimodo
+1000 BASE-SX	850 nm			550 m		Fibra optica multimodo
+
+100 BASE-LX	1310 nm			5 km		Fibra optica monomodo
+100 BASE-LX10	1310 nm			10 km		Fibra optica monomodo
+100 BASE-BX	1310 e 1550 nm		10 km		Fibra optica monomodo
+1000 BASE-EX	1310 nm			40 km		Fibra optica monomodo
+1000 BASE-ZX	1550 nm			70 km		Fibra optica monomodo
+
+
+1000Base
+	-SX	550m	multimodo
+	-LX	5km	monomodo
+	-EX	40km	monomodo
+	-ZX	70km	monomodo
+
+
+
+=-=-=-=-=-
+CONECTORES
+
+	RJ11		internet/linha de telefone		fios telefonicos de 2 pares	http://bit.ly/1JBBI6Y
+			tem a cabeca menor que o RJ45
+
+	RJ45 (8P8C)	usado em cabo de par trancado		cabos de rede de 4 pares	http://bit.ly/1c691S1
+			> de 8 vias para rede de dados
+
+	BNC		utilizado em cabos coaxiais						http://bit.ly/1KhLuvm
+
+
+
+--------------
+CONCENTRADOR:
+	hardware que serve para conectar equipamentos de uma rede.
+	ex: roteador
+
+	hub: interliga pcs com fio
+		gera trafego desnecessario, eh burro
+		manda pacote pra rede inteira ate achar o destino
+		half-duplex
+
+	switch: inteligente, pq cria uma tabela de destinos
+		dados mandados de A para B, vao somente para B
+
+	roteador: determina a rota dos dados, com objetivo de chegar mais rapido a um destino
+		com fio ou sem fio
+		domestico ou de grande porte
+
+
+-------------------
+tipo de conexoes:
+
+	com fio
+		ADSL e VDSL (aproveita a infraestrutura da telefonia fixa)
+		cabo coaxial
+		PLC (rede eletrica)
+		cabo de fibra otica
+
+	sem fio/wireless
+		wi-fi - ficar cueio que eh um tipo de conexao wireless
+		bluetooth
+		satelite
+		celular (3G e 4G)
+		radio

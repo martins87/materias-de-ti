@@ -1,0 +1,333 @@
+prova TRT MG 2009:
+
+IPsec			q 39
+VPN - CE e PE		q 40
+Fibre Channel		q 53
+Bridged network		q 56
+gerenciamento de falhas	q 57
+------------------------------------------------------------------------
+
+
+
+REDE DOMESTICA:
+	P2P - ponto a ponto
+	multiponto - cabos comuns ligados a um concentrador
+
+
+placa de rede:
+	hardware que permite a comunicacao dos equipamentos propriamente ditos entre si atraves da rede
+!!	[cada placa] possui um identificador ou endereco fisico UNICO chamado de MAC
+
+MAC address
+	formato do MAC: 48 bits  -->>  6 bytes
+	sao expressos na forma hexadecimal, por exemplo: 24:6E:2A:91:41:D1
+	a primeira metade identifica o fabricante da placa, e a segunda metade um numero serial
+	atual na camada de Enlace
+!!	usado para controle de acesso em redes
+	broadcast: FF:FF:FF:FF:FF:FF
+	cada estacao em uma rede Ethernet tem seu proprio NIC (Network Interface Card) com endereco MAC de 6 bytes (48 bits)
+
+
+
+concentrador: hardware que serve para conectar equipamentos de uma rede.
+:: ex: roteador
+
+	hub: interliga pcs com fio
+		gera trafego desnecessario, eh burro
+		manda pacote pra rede inteira ate achar o destino
+		half-duplex
+
+	switch: inteligente, pq cria uma tabela de destinos
+		dados mandados de A para B, vao somente para B
+
+	roteador: determina a rota dos dados, com objetivo de chegar mais rapido a um destino
+		com fio ou sem fio
+		domestico ou de grande porte
+
+
+
+dominio de colisao:
+	apenas um pode transmitir pode vez
+	todos recebem as mensagens na rede, pois toda mensagem eh enviada por broadcast
+
+
+
+REDE PROFISSIONAL/CORPORATIVA:
+	servidor com clientes
+
+servidor: presta informacoes
+	servidor web: armazena paginas web
+	servidor de correio/e-mail: armazena, envia e recebe e-mails dos usuarios/clientes
+	servidor FTP: arquivos em geral
+	servidor de impressao: gerencia tarefas de impressao de uma rede
+
+servidor != provedor
+
+servidor = maquina
+provedor = EMPRESA provedora de servico
+
+provedor de hospedagem: vende servico de armazenar paginas de sites
+provedor de acesso (ISP internet service provider): empresa que conecta nossos computadores 'a Internet
+	hoje em dia o ISP tambem passa a atuar tambem como servidor VPN
+
+
+
+
+BACKBONE
+espinha dorsal
+	meio de transmissao de dados em ALTA VELOCIDADE
+	geralmente empregado para interligar longas distancias
+
+	tecnologias para backbone:
+		fibra optica (pulso luminoso, velocidade da luz!!!) - muito caro $$$$$$$$$$$$
+			FTTH:
+				fiber to the home
+				interligacao de residencias atraves de fibra optica para fornecimento de
+				> TV digital, Radio Digital, acesso à Internet e Telefonia
+		satelite
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+TIPO DE REDE QUANTO 'A ABRANGENCIA:
+
+	PAN (personal) - interliga dispositivos portateis de um usuario
+		ex: celular se conectando com a impressora
+		bluetooth (raio pequeno de abrangencia/range)
+		NFC (near field communication) - TECNOLOGIA DO FUTURO!!!
+			check-in, transporte publico, pagamentos moveis, mobile marketing
+		DLNA - comunicacoes domesticas, troca de arquivos de midia
+	LAN - situada em predio ou campus - no max alguns quilometros
+		ethernet (802.3), precisa de repetidor para maiores distancias
+		cabo coaxial
+	WLAN - LAN sem fio
+		wi-fi
+	MAN - metropolitan - abrange extensao de varios predios em uma mesma regiao metropolitana
+		10 a 100 km
+		fibra optica
+	WAN - wide (mundial) - abrange pais ou continente
+		normalmente formadas por varias LANs
+		interligadas via VPN
+
+
+WiMAX
+	802.16
+	redes metropolitanas com alcance ate 50km
+	taxa transferencia ate 70 Mbps
+	nao vingou, sendo substituida pelo 4G
+
+
+4G (LTE)
+	baseasa em IP
+	quarta geracao de telecomunicacoes moveis
+
+
+INTRANET
+	rede interna, informacao restrita aos membros da rede
+INTERNET
+	a rede de redes
+	acesso publico
+EXTRANET
+	acesso por VPN (tunelamento criptografico)
+
+
+
+======================================================================================================
+modem: converte sinais digitais (rede interna) para analogicos (para passarem pela internet)
+:: ex:
+	MOdulacao [digital -> analogico] <------------> [analogico -> digital] DEModulacao
+
+
+wi-fi: tipo de conexao wireless
+
+tipo de conexoes:
+
+	com fio
+		ADSL e VDSL (aproveita a infraestrutura da telefonia fixa)
+		cabo coaxial
+		PLC (rede eletrica)
+		cabo de fibra otica
+
+	sem fio/wireless
+		wi-fi - ficar cueio que eh um tipo de conexao wireless
+		bluetooth
+		satelite
+		celular (3G e 4G)
+		radio
+
+
+ethernet (802.3) - cabo par trancado UTP, conector, placa de rede
+
+IEEE - instituto de normas tecnicas
+	ex: padrao 802.11 A, B, C... <- o que muda aqui sao caracteristicas tipo frequencia, alcance..
+
+								AIRCRACK - pega senha de vizinho
+
+wi-fi criptografia: WPA ou WEP (nao recomendada)
+
+hacker: bom ou mal
+cracker: MAL!!!! mwahahahahahaha
+
+cabo crossover : liga uma maquina a outra - liga duas maquinas entre si
+	pontas diferentes
+======================================================================================================
+
+
+
+=-=-=-=-=-=-=-=-=
+FASES DA INTERNET
+
+1 - Militar 69/80
+	ARPANET, para interligar as bases militares dos EUA
+
+2 - Educacional 80/86
+	divisao: ARPANET para universidades e MILNET, rede militar
+
+3 - Comercial/Atual 86->
+	criacao de provedores para o acesso publico
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+SINAIS Analogicos X Digitais
+
+	tanto sinais digitais quanto analogicos podem ser usados para transportar informacao
+	ambos os sinais estao sujeitos a ATENUACAO do sinal
+
+
+=-=-=-=-=-=-=-=-
+Largura de Banda
+
+	propriedade fisica do meio de transmissao
+	medida da capacidade de transmissao de um determinado meio, conexao ou rede
+	medida em bits e medida em segundos: Kbps, Mbps, Gbps..
+	analogia com agua passando pelo cano. largura do cano define a largura de passagem (banda)
+
+	bps = Hz, assim: 5 Mbps = 5 MHz
+
+
+
+MPLS - Multiprotocol Label Switching
+	adiciona um rotulo (label) nos pacotes, permitindo o encaminhamento deles sem consultar uma tabela de roteamento
+	a definicao da rota eh entao dada atraves do rotulo, e nao de um endereco de destino
+	permite diferenciar a tratar o trafego da rede, proporcionando melhor uso dos recursos de rede
+
+
+
+=-=-=-=-=
+Intrusao:
+
+	IDS - Intrusion Detection System
+		apenas detecta e registra atividades suspeitas
+
+	IPS - Intrusion Prevention System
+		reage mediante uma situacao adversa, pois alem de detectar o trafego suspeito, eh capaz de trata-lo
+
+
+
+
+
+
+
+
+-------------------------------
+WEB
+	conteudo estatico: html
+	conteudo dinamico: php, asp, java
+	nao linear: vc navega por onde quiser, de forma que quiser
+
+	WEB 2.0:
+		interatividade
+			conhecimento colaborativo: wiki
+			midias sociais: blogs, podcasts, videologs (canais do youtube) - PROPAGACAO DE CONTEUDO
+			redes sociais - INTERACAO ENTRE USUARIOS
+				permeabilidade: todo mundo se relaciona com todo mundo, relacionamentos sem hierarquia ou subordinacao
+		ferramentas e armazenamento online
+			cloud computing
+	WEB 3.0
+		mashup: diferentes servicos interligados
+			:: ex: interacao entre twitter, instagram e facebook
+		web-semantica
+
+busca e pesquisa
+	global
+	vertical:
+		melhores destinos, catho, precos de servicos
+	futuro:
+		traducao
+		busca semantica
+		geocodificacao
+		pesquisa por voz
+
+GRUPO DE DISCUSSAO - puabh
+	troca de mensagens
+
+
+
+--- VIRTUALIZACAO ---
+
+	emulacao por meio de VMs (virtual machines)
+	surgiu dos mainframes
+	pode-se ter varios servidores virtuais em uma mesma maquina. beneficios:
+		maior ROI
+		reducao de custo operacional
+		melhor gerenciamento
+		otimizacao de infra estrutura, espaco fisico
+	THIN CLIENT: terminais conectados a um servidor soh
+	virtualizacao permite diminuir o numero de maquinas que seriam usadas - diminui o parque de maquinas
+
+	HYPERVISOR / VMM:
+		programa que gerencia recursos dos varios sistemas virtualizados em um servidor
+		mantem os sistemas independentes entre si
+		modo supervisor (acesso privilegiado) x modo usuario (aplicativos)
+		gerencia solicitacoes de recursos	
+
+	virtualizacao de APRESENTACAO:
+		ex: chromebook - notebook que soh tem acesso 'a internet, tudo feita na nuvem
+		o chromebook chama da nuvem inclusive o SO
+
+	virtualizacao de APLICATIVOS:
+		resolve incompatibilidades de aplicativos qndo o acesso eh virtual
+		tudo o que precisa ta no servidor
+
+	duas maquinas virtualizadas podem estar EM REDE
+
+	virtualizacao total x paravirtualizacao
+	total:
+		guest acha que computador eh todo dele
+		solicitacoes podem nao ser atendidas (ex: falta de driver)
+	paravirtualizacao:
+		diminui compatibilidade de hardware, pois guest eh criado de forma adequada
+		limitacao maior de recursos
+		custos com migracao para novo conjunto de hardware
+
+
+	Process Virtual Machine
+		aplicacao rodando dentro do SO
+		ex: Java Virtual Machine - ao compilar gera um executavel
+
+	Operating System Virtual Machine
+		virtualizacao de varios SOs num servidor	
+
+shell
+	interacao com o usuario
+	interface CLI (comandos) ou GUI (grafica)
+	
+kernel
+	nucleo do SO
+
+cabo de par trancado: alicate de crimpar
+
+internet: obrigada a usar TCP/IP
+intranet nao
+
+intranet: rede privada que utiliza servicos tipicos da internet
+
+
+rede ad-hoc: criada com um proposito, liga maquinas diretamente
+
+piconet: rede de bluetooth que conecta ate 8 dispositivos
+	1 master
+	7 slaves
+
+
+barramento: utilizado cabo coaxial

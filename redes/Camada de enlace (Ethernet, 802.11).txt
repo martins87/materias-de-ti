@@ -1,0 +1,231 @@
+==================
+CAMADA DE ENLACE
+
+	tambem chamada camada de *Enlace de Dados*
+	utiliza o quadro como PDU, derivado do ingles frame
+	responsavel por manter um meio confiavel entre os dispositivos,
+		> e para isso utiliza tecnicas de deteccao e correcao de erros que podem ocorrer no meio fisico
+	o meio fisico esta sempre sujeito a interferencias, implicando em quadros perdidos ou corrompidos
+		-> logo, nunca esta livre de erros
+	entretanto, a camada de enlace utiliza tecnicas que permitem
+		> a deteccao e a possibilidade de correcao desses erros,
+		> sendo transparente 'a camada superior
+
+	sob a otica da camada superior (de Rede), ela simplesmente assume a condicao que opera em um meio confiavel frente aos quesitos mencionados
+	esta camada eh ainda responsavel pelo sequenciamento dos quadros a serem transmitidos
+
+
+
+================================
+SUBDIVISAO DA CAMADA DE ENLACE
+
+	a camada de enlace do Modelo OSI eh subdividida em 2 camadas: MAC e LLC
+
+	MAC - Media Access Control
+		subcamada inferior da camada de enlace
+		funcao:
+			fornecer os recursos necessarios para que o dispositivo possa acessar o meio fisico de rede
+		as tecnologias de acesso ao meio para evitar colisoes sao aplicadas nesta camada,
+			> como o CSMA/CA e o CSMA/CD
+
+!!!		CSMA/CA - descricao
+!!!			...
+
+!!!		CSMA/CD - descricao
+!!!			...
+
+
+	LLC - Logical Link Control
+		subcamada superior da camada de enlace
+		funcoes:
+			checagem e correcao de erros nos quadros
+			sincronia dos pacotes recebidos da camada superior (de rede)
+		como o proprio nome diz, eh responsavel por manter as relacoes logicas entre os dispositivos
+		pode ser dividido em 3 tipos:
+			1 - nao orientado a conexao e sem confirmacao de entrega
+			2 - realiza conexao logica com confirmacao de entrega
+			3 - nao orientado a conexao mas com confirmacao de entrega
+
+
+===========
+MAC address
+	formato do MAC: 48 bits  -->>  6 bytes
+	sao expressos na forma hexadecimal, por exemplo: 24:6E:2A:91:41:D1
+	a primeira metade identifica o fabricante da placa, e a segunda metade um numero serial
+	atual na camada de Enlace
+!!	usado para controle de acesso em redes
+	broadcast: FF:FF:FF:FF:FF:FF
+	cada estacao em uma rede Ethernet tem seu proprio NIC (Network Interface Card) com endereco MAC de 6 bytes (48 bits)
+
+
+
+
+=-=-=-=-=-=-=-=-
+802.3 - Ethernet
+
+	camada ENLACE
+	arquitetura de interconexao para redes locais (LAN)
+	baseada no envio de pacotes
+	define cabeamento e sinais eletricos para a camada fisica (ja que a camada fisica eh que trata de cabos e panz)
+
+	CSMA/CD (carrier sense multiple access with collision detection):
+		cada estacao que quiser transmitir verifica se pode
+		em caso de colisao a retransmissao obecede a um algoritmo de recuo exponencial, reduzindo chance de novas colisoes
+		::
+		enquanto esta transmitindo, usa da tecnologia LWT (listen while talk): monitora o meio enquanto transmite
+		caso detecte colisao, dispara o sinal JAM para que todos do meio saibam da colisao
+		em seguida, os nos aguardam um tempo aleatorio para tentar a retransmissao sem novas colisoes
+
+	CDMA/CA (collision avoidance)
+		sucessor do CSMA/CD, possui o recurso de EVITAR colisoes
+		apos verificar que o meio esta ocioso, envia um quadro que informa que o meio vai ser usado e por quanto tempo
+		assim, os demais nos aguardam um tempo ate tentar uma nova transmissao
+
+!!	o modo Full-Duplex DOBRA 2x a taxa de transmissao
+
+	--------
+	Ethernet
+		definido para interligacao de dispositivos em uma LAN
+		taxas de 10Mbps, no formato Half-Duplex
+		pode ser referenciado pelos termos 10BaseT, 10Base2, 10Base5
+
+	-------------
+	Fast Ethernet
+		tecnologia para rede LAN cabeada
+		taxas de 100Mbps, formato Full-Duplex
+		pode ser referenciado pelos padroes 100BaseTX, 100BaseFX..
+		com relacao a repetidores, a ideia eh seguir o padrao 5-4-3
+			Repetidor Classe 1 - distancias de ate 100 m
+			Repetidor Classe 2 - distancias de ate 5 m
+		pode chegar a oferecer 200 Mbps qndo configurado com placas no modo Full-Duplex
+
+	----------------
+	Gigabit Ethernet
+		operam com taxas na casa de 1000Mpbs, ou 1Gbps no modo Full-Duplex
+		modo Half-Duplex tambem eh suportado, ainda que pouco utilizado
+		recomenda-se cabos Cat5e ou Cat6
+		pode ser referenciado pelos padroes 1000BaseT, 1000BaseTX, 1000BaseCX, 1000BaseLX, 1000BaseSX..
+		suporta Jumbo frames: payload de 1500 a 9000 bytes
+		cabos UTP que suportam Gigabit Ethernet alcancam ate 100 m
+		interoperabilidade com os padroes anteriores
+		foi padronizado pelo IEEE
+		CSMA/CD no Half-Duplex
+		Flow Control no Full-Duplex
+
+
+	os padroes continuam evoluindo conforme os servicos vao exigindo taxas cada vez maiores
+	velocidades da ordem de 10Gbps e 100Gbps ja estao sendo usadas e testadas em ambientes especificos, como redes de backbone, redes de armazenamento...
+	redes de 10Gbps nao suportam mais hubs nem bridges, devem sem modo Full-Duplex
+
+	Cabeamento Ethernet:
+	Nome		Cabo			Tamanho max	Tecnologia/velocidade		Vantagens
+
+	10Base5		coaxial grosso		500m		Ethernet 10Mbps			obsoleto, cabo original
+	10Base2		coaxial fino		185m		Ethernet 10Mbps			sem necessidade de hubs
+	10Base-T	par trancado		100m		Ethernet 10Mbps			sistema mais economico
+	10Base-F	fibra optica		2km		Ethernet 10Mbps			melhor entre edificios
+
+
+
+
+===============
+PADRAO 802.11
+
+	este padrao estabelece que cada LAN sem fio estabeleca 9 servicos, divididos em 2 categorias:
+	5 servicos de distribuicao
+		associacao		usado pelas estacoes moveis* para conecta-las 'as estacoes base
+		desassociaco		estacao movel usa este servico antes de se desligar/sair
+		reassociacao		rola qndo cliente volta a se associar a um Access Point apos ter saido dele
+		distribuicao		determina como rotear quadros enviados ao AP
+		integracao		cuida da conversao de formatos, qndo quadros sao enviados por outros que nao o 802.11
+	4 servicos intracelula
+		autenticacao		estacao deve se autenticar antes de ter permissao para transmitir dados
+		desautenticacao		estacao autenticada anteriormente quer sair da rede. qndo sair, NAO PODE MAIS utilizar a rede
+		privacidade		criptografia!
+		entrega de dados	802.11 oferece meio para transmissao e recepcao de dados
+
+
+	802.11a		5GHz	54Mbps		mais caro!
+	802.11b		2.4GHz	11Mbps		ganhou o mercado =)
+	802.11n		5GHz	ate 600Mbps
+
+
+					a	b	g	n
+					--------------------------------
+	frequencia (em GHz)		5	2.4	2.4	2.4 ou 5
+	
+	taxa transmissao (Mbpbs)	54	11	54	65 (pode chegar a 600)
+
+	utilizadores por AP		64	32	32	64
+	(access point)
+
+
+
+802.11a
+
+	frequência 5 GHz
+	Taxa de transmissão teórica: 54 Mbps  -->>  taxa real é menor, perto da metade
+	64 utilizadores por Ponto de Acesso (AP)
+
+	maior perda de sinal a 5 GHz porque a esta frequencia o sinal e absorvido com mais facilidade
+	alcance mais curto
+
+	incompatibidade com os padrões no que diz respeito a Access Points 802.11 b e g,
+
+	Menos suscetível a interferência do meio porque a frequência é usada por poucos aparelhos
+	Necessário mais energia a 5 Ghz (bateria)
+	Opera em SHF
+		e não UHF como os demais padrões de wi-fi
+
+
+
+802.11b
+
+	frequência 2.4 GHz
+	Taxa de transmissão teórica: 11 Mbps
+	32 utilizadores por ponto de acesso
+	Alcance médio indoor: 35m
+
+	Primeiro padrão a disseminar no Brasil
+	Alta interferência tanto na transmissão como na recepção de sinais, porque funcionam a 2,4 GHz
+	Muito suscetível a interferência
+	Opera na faixa de frequência de vários aparelhos
+		Bluetooth; Fornos de micro-ondas; telefones sem fio; equipamentos médicos
+
+
+
+802.11g
+
+	frequência 2.4 GHz
+	Taxa de transmissão teórica: 54 Mbps  -->>  alcanca ate 108 Mbps com [compactacao proprietaria]
+	32 utilizadores por ponto de acesso
+	Alcance médio indoor: 25m
+
+	interopera com 802.11 b
+	Padrão mais comum na atualidade
+	Muito suscetível a interferência
+	Mesma forma do padrão 802.11b
+	Suporta comunicação com dispositivos 802.11b, com velocidade setada pelo padrão inferior
+
+
+
+802.11n
+
+	frequencia 2,4 GHz e/ou 5 GHz
+	65 Mbps a 600 Mbps
+	64 utilizadores por ponto de acesso
+	Alcance 2x maior
+
+	Várias antenas (4 ou +)
+	Menos suscetível a interferência
+	Padrão já definido
+	Fabricantes usaram por certo tempo draft, atualmente existem versões comerciais operando em tais velocidades
+	Necessidade de atualização de firmware
+	Alcance médio aparentemente maior que os padrões anteriores
+	Uso do MIMO (multiple-input multiple-output)
+	Diversos fluxos de transmissão: (2x2), (2x3), (3x3), (4x4)
+	Velocidade nominal subiu de 54 para 300 megabits (600 megabits nos APs 4x4, capazes de transmitir 4 fluxos simultâneos)
+	Uso de múltiplos fluxos de transmissão torna o alcance do sinal quase duas vezes maior
+	recepcao de ate 4 fluxos de informacao ao mesmo tempo
+
+

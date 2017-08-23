@@ -1,0 +1,100 @@
+=-=-=-=-=-=-=-=-=-
+PROTOCOLOS DE REDE
+
+-----
+IPsec
+	prove seguranca no nivel da camada IP
+	eh parte OBRIGATORIA do IPv6
+	garante a integridade das partes, evitando ataques como o *man-in-the-middle*	
+
+
+---------------------------------
+NAT - Network Address Translation
+	da um endereco IP (local) a cada uma das maquinas de uma rede privada que possui um roteador
+	ex:
+		o ISP (internet service provider) fornece o IP 179.222.92.80 para a casa (fica sendo o IP do roteador)
+		o roteador fica entao com o IP 192.168.0.1 (por ex) e as demais maquinas da casa ficam com os IPs 192.168.0.2, 192.168.0.3...
+solucao:
+	fazer um mapeamento baseado no IP interno e na porta local do computador, gerando um numero de [16 bits] de uma tabela hash
+	este numero eh entao escrito na porta do router
+	o pacote enviado para fora leva o IP global do router e na porta de origem o numero gerado pelo NAT
+	assim, o computador que receber este pacote sabe para onde tem que enviar a resposta
+	quando o router recebe a resposta faz a operacao inversa, procurando na sua tabela uma entrada que corresponda aos bits do campo da porta
+	ao encontrar a entrada, eh feito o direcionamento para o computador dentro da rede interna
+	
+---
+IP:
+	responsavel por atribuir o endereco
+	IPv4 - cabecalho com 32 bits - 2^8 * 2^8 * 2^8 * 2^8 ~= 4 bilhoes de enderecos
+		IP estatico/fixo: nao muda
+		IP dinamico: muda. DHCP cuida disso
+
+	IPv6 - cabecalho com 128 bits - 56 octilhoes
+!!		IPsec obrigatorio!
+		header nao tem mais checksum -> o IPv6 confia nas camadas superiores para a percepcao de erros
+		introduz capacidade de QoS utilizando para isso o campo [Flow Label]
+		a fragmentacao deixa de ser realizada pelos roteadores e passa a ser processada pelos hosts emissores
+		o ARP foi abandonado, sendo substituidos pelas mensagens [Neighbor Discovery]
+		o IGMP foi substituido por mensagens [Multcast Listner Discovery]
+		enderecos broadcast nao existem mais! somente:
+			unicast
+				de retorno		endereco ::1 - conhecido como Loopback
+				nao especificado	endereco ::
+			multicast
+			anycast (busca o host mais proximo, dentro de um grupo de hosts)
+		suporta pacotes de 1280 bytes, sem fragmentacao
+
+		hexadecimal, inclusive case sensitive (a != A)
+		PROVEDORES (Oi Velox, GVT) que se preocupam com migracao v4 para v6
+		pode omitir zeros 'a esquerda
+		zeros continuos por ::
+		caracteristicas:
+			janela auto ajustavel
+			descoberta de vizinhos
+			deteccao automatica de gateway inativo
+			notificacoes de congestionamento
+
+
+	http://s21.postimg.org/6stt8hq4n/ipv4_x_ipv6.png
+								No de Enderecos por Rede:
+	classe A		1.0.0.0 a 127.0.0.0		16 777 216
+	classe B		128.0.0.0 a 191.255.0.0		65 536
+	classe C		192.0.0.0 a 223.255.255.0	256
+
+	Faixas de endereco para NAT:
+		10.0.0.0/8
+		172.16.0.0/12
+		192.168.0.0/16
+
+
+como eh obtido o IP?
+	provedor da um IP para a maquina acessar a internet
+
+como rastrear hacker?
+	por meio de arquivos de log, acessa o provedor, ve qual ip e vai na casa do mano
+
+
+----
+ICMP - Internet Control Message Protocol
+
+	fornece relatorios de erros para a fonte original (que enviou a mensagem)
+	monitora erros de transmissao
+	tipos de mensagens:
+		parameter problem
+		destination unreachable
+		echo, echo reply
+		time exceeded
+	!!
+	ping: aplicacao mais famosa do ICMP
+	outra famosa: Traceroute
+
+	alguns firewalls bloqueiam as respostas (ICMP reply), dificultando o ping e o tracerout (tracert)
+	uma das razoes eh para bloquear ataques de negacao de servico
+	o hacker envia dados de ping ate o sistema nao ter a capacidade de administrar suas proprias funcoes
+
+---
+ARP
+	utilizado para traduzir endereco IP em endereco MAC
+	o emissor difunde em broadcast um pacote ARP com o endereco IP de outro host e espera como resposta um endereco MAC respectivo
+	-> no IPv6 o ARP foi substituido pelo NDP - Neighbor Discovery Protocol
+

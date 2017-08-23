@@ -1,0 +1,278 @@
+->	http://eriberto.pro.br/palestras/analise_trafego.pdf
+
+==================
+ANALISE DE TRAFEGO
+
+	realiza a analise de informacoes dos pacotes trafegados na rede
+	a cada pacote enviado/recebido pode-se extrair diversas informacoes
+
+	na analise, podem ser utilizadas ferramentas conhecidas como sniffers,
+		> capazes de exibir informacoes do trafego em uma interface grafica
+		> e apresentar o fluxo da informacao
+	algumas ferramentas:
+		Wireshark - Windows e Linux
+		TCPDUMP   - Unix-like
+		WinDump   - Windows
+
+	com as informacoes obtidas na analise, pode-se realizar o troubleshooting,
+		> ou seja, a busca de origem de falhas e problemas na rede
+	tambem eh possivel detectar ataques em determinados ambientes, seja no proprio firewall ou em dispositivos internos
+
+
+
+=========
+A ANALISE - Exemplo 1
+
+	a fragmentacao de pacotes depende de alguns campos do cabecalho IP:
+		http://s32.postimg.org/6dyi50xp1/cabecalho_ip.png
+	onde
+		Identifier	  um mesmo identificador para todos os fragmentos
+		FLAG MF		  More Fragment. se habilitada, indica que ha mais fragmentos. se desabilitada, eh o ultimo fragmento
+		FRAGMENT OFFSET	  indica o posicionamento de cada fragmento para remontagem do pacote de forma sequencial e correta
+
+	quando se exibe o trafego em uma rede, as informacoes sao apresentadas como no exemplo abaixo:
+		1 00.998952 IP 10.1.1.1 > 10.1.1.2: icmp 1480: echo request seq 4864 (frag 10550:1480@0+)
+		2 00.999881 IP 10.1.1.1 > 10.1.1.2: icmp (frag 10550:1480@1480+)
+		3 02.000455 IP 10.1.1.1 > 10.1.1.2: icmp (frag 10550:48@2960)
+		4 02.000522 IP 10.1.1.2 > 10.1.1.1: icmp 1480: echo reply seq 4864 (frag 3672:1480@0+)
+		5 02.007234 IP 10.1.1.2 > 10.1.1.1: icmp (frag 3672:1480@1480+)
+		6 02.008342 IP 10.1.1.2 > 10.1.1.1: icmp (frag 3672:48@2960)
+
+	----------------------
+	Analise da mensagem 1:
+		00.998952 IP 10.1.1.1 > 10.1.1.2: icmp 1480: echo request seq 4864 (frag 10550:1480@0+)
+
+		00.998952
+			marcador de tempo
+			a partir dele conseguimos determinar a ordem de chegada dos pacotes
+			essa informacao nao vai no cabecalho, mas o sniffer a utiliza para organizar a sequencia
+		IP
+			indica que eh um pacote utilizando o protocolo IP
+		10.1.1.1 > 10.1.1.2
+			a seta indica o sentido da mensagem: partindo do host 10.1.1.1 para o host 10.1.1.2
+			origem o da esquerda e destino o da direita
+			geralmente quem atua ativamente enviando a primeira mensagem de estabelecimento de conexao eh o cliente
+		ICMP
+			indica o tipo de servido utilizado: protocolo ICMP (Internet Control Message Protocol)
+		1480
+			indica o tamanho do conteudo do pacote IP - em bytes!
+			considerando que o IP utiliza o cabecalho minimo de 20 bytes como padrao,
+				> teriamos um MTU* de 1500 bytes
+			*MTU - Maximum Transmision Unit (Unidade maxima de transmissao)
+			       refere-se ao tamanho do maior pacote possivel que se eh possivel transmitir
+			       contempla o cabecalho da camada de rede e a parcela de dados das camadas superiores
+		echo request seq 4864
+			indica o tipo de mensagem ICMP "echo request"
+			o numero de sequencia informado eh gerado utilizando como referencia sequenciais anteriores ou aleatoriamente
+			esse numero deve ser utilizado pelo destino com vistas a responder 'a requisicao,
+				> como pode ser visto na mensagem 4
+		frag 10550:1480@0+
+			10550
+				identificacao do pacote original para remontagem
+				todos os pacotes que tiverem essa identificacao serao fragmentos de um mesmo pacote
+				no exemplo, ha 3 fragmentos de um mesmo pacote
+			1480
+				tamanho do payload do fragmento: 1480 bytes
+				essa informacao pode aparecer tambem assim: LEN 1480
+			@0
+				informacao do OFFSET
+				indica a posicao do fragmento na sequencia do pacote
+				no caso, o fragmento comeca na posicao 0
+				tamanho do fragmento 1480 => comeca na posicao 0 e termina na posicao 1479
+			+
+				indica a FLAG MF (more fragments)
+				como esta habilitada (+), indica que ha mais fragmentos para compor o pacote
+				se um fragmento vier sem esse sinal "+", indica que eh o ultimo fragmento do pacote
+
+	----------------------
+	Analise da mensagem 2:
+		00.999881 IP 10.1.1.1 > 10.1.1.2: icmp (frag 10550:1480@1480+)
+
+		segundo fragmento do pacote 10550 enviado
+
+		frag 10550:1480@1480+
+			1480
+				tamanho do payload do fragmento, assim como o primeiro fragmento
+			@1480
+				indica a posicao a partir da qual comeca o fragmento
+				como tem tamanho 1480, vai da posicao 1480 ate a posicao 2959
+			+
+				FLAG MF habilitada: indica que ha mais fragmentos do pacote
+
+	----------------------
+	Analise da mensagem 3:
+		02.000455 IP 10.1.1.1 > 10.1.1.2: icmp (frag 10550:48@2960)
+
+		terceiro e ultimo fragmento do pacote 10550
+
+		frag 10550:48@2960
+			48
+				tamanho do payload do fragmento
+			@2960
+				indica a posicao a partir da qual comeca o fragmento
+				como tem tamanho 48, vai da posicao 2960 ate a posicao 3007
+			ausencia de FLAG MF
+				indica que eh o ultimo fragmento do pacote e que nao virao outros
+
+	os outros tres pacotes de 4 a 6 estao sujeitos 'a mesma analogia, porem com uma mensagem de echo reply
+
+	OBSERVACAO!
+		como nos 3 primeiros pacotes temos as parcelas de dados com tamanhos iguais a 1480, 1480 e 48,
+			> respectivamente, temos entao um pacote original de tamanho 3008 bytes,
+			> que eh o tamanho padrao do echo request
+		quando esse pacote chega em uma rede de MTU de 1500 bytes, ha a necessidade de fragmentar o pacote!
+		NO ENTANTO, o calculo nao deve ser simplesmente a divisao de 3008 por 1500,
+			> (o que levaria a tres pacotes com tamanhos 1500, 1500 e 8).
+		isso esta errado, pois deve descontar a parcela do cabecalho IP que deve estar presente em cada fragmento
+			-> IP utiliza o cabecalho minimo de 20 bytes como padrao!
+		assim,
+			temos 3008 dividido por 1480, o que nos da tres fragmentos com tamanhos 1480, 1480 e 48!
+
+
+================
+OUTROS CONCEITOS
+
+	Wireshark
+		programa que analisa o trafego de rede
+		organiza o trafego por protocolos
+		possui funcionalidades parecidas com o tcpdump*, mas com interface grafica
+		* tcdump = ferramenta utilizada, via linha de comando, para monitorar pacotes trafegados em uma rede
+		eh possivel utilizar filtros na analise de trafego:
+			ex: verificar apenas o comportamento de um comando ICMP do tipo ECHO request
+			    -> icmp.type == 8
+		possibilita controlar o trafego de uma rede e saber tudo que entra e sai do computador
+
+	ping:
+		utilitario que utiliza o protocolo ICMP para testar a conectividade entre equipamentos
+		consiste no envio de pacotes para o equipamento de destino e na "escuta" das respostas
+		se o equipamento de destino estiver ativo, uma resposta eh devolvida ao computador solicitante
+		seus pacotes geralmente consistem em:
+			- tamanho do pacote utilizado
+			- nome do equipamento "pingado"
+			- numero de sequencia do pacote ICMP
+			- tempo de vida (TTL)
+			- latencia
+		exemplo de saida quando se "pinga" o servidor wikipedia.com:
+			$ ping -c 5 wikipedia.com
+			PING wikipedia.com (130.94.122.195): 56 data bytes
+			64 bytes from 130.94.122.195: icmp_seq=0 ttl=235 time=284.3 ms
+			64 bytes from 130.94.122.195: icmp_seq=1 ttl=235 time=292.9 ms
+			64 bytes from 130.94.122.195: icmp_seq=2 ttl=235 time=289.7 ms
+			64 bytes from 130.94.122.195: icmp_seq=3 ttl=235 time=282.4 ms
+			64 bytes from 130.94.122.195: icmp_seq=4 ttl=235 time=272.0 ms
+			--- wikipedia.com ping statistics ---
+			5 packets transmitted, 5 packets received, 0% packet loss
+			round-trip min/avg/max = 272.0/284.2/292.9 ms
+		basicamente consiste no envio de uma mensagem echo request e no recebimento de uma mensagem echo reply
+
+	ICMP type 8  = echo request
+	ICMP type 11 = TTL exceeded
+
+	conexao TCP completa:
+		para se ter uma conexao completa, depende-se:
+			- do estabelecimento atraves das flags SYN e ACK
+		!	- e do encerramento com as flags FIN e ACK
+
+	MSS
+		Maximum Segment Size
+		se refere ao tamanho maximo suportado de um payload
+
+	retransmissao rapida - caracteristicas:
+		- recebimento de 3 acks consecutivos requisitando o mesmo pacote,
+			> apos o envio de um fluxo de pacotes independendo de confirmacao
+		- envio imediato de pacote requisitado
+		obs: o parametro de 3 acks eh padrao, mas configuravel
+
+	TTL:
+		time to live
+		determina o NUMERO DE SALTOS entre maquinas que os pacotes podem demorar em uma rede antes de serem descartados
+		numero maximo: 255
+		todo roteador desconta uma unidade no valor do TTL dos pacotes que o atravessam
+		ao atingir o valor 0, o pacote eh descartado e o host de origem eh alertado atraves de uma mensagem ICMP TIME_EXCEEDED
+		os TTL padrao dos SOs sao mais do que suficientes para alcancar quaisquer hosts em termos de quantidade de saltos na Internet
+		se ha uma ocasiao de TTL exceeded, 2 sao as possibilidades:
+			- alteracao do TTL padrao nos SOs, sendo esse valor insuficiente
+			- loop na rede
+
+	porta 80 -> provavelmente requisicoes web, atraves do protocolo HTTP
+
+	fragmentacao:
+		ocorre quando um pacote possui dados de tamanho maior do que o suportado pelo pacote IP
+		assim, deve ser dividido e enviado em mais de um pacote (fragmentos)
+
+	loop de roteamento:
+		condicao em que um pacote eh transmitido continuamente em uma serie de roteadores,
+			> sem sequer alcancar sua rede de destino desejada
+		o loop pode ser resultado de:
+			- rotas estaticas configuradas incorretamente
+			- rota configurada incorretamente - "redistribuicao"
+			- tabelas de roteamento inconsistentes que nao estao sendo atualizadas
+			- rotas de descarte incorretamente instaladas ou configuradas
+
+	traceroute:
+		ferramenta de diagnostico que rastreia a rota de um pacote
+		utiliza o ICMP de maneira semelhante ao ping
+
+
+
+-------------------------------
+EXEMPLO 2 DE ANALISE DE TRAFEGO
+
+	10.0.0.1:80 > 10.0.0.2:52209 [PSH, ACK] Seq=1 Ack=1 Win=17376 Len=2
+	10.0.0.1:80 > 10.0.0.2:52209 [PSH, ACK] Seq=3 Ack=1 Win=17376 Len=48
+	10.0.0.1:80 > 10.0.0.2:52209 [PSH, ACK] Seq=51 Ack=1 Win=17376 Len=1
+	10.0.0.1:80 > 10.0.0.2:52209 [PSH, ACK] Seq=52 Ack=1 Win=17376 Len=2
+	10.0.0.1:80 > 10.0.0.2:52209 [PSH, ACK] Seq=54 Ack=1 Win=17376 Len=48
+	10.0.0.2:52209 > 10.0.0.1:80 [ACK] Seq=1 Ack=1 Win=7896 Len=0
+	10.0.0.2:52209 > 10.0.0.1:80 [ACK] Seq=1 Ack=3 Win=7896 Len=0
+	10.0.0.2:52209 > 10.0.0.1:80 [ACK] Seq=1 Ack=3 Win=7896 Len=0
+	10.0.0.2:52209 > 10.0.0.1:80 [ACK] Seq=1 Ack=3 Win=7896 Len=0
+	10.0.0.2:52209 > 10.0.0.1:80 [ACK] Seq=1 Ack=3 Win=7896 Len=0
+	10.0.0.1:80 > 10.0.0.2:52209 [ACK] Seq=3 Ack=1 Win=17376 Len=48
+
+comentarios:
+
+	a captura nao foi realizada no host 10.0.0.2 :
+		se tivesse sido feita, nao faria sentido esse host fazer as sucessivas requisicoes de reenvio do pacote 2
+	a captura ocorreu em algum ponto intermediario que possibilitou a captura do pacote numero 2,
+		e posteriormente houve a perda desse pacote ANTES de chegar no host 10.0.0.2
+
+
+-------------------------------
+EXEMPLO 3 DE ANALISE DE TRAFEGO
+
+	1 0.000000 00:02:b3:af:36:96 -> ff:ff:ff:ff:ff:ff ARP Who has 10.0.0.1? Tell 10.0.0.36
+	2 0.000077 00:02:b3:af:36:96 -> ff:ff:ff:ff:ff:ff ARP Who has 10.0.0.2? Tell 10.0.0.36
+	3 0.000159 00:02:b3:af:36:96 -> ff:ff:ff:ff:ff:ff ARP Who has 10.0.0.3? Tell 10.0.0.36
+	4 0.000236 00:02:b3:af:36:96 -> ff:ff:ff:ff:ff:ff ARP Who has 10.0.0.4? Tell 10.0.0.36
+	...
+	seguem-se 251 linhas semelhantes ate o endereco 10.0.0.255 ser atingido
+
+	-> o trafego reportado nesta captura eh consistente com a fase preparatoria de varios ataques,
+		entre os quais se encontra o de ARP spoofing (ou ARP cache poisoning ou ARP poison routing)
+
+	neste caso, o host de endereco MAC 00:02:b3:af:36:96 envia uma mensagem de broadcast (ff:ff:ff:ff:ff:ff)
+		> para todos os dispositivos da rede tentando descobrir qual o endereco MAC
+		> de cada dispositivo, desde o 10.0.0.1 ate o 10.0.0.255,
+		> informando que a resposta deve ser encaminhada ao host 10.0.0.36
+
+	tipo de consulta rotineira para mapeamento de dispositivos uma vez que se necessita
+		> enviar um quadro e nao se conhece o endereco MAC de destino
+
+	no entanto, o dispositivo 10.0.0.36 esta realizando a consulta
+		> nao apenas para descobrir o enredeco MAC de um dispositivo,
+		> mas realiza a consulta para todos os enderecos da rede,
+		> com o objetivo de mapear todas as informacoes possiveis na rede
+
+	de posse de todas essas informacoes, o atacante pode gerar uma serie de ataques
+
+	um desses ataques eh o ARP spoofing, por exemplo,
+		> que consiste em utilizar o endereco MAC de um outro dispositivo para enganar os demais.
+	o objetivo deste ataque eh associar o MAC do atacante com o endereco IP de outro host,
+		> como o IP do gateway padrao, por exemplo
+	no caso do gateway padrao, possibilitar-se-ia ao atacante
+		- alterar o envio de trafego do gateway para si proprio
+		- interceptar quadros em uma rede
+		- modificar o trafego ou mesmo para-lo
+
+

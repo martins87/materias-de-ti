@@ -1,0 +1,8 @@
+MAC address
+	formato do MAC: 48 bits  -->>  6 bytes
+	sao expressos na forma hexadecimal, por exemplo: 24:6E:2A:91:41:D1
+	a primeira metade identifica o fabricante da placa, e a segunda metade um numero serial
+	atual na camada de Enlace
+!!	usado para controle de acesso em redes
+	broadcast: FF:FF:FF:FF:FF:FF
+	cada estacao em uma rede Ethernet tem seu proprio NIC (Network Interface Card) com endereco MAC de 6 bytes (48 bits)

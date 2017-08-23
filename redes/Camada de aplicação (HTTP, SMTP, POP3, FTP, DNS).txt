@@ -1,0 +1,275 @@
+===================
+CAMADA DE APLICACAO
+
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=
+PROTOCOLOS DE APLICACAO
+
+
+=-=
+SSH : 22
+
+	chaves publicas
+	permite a conexao com outro computador na rede de forma a permitir execucao de comandos em uma unidade remota
+
+
+=-=-=
+LDAP: 389
+
+	arquivo de configuracao: /etc/ldap/slapd.conf
+	contem 3 tipos de informacoes de configuracao:
+		informacoes globais
+		informacoes de backend
+		informacoes de banco de dados
+
+	Lightweight Directory Access Protocol - Protocolo Leve de Acesso a Diretorios
+!!	segue o modelo X.500
+	acesso de informacoes centralizadas em uma rede -> "catalogo telefonico de assinantes"
+	um diretorio LDAP tem uma estrutura de arvore. todas as entradas (objetos) tem uma posicao definida nessa hierarquia
+	essa hierarquia eh chamada de DIT - Directory Information Tree (arvore de informacao de diretorio)
+	o caminho completo 'a entrada desejada eh chamado DN - Distinguished Name
+		um unico nó no caminho para esta entrada eh chamado RDN - Relative Distinguished Name (nome distinto relativo)
+		ex:
+			/foo/bar/meuarquivo.txt	= DN
+			meuarquivo.txt		= RDN
+	objetos podem geralmente ser atribuidos a um ou dois tipos possiveis:
+
+		Container
+			objetos que podem conter outros objetos
+			este modelo eh comparavel 'as pastas em um sistema de arquivos
+			as classes de objetos sao:
+				- root		elemento raiz, que nao existe realmente
+				- c		país
+				- ou		unidade organizacional
+				- dc		domain component (componente de dominio)
+				- cn		common name
+				- mail		e-mail
+				- sn		surname (sobrenome)
+		Folha
+			estao no final de uma ramificacao
+			nao tem objetos subordinados
+			exs: person, InetOrgPerson, groupOfNames
+
+	o topo da hierarquia de diretorio tem um elemento root, que pode conter c, dc, ou
+
+	permite o armazenamento seguro das informacoes, de forma que caso o arquivo seja violado, as informacoes nao serao acessadas facilmente
+	senhas podem ser armazenadas em
+		plain text;
+		criptografadas; ou
+		em algoritmos HASH
+!!	possibilita que um usuario possua [mais de uma senha], armazenada em diversos formatos =)
+	caso aconteca o "match" de algumas senhas, considera-se o usuario autenticado
+
+	para guardar informacoes da [tabela de niveis de log], basta SOMAR os niveis que se deseja guardar
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+SNMP - Simple Network Management Protocol
+
+	protocolo para gerenciar redes
+	camada de APLICACAO
+
+	formado por 3 componentes:
+		NMS - sistema de gerenciamento de redes		eh o software. ex: Nagios
+		dispositivos gerenciados			os dispositivos efetivamente gerenciados: roteadores, comutadores, servidores...
+		agentes/subagentes				modulo do software de gestao que fica armazenado em cada dispositivo gerenciado
+
+	comandos definidos:
+		GET		obter valor
+		SET		configurar um valor
+		TRAP		reporta uma notificacao do dispositivo para o NMS
+
+	MIB - Management Information Base:
+		conjunto de todos os objetos SNMP
+		estao localizadas nos subagentes de forma hierarquizada
+
+	Daemon cliente:
+		processo que roda em background no lado do cliente
+		nao instalavel
+	Agente mestre:
+		recurso a ser instalado no gerente
+
+-----
+WHOIS
+	protocolo TCP que serve para consulta de dominios e DNS
+
+
+---------------------------------------
+HTTP (hipertext transfer protocol) : 80
+	transporta paginas web para os navegadores
+	hipertexto - ligacao entre os sites
+	link - endereco a ser visitado
+	caracteristicas:
+		protocolo de categoria "solicitacao e resposta"
+		utilizado na WWW (world wide web)
+		metodos POST e GET
+		opera em nivel da camada de APLICACAO
+	URL: localizador uniforme de recursos / uniform resource locator
+		protocolo://maquina/caminho/recurso
+		www.site.com.br
+			www: subdominio
+			site: dominio
+			com: DPN (Dominios de Primeiro Nivel):
+				- genericos (com, eco, net)
+				- pessoas fisicas (blog, flog, wiki)
+				- universidades (edu)
+				- pessoas juridicas (jus, art, esp)
+			br: localizacao do registro
+		www e www2 = dois subdominios diferentes - balanceamento de carga
+		:: caso do bate papo uol:
+			vai pro subdominio www2 pra dividir as cargas de requisicoes de servicos diferentes
+			mas o dominio eh o mesmo: uol
+		divisao:
+			para evitar muita carga em servidor;
+			ou para servicos diferentes
+
+
+-----------
+HTTPS : 443
+:: criptografia
+	HTTP + camada adicional de seguranca que utiliza o protocolo SSL/TLS
+	criptografia de chaves PUBLICAS
+	transferencia de dados atraves de conexao CRIPTOGRAFADA
+	verificacao de autenticidade de servidor e cliente
+
+	cadeado: CERTIFICADO DIGITAL
+	HTTPS: protocolo de seguranca
+
+
+----------------------------------------------------
+FTP
+	transfere arquivos entre computadores - download/upload
+	forma rapida e versatil de transferir arquivos
+	permite operacoes sobre arquivos
+	portas:
+		21 - comunicacao
+		20 - transferencia de dados
+
+	conexao de controle:
+		cliente realiza conexao TCP com a porta 21 do servidor
+		esta conexao eh utilizada para administracao da sessao entre cliente e servidor (comandos, identificacao, senhas)
+
+	conexao de dados:
+		segunda conexao que eh estabelecida na porta 20 do servidor e em alguma porta do cliente
+
+	a transferencia de dados pode ser feita em qq um dos 3 modos a seguir:
+		- fluxo
+			dados sao enviados como um fluxo continuo, liberando o protocolo de fazer algum processamento
+			ao inves disso, todo processamento eh deixado para o TCP
+			nenhum indicador de fim de arquivo eh necessario
+		- bloqueio
+			quebra-se o dado em varios blocos e entao passa-o para o TCP
+		- comprimido
+			dado eh comprimido utilizando-se um algoritmo simples de compressao
+
+	acesso aos servidores FTP:
+		pode ocorrer tanto atraves de interface grafica ou atraves de linha de comando
+		tanto usuarios Linux como usuarios Windows podem acessar atraves dos dois modos
+		atraves de qualquer navegador credenciado tambem eh possivel aceder a um servidor FTP
+			> digitando na barra de enderecos:
+				ftp://[username]:[password]@[servidor]
+				ou
+				ftp://[username]:[password]@[servidor]:[porta]
+
+---------
+TFTP : 69
+
+
+---------------------------------
+SMTP : 25 ou 587 (modo seguro!!!)
+	simple mail transfer protocol
+	protocolo apenas para ENVIO de e-mail
+	- cliente de correio: outlook, thunderbird
+	- webmail: gmail, yahoomail, outlook.com
+	formato:
+		protocolo.provedor.com.br
+		ex: smtp.correio123.com.br
+
+----------
+POP3 : 110
+	RECEBER e-mail
+	acesso a uma unica caixa de entrada
+	pega as msgs do servidor e traz localmente (pra maquina do usuario)
+	utiliza o TCP para lidar com os pacotes (garantia de entrega de pacotes)
+	formato:
+		protocolo.provedor.com.br
+		ex: pop3.correio123.com.br
+
+
+----------
+IMAP : 143
+	protocolo dos webmails modernos
+	permite manipulacao de msgs diretamente NO SERVIDOR >> gmail
+!!	pode ser usado tanto por [clientes de e-mail] quanto por [webmail], permitindo a criacao de pastas no servidor
+	pode fazer papel de POP, recebendo e-mails
+	entre seus recursos podemos citar:
+		recuperacao seletiva de partes de mensagens
+		recuperacao completa de mensagens
+
+
+--------
+DNS : 53
+	domain name service
+	sistema de gerenciamento de nomes HIERARQUICO
+	opera segundo duas definicoes:
+		examinar e atualizar seu banco de dados
+		resolver nomes de dominios em enderecos de rede IP: localhost em 127.0.0.1
+	tabela associando nomes e IPs
+	exemplo:
+		um programa de e-mail (thunderbird) chama o RESOLVER, passando o nome como parametro (ex: martinsda@gmail.com)
+		RESOLVER envia um pacote UDP (velocidade) a um servidor DNS local
+		o DNS local procura o nome e retorna o endereco IP ao RESOLVER
+		RESOLVER retorna o endereco IP ao programa de e-mail que fez a chamada
+		de posse do endereco IP o cliente entao estabelece uma conexao TCP com o destino
+
+	hierarquia de dominios:
+		os nomes do DNS sao processados da direita para a esquerda
+		usam pontos como separadores
+		existem dominios para cada pais (br, pt, fr, de, ...)
+			> e mais os "seis grandes": edu, com, mil, gov, org, net
+
+		https://infrasemmisterios.files.wordpress.com/2012/05/dns.jpg
+		https://technet.microsoft.com/cc160825.fig01(en-us).gif
+		http://www.cisco.com/web/about/security/images/csc_child_pages/domain-name-space.gif
+
+	zona direta:
+		nomes -> IP
+
+	zona inversa/reversa:
+		IP -> nomes
+		inverte a ordem dos octetos do ip
+
+	cada zona tem um servidor/arquivo AUTORITARIO, que eh o arquivo principal DNS daquela zona
+	cada outro servidor/arquivo sera chamado [secundario]
+	transferencia de zona:
+		copia do arquivo de zona do servidor primario para os servidores secundarios
+		completa (AXFR) ou incremental (IXFR)
+
+
+Registros DNS:
+	A		registro central de um DNS. possui os enderecos IPs relativos aos respectivos nomes de servidor. localhost -> 127.0.0.1
+
+	AAAA		executa a mesma funcao que A, porem para um endereco IPv6
+
+	PTR		pointer. aponta o caminho inverso: dado um endereco IP retorna o nome de servidor relacionado a ele
+
+	MX		aponta os servidores responsaveis pelo recebimento de e-mail em um dominio
+			quando ha mais de um servidor responsavel, eh possivel [estabelecer prioridade] entre esses servidores
+
+	CNAME		canonic name. especifica um apelido (alias) para o hostname (A). eh uma forma de redirecionamento
+
+	SPF		Sender Policy Framework. tentativa de controle de falsos e-mails
+			permite ao administrador de um dominio definir os enderecos das maquinas autorizadas a enviar mensagens desse dominio
+
+	TXT		text. permite incluir um texto curto em um hostname. tecnica utilizada para implementar o SPF
+
+	NS		Name Server. especifica servidores DNS para o dominio ou subdominio
+			pelo menos 2 registros NS devem ser definidos para cada dominio: geralmente um primario e um secundario
+
+	SOA		start of authority. indica o responsavel por um dominio
+
+	SRV		service. permite definir localizacao de servicos disponiveis em um dominio, inclusive seus protocolos e portas
+

@@ -1,0 +1,135 @@
+=-=-=-=-=-=-=-=-=-=-=-
+CABEAMENTO ESTRUTURADO
+
+	http://s11.postimg.org/wkejfmu03/cabeamento.png
+
+	0. Interligacao Externa					faz a interligacao entre predios distintos
+	1. Entrada do Edificio (EF - Entrance Facilities)	ponto de interligacao entre o cabeamento externo e o interno (intra-edificio)
+	2. Sala de Equipamentos	(ER - Equipment Room)		area reservada aos principais equipamentos ativos da rede: servidores, roteadores, PABX..
+	3. Cabeamento Backbone (BC - Backbone Cabling)		interliga as salas de telecomunicacaoes 'as salas de equipamentos
+	4. Sala de Telecomunicacoes (Telecommunications Room)	acomoda equipamentos e terminadores de distribuicao. interliga o backbone ao horizontal
+	5. Cabeamento Horizontal (HC - Horizontal Cabling)	interliga a sala de telecomunicacoes 'as areas de trabalho (geralmente mesmo andar do predio)
+	6. Area de Trabalho (WA - Work Area)			area fisica destinada aos postos de trabalho (computadores, impressoras, telefones...)
+
+patch cords: (pigtail)
+	interligam os switches ao patch panel, geralmente em um mesmo rack
+	essa conexao permite versatilidade na manutencao e mudanca de segmentos e hosts diretamente no rack
+	nao deve ser maior que 6 metros
+	produzidos em varias cores, para serem distinguidos
+
+cabeamento horizontal:
+	toda sua extensao possui limite de 90m, desde o patch panel na sala de telecomunicacoes 'a tomada de distribuicao na area de trabalho
+
+tomadas:
+	devem possuir pelo menos 2 tipos de acesso: voz e dados
+	deve haver pelo menos uma tomada para cada area de trabalho de 10m2
+	comprimento maximo do cabo da tomada ate o computador: 3 metros
+
+
+regra 5-4-3:
+	define a forma de distribuicao de repetidores na rede
+	5 segmentos no total
+	4 repetidores
+	3 segmentos populados por maquinas
+
+
+
+raio de curvatura MINIMO
+	+ para instalacao de cabo de fibra optica multimodo
+	+ de 2 fibras
+	+ utilizado no sistema de cabeamento horizontal
+	+ sem carga mecanica:
+		25mm
+
+para cabos de 2 ou 4 fibras sob uma carga de 222N:
+	50mm
+
+todos os demais cabos de plantas internas devem suportar um raio de curvatura:
+	10 vezes o diamentro externo do cabo -> sem nenhuma carga
+	15 vezes o diamentro externo do cabo -> com carga ate o limite avaliado
+	
+
+
+
+cabo coaxial:	http://bit.ly/1I2Gtnf									
+		http://bit.ly/19DPOXl
+
+
+==================
+Cabos par trancado:
+
+Cat5		UTP		ate 100MHz		Fast Ethernet 100 Mbps, mas tbm Gigabit Ethernet			^ maior flexibilidade, menos rigidos
+Cat5e *		UTP		ate 125MHz		Gigabit Ethernet							|
+Cat6		UTP		ate 400MHz		Gigabit Ethernet 10 Gbps	max 55m em redes 10 Gps Ethernet	|
+Cat6a		UTP		ate 625MHz											|
+Cat 7		UTP**		ate 700MHz											|
+																|
+*e de Enhanced (melhorado)
+**UTP = unshielded twisted pair = cabos SEM BLINDAGEM
+
+
+blindagem:
+	UTP	unshielded twisted pair
+	FTP	foiled twisted pair			nao trata o crosstalk (interferencia entre os pares de cabos)
+	STP	shielded twisted pair			blindagem para cada par. reduz o crosstalk
+	SSTP	screened shielded twisted pair		blindagem envolta dos pares e em cada par. deve ser usado em ambientes com mta interferencia externa
+
+!!	maior a faixa de frequencia, menor a atenuacao		!!
+
+
+STP (Shielded Twisted Pair)
+
+	https://desamarrandoarede.files.wordpress.com/2012/04/preview0051.png
+	https://miguelpape.files.wordpress.com/2010/11/stp.jpg
+	.
+	nao ultrapassa 100m
+	pode ser full-duplex
+	indicado para ambientes com influencia de RUIDO EXTERNO
+	mais caro $$$ e pesado
+
+
+
+cross-over
+	eh um cabo de par trancado modificado para redes ponto-a-ponto
+
+	http://4.bp.blogspot.com/-TYluWC9rQ08/Td8C5DGa29I/AAAAAAAAAHY/GWocyOHpDpI/s1600/25.jpg
+
+
+
+Importante:
+!!	Cat 5, 5e, 6, 6a... todos possuem 4 pares trancados!!!
+	Cat6 sao MAIS RIGIDOS
+!!	todos os cabos de par trancado possuem a limitacao de 100m
+	Cat6 podem ser usados em Fast Ethernet, mas fazer isso eh burrice, ja que:
+		ele tem capacidade para Gigabit Ethernet
+		e o Cat5 eh mais barato para Fast Ethernet
+
+
+
+Cabeamento Ethernet:
+	Nome		Cabo			Tamanho max	Tecnologia/velocidade		Vantagens
+
+	10Base5		coaxial grosso		500m		Ethernet 10Mbps			obsoleto, cabo original
+	10Base2		coaxial fino		185m		Ethernet 10Mbps			sem necessidade de hubs
+	10Base-T	par trancado		100m		Ethernet 10Mbps			sistema mais economico
+	10Base-F	fibra optica		2km		Ethernet 10Mbps			melhor entre edificios
+
+
+Padrao		Comprimento de onda	Distancia	Caracteristicas
+
+100 BASE-SX	850 nm			550 m		Fibra optica multimodo
+100 BASE-FX	1310 nm			400m ou 2km	Fibra optica multimodo
+1000 BASE-SX	850 nm			550 m		Fibra optica multimodo
+
+100 BASE-LX	1310 nm			5 km		Fibra optica monomodo
+100 BASE-LX10	1310 nm			10 km		Fibra optica monomodo
+100 BASE-BX	1310 e 1550 nm		10 km		Fibra optica monomodo
+1000 BASE-EX	1310 nm			40 km		Fibra optica monomodo
+1000 BASE-ZX	1550 nm			70 km		Fibra optica monomodo
+
+
+1000Base
+	-SX	550m	multimodo
+	-LX	5km	monomodo
+	-EX	40km	monomodo
+	-ZX	70km	monomodo

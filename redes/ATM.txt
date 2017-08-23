@@ -1,0 +1,13 @@
+--------------------------------
+ATM - Assyncronous Transfer Mode
+	tecnica de comunicacao de dados baseada em [comutacao de celulas] de alta velocidade
+	os dados trafegam em pacotes de tamanho fixo chamado celulas
+	pacotes de tamanho fixos de 53 bytes
+	nao depende de nenhuma topologia de rede especifica
+	dispoe de controle de erros e controle de fluxo
+	eh dito um modelo por si só, com uma estrutura tridimensional de 3 camadas
+	elimina os atrasos variaveis associados a pacotes de tamanhos diferentes
+	eh capaz de lidar com transmissao em tempo real
+	as celulas tem 53 bytes
+		5 bytes de cabecalho
+		48 bytes de carga util

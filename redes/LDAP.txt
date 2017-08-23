@@ -1,0 +1,48 @@
+=-=-=
+LDAP: 389
+
+	arquivo de configuracao: /etc/ldap/slapd.conf
+	contem 3 tipos de informacoes de configuracao:
+		informacoes globais
+		informacoes de backend
+		informacoes de banco de dados
+
+	Lightweight Directory Access Protocol - Protocolo Leve de Acesso a Diretorios
+!!	segue o modelo X.500
+	acesso de informacoes centralizadas em uma rede -> "catalogo telefonico de assinantes"
+	um diretorio LDAP tem uma estrutura de arvore. todas as entradas (objetos) tem uma posicao definida nessa hierarquia
+	essa hierarquia eh chamada de DIT - Directory Information Tree (arvore de informacao de diretorio)
+	o caminho completo 'a entrada desejada eh chamado DN - Distinguished Name
+		um unico nó no caminho para esta entrada eh chamado RDN - Relative Distinguished Name (nome distinto relativo)
+		ex:
+			/foo/bar/meuarquivo.txt	= DN
+			meuarquivo.txt		= RDN
+	objetos podem geralmente ser atribuidos a um ou dois tipos possiveis:
+
+		Container
+			objetos que podem conter outros objetos
+			este modelo eh comparavel 'as pastas em um sistema de arquivos
+			as classes de objetos sao:
+				- root		elemento raiz, que nao existe realmente
+				- c		país
+				- ou		unidade organizacional
+				- dc		domain component (componente de dominio)
+				- cn		common name
+				- mail		e-mail
+				- sn		surname (sobrenome)
+		Folha
+			estao no final de uma ramificacao
+			nao tem objetos subordinados
+			exs: person, InetOrgPerson, groupOfNames
+
+	o topo da hierarquia de diretorio tem um elemento root, que pode conter c, dc, ou
+
+	permite o armazenamento seguro das informacoes, de forma que caso o arquivo seja violado, as informacoes nao serao acessadas facilmente
+	senhas podem ser armazenadas em
+		plain text;
+		criptografadas; ou
+		em algoritmos HASH
+!!	possibilita que um usuario possua [mais de uma senha], armazenada em diversos formatos =)
+	caso aconteca o "match" de algumas senhas, considera-se o usuario autenticado
+
+	para guardar informacoes da [tabela de niveis de log], basta SOMAR os niveis que se deseja guardar

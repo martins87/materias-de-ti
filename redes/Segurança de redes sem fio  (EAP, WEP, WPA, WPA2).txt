@@ -1,0 +1,131 @@
+redes sem fio (wireless)
+
+padrao IEEE 802.11
+
+	802.11a		5GHz	54Mbps		mais caro!
+	802.11b		2.4GHz	11Mbps		ganhou o mercado =)
+	802.11n		5GHz	ate 600Mbps
+
+802.11n:
+	5GHz
+	quatro antenas para transmissao
+	recepcao de ate 4 fluxos de informacao ao mesmo tempo
+	MIMO (multiple in multiple out)
+	ate 600Mbps 
+
+o padrao 802.11 estabelece que cada LAN sem fio estabeleca 9 servicos, divididos em 2 categorias:
+
+	5 servicos de distribuicao
+		associacao		usado pelas estacoes moveis* para conecta-las 'as estacoes base
+		desassociaco		estacao movel usa este servico antes de se desligar/sair
+		reassociacao		rola qndo cliente volta a se associar a um Access Point apos ter saido dele
+		distribuicao		determina como rotear quadros enviados ao AP
+		integracao		cuida da conversao de formatos, qndo quadros sao enviados por outros que nao o 802.11
+	4 servicos intracelula
+		autenticacao		estacao deve se autenticar antes de ter permissao para transmitir dados
+		desautenticacao		estacao autenticada anteriormente quer sair da rede. qndo sair, NAO PODE MAIS utilizar a rede
+		privacidade		criptografia!
+		entrega de dados	802.11 oferece meio para transmissao e recepcao de dados
+
+* estacao movel: maquina em movimento, indo de uma rede a outra
+
+
+======================
+PADROES CRIPTOGRAFICOS
+
+
+EAP
+	https://technet.microsoft.com/pt-br/library/cc782159(v=ws.10).aspx
+	https://technet.microsoft.com/pt-br/library/cc770622(v=ws.11).aspx
+
+	"Extensible Authentication Protocol"
+	eh uma estrutura de autenticacao [frequentemente usada em redes sem fio] e conexoes ponto-a-ponto
+	foi desenvolvido originalmente para trabalhar com o protocolo PPP
+	possui 4 tipos de mensagens basicas que sao usadas durante a conexao:
+		Requisicao, Resposta, Sucesso e Falha
+	pode utilizar chave privada/simetrica ou chave publica/assimetrica
+
+	chave secreta:
+		suplicante e servidor possuem uma chave secreta compartilhada
+		gera um resumo para verificacao de integridade
+		nao prove autenticacao, sujeito ao MAN IN THE MIDDLE
+	!	implementacao mais comum deste tipo eh a EAP-MD5, que usa a funcao hash MD5
+
+	chave publica:
+		existe uma autoridade certificadora que possui a chave publica do suplicante e a publica do servidor
+		servidor envia o desafio encriptado com sua chave privada,
+			que eh descriptado pelo suplicante com a chave publica do servidor
+		caso o processo seja bem sucedido, eh imune ao ataque man in the middle
+	!	ex de implementacao: EAP-TLS, que utiliza o algoritmo de criptografia assimetrica RSA
+
+	esta definida na RFC 3748
+	protocolo que apenas define os formatos das mensagens
+	EAP eh largamente utilizada:
+		para IEEE 802.11 os padroes WPA e WPA2 adotaram 5 tipos EAP com seus mecanismos de autenticacao oficial
+		muitos outros padroes permitem sua utilizacao
+
+
+WEP
+	"Wired Equivalent Privacy"
+	vulneravel!!!!
+	algoritmo RC4 para criptografia
+	funcao de deteccao de erros CRC-32
+
+TKIP
+	"Temporal Key Integrity Protocol"
+	algoritmo de criptografia baseado em CHAVES QUE SE ALTERAM a cada novo envio de pacote
+	mudanca de chaves garante mais seguranca
+	tambem utiliza o RC4
+
+WPA e WPA2
+	"Wi-fi Protected Access"
+	segue o padrao 802.11i
+	substitui formalmente o WEP
+	utiliza o AES (advanced encryptation standard) junto com o TKIP com chave de 256 bits, sendo uma ferramenta mais poderosa
+
+-->>  WPA2 com AES  >  WPA com AES  >  WPA com TKIP  >  WEP
+
+
+
+	!!	a certificacao Wi-fi eh exclusiva para equipamentos que oferecem PELO MENOS a protecao WPA	!!
+
+
+
+
+
+
+Obstaculos 'as redes wireless
+
+	superficies metalicas: grades, janelas, portas metalicas, lajes, vigas..
+	materiais densos, como CONCRETO e PEDRA
+	corpos com grande concentracao de agua, como aquarios, pessoas (somos 70% agua)
+	fornos de microondas, pois operam a 2.4 GHz (a mesma das redes wireless)
+	telefones sem fio (2.4 GHz) tambem interferem, mesmo em menor grau
+
+
+
+TOPOLOGIA DE REDES SEM FIO
+
+
+	Ad-Hoc / Independent Basic Service Sets (IBSS)
+		rede que nao possui no central
+		basicamente eh uma peer-to-peer
+		imaginar:
+			(   No   ()   No   )
+			(        ) eh a area do sinal de cada um dos nos
+			() eh o ponto onde os sinais se interceptam e a conexao eh possivel
+		aumento de nos na rede pode levar a interferencia e falhas na comunicacao
+
+	BSS (Basic Service Set)
+		unico Access Point, ao qual varios dispositivos se comunicam
+		ex: a rede domestica, com um roteador
+		possui um unico identificador (SSID)
+
+	ESS (Extended Service Set)
+		varias BSS interligadas por seus APs
+		apesar de existirem varios APs, o SSID eh [O MESMO PARA TODOS], pois eh a mesma rede
+		ex: rede de aeroportos
+
+!! problema das redes LAN sem fio:
+!!	apresentam atenuacao multiponto
+!!	uns interferem nos outros

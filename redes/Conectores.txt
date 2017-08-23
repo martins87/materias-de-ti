@@ -1,0 +1,10 @@
+=-=-=-=-=-
+CONECTORES
+
+	RJ11		internet/linha de telefone		fios telefonicos de 2 pares	http://bit.ly/1JBBI6Y
+			tem a cabeca menor que o RJ45
+
+	RJ45 (8P8C)	usado em cabo de par trancado		cabos de rede de 4 pares	http://bit.ly/1c691S1
+			> de 8 vias para rede de dados
+
+	BNC		utilizado em cabos coaxiais						http://bit.ly/1KhLuvm

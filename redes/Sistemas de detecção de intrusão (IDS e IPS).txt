@@ -1,0 +1,161 @@
+
+Diferenca dos dois sistemas pro firewall:
+
+	firewall examina apenas dados DO CABECALHO e os bloqueia, caso o pacote nao se adeque 'as regras de seguranca
+	o IDS (ou IPS) examina o conteudo (payload) dos pacotes, fazendo um exame mais minucioso
+	analogia:
+		seguranca do predio (firewall) deixa o carteiro (pacote) entrar
+		IDS examina o conteudo da caixa (payload) que o carteiro traz
+		assim, deixa ou nao o pacote entrar no predio
+
+	firewall (filtro de pacotes)	inspeciona apenas o cabecalho dos datagramas
+	IDS				inspeciona integralmente os datagramas, mas *nao bloqueia* o trafego indesejado
+	IPS				inspeciona integralmente os datagramas e REAGE bloqueando o trafego indesejado
+
+	acabou que o IPS dominou a cena, pois eh melhor prevenir do que remediar (detectar)
+
+
+conceitos:
+
+	Trafego suspeito detectado
+		funcionamento normal do equipamento, onde o trafego suspeito foi de fato detectado
+
+	Trafego suspeito nao detectado / Falso Negativo / "PENETRA"
+		quando ouvir "negativo" pensar na resposta para "foi bloqueado?"
+		se a resposta eh negativo, quer dizer que eh trafego normal
+		mas como eh falso negativo, quer dizer que era pra ser acusado um fato suspeito, MAS NAO FOI
+		analogia: um penetra esta na festa mas nao deveria estar
+
+	Trafego legitimo acusado como suspeito / Falso positivo
+		mesma linha de pensamento
+		detectou como ameaca, mas eh na verdade um trafego comum
+		analogia: convidado comum da festa foi confundido com um penetra
+
+	Trafego legitimo considerado legitimo
+		situacao normal
+
+
+
+================================
+IDS - Intrusion Detection System
+
+	atua de forma preventiva
+	analogia: lembrar de um alarme, que acusa uma ocorrencia
+	apenas detecta e registra atividades suspeitas
+	atua na maioria das vezes com "Base de conhecimento" - o que pode e o que nao pode, simplesmente
+	vale lembrar que a eficiencia da atuacao na base de conhecimento depende de [atualizacao constante da base]
+	um dos principais IDS usados: SNORT*
+!	para o CESPE, o IDS nao eh capaz de bloquear ataques
+	pode ser categorizado em 3 tipos:
+
+		NIDS (Network-Based IDS)
+			buscam atuar a nivel de rede, analisando o trafego de entrada e saida
+			eh o tipo mais utilizado
+			vantagens:
+				se bem planejado, pode ser utilizado em pontos estrategicos da rede
+			!	atuando em modo passivo, nao impactam no desempenho da rede
+				dificeis de serem detectados por atacantes
+			desvantagens:
+				diante de trafego intenso, pode nao ser mto eficiente
+				switches e roteadores mais modernos ja possuem recursos de NIDS disponiveis
+			!	incapacidade de analisar informacoes criptografadas
+				incapacidade de bloquear o ataque, restando apenas a deteccao
+
+		HIDS (Host-Based IDS)
+			atuam a nivel de um host especifico (servidor ou maquina de usuario)
+			buscam analisar caracteristicas de acesso indevido da maquina, como:
+				tentativas de mudanca de perfil, variacoes de componentes fisicos, etc.
+			vantagens:
+				por monitorarem eventos localmente, sao mais especificos que os NIDS
+			!!	capacidade de tratar dados criptografados
+				nao sao afetados por elementos de rede como switches ou roteadores
+			desvantagens:
+				dificil configuracao, pois deve-se considerar as caracteristicas de cada estacao
+				podem ser derrubados por DoS
+				degracacao de desempenho na estacao
+
+		IDS baseado em pilhas
+			modelo novo
+			regra geral, tem sua integracao 'a pilha de protocolos TCP/IP
+			permite a analise dos pacotes 'a medida que sao desencapsulados nas diversas camadas
+			assim, pode-se detectar ataques ANTES da informacao passar para a camada superior,
+				> buscando evitar que chegue ate a aplicacao ou SO
+
+	Hybrid IDS:
+		um IDS pode atuar tanto como NIDS e HIDS
+		esse sao chamados Hybrid IDS - ou IDS hibrido
+
+	em regra, posiciona-se o IDS em paralelo na rede
+	isso significa que ele nao eh capaz de bloquear o trafego, como se ve na imagem:
+		http://s33.postimg.org/mok8pfoen/IDS.png
+
+	Modo Passivo:
+		simplesmente identifica um ataque, gera logs e alertas acusando o acontecido
+		cabera entao ao admin da rede atuar para bloquear o ataque
+
+	Modo Reativo:
+		tambem eh capaz de identificar, gerar logs e alertas, mas vai alem
+		envia comandos para o firewall (ou outros sistemas)
+			> para alterar suas regras de funcionamento de forma automatica para bloquear ataques futuros
+	!	importante: o ataque ja ocorreu! bloqueia-se apenas ataques futuros com caracteristicas semelhantes
+		ou seja: resolve o problema sozinho
+
+	-----------------------------------
+	Tecnicas de implementacao de um IDS
+
+		para efeito de implementacao do IDS, pode-se considerar 3 tecnicas basicas, descritas a seguir
+		perceba que as tres tecnicas mantem o principio do IDS de nao interferir diretamente no trafego
+		elas sao um posicionamento paralelo na rede, evitando que o IDS seja capaz de barrar trafego indesejado por si soh
+
+		1. Port Span
+			utiliza-se a porta do switch com maior capacidade de banda
+			redireciona-se todo o trafego das demais portas a essa
+			a esta porta esta conectado um IDS para coleta e analise de dados
+
+		2. Splitting Wire/Optical TAP
+			monitora o trafego de equipamentos conectados a switches
+			insere-se um equipamento especifico ou um simples hub
+				> entre o host que se deseja monitorar o trafego e o switch
+				> com vistas a realizar uma COPIA de modo nao intrusiva de dados e REMETER a um IDS
+
+			<---switch------(equipamento ou hub)------[host]
+
+		3. Port Mirror
+			espelhamento de uma porta especifica de um switch
+				> para uma outra porta a qual esta conectada o IDS
+
+	* SNORT:
+		software livre de deteccao de intrusao para redes
+		capaz de desenvolver analise de trafego em tempo real e registro de pacotes em redes IP
+		executa analise de protocolo, assim como busca e associa padroes de conteudo
+		pode ser usado para detectar uma variedade de ataques, como buffer overflows, stealth port scans, ataques CGI...
+
+
+
+=================================
+IPS - Intrusion Prevention System
+
+	atua de forma proativa
+	reage mediante uma situacao adversa, pois alem de detectar o trafego suspeito, eh capaz de trata-lo
+	atua na maioria das vezes com "Base de comportamento" - nao libera aquilo que tem comportamento suspeito
+	Base de comportamento:
+		busca desvios de comportamento dos usuarios, sistemas e trafego
+		foca na analise estatistica e heuristica
+	um IPS tambem pode ser baseado em ASSINATURAS (base de conhecimento)
+	capaz de bloquear ataques de forma ativa e preventiva
+	protege a rede contra ataques externos
+	se colocado 'a frente do firewall, pode barrar ataques antes que cheguem a ele
+
+!	para o CESPE, apenas o IPS utiliza "regras de BLOQUEIO de trafego"
+
+	como o IPS utiliza o metodo baseado em comportamento, resulta em uma taxa mais elevada de falsos positivos e negativos
+!	assim, nao possui alta precisao
+
+	-------------------
+	WIPS - Wireless IPS
+		capaz de monitorar espectro de ondas de radio de forma a identificar pontos de acesso
+			> que estejam tentando utilizar canais nao autorizados
+		uma vez que seja detectado, passa-se a atuar normalmente como um IPS,
+			> bloqueando o trafego diretamente ou passando tal funcao ao firewall da rede
+
+

@@ -1,0 +1,241 @@
+https://pt.wikipedia.org/wiki/Seguran%C3%A7a_de_rede
+
+http://www.teleco.com.br/tutoriais/tutorialwifiroubo/pagina_4.asp
+http://www.gta.ufrj.br/ftp/gta/TechReports/FMVC06.pdf
+https://pt.wikipedia.org/wiki/Amea%C3%A7as_a_computadores
+http://www.tecmundo.com.br/ataque-hacker/19600-os-4-ataques-hackers-mais-comuns-da-web.htm
+http://jeiks.net/wp-content/uploads/2013/10/Comp_Forense-Slide_08.pdf
+https://pt.wikipedia.org/wiki/Computa%C3%A7%C3%A3o_forense
+
+
+
+===============================
+ATAQUES A REDES DE COMPUTADORES
+
+	-> http://cartilha.cert.br/ataques/
+
+	fase preparatoria de varios ataques
+		utilizar exemplo da questao 16 da pag 21 da aula 19 PF
+
+	---------------------
+	motivos para ataques:
+		demonstracao de poder
+			mostrar a uma empresa que pode ser invadida ou ter os servicos suspensos
+			assim, os atacantes poderiam vender servicos ou realizar chantagem para que nao ocorra novamente
+		prestigio
+			vangloriar-se perante outros atacantes
+			disputa com outros atacantes ou grupos de atacantes
+		motivacao financeira
+			coletar e utilizar informacoes confidenciais de usuarios para aplicar golpes
+		motivacao ideologica
+			tornar inacessivel ou invadir sites que divulguem conteudo contrario 'a opiniao do atacante
+			divulgar mensagens de apoio ou contrarias a uma determinada ideologia
+		motivacao comercial/empresarial
+			tornar inacessivel ou invadir sites e computadores de empresas concorrentes
+			o objetivo seria impedir o acesso de clientes ou comprometer a reputacao da empresa rival
+
+	exploracao de vulnerabilidades
+		condicao que, quando explorada por um atacante, pode resultar em uma violacao de seguranca
+		exs: falhas no projeto, na implementacao ou configuracao de programas, servicos ou equipamentos de rede
+		um ataque de exploracao de vulnerabilidades ocorre quando um atacante,
+			> utilizando-se de uma vulnerabilidade,
+			> tenta executar acoes maliciosas, como invadir um sistema, acessar informacoes confidenciais,
+			> disparar ataques contra outros computadores ou tornar um servico inacessivel
+
+ATAQUES:
+
+	scan (varredura em redes)
+		tecnica que consiste em efetuar buscas minuciosas em redes, com objetivo de:
+			- identificar computadores ativos
+			- coletar informacoes sobre eles
+		exemplos de informacoes uteis: servicos disponibilizados e programas instalados
+		a varredura em redes e a exploracao de vulnerabilidades podem ser usadas de forma:
+			- legitima
+				por pessoas devidamente autorizadas,
+					> para verificar a seguranca de computadores e redes,
+					> e, assim, tomar medidas corretivas e preventivas
+			- maliciosa
+				por atacantes,
+					> para explorar as vulnerabilidades encontradas nos servicos disponibilizados
+					> e nos programas instalados para a execucao de atividades maliciosas
+
+
+	ip spoofing
+		ataque que consiste em mascarar (spoof) pacotes IP utilizando enderecos de remetentes falsificados
+		protocolo IP nao realiza verificacao do remetente
+		assim, torna-se trivial falsificar o endereco de origem atraves de manipulacao simples do cabecalho IP
+		ex:
+			ip do atacante: 1.1.1.1
+			ele manda um pacote com origem 3.3.3.3 para o destino 2.2.2.2
+			a vitima 2.2.2.2 recebe o pacote e acha que quem mandou foi o 3.3.3.3
+			a vitima 2.2.2.2 pode entao enviar pacotes para o host 3.3.3.3	
+
+
+	cross-site scripting/request forgery
+		permite atacantes executarem scripts no navegador da vitima, podendo "sequestrar" sessoes do usuario
+		objetivo: atacante forcar o navegador da vitima a criar requisicoes que a aplicacao vulneravel aceite como requisicoes legitimas
+		a vitima, que possui uma sessao ativa no browser, envia uma requisicao HTTP forjada a uma aplicacao web vulneravel,
+			> incluindo o cookie de sessao da vitima e qualquer outra informacao de autenticacao da sessao
+
+
+	phishing
+		pensar em "pescar uma vitima"
+		o objetivo eh se passar por uma instituicao conhecida e roubar dados da vitima
+		ex: e-mail "Irregularidade no cadastro de IRPF"
+
+
+	pharming
+		corrompe o DNS do navegador
+		ex:
+			vc digita o endereco de um site ("www.bb.com.br")
+			o malware muda o endereco, vai para outro site forjado
+			vc fornece seus dados nesse site forjado e tem eles roubados
+
+	man in the middle
+		objetivo de intrometer-se entre duas partes, fazendo-as pensar que estao falando somente entre si
+		as vitimas nao percebem que os dados estao sendo interceptados
+			-> podem fornecer informacoes sigilosas!
+		certificados falsos!
+		ex:
+			Alice quer falar com Bob, mas Mallory intercepta a comunicacao
+			1. Alice envia uma mensagem para Bob, que é interceptada por Mallory:
+				Alice: "Oi Bob, sou eu, Alice. Me passe a sua chave" -> Mallory	Bob
+			2. Mallory envia esta mensagem para Bob; Bob não pode dizer que não é realmente de Alice:
+				Alice	Mallory: "Oi Bob, sou eu, Alice. Me passe a sua chave" ->	Bob
+			3. Bob responde envia a Mallory sua chave de criptografia:
+				Alice	Mallory <- [Chave de Bob]	Bob
+			4. Mallory substitui a chave de Bob com a sua, e transmite isso para Alice, alegando que é a chave de Bob:
+				Alice	<- [Chave de Mallory] Mallory	Bob
+			5. Alice criptografa uma mensagem com o que ela acredita ser a chave de Bob, pensando que só Bob pode lê-lo:
+				Alice: "Me encontre no ponto de ônibus!" [Encriptada com a chave de Mallory] -> Mallory      Bob
+			6. Mas a msg foi criptografada com a chave de Mallory, que pode
+				> decifrá-la, lê-la, modificá-la (se desejar), re-criptografar com chave de Bob, e enviar a Bob:
+				Alice	Mallory: "Me encontre em uma van próxima ao rio!" [Encriptado pela chave de Bob] ->	Bob
+
+	sql injection
+		objetivo: fazer a aplicacao executar comandos indesejados ou permitir acesso a dados nao autorizados
+
+
+	e-mail spoofing (falsificacao de e-mail)
+		tecnica que consiste em ALTERAR CAMPOS DO CABECALHO de um e-mail
+			> de forma a aparentar que ele foi enviado de uma determinada origem
+			> quando, na verdade, foi enviado de outra
+	!	essa tecnica eh possivel devido a caracteristicas do protocolo SMTP
+			> que permitem que campos do cabecalho
+			> como "From:", "Reply-To" e "Return-Path" sejam falsificados
+		ataques deste tipo sao mto usados na propagacao de codigos maliciosos, envio de spam e golpes de phishing
+		exemplos de e-mails com campos falsificados sao aqueles recebidos como sendo:
+			- de alguem conhecido, solicitando que vc clique em um link ou execute algum arquivo
+			- do seu banco, solicitando que vc siga um link fornecido na propria mensagem e informe dados de sua conta bancaria
+			- do administrador do servico de e-mail que vc utiliza, solicitando informacoes pessoais
+		-> sempre tem uma bilada ali!
+
+
+	port scanning attack
+		ataque que realiza busca por portas abertas, para EXPLORAR VULNERABILIDADES
+		atacante manda pacotes para uma maquina variando a porta de destino,
+			> com o objetivo de *descobrir portas ativas*
+		com isso ele pode
+			ver quais servicos estao sendo utilizados (ex: se 80 tiver sendo usada, ta rolando requisicoes HTTP)
+			ter uma ideia do SO utilizado na maquina
+		um administrador tambem pode utilizar um port scanner para verificar a seguranca do sistema
+
+
+	sniffing (interceptacao de trafego)
+		tecnica que consiste em INSPECIONAR os DADOS TRAFEGADOS em redes de computadores
+			> por meio de programas especificos chamados sniffers
+		pode ser utilizada de forma:
+			- legitima
+				por administradores de redes, para detectar problemas, analisar desempenho
+				> e monitorar atividades maliciosas relativas aos computadores ou redes por eles administrados
+			- maliciosa
+				por atacantes, para capturar informacoes sensiveis, como senhas, numeros de cartao de credito
+				> e o conteudo de arquivos confidenciais que estejam trafegando por meio de conexoes inseguras (sem criptografia)
+			note que as informacoes capturadas por esta tecnica sao armazenadas na forma como trafegam
+		!	assim, informacoes que trafegam criptografas somente serao uteis ao atacante se ele conseguir decodifica-las
+
+	forca bruta
+		...
+
+	defacement (desfiguracao de pagina web)
+		tecnica que consiste em alterar o conteudo da pagina Web de um site
+		principais formas que um atacante (defacer) pode utilizar sao:
+			- explorar erros da aplicacao Web
+			- explorar vulnerabilidades do servidor de aplicacao Web
+			- explorar vulnerabilidades da linguagem de programacao ou dos pacotes utilizados no desenvolvimento da aplicacao Web
+			- invadir o servidor onde a aplicacao Web esta hospedada e alterar diretamente os arquivos que compoem o site
+			- furtar senhas de acesso 'a interface Web usada para administracao remota
+
+	DoS e DDoS
+		DoS = Denial of Service
+		atacante envia muitas requisicoes visando a SOBRECARGA DO SERVIDOR
+		o objetivo eh a *invalidacao do servidor* e do seu servico
+		formas de conseguir o objetivo: consumir recursos, como memoria ou processamento
+		DDoS = Distributed DoS
+!!! escrever	http://www.tecmundo.com.br/seguranca/10970-ddos-como-funciona-um-ataque-distribuido-por-negacao-de-servico.htm
+
+	bot e botnet
+		bot:
+			malware que permite controle remoto da maquina infectada
+			PODE SE PROPAGAR AUTOMATICAMENTE!!!
+		botnet:
+			rede controlada por bots
+			rede Zumbi
+			quando o hacker escolhe o alvo, ele envia o IP para a maquina mestre,
+				> que se encarrega de distribui-lo por toda a rede Zumbi para iniciar o ataque
+			essa rede pode incluir milhares de computadores que sao responsaveis por sobrecarregar o alvo
+				> ate que ele se torne indisponivel
+
+	smurf attack
+		variacao do DDoS, consiste em um envio de grande numero de pacotes ICMP para enderecos de broadcast
+		o ip da vitima eh enviado como se fosse a "origem"
+
+	cavalo de troia
+		se passa por um programa desejavel, mas contem codigos maliciosos
+		nao se replicam automaticamente!
+		permite ao atacante TER CONTROLE (remoto) sobre o computador infectado
+
+	spam
+		e-mails nao solicitados, geralmente enviados para um grande numero de pessoas
+		spam com conteudo comercial = UCE (Unsolicited Commercial E-mail)
+		tecnicas de spammers para confirmar e-mails:
+			harvesting		coleta de emails por varreduras em paginas web, arquivos de listas de discussao, etc.
+			por meio de malwares	varrem o computador infectado em busca de emails
+			servidores de email	servidores de email podem informar que um email nao eh valido. assim, o spammer sabe quais sao verdadeiros
+			sair da lista		o usuario marca como "sair da lista", assim o spammer sabe que eh um email valido
+			web bug			a imagem bug monitora se o usuario abriu o email e o spammer recebe a confirmacao
+
+	ARP spoofing
+		consiste em utilizar o endereco MAC de um outro dispositivo para enganar os demais
+		o objetivo deste ataque eh associar o MAC do atacante com o endereco IP de outro host,
+			> como o IP do gateway padrao, por exemplo
+		no caso do gateway padrao, possibilitar-se-ia ao atacante
+			- alterar o envio de trafego do gateway para si proprio
+			- interceptar quadros em uma rede
+			- modificar o trafego ou mesmo para-lo
+
+	buffer overflow
+		ocorre quando um programa recebe mais dados do que esta preparado para armazenar na pilha de memoria
+		na programacao, acontece quando uma variavel estoura sua capacidade de armazenar dados
+		uma consequencia possivel eh a geracao de um erro, como Segmentation Fault (falha de segmentacao)
+		a capacidade de uma variavel sobreescrever o que tiver pela frente na memoria principal
+			> torna possivel a abertura de uma vulnerabilidade,
+			> que pode ser explorada por um atacante
+		o atacante, com essa vulnerabilidade, pode redirecionar a execucao para um codigo arbitrario
+		atraves de um exploit, um atacante pode estourar a capacidade de algum buffer
+			> e modificar o fluxo de execucao do processo,
+			> possibilitando a execucao de codigos arbitrarios previamente injetados em alguma regiao,
+			> geralmente no proprio buffer estourado
+		mais detalhes:
+			http://www.crimesciberneticos.com/2011/03/exploiting-buffer-overflow.html
+
+	stealth port scans
+		???
+
+	ataques CGI
+		???
+
+
+
+=========
+PREVENCAO

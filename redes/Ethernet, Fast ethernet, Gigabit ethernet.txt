@@ -1,0 +1,57 @@
+=-=-=-=-=-=-=-=-
+802.3 - Ethernet
+
+	camada ENLACE
+	arquitetura de interconexao para redes locais (LAN)
+	baseada no envio de pacotes
+	define cabeamento e sinais eletricos para a camada fisica (ja que a camada fisica eh que trata de cabos e panz)
+
+	CSMA/CD (carrier sense multiple access with collision detection):
+		cada estacao que quiser transmitir verifica se pode
+		em caso de colisao a retransmissao obecede a um algoritmo de recuo exponencial, reduzindo chance de novas colisoes
+		::
+		enquanto esta transmitindo, usa da tecnologia LWT (listen while talk): monitora o meio enquanto transmite
+		caso detecte colisao, dispara o sinal JAM para que todos do meio saibam da colisao
+		em seguida, os nos aguardam um tempo aleatorio para tentar a retransmissao sem novas colisoes
+
+	CDMA/CA (collision avoidance)
+		sucessor do CSMA/CD, possui o recurso de EVITAR colisoes
+		apos verificar que o meio esta ocioso, envia um quadro que informa que o meio vai ser usado e por quanto tempo
+		assim, os demais nos aguardam um tempo ate tentar uma nova transmissao
+
+!!	o modo Full-Duplex DOBRA 2x a taxa de transmissao
+
+	--------
+	Ethernet
+		definido para interligacao de dispositivos em uma LAN
+		taxas de 10Mbps, no formato Half-Duplex
+		pode ser referenciado pelos termos 10BaseT, 10Base2, 10Base5
+
+	-------------
+	Fast Ethernet
+		tecnologia para rede LAN cabeada
+		taxas de 100Mbps, formato Full-Duplex
+		pode ser referenciado pelos padroes 100BaseTX, 100BaseFX..
+		com relacao a repetidores, a ideia eh seguir o padrao 5-4-3
+			Repetidor Classe 1 - distancias de ate 100 m
+			Repetidor Classe 2 - distancias de ate 5 m
+		pode chegar a oferecer 200 Mbps qndo configurado com placas no modo Full-Duplex
+
+	----------------
+	Gigabit Ethernet
+		operam com taxas na casa de 1000Mpbs, ou 1Gbps no modo Full-Duplex
+		modo Half-Duplex tambem eh suportado, ainda que pouco utilizado
+		recomenda-se cabos Cat5e ou Cat6
+		pode ser referenciado pelos padroes 1000BaseT, 1000BaseTX, 1000BaseCX, 1000BaseLX, 1000BaseSX..
+		suporta Jumbo frames: payload de 1500 a 9000 bytes
+		cabos UTP que suportam Gigabit Ethernet alcancam ate 100 m
+		interoperabilidade com os padroes anteriores
+		foi padronizado pelo IEEE
+		CSMA/CD no Half-Duplex
+		Flow Control no Full-Duplex
+	!	soh pode ser utilizada por Switches
+
+
+	os padroes continuam evoluindo conforme os servicos vao exigindo taxas cada vez maiores
+	velocidades da ordem de 10Gbps e 100Gbps ja estao sendo usadas e testadas em ambientes especificos, como redes de backbone, redes de armazenamento...
+	redes de 10Gbps nao suportam mais hubs nem bridges, devem sem modo Full-Duplex

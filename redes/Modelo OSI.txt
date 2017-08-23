@@ -1,0 +1,136 @@
+============
+MODELO OSI
+
+	OSI = Open Systems Interconection
+
+	foram definidas 7 camadas com caracteristicas especificas e interdependentes entre si
+	camadas sao abstracao
+	modelo criado de forma aberta permitindo a devida interoperabilidade, compatibilidade, portabilidade
+		> e escalabilidade das redes e dos equipamentos que pertencem a elas
+!	foi criado sob 3 conceitos especificos:
+		servicos	cada camada presta servicos 'a camada imediatamente superior
+		interfaces	determina-se a forma de interacao entre as camadas, assim como parametros e resultados esperados
+		protocolos	eh a implementacao dos servicos propriamente dita
+
+7 camadas:			Protocol Data Unit	Funcao
+
+	7 Aplicacao					funcoes especialistas: transferencia de arquivos, envio de e-mail, terminal virtual..
+	6 Apresentacao					formatacao dos dados, conversao de codigos e caracteres
+	5 Sessao					negociacao e conexao com outros nos
+	4 Transporte		segmentos		oferece metodos para entrega de dados ponto-a-ponto
+	3 Rede			pacotes			roteamento de pacotes em uma ou varias redes
+	2 Enlace		quadros/frames		deteccao de erros
+	1 Fisica		bits			transmissao e recepcao dos bits brutos atraves do meio
+
+	camadas de HOST:
+		camadas de Aplicacao, Apresentacao, Sessao e Transporte
+	camadas DO MEIO DE TRANSMISSAO:
+		camadas de Rede, Enlace e Fisica
+
+	as camadas inferiores utilizam as tecnicas de ENCAPSULAMENTO de forma a abstrair a informacao das camadas superiores
+	assim, cada camada no momento de sua atuacao agrega ao bloco de dados inicial um *cabecalho com informacoes relativas 'a PROPRIA camada*
+		-> http://s33.postimg.org/3qkgnwgsv/encapsulamento_de_camadas_OSI.png
+
+	PDU - Protocol Data Unit
+		a unidade de dados do protocolo eh o conjunto dado pela parcela de dados
+		> da camada superior acrescido do cabecalho da respectiva camada
+
+	o modelo OSI foi definido baseado em 13 principios que auxiliam na definicao de qtas e quais camadas sao necessarias:
+	1 - nao criar um numero mto grande de camadas para nao fazer com que a tarefa de descrever e integrar as camadas fique mais complexa que o necessario
+	2 - fronteiras/interface entre as camadas deve ser pequena, de forma a minimizar o fluxo de informacoes
+	3 - criar camadas separadas para manipular funcoes que sao manifestamente diferentes no processo ou na tecnologia envolvida
+	4 - agrupar funcoes semelhantes em uma mesma camada: cada camada deve desempenhar uma funcao bem definida
+	5 - criar uma fronteira onde a experiencia no passado tem demonstrado ser necessaria essa separacao
+	6 - criar uma camada com funcoes facilmente localizadas de modo que a camada possa ser totalmente redesenhada
+		> e seus protocolos alterados drasticamente para tirar vantagem dos novos avancos
+		> em arquitetura, hardware, ou tecnologia de software,
+		> sem alterar os servicos providos para/esperados das camadas adjacentes
+	7 - criar uma fronteira onde possa ser util em algum momento no futuro se ter a interface correspondente padronizada
+	8 - criar uma camada onde seja necessario um nivel de abstracao diferente na manipulacao dos dados. ex: morfologia, sintaxe, semantica
+	9 - permitir alteracoes de funcoes ou protocolos dentro de uma camada sem alterar as outras
+	10 - criar, para cada camada, fronteiras somente com a sua camada superior e inferior
+	11 - criar posteriormente subgrupos e funcoes organizadas para formar subcamadas
+		> dentro de uma camada nos casos em que servicos de comunicacoes distintos sao necessarios
+	12 - criar, quando necessario, duas ou mais subcamadas com funcionalidades minimas comuns para permitir o interfaceamento operacional entre as camadas
+	13 - permitir o "bypass", ou transpassar as subcamadas
+
+
+camadas:
+	as camadas de Enlace, Rede, Transporte e Aplicacao sao explicadas em .txt separado
+
+
+=============
+CAMADA FISICA
+
+	primeira camada do modelo OSI, possui como PDU os bits brutos que definirao o formato do sinal digital
+	eh responsavel por definir as interfaces eletricas, opticas e/ou mecanicas com o meio fisico
+	define ainda caracteristicas relacionadas aos cabos, como, por exemplo, suas especificacoes e impedancias
+
+	possui recursos de controle de fluxo, inicio e termino da comunicacao *a nivel de bit*
+	definira a forma como esses bits utilizarao o meio, a saber:
+	. simplex
+		define uma via unidirecional entre origem e destino
+		utilizado em sistemas de fornecimento de informacao sem a necessidade de retorno
+		exs: transmissoes de TV e Radio
+	. half duplex
+		o fluxo de bits ocorre nos dois sentidos, mas nao de forma simultanea
+		atualmente, os servicos da Nextel funcionam dessa forma, semelhante a um "walkie talk"
+		o padrao Ethernet 10 Mbps funciona em Half Duplex
+	. full duplex
+		o fluxo de bits funciona nos dois sentidos de forma simultanea
+		importante mencionar que necessita de 2 canais diferentes,
+			> ou seja, 2 canais operando em modo simplex para cada destino
+		as evolucoes do padrao Ethernet, como o Fast Ethernet e o GigabitEthernet utilizam esta forma de alocacao do canal
+		ex: hangout no YouTube
+
+
+================
+CAMADA de SESSAO
+
+	possui como PDU os dados
+	prove recursos para o [estabelecimento e suporte das sessoes] dos servicos requisitados pelas camadas superiores
+	gerencia a comunicacao entre as aplicacoes nos dispositivos apos o estabelecimento da sessao
+	uma sessao oferece diversos servicos, dentre eles:
+		- controle de dialogo			controle de quem deve transmitir em cada momento
+		- gerenciamento de simbolos e tokens	impede que duas partes tentem executar a mesma operacao critica ao mesmo tempo
+		- sincronizacao				permite que transmissoes continuem em caso de falha
+
+
+
+======================
+CAMADA de APRESENTACAO
+
+	tambem possui como PDU os dados
+	eh responsavel pela formatacao dos dados recebidos da camada superior (Aplicacao)
+		> em um formato comum e compreensivel pelos protocolos utilizados por ambos, origem e destino
+	possui recursos de COMPRESSAO e CRIPTOGRAFIA
+	compressao:
+		maior eficiencia na transmissao dos dados
+	criptografia:
+		objetivo de garantir a seguranca na transmissao dos dados
+
+
+7
+	funcoes especializadas:
+		transferencia de arquivos, e-mail, terminal virtual...
+6
+	formatacao dos dados, conversao de codigos e caracteres
+	camada "tradutora"
+5
+	negociacao e conexao com outros nos
+	implementa controle de dialogo entre processos
+4
+	oferece metodos para entrega de dados ponto-a-ponto
+	pacotes chegam no destino livre de erros
+	conectividade se da atraves de sinais de ACK enviados
+3
+	roteamento de pacotes em uma ou varias redes
+	traduz enderecos logicos em enderecos fisicos (ARP: IP-> MAC)
+	gerencia problemas de trafego de rede (ICMP)
+2
+	deteccao de erros
+	estabelece conexao com dois dispositivos fisicos
+	controla os impulsos eletricos que entram e saem do cabo de rede
+1
+	transmissao e recepcao de dados brutos atraves do meio de transmissao
+	define qual a tecnica de transmissao sera usada

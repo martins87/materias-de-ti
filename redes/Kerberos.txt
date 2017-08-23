@@ -1,0 +1,21 @@
+=-=-=-=-
+Kerberos
+	protocolo de rede utilizado para prover autenticacao forte em aplicacoes cliente/servidor
+	usa criptografia de chave Simetrica
+
+	o Key Distribution Center (KDC) se compoe de 3 elementos:
+
+		AS - Authenticator Server
+			fornece o TGT (Ticket Granting Ticket) ao usuario ANTES dele acessar qualquer servico
+
+		TGS - Ticket Granting Server
+			fornece tickets de servico que permitira o usuario (com TGT valido) enviar requisicoes ao servidor de aplicacao
+
+		Database
+			banco de dados do sistema
+
+	cliente estabelece conexao com o AS por meio dos pacotes AS_request e AS_reply
+	depois ocorre a comunicacao cliente-TGS por meio dos pacotes TGS_request e TGS_reply
+	::
+	1. usuario para se autenticar estabelece conexao com o AS pedindo o TGT
+	2. de posse do TGT valido, o usuario estabelece conexao com o TGS pedindo tickets para acessar servicos

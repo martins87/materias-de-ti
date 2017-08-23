@@ -1,0 +1,63 @@
+neste subtopico:
+	topologia (barramento, anel, estrela, mesh, full-mesh, arvore, )
+	CSMA/CD e CSMA/CA
+	classificacao das redes (LAN, MAN, WAN...)
+
+	https://pt.wikipedia.org/wiki/Topologia_de_rede
+
+
+=-=-=-=-=
+TOPOLOGIA
+forma como maquinas estao ligadas
+
+	ponto-a-ponto
+		tipo mais simples, com os terminais sendo ligados um a um entre si
+		quantidade de conexoes = n(n-1)/2	<< n eh o numero de maquinas
+
+	estrela (hub-and-spoke)
+		rede Ethernet que utiliza cabos de par trancado categoria 5 (cat5) ligados a um switch
+		permite comunicacao simultanea entre os hosts, SEM CONFLITOS
+		mais de um host envia mensagens ao mesmo tempo
+		+ mais tolerante a falhas. falha de um pc nao afeta os demais
+		+ facil de acrescentar mais pcs
+		+ gestao centralizada
+
+		- custo de instalacao maior, pois recebe mais cabos
+		- se ponto central falha, rede falha
+
+	anel
+		:: ex: Token Ring 802.5
+		cada no AGUARDA SUA VEZ para enviar e receber informacoes, utilizando um TOKEN para controle de acesso ao meio
+		esse token determina quanto tempo determinado no possui para envio de informacoes na rede
+		isso evita a colisao, pois soh um transmite por vez
+		+ facil de instalar
+		+ requer menos cabos para instalar
+		+ facil de ampliar
+
+		- se uma estacao falha, REDE TODA PARA
+		- problemas dificeis de isolar
+
+	barramento
+		topologia de MENOR custo
+		+ simples de instalar
+		+ requer menos cabos
+		+ facil de ampliar
+
+		- rede fica mais lenta em periodos de uso intenso
+		- problemas dificeis de isolar
+
+
+
+BACKBONE
+	espinha dorsal de uma grande rede nacional/internacional
+	meio de transmissao de dados em ALTA VELOCIDADE
+	geralmente empregado para interligar longas distancias
+
+	tecnologias para backbone:
+		fibra optica (pulso luminoso, velocidade da luz!!!) - muito caro $$$$$$$$$$$$
+			FTTH:
+				fiber to the home
+				interligacao de residencias atraves de fibra optica para fornecimento de
+				  > TV digital, Radio Digital, acesso 'a Internet e Telefonia
+		satelite
+

@@ -1,0 +1,81 @@
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+COMUTACAO DE PACOTES x COMUTACAO DE CIRCUITOS
+
+circuitos
+	possui funcionamento similar 'a telefonia fixa
+	todo o trafego de informacoes entre 2 dispositivos sempre passa pelo MESMO CAMINHO (estatico!)
+	existe a garantia de que uma conexao tera 'a sua disposicao a [capacidade previamente acordada] em acordos de nivel de servico
+	a capacidade da rede eh reservada (estatico!) para cada circuito, INDEPENDENTE do seu uso efetivo
+		pode haver ocio na capacidade mesmo sem ser usada!
+	ESTATICO!
+
+pacotes
+	os pacotes podem seguir VARIOS CAMINHOS DIFERENTES para chegar ao destinatario
+	podem ate chegar fora de ordem, mas serao reordenados na maquina destino
+	a capacidade de rede eh alocada POR DEMANDA, permitindo que parte dessa capacidade seja utilizada em outras conexoes
+	DINAMICO!
+
+
+
+===========
+COMUTACAO
+
+	comutacao: "capacidade de um equipamento receber a informacao em uma porta ou interface
+		    e repassa-las a uma ou varias portas do mesmo dispositivo"
+	existem 2 tecnicas principais de comutacao:
+
+	----------------------
+	Comutacao de circuitos
+	----------------------
+		nesta tecnica, os dispositivos que intermedeiam a comunicacao entre a origem e destino
+			> devem definir o caminho fisico ou logico fim a fim para que a comunicacao ocorra
+		quando o dispositivo de origem deseja iniciar o envio da informacao, estabelece-se previamente o circuito
+		apos o termino de uso, o circuito eh fechado
+		um exemplo classico de comutacao de circuito eh o circuito telefonico analogico
+
+		vantagens:
+			+ garantia de recursos, ja que o meio nao eh compartilhado
+			+ uma vez conseguido acesso ao meio para o estabelecimento da conexao, nao ha mais concorrencia ao meio
+			+ as extremidades possuem o devido controle do circuito
+			+ nao depende de processamento em nos intermediarios para definicao e controle dos circuitos
+		desvantagens:
+			- erros soh podem ser tratados e recuperados nas extremidades
+			- nos periodos de ociosidade (sem dados trafegando), ocorre DESPERDICIO DE BANDA, uma vez que o circuito continua estabelecido
+			- caso nao seja possivel estabelecer o circuito antes da comunicacao, ela simplesmente nao ocorrera, gerando um bloqueio
+
+	---------------------
+	Comutacao por pacotes
+	---------------------
+		nao depende do estabelecimento previo de um caminho dedicado
+		caracterizado pelo COMPARTILHAMENTO DE RECURSOS atraves do meio
+		o pacote com a informacao eh transmitido no a no,
+			> de forma que estes vao definindo as rotas segundo diversos criterios, podendo ser fixos ou dinamicos
+
+		vantagens:
+			+ maior eficiencia em termos de utilizacao e aproveitamento do meio compartilhado
+			+ capacidade de tratamento de erros em nos intermediarios
+
+		desvantagens:
+			- geralmente a informacao demora mais tempo ate o destino
+			- nao garante a taxa de transmissao em condicoes nativas (originais)
+
+
+	Comutacao por mensagens
+		embora menos utilizado, segue os mesmos principios da comutacao por pacotes,
+			> embora nao possuindo nenhum tipo de limitacao qnto ao tamanho dos pacotes
+		exige que os nos intermediarios possuam discos e buffers suficientes para tratar esses dados
+
+
+	QUADRO COMPARATIVO:
+
+		Caracteristica			Com. por CIRCUITO		Com. por PACOTES
+		--------------------------------------------------------------------------------
+		Circuito fisico dedicado		Sim			Nao
+		Largura de banda			Fixo			Variavel
+		Desperdicio de banda			Sim			Nao
+		Armazenamento nos no's			Nao			Sim
+		Requer conexao previa			Sim			Nao
+		Congestionamento		Inicio da chamada		Em cada pacote
+		Ocorrencia de atrasos		Em regra, nao			Sim
+		Principais aplicacoes		Telefonia convencional		Internet, Videoconferencia, VoIP
+

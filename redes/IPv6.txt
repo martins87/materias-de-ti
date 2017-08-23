@@ -1,0 +1,77 @@
+IPv4 para IPv6 - diferenca de cabecalhos:
+	http://bit.ly/1GjME3q
+
+Caracteristicas gerais:
+	sem mais checksum!
+	nao possui mais broadcast!  -->>  agora: multicast. acrescentou tambem o conceito de anycast
+	ARP abandonado, sendo substituido pelas mensagens [Neighbor Discovery]	-->>  ARP: encontrar o MAC a partir do IP
+	IGMP substituido por mensagens [Multicast Listner Discovery]
+
+	IPsec obrigatorio!
+	introduz capacidade de QoS utilizando o campo Flow Label
+	a fragmentacao passa a ser processada pelos [hosts emissores]  -->>  no ipv4 era feita nos roteadores intermediarios
+		caso o pacote chegue em um roteador e nao seja possivel encaminha-lo sem fragmentar,
+		  > o router envia uma msg ao host emissor.
+		o host emissor entao eh quem fragmenta o pacote e o reenvia
+	campos de opcao agora estao DENTRO do campo [extension header]
+	funcionalidades de autoconfiguracao de endereco  -->>  nao necessita do DHCP para comunicacao e acesso 'a rede
+	suporta pacotes de 1280 bytes, sem fragmentacao
+	Flow Label: QoS!
+	existe agora somente:
+		unicast
+		anycast
+		multicast (nao depende de todos os hosts escolhidos, somente do primeiro ou mais proximo, para determinada metrica)
+
+
+Enderecamento:
+	128 bits
+	hexadecimal
+	cada bloco de 4 bits vai de 0000 a FFFF
+	:: ex: 2001:0DB8:00AD:000F:3456:AF42:CDCC:0001
+
+	supressao de 0s consecutivos:
+		2001.CAFE:44FF:0000:0000:0000:0000:2ACC  -->>  2001.CAFE:44FF::2ACC
+	!	essa supressao pode ocorrer APENAS UMA VEZ
+
+
+Auto-configuracao de hosts:
+	mesmo o DHCP ainda existindo na versao IPv6, os *hosts nao precisam dele* para conseguir a configuracao de parametros de rede
+	temos, assim, um protocolo PLUG-AND-PLAY
+	essas interfaces sao chamadas de LINK-LOCAL
+
+
+Cabecalho : http://bit.ly/1GjME3q
+	mais simples:
+		quantidade menor de campos
+		eh fixo agora: 40 bytes			(ipv4 podia variar de 20 a 60 bytes)
+	mais modular
+
+	Versao						4 bits indicando a versao 6 do protocolo
+	Classe de Trafego				8 bits. funcao de classificacao e priorizacao de trafego
+	Flow Label (identificacao de fluxo)		20 bits utilizados para marcacao de trafego. suporte a QoS
+	Payload Length (tamanho do campo de dados)	16 bits indicando o tamanho APENAS dos dados enviados junto ao cabecalho
+	Next Header					8 bits. campo utilizado para referenciar os cabecalhos de extensao eventualmente utilizados
+	Hop Limit					8 bits. determina o tempo de vida ou limite de saltos do pacote na rede (no ipv4 era TTL)
+	Source e Destination Address			campos utilizados para definir os enderecos de 128 bits de origem e destino
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Modelos de Transicao IPv4 para IPv6
+
+	Dual Stack (pilha dupla)
+		preve a utilizacao dos dois protocolos de forma simultanea nos dispositivos
+		-> tecnica mais utilizada atualmente
+
+	Tunel (6to4)
+		o nucleo da rede opera em IPv4 e as demais redes em IPv6
+		assim, os pacotes IPv6 trafegam dentro de um "tunel" IPv4
+
+	Traducao
+		dispositivos fazem a conversao/traducao de um endereco de um protocolo em outro
+		assim, rola a integracao e comunicacao entre redes com tecnologias distintas
+		o NAT consolida-se entao como uma tecnica de transicao (temporaria)
+		::
+		ex: o DIRECTACCESS da Microsoft permite um acesso remoto 'a intranet de um orgao sem usar VPN
+		entretanto, essa tecnologia depende do IPv6 e do IPsec
+

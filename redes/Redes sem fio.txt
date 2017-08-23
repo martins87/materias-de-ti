@@ -1,0 +1,90 @@
+redes sem fio (wireless)
+
+padrao IEEE 802.11
+
+	802.11a		5GHz	54Mbps		mais caro!
+	802.11b		2.4GHz	11Mbps		ganhou o mercado =)
+	802.11n		5GHz	ate 600Mbps
+
+802.11n:
+	5GHz
+	quatro antenas para transmissao
+	recepcao de ate 4 fluxos de informacao ao mesmo tempo
+	MIMO (multiple in multiple out)
+	ate 600Mbps 
+
+802.11 estabelece que cada LAN sem fio estabeleca 9 servicos, divididos em 2 categorias:
+	5 servicos de distribuicao
+		associacao		usado pelas estacoes moveis* para conecta-las 'as estacoes base
+		desassociaco		estacao movel usa este servico antes de se desligar/sair
+		reassociacao		rola qndo cliente volta a se associar a um Access Point apos ter saido dele
+		distribuicao		determina como rotear quadros enviados ao AP
+		integracao		cuida da conversao de formatos, qndo quadros sao enviados por outros que nao o 802.11
+	4 servicos intracelula
+		autenticacao		estacao deve se autenticar antes de ter permissao para transmitir dados
+		desautenticacao		estacao autenticada anteriormente quer sair da rede. qndo sair, NAO PODE MAIS utilizar a rede
+		privacidade		criptografia!
+		entrega de dados	802.11 oferece meio para transmissao e recepcao de dados
+
+* estacao movel: maquina em movimento, indo de uma rede a outra
+
+
+PADROES CRIPTOGRAFICOS:
+
+WEP (wired equivalent privacy)
+	vulneravel!!!!
+	algoritmo RC4 para criptografia
+	funcao de deteccao de erros CRC-32
+
+TKIP (temporal key integrity protocol)
+	algoritmo de criptografia baseado em chaves que se alteram a cada novo envio de pacote
+	mudanca de chaves garante mais seguranca
+	tambem utiliza o RC4
+
+WPA (wi-fi protected access) e WPA2
+	segue o padrao 802.11i
+	substitui formalmente o WEP
+	utiliza o AES (advanced encryptation standard) junto com o TKIP com chave de 256 bits, sendo uma ferramenta mais poderosa
+
+-->>  WPA2 com AES  >  WPA com AES  >  WPA com TKIP  >  WEP
+
+
+
+	!!	a certificacao Wi-fi eh exclusiva para equipamentos que oferecem PELO MENOS a protecao WPA	!!
+
+
+
+Obstaculos 'as redes wireless
+
+	superficies metalicas: grades, janelas, portas metalicas, lajes, vigas..
+	materiais densos, como CONCRETO e PEDRA
+	corpos com grande concentracao de agua, como aquarios, pessoas (somos 70% agua)
+	fornos de microondas, pois operam a 2.4 GHz (a mesma das redes wireless)
+	telefones sem fio (2.4 GHz) tambem interferem, mesmo em menor grau
+
+
+
+TOPOLOGIA DE REDES SEM FIO
+
+
+	Ad-Hoc / Independent Basic Service Sets (IBSS)
+		rede que nao possui no central
+		basicamente eh uma peer-to-peer
+		imaginar: (   No   ()   No   )
+			(        ) eh a area do sinal de cada um dos nos
+			() eh o ponto onde os sinais se interceptam e a conexao eh possivel
+		aumento de nos na rede pode levar a interferencia e falhas na comunicacao
+
+	BSS (Basic Service Set)
+		unico Access Point, ao qual varios dispositivos se comunicam
+		ex: a rede domestica, com um roteador
+		possui um unico identificador (SSID)
+
+	ESS (Extended Service Set)
+		varias BSS interligadas por seus APs
+		apesar de existirem varios APs, o SSID eh [O MESMO PARA TODOS], pois eh a mesma rede
+		ex: rede de aeroportos
+
+!! problema das redes LAN sem fio:
+!!	apresentam atenuacao multiponto
+!!	uns interferem nos outros

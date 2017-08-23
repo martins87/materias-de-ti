@@ -1,0 +1,60 @@
+NAS - network attached storage
+	possui um [sistema operacional completo] que funciona com proposito de ser um [servidor de arquivos] ligado diretamente 'a rede
+	esse dispositivo eh conectado 'a rede
+	transferencia EM NIVEL DE ARQUIVO
+	funcao de servidor de arquivos para diversos sistemas, de maneira compartilhada
+!!	eh implementada sobre a infraestrutura de redes comum da organizacao, assim, compartilha a banda de transmissao com os demais dispositivos
+	cumpre a funcao de [servidor de arquivos] para diversos sistemas
+	servidor para:
+		web visitors (Joomla, PHP, MySQL..)
+		branches
+		FTP server
+	utiliza protocolos a nivel de arquivo:
+		NFS, CIFS
+	normalmente faz uso de ligacoes Ethernet e TCP/IP
+
+
+
+DAS - direct attached storage
+	as midias sao diretamente conectadas a uma estacao de trabalho ou a servidores, atraves de um barramento DEDICADO
+	as midias de armazenamento podem estar contidas em um container, diretamente conectado ao barramento da maquina
+	armazenamento que pode ser externo ou ligado diretamente
+	armazenamento [em bloco]
+	ex: gavetas externas, HDs
+
+
+
+SAN - storage area network
+	rede DEDICADA que prove acesso a armazenamento em [nivel de BLOCO]
+	- desempenho alto, implementacao cara
+	- performance e disponibilidade!
+	- alta seguranca: controle de acesso, criptografia, recuperacao de desastres, backup
+	- tolerancia a falhas
+	vantagem: centralizacao do gerenciamento do armazenamento
+	armazenamento em bloco
+	protocolo Fibre Channel esta entre os mais usados
+	rede de dados dedicada a fornecer o acesso aos BLOCOS de dados, de forma transparente para o SO como dispositivos LOCALMENTE plugados
+	as midias aparecem para o SO como se estivessem diretamente conectados à maquina: o usuario nem sabe que a rede existe
+	nao existem grandes restricoes de distancia. podem ser acessadas em locais distantes, por fibra optica, por exemplo
+!!	ocupa bastante bandwidth da rede, pois operacoes de leitura e escrita sao constantes
+	implementacao recomendada: cluster com 8 nodos
+	principais tecnologias suportadas:
+		Ethernet \__ ja sao suportados pelas placas de rede padrao do mercado
+		iSCSI    /
+			iSCSI suporta a conexao de varios dispositivos paralelamente, o que prejudica a performance deste protocolo
+			tambem nao ha recuperacao de falhas. se ocorrer, os dados devem ser retransmitidos
+			protocolo nao indicavel para aplicacoes de alto desempenho!
+			-> recomendado para redes de menor porte (ex: Intranets), pois eh mais barato de ser implementado
+
+		eh possivel montar uma pequena rede SAN apenas com um array de discos iSCSI, ligado a uma placa Gigabit Ethernet no servidor
+
+	Fibre Channel - o mundo precisa de PAS:
+		peer-to-peer
+		arbitrated loop
+		switched fabric
+	esta tecnologia, por outro lado, precisa da adicao de novos hardwares para funcionar
+
+LAN-free:
+	os dados de backup sao movidos pela SAN, por ser uma rede dedicada
+	faz uma ligacao direta entre as maquinas que sofrerao backup e o dispositivo de armazenamento do backup
+	assim, o trafego de backup nao congestiona a rede e a rede fica livre para ser usada normalmente

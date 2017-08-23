@@ -1,0 +1,28 @@
+=-=-=-
+E-mail
+	usuario redige a mensagem e manda o programa cliente de email enviar a mensagem para o servidor, chamado Servidor de Saida
+	apos receber a solicitacao, o Servidor de Saida analisa apenas o segmento de endereco apos o @
+	apos identificar o endereco de dominio de destino, o Servidor de Saida envia a mensagem utilizando o SMTP
+	qndo a mensagem chega ao servidor destino (Servidor de Entrada), este identifica a informacao antes do @ e deposita a mensagem na respectiva caixa postal
+	para transferir as mensagens existentes no Servidor de Entrada para seu computador o cliente de e-mail utiliza o protocolo POP3
+
+
+=-=-=-=-=
+MUA e MTA
+	MUA: Mail User Agent
+	MTA: Mail Transfer Agent	implementado por um servidor SMTP!!!
+
+	Eu (MUA) escrevo e-mail para a Lu, que vai por SMTP para o servidor de saida (MTA)
+	o servidor de saida (MTA) envia o e-mail por SMTP para o servidor de entrada da Lu (MTA)
+	a Lu entao por POP3 ou IMAP busca o e-mail no servidor de entrada
+>
+	MUA para MTA sempre por SMTP
+	MTA para MTA sempre por SMTP
+	MTA para MUA por POP3 ou IMAP
+
+
+------------------------------------------------
+Mr. MIME - Multipurpose Internet Mail Extensions
+	extensao usada para facilitar envio de mensagens por meio de email e que visa resolver problemas,
+	> tais como a impossibilidade de transmitir arquivos executaveis ou outros objetos binarios (nao possivel pelo SMTP)
+	o MIME especifica o formato de anexos de e-mail que nao sao textos, permitindo que o anexo seja enviado

@@ -1,0 +1,24 @@
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+TLS - Transport Layer Security -->> tambem serve para o SSL
+
+	chaves publicas -> Assimetrico!
+
+	sucessor do SSL (Secure Socket Layer)
+	usa o algoritmo HMAC (keyed-Hashing for Message Authentication Code) que produz hashes mais seguros que o MAC
+	garante: CIA (confidencialidade, autenticidade, integridade)
+
+	basicamente eh um protocolo que garante a comunicacao segura entre duas aplicacoes que se comunicam pela Internet
+	ex: HTTPS, onde vc se comunica com alguma entidade por meio de verificacao de certificados
+	simples assim!
+
+	funcionamento:
+		cliente e servidor verificam suas identidades por meio do envio de suas chaves publicas e de seus certificados
+		::
+		1. cliente requisita uma conexao SSL (SSL Hello)
+		2. server responde com sua chave publica e seu certificado (encriptado com sua chave privada)  -->>  autenticidade do servidor
+		3. cliente valida o certificado com a chave publica do server (decriptografa o certificado com essa chave publica)
+		4. cliente gera uma chave privada (aka Session key) e envia ao server (criptografada com a chave publica do server)
+		5. sessao SSL eh entao estabelecida
+
+	!! alternativamente pode-se realizar essa comunicacao sem chaves privadas na segunda etapa
+	!! os dois ficam usando somente suas chaves publicas e privadas
