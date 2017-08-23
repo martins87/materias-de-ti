@@ -1,0 +1,134 @@
+=============
+VIRTUALIZACAO
+
+A virtualização pode ser realizada em diferentes contextos e de diferentes formas:
+
+Nível do hardware:
+	a camada de virtualização é posta diretamente sobre a máquina física
+	  > e a apresenta às camadas superiores como uma abstração do hardware, mas guardando similaridade com o hardware original
+	No nível do hardware, a virtualização mais comum é a de servidores
+	Reduz a complexidade do gerenciamento, o espaço físico e o consumo de energia e refrigeração
+	exs: o VMware ESX, Xen e Hyper-V
+
+Nível do sistema operacional:
+	insere a camada de virtualização entre o SO e as aplicações
+	permite a criação de partições lógicas que aparentam máquinas isoladas, mas compartilham o mesmo SO (por baixo, o original)
+	exs: Jails, Containers, Linux-VServer, SandBox, KVM e Sun VirtualBox
+
+Nível da linguagem de programação:
+	a camada de virtualização é executada sobre o SO da plataforma
+	É estabelecida uma máquina abstrata sobre a qual executa uma aplicação desenvolvida em uma aplicação de alto nível
+	ex: a máquina virtual Java (JVM)
+
+
+!!!
+	A [interface] que utilizamos e que vai sobre a camada de virtualização é denominada máquina virtual
+	Já a CAMADA de virtualização em si é denominada hipervisor ou monitor de máquina virtual (VMM - Virtual Machine Monitor)
+
+
+Um ambiente virtualizado consiste de três partes básicas:
+
+	* sistema hospedeiro, real, ou nativo (host system) - contém os recursos reais de hardware e software do sistema
+	* CAMADA de virtualização, chamada hipervisor ou monitor (VMM: Virtual Machine Monitor)
+	* sistema virtualizado, também denominado sistema convidado (guest system)
+		-> executa sobre o sistema virtualizado
+		-> vários sistemas virtuais podem coexistir simultaneamente sobre o mesmo sistema real
+
+
+Na paravirtualização o SO hóspede precisar ser modificado. 
+Na virtualização total o SO hóspede não precisa ser modificado para executar sob o hipervisor. 
+
+
+____________
+HIPERVISORES
+
+Tipo I:
+	Esse hipervisor executa diretamente no hardware do servidor e controla o hardware e o acesso do sistema operacional convidado
+	Também é conhecido como metal nu, bare metal, nativo ou supervisor
+
+Tipo II (hosted):
+	Nesse tipo, o hipervisor é uma APLICACAO que fornece um ambiente de execução para outras aplicações
+	Executa sob um SO nativo como se fosse um processo
+	ex: Virtual Box
+
+
+
+======================
+TIPOS DE VIRTUALIZAÇÃO
+
+______________________
+VIRTUALIZAÇÃO COMPLETA
+
+	A virtualização completa (full virtualization) cria um sistema físico virtual completo, sobre o qual o SO convidado é executado
+	Não é necessário fazer qualquer modificação no sistema operacional convidado ou em suas aplicações
+
+Vantagens:
+	A segurança é favorecida pelo ISOLAMENTO entre as máquinas virtuais
+	A virtualização completa facilita a migração de máquinas virtuais entre servidores físicos
+
+Desvantagem:
+	desempenho, pois o hipervisor passa a intermediar a execução de todas as instruções [privilegiadas ou sensíveis] feitas pelo SO convidado
+	Outra desvantagem: implementação de hardwares virtuais que emulam dispositivos de entrada e saída genéricos
+
+
+_________________
+PARAVIRTUALIZAÇÃO
+
+	A paravirtualização cria um [hardware virtual] entre o hipervisor e o sistema operacional convidado
+!	O SO convidado (ou hóspede) é alterado para chamar a máquina virtual
+
+	A principal característica e desvantagem da paravirtualização é a necessidade de modificação do SO hospedado ou convidado.
+
+
+____________________________________
+VIRTUALIZAÇÃO ASSISTIDA POR HARDWARE
+
+	Os fabricantes Intel e AMD criaram extensões diretamente no hardware da arquitetura x86,
+	  > que são genericamente denominadas de virtualização assistida por hardware (Hardware Assisted Virtualization – HAV)
+	A proposta da virtualização assistida por hardware é melhorar o suporte a virtualização e melhorar o desempenho por meio das extensões em hardware
+	Portanto, o hipervisor passou a ter total prioridade sobre o sistema operacional.
+
+
+
+SOLUÇÕES DE VIRTUALIZAÇÃO
+VMWARE
+
+O VMware vSphere:
+	utiliza os recursos da virtualização para transformar datacenters em infraestruturas simplificadas de computação em nuvem,
+	  que permite fornecer serviços flexíveis e confiáveis, com segurança e baixo risco
+
+VMWARE HIPERVISOR:
+	O hipervisor VMware executa diretamente no hardware, ou seja, é um monitor de máquina virtual do tipo I (bare metal)
+
+O VMWare VMotion: 
+	é o recurso que possibilita o funcionamento da alta disponibilidade e do balanceamento dinâmico de recursos das soluções de virtualização VMware
+
+
+-------
+HYPER-V
+	O hipervisor Hyper-V é uma solução de virtualização da fabricante Microsoft
+	Ele é um monitor de máquina virtual do tipo I (baremetal) que executa entre o hardware e um sistema operacional convidado
+	  > e cria uma interface entre todas as requisições dos sistemas operacionais hospedados
+
+	principais características do Hyper-V:
+		* Arquitetura de 64 bits
+		* Suporte a diferente tipos de SOs
+		* Suporte a Multiprocessadores Simétricos (SMP): suporte para até quatro processadores no ambiente de uma máquina virtual.
+		* Arquitetura de compartilhamento de hardware:
+			estrutura criada para oferecer acesso aos drivers de dispositivos de Entrada e Saída,
+			  baseada em um modelo provedor-consumidor de serviço.
+		* Snapshot de máquina virtual
+		* Escalabilidade: pode oferecer suporte a múltiplos processadores (e núcleos) e acesso avançado à memória nas máquinas virtuais
+		* Extensível:
+			as interfaces e APIs do Hyper-V seguem o padrão Word Manufactorers Identification (WMI),
+			  permitindo que desenvolvedores e fabricantes de software independentes produzam com rapidez ferramentas personalizadas,
+			  como utilitários e aprimoramentos na plataforma de virtualização
+
+SNAPSHOTS
+	snapshots de uma máquina virtual são arquivos baseados no estado, nos dados do disco e na configuração da máquina virtual num determinado ponto no tempo
+	É possível tirar vários snapshots de uma máquina virtual, mesmo quando ela está ativa.
+
+LIVE MIGRATION
+	O Live Migration permite mover as máquinas virtuais em execução de um servidor físico Hyper-V para outro,
+	  > sem qualquer interrupção de serviço ou tempo de indisponibilidade perceptível.
+
