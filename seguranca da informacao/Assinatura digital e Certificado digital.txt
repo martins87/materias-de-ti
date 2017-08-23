@@ -1,0 +1,134 @@
+==================
+ASSINATURA DIGITAL
+
+	eh um codigo que acompanha uma mensagem, que confirma que foi fulano quem emitiu essa mensagem
+	NAO PODE SER FORJADA, pois somente o emissor conhece sua chave privada
+	nao pode ser repudiada, pois somente o emissor conhece sua chave privada
+
+!!	assinatura digital com uso de certificados da ICP-Brasil tem mesma [validade juridica] que documentos em papel com assinaturas manuscritas	!!
+
+garante:
+	autenticidade do remetente	pois somente ele conhece sua chave privada
+	integridade da mensagem		qualquer alteracao na mensagem faz com que a assinatura nao corresponda mais ao documento
+	nao-repudio			nao pode negar que foi ele que enviou, pois somente ele (e mais ninguem) tem sua chave privada
+
+
+	   _____________
+baseada em chave PUBLICA:
+	requer que A e B conhecam as chaves publicas um do outro
+	ex:
+		A cifra a msg com sua chave privada (para garantir a assinatura, pois somente A possui sua chave privada)
+		A cifra entao o resultado com a chave publica de B (pois vai enviar para B)
+		B recebe e decifra a msg com sua chave privada
+		B com a chave publica de A decifra a msg original, verificando que foi mesmo A quem enviou a msg
+
+	   _____________
+baseada em chave SECRETA:
+	deve existir uma autoridade central que possui a chave privada de todo mundo
+	como todos confiam na autoridade central, a assinatura digital do emissor tem credibilidade
+	ex:
+		A cifra a msg com sua chave privada e envia para a autoridade central
+		a autoridade central decifra a msg com a chave privada de A, verificando que foi mesmo A quem enviou
+		a autoridade central entao cifra a msg com a chave privada de B e a envia para B
+		B recebe a msg e a decifra com sua chave privada, finalizando o processo
+
+	   _______________
+baseada em funcoes de HASH:
+	usada qndo nao ha interesse em privacidade da mensagem. ex: compartilhamento de um contrato
+	como a criptografia de chaves publicas eh lenta, [cifra-se somente parte da msg]. assim, reduz-se o tempo de decifragem
+	essa parte da msg (arbitrariamente longa) obtem como resultado o chamado MESSAGE-DIGEST (resumo) <- possui sempre tamanho fixo
+	ex:
+		A gera o resumo (hash) com um algoritmo de resumo de mensagem (MD5, SHA-1, ...)
+		para garantir autenticidade, criptografa entao o resumo (hash) com sua chave privada
+		envia entao a mensagem + a assinatura para B		-->>  a assinatura consiste do hash criptografado com a chave privada de A
+		B recebe a mensagem + o hash (resumo) criptografado
+		para se certificar da autenticidade da mensagem, decripta o hash com a chave publica de A
+		deve entao se certificar da integridade da mensagem. gera um novo hash da mensagem com o mesmo algoritmo de hash usado (MD5, SHA-1, ..)
+		se os hashs forem iguais, a mensagem esta integra	-->>  hashs soh serao iguais se a mensagem nao tiver sido alterada
+
+
+
+===================
+CERTIFICADO DIGITAL
+
+	surgiu em virtude da dificuldade de distribuicao de chaves simetricas:
+		por criptografia simetrica vc tem certeza de q fulano eh realmente fulano,
+		  mas ha o problema de ter q distribuir chaves simetricas para todo mundo q vc for conversar, para vc se certificar que sao mesmo eles.
+		  assim, com a criptografia assimetrica, basta vc pegar a chave publica do fulano e conversar com ele (ex: site do Banco do Brasil).
+		  o certificado digital vai dar credibilidade a isso, pois a autoridade certificadora eh quem possui a chave secreta do BB,
+		  e, portanto, te garante que o site do BB eh realmente o site do BB
+
+	como a internet eh insegura, a unica forma de trocar chaves eh por meio da criptografia assimetrica,
+	  > alem da certificacao digital para assegurar a AUTENTICIDADE dos remetentes
+
+	o Brasil utiliza o padrao X509 v3 como PADRAO de certificado digital
+
+garante:
+	autenticidade		receptor pode confirmar a assinatura do emissor
+	integridade		garantia que o conteudo da transacao nao foi alterado
+	nao-repudio		garantia de que quem executou a transacao nao pode negar que foi ele mesmo que executou
+
+eh um documento que atesta a associacao de uma entidade (ex: BB) 'a sua chave PUBLICA
+
+imaginar o certificado digital como uma carteira de identidade emitida por um cartorio:
+	nao precisamos ir ao cartorio para provarmos que somos nos mesmos
+
+funcionamento - exemplo site do BB:
+	duas partes usando criptografia assimetrica: eu e o site do banco
+	ao entrar no canal seguro, o banco me envia o certificado digital:
+		mostra quem eh, qual criptografia usa, envia sua chave publica
+	usando a chave publica do site do banco, consigo me comunicar com ele de forma segura
+	o banco tambem informa qual a AUTORIDADE CERTIFICADORA que emitiu o certificado
+	o navegador entao verifica se a autoridade certificadora eh de confianca
+	caso seja, exibe o CADEADO VERDE, mostrando que ta tudo OK
+
+caso da tela vermelha e "Este certificado nao foi verificado. Deseja continuar?" :
+	a emissao de certificado digital eh paga, assim, nem todos aderem 'as autoridades certificadoras
+	a comunicacao pode ate ser segura, mas a outra parte pode ser do MAL!!!
+	assim, ao exibir a tela vermelha, o navegador diz:
+		nao damos certeza desse certificado, vai por conta propria, fera!
+
+TIPOS:
+	A1, A2, A3, A4		certificados de Assinatura digital. usados para confirmacao de identidade na Web, e-mail, VPNs e em docs eletronicos (ex: NF-e)
+	T3 e T4			para hardware especifico das autoridades de carimbo do Tempo. finalidade: provar existencia em determinado periodo
+	S1, S2, S3, S4		certificados de Sigilo
+
+
+tipo de certificado	processo de geracao	midia armazenadora			tamanho min da chave	validade maxima
+
+	A1 e S1		software		arquivo (disco rigido)
+	A2 e S2		software		smart card ou token - nao geram chave
+	A3 e S3		hardware		smart card ou token - GERAM CHAVE!		1024		3 anos
+	A4 e S4		hardware		smart card ou token - GERAM CHAVE!
+	T3 e T4		hardware		hardware criptografico
+
+dados basicos que compoem o certificado digital:
+	versao
+	numero de serie
+	identificacao do emissor
+	identificacao do dono do certificado
+	validade
+	chave publica do dono do certificado
+	algoritmo de assinatura
+	requerente
+
+
+__________
+ICP BRASIL
+
+	ICP: infraestrutura de chave publica
+	eh o conjunto de hardware, software, pessoas, politicas e procedimentos necessarios para:
+		criar, gerenciar, armazenar, distribuir e revogar [certificados digitais]
+
+	visa assegurar as transacoes entre titulares de certificados digitais e detentores de chaves publicas
+
+	para assegurar que uma determinada chave publica pertence a vc
+	  eh necessario que uma Autoridade Certificadora (AC) confira sua identidade e seus respectivos dados
+	ela sera responsavel pela emissao, suspensao, renovacao ou revogacao de seu certificado digital
+	eh tbm responsavel por manter atualizada a Lista de Certificados Revogados (CRL)
+
+	a ICP-Brasil eh formada por uma AC raiz, que eh representada pelo Instituto Nacional de TI (ITI)
+	este orgao eh responsavel pela autentificacao das demais ACs
+	tambem executa atividades de fiscalizacao e auditoria das ACs e Autoridades de Registro (AR),
+	  para que possa certificar-se de que a entidade esta seguindo todas as Politicas de Certificacao
+
