@@ -1,0 +1,39 @@
+========================
+ANALISE DE NEGOCIO (BIA)
+
+	BIA = Business Impact Analysis
+
+	"processo de analisar as atividades
+	 e os efeitos que uma interrupcao de negocio pode ter sobre elas"
+
+	finalidades:
+		- apresentar todos os provaveis impactos de forma qualitativa e quantitativa
+			dos principais processos de negocios da organizacao, no caso de sua interrupcao
+		- fornecer:
+			. uma ideia sobre o tempo adequado de recuperacao
+			. tempo adequado do backup, uma vez que o tempo eh um fator crucial
+
+	ajuda a determinar:
+		- Interrupcao Maxima Aceitavel/Objetivo para Tempo de Recuperacao
+		- Maxima Perda de Dados/Objetivo para Ponto de Recuperacao
+		- recursos necessarios
+		- outras informacoes importantes que ajudarao a desenvolver a estrategia de continuidade de negocio para cada atividade
+
+	eh o coracao do Plano de Continuidade de Negocios,
+	  pois norteia todos os esforcos e a tomada de decisoes para a implementacao da Continuidade de Negocios
+
+	identifica funcoes de negocio vitais e suas dependencias
+	essas dependencias podem incluir fornecedores, pessoas e outros processos de negocio, servicos de TI, etc.
+
+	a BIA define os requisitos de recuperacao para servicos de TI
+	esses requisitos incluem
+		. objetivos de tempo de recuperacao,
+		. objetivos de ponto de recuperacao
+		. e as metas de nivel de servico minimas para cada servico de TI
+
+	deve-se identificar:
+		- tempos de interrupcao permitidos pelo negocio
+		- impactos financeiros, institucionais e de imagem
+
+	Como implementar a análise de impacto no negócio de acordo com a ISO 22301:
+		http://bit.ly/2pkkchR
