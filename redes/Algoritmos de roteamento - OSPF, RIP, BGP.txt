@@ -1,0 +1,164 @@
+========================
+ALGORITMOS DE ROTEAMENTO
+
+	eh a parte do software da camada de rede responsavel pela decisao
+	  sobre a linha de saida a ser usada na transmissao do pacote de entrada
+
+	ROTEAMENTO
+		eh o processo de encaminhar pacotes atraves da Internet
+		isso eh feito baseando-se no seu endereco de destino, que pode ser tanto interfaces para outras redes como outros roteadores
+		a tabela de roteamento eh formada por uma lista de destinos,
+		  > que eh consultada toda vez que um pacote chega ao roteador,
+		  > e o respectivo caminho a ser seguido para alcancar o no destino do pacote
+		o processo de verificacao e encaminhamento do pacote eh chamado de salto-por-salto (hop-by-hop),
+		  > onde um roteador abre cada pacote, verifica o destino
+		  > e consulta sua tabela para verificar o melhor caminho a ser seguido
+
+	dois principais algoritmos de roteamento:
+		- Vetor de Distancia (Vector-distance)
+		- Estado de Enlace (Link-state)
+	-> esses dois diferem na definicao de metricas
+
+	classificacao quanto 'a utilizacao abaixo...
+		IGP (interior gateway protocol) ?
+		EGP (exterior gateway protocol) ?
+
+
+	ambiente de utilizacao?
+
+
+	---------------
+	Vetor distancia (vector-distance)
+		os gateways possuem uma tabela com uma entrada para cada sub-rede ao qual estao conectados
+		cada sub-rede dessas esta associada 'a distancia relativa entre ela o gateway que mantem a tabela
+		a unidade de medida pode ser hops (saltos) ou retardo (tempo)
+		INICIALMENTE, os campos de distancia possuem valor 0, pois apenas as sub-redes conectadas aos gateways sao conhecidas
+		entao... de tempos em tempos cada gateway envia uma copia de sua tabela de roteamento pra galera toda
+		ai cada um, ao receber, faz uma comparacao pra ver se alguma coisa mudou
+		as atualizacoes vao rolar se acontecer alguma dessas coisas:
+			- se o emissor souber uma [rota menor] que a registrada na tabela do receptor
+			- se o emissor apresentar uma [sub-rede que o receptor ainda nao conhece]
+			- se uma [rota] que passa pelo emissor tiver sido [modificada]
+
+		ex:					      Tabela do no A
+			(A) -1- (B) -2- (C)	Destino		Ligacao		Distancia (hops)
+			 |	 |     /	A		local		0
+			 3	 4    5		B		1, b		1
+			 |	 |   /		D		3, d		1
+			(D) -6- (E) /  		C		1, b		2
+						E		1, b		2
+		caracteristicas:
+			facil implementacao
+			em ambientes mais dinamicos (muitas conexoes novas com frequencia) -> demora na propagacao das informacoes
+			mensagens de atualizacao tornam-se enormes, ja que sao diretamente proporcionais ao numero total de gateways presente na Internet
+		!	ou seja, EH BURRO! meio que uma primeira tentativa de resolver o problema
+		!	burro pq tem que mandar as informacoes pra todo mundo e isso eh CARO
+
+
+	----------------
+	Estado de enlace (link-state)
+		cada no distribui o mapa da rede (que ele tem ate o momento) para todos os outros nos da rede
+		cada no da rede computa a distancia entre ele todos os outros nos da rede
+		INICIALMENTE, cada no adiciona o custo da distancia entre ele e seus gateways vizinhos
+		as outras distancias (sem ser seus vizinhos) vai ser infinito
+		cada no envia pra todo mundo a distancia entre os nos (u,v) pra todo mundo
+		...
+		no fim, por Dijkstra, todos os nos vao saber as distancias entre todos os nos
+
+		2 algoritmos caracteristicos link-state:
+			- OSPF (open shortest path first)
+			- IS-IS (intermediate system - intermediate system)
+
+		caracteristicas:
+			o calculo das rotas eh realizado LOCALMENTE, nao dependendo de maquinas intermediarias
+			nao precisa armazenar informacoes de outros nos, somente as dele
+
+
+
+
+	podem ser agrupados em duas classes principais:
+		nao-adaptativos
+			nao baseiam suas decisoes de roteamento em medidas ou estimativas do trafego e da topologia atuais
+			tambem pode ser chamado [roteamento estatico]
+		adaptativos
+			mudam suas decisoes de roteamento para refletir mudancas na topologia
+			  e, normalmente, tambem no trafego
+
+	protocolo de roteamento intra-AS
+		AS = sistema autonomo
+		um AS agrupa roteadores que estarao sobre o mesmo controle administrativo
+		ou seja, operados pelo mesmo ISP ou pertencentes a uma mesma rede corporativa
+		todos os roteadores dentro do mesmo AS rodam o mesmo algoritmo de roteamento
+		um protocolo que roda dentro de um AS eh denominado [protocolo de roteamento intra-AS]
+
+
+___
+RIP - Routing Information Protocol
+
+	ver questao 3 tec!
+
+!	vetor de distancias
+!	usa a [contagem de saltos] como metrica de uso
+
+como fas:
+	divide as maquinas da sub-rede em ativas e passivas
+	maquinas ativas divulgam informacoes de roteamento para as outras
+	maquinas passivas somente recebem informacoes e atualizam suas rotas
+	tipicamente, os gateways executam o RIP no modo ativo, enquanto as estacoes tao de boa no modo passivo
+	um gateway executando o RIP no modo ativo difunde as msgs a cada 30s e tbm qndo recebe uma solicitacao de informacao de outro gateway
+	a mensagem difundida normalmente contem informacoes sobre todas as sub-redes do AS
+	cada mensagem enviada por um gateway G consiste em pares de informacoes: (endereco IP de sub-rede, distancia de G 'a sub-rede)
+	metrica utilizada para calculo de distancias: numero de hops (gateways) na melhor rota entre G e a rede
+	participantes passivos, quando recebem uma mensagem, atualizam suas rotas de acordo com o algoritmo vetor-distancia
+
+	um dos primeiros protocolos de roteamento intra-AS da Internet
+	tem versoes 1 e 2, diferenca: classfull e classless
+	versao 1
+		classfull
+		nao envia a mascara nas atualizacoes
+		assim, nao pode ser usado em sub-redes, pois sem as mascaras, os roteadores vao classificar os enderecos como classes A, B e C
+	versao 2
+		classless
+		envia as mascaras, sendo possivel a utilizacao em sub-redes!
+
+
+
+
+____
+OSPF - Open Shortest Path First
+
+	ver explicacao do Douglao na 1a questao do tec!
+
+	transforma o conjunto de redes, roteadores e linhas reais em um GRAFO ORIENTADO
+	se atribui um custo (distancia, retardo, etc.) a cada arco
+	em seguida se calcula o caminho mais curto com base nos pesos dos arcos
+
+	protocolo especialmente projetado para o ambiente TCP/IP
+	baseado no algoritmo link-state
+	a busca pelo menor caminho eh computada LOCALMENTE, usando o algoritmo SPF (Shortest Path First)
+	algoritmo:
+		ao inves de ter na tabela as melhores rotas, todos os nos possuem todos os links da rede
+		cada rota contem identificador, numero do enlace e distancia/metrica
+		com essas informacoes os nos (roteadores) descobrem as melhores rotas
+		qndo rola alteracao em um dos nos, os nos adjacentes percebem e avisam a negada toda
+		para a galera saber se esse aviso eh novo ou velho, ha uma identificacao no pacote (numero da mensagem ou sua hora)
+		assim, podem verificar a existencia ou nao da rota e fazer as modificacoes necessarias
+		-> esse processo eh chamado de flooding
+
+	o OSPF possui uma serie de [protecoes] contra alguns [perigos], como
+	  . erros de memoria
+	  . falhas nos processos de flooding
+	  . introducao voluntaria de informacao enganosa, etc.
+	sao elas:
+		- pacotes de descricao da tabela sao [enviados de forma segura]
+		- cada entrada eh protegida por um [contador de tempo]
+		    e eh removida da tabela se um pacote de atualizacao nao chegar ate o TEMPO LIMITE
+		- todas as entradas sao protegidas por [checksum]
+		- as mensagens podem ser [autenticadas]
+		- processo de flooding inclui notificacao de reconhecimento salto por salto (hop-by-hop)
+
+___
+BGP - Border Gateway Protocol
+
+	...
+
