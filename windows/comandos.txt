@@ -1,0 +1,130 @@
+=============================
+COMANDOS DO PROMPT DO WINDOWS
+
+	diversos comandos no fim da pagina https://en.wikipedia.org/wiki/Ipconfig
+
+	apesar de ser hoje totalmente em interface grafica, ainda possui esses recursos
+	acessivel por:
+		Menu Iniciar > "Prompt de Comando"
+		ou tecla "Windows" + pesquisa por "cmd"  ->  aparece o programa
+		ou teclas "Windows" + "R" e digitar "cmd"
+
+
+"comando" /?
+	exibe em detalhes todos os usos do "comando"
+	ex: verificar no prompt "ipconfig /?"
+
+
+cls
+	limpa tela
+
+
+ipconfig
+	revela as configuracoes de IP
+	exibe as configuracoes de rede TCP/IP
+	exibe detalhes sobre
+		endereco IPv4, mascara de sub-rede, gateway, DNS, IPv6, etc.
+	eh possivel descobrir
+		- se o roteador esta distribuindo o IP correto
+		- se o DNS atribuido eh o correto
+		- ...
+	para efetuar configuracoes:
+		abrir a "Central de Rede e Compartilhamento"
+		realizar alteracoes nos diversos adaptadores que estao instalados na maquina
+
+	> ipconfig /all
+		exibe mais informacoes detalhadas
+
+	> ipconfig /flushdns
+		'as vezes, pode acontecer de se mudar o endereco DNS e a mudanca nao ocorrer de imediato
+		(o Windows tem um tempo para efetuar essa alteracao)
+		para informar ao sistema que o endereco DNS foi alterado, basta usar o "/flushdns"
+
+	> ipconfig /release
+		envia uma notificacao ao servidor DNS para o IP do cliente como "Available"
+
+	> ipconfig /renew
+		requisita um novo endereco IP
+
+	> ipconfig /displaydns
+		exibe o conteudo *de cache* do resolver DNS
+		o cliente DNS lanca mao desse cache para resolucao de nomes mais rapida,
+			> nao tendo que fazer uma consulta ao servidor DNS
+
+
+ping
+	informa [se existe uma resposta do servidor] do endereco em questao
+	sao enviados pacotes para o endereco e esperada uma resposta
+	objetivo: verificar conexao com UM servidor
+	informa:
+		se pacotes foram entregues
+		tempo necessario para a tarefa
+
+
+tracert
+	"tracar rota"
+	verifica se todos os servidores envolvidos na comunicacao entre
+		> seu computador e uma determinada pagina [ESTAO OPERANDO conforme o esperado]
+	eh conferido o tempo necessario para se conectar a cada um dos computadores intermediarios
+	o ultimo rastreado na rota eh o endereco de interesse
+!!!	diferenca entre ping e tracert:
+		ping		verifica resposta de UM servidor, verifica se esta ativo
+		tracert		verifica uma ROTA, ou seja, todos os servidores no meio do caminho
+
+
+
+netstat -an
+	informa dados sobre as conexoes de rede (saida e entrada), tabelas de roteamento, outras estatisticas
+	exibe:
+		- estatisticas de protocolo
+		- conexoes TCP/IP atuais
+	verifica portas que estao abertas, e a quais IPs cada uma esta conectada
+	algumas portas apenas aguardam dados, outras tem conexao estabelecida
+	ha tambem portas inoperantes
+
+
+taskkill /f /im "processo"
+	programas podem travar e a unica maneira de resolver eh matando seu processo
+	caso o Gerenciador de Tarefas demorar ou nao abrir, pode-se usar este comando	
+
+
+sfc /scannow
+	efetua uma varredura nos arquivos do sistema procurando erros e itens corrompidos
+	quando algum problema eh encontrado (ou um arquivo esta ausente), o Windows tenta efetuar um reparo rapido
+	soh funciona se aberto no prompt com permissao de Administrador
+	possui execucao demorada
+
+
+cd
+	muda do diretorio corrente para o diretorio especifica
+
+dir
+	exibe o conteudo do diretorio corrente
+	equivalente ao "ls" do Linux
+
+tree
+	exibe a estrutura em arvore dos diretorios do sistema
+
+md ou mkdir
+	cria um novo diretorio
+	ex1> md diretorio1
+	ex2> mkdir diretorio2
+
+move
+	move um diretorio ou arquivo de lugar
+
+rd ou rmdir
+	remove um diretorio
+
+chkdsk
+	checa um disco e exibe um relatorio de status
+	verifica a integridade de um volume (particao)
+	tambem pode corrigir erros de sistema de arquivos
+
+defrag
+	utilitario que realiza a defragmentacao do disco
+
+kill
+	termina processos
+
+
