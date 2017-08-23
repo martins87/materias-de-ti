@@ -1,0 +1,304 @@
+===
+UML
+
+FERRAMENTA/linguagem de modelagem visual, que AUXILIA o desenvolvimento de software
+
+caracteristicas:
+	nao-proprietaria
+	usada em outras areas: telecomunicacoes, defesa, aeroespacial, bancaria, financeira..
+	independente de processos
+	pode ser aplicada no contexto de processos diferentes
+	por que usar? abstracao ajuda no entendimento do sistema
+	linguagem independente de tecnologia: pode ser usada com Java, Cobol, Pascal..
+	possui uma linguagem declarativa para ESPECIFICAR REGRAS que se aplicam aos modelos UML: Object Constraint Language - OCL
+	
+
+estereotipos:
+	mecanismo de extensao que da mais poder e flexibilidade 'a UML
+	podem ser definidos textualmente (em texto) ou graficamente (icones)
+	eh utilizado para aumentar a capacidade da linguagem
+	podem ser:
+		predefinidos. ex: <<interface>>, <<document>>, <<control>>, <<entity>>
+		definidos pela equipe de desenvolvimento
+
+notas explicativas:
+	utilizadas para definir informacao que comenta ou esclarece alguma parte de um diagrama
+	graficamente representadas por um retangulo com uma "orelhinha"
+	apenas EXPLICAM um elemento do modelo
+
+
+
+==================================================================================================================
+Diagrama ESTRUTURAL:
+			representam aspectos estaticos do sistema
+	Componentes
+	Classes
+	Implantacao
+	Perfil
+	Objetos
+	Estrutura composta
+	Pacotes
+
+Diagrama COMPORTAMENTAL:	aspectos dinamicos!
+   |					Diagrama comportamental:
+   |	Maquina de estados		representa a INTERACAO entre os objetos do sistema e a DINAMICA do sistema
+   |	Casos de Uso			> nas interacoes entre seus diversos elementos estruturais.
+   |	Atividade			:: resumo: Comportamentos e interacoes do sistema com o usuario.
+   |
+   |-->	Diagrama de INTERACAO:	consideram as trocas de mensagens entre os aspectos dinamicos do sistema
+
+		Tempo
+		Interacao geral
+		Comunicacao
+		Sequencia
+==================================================================================================================
+
+
+
+=-=-=-=-=-=-=-=-=-=
+Diagrama de CLASSE:
+
+	denota a estrutura ESTATICA de um sistema
+
+	eh a base para construcao dos diagramas de
+		maquina de estados
+		sequencia
+		comunicacao
+
+	multiplicidade:   especifica a quantidade de objetos de cada classe envolvidos em um relacionamento
+
+	atributo estatico: nome SUBLINHADO
+	operacao estatica: nome SUBLINHADO
+	operacao abstrata: nome ITALICO
+
+modificadores:
+	+ publico
+	- privado
+	# protegido	>> protegido para seus filhos = soh a classe pai e as filhas podem ver
+	~ pacote
+
+UML ~ pacote
+Java ~ default
+
+
+RELACIONAMENTOS:
+
+	generalizacao/especializacao:   famosa heranca						Fruta <|------- Laranja <|------- Laranja Lima
+
+	dependencia:   classe cliente depende de algum servico da classe fornecedora		Base de Dados <-   -   -   - Login
+
+	realizacao:   um elemento realiza/executa o comportamento de outro. CONTRATO		<<pessoa>>  <|-   -   -   -  Daniel
+
+ASSOCIACAO:
+	simples: instancia de um elemento ligada 'a instancia de outro				Carro <-------> Marca
+												obs: carro eh de uma marca e marca possui diversos carros
+												se excluir um carro, a marca continua a existir e vice-versa
+
+	qualificada:   similar 'a associacao, mas possui um qualificador			NotaFiscal [CodigoItem]------- Itens
+												obs: uma NF pode ter milhares de itens, mas pode-se
+												encontrar um item especifico por meio do qualificador
+
+	agregacao:   associacao mais forte. um pode existir sem o outro				Carro <>------- Roda <>------- Calota 
+
+	composicao:   agregacao mais forte. parte nao existe sem o todo				Carro <|>------- Pintura
+			diamante Cheio = Composicao
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Diagrama de OBJETO (de instancias)
+
+	variacao do diagrama de classes, mas trata de INSTANCIAS -> cada instancia especifica do sistema
+	se no de classes ha Pessoa, no diagrama de objetos ha Daniel, Luiza, Rosa e Spencer
+	personaliza-se cada instancia com seus valores
+	"fotografia estatica do sistema em dado momento de execucao"
+
+	http://s28.postimg.org/t1dnbw6rx/objeto.png
+
+representacoes do nome de um objeto:
+
+	:				instancia anonima de uma classe anonima
+	:Cliente			instancia anonima da classe Cliente
+	novoCliente:			instancia novoCliente de classe anonima
+	novoCliente:Cliente		instancia novoCliente da classe Cliente
+	Clientes:novoCliente::Cliente	instancia novoCliente da classe Cliente do pacote Clientes
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=
+Diagrama de COMPONENTES
+
+	representa o sistema sob uma perspectiva funcional
+	expoe a organizacao de seus modulos e as relacoes entre seus componentes por meio de interfaces
+	os componentes podem ser tabelas, documentos, etc.
+	vantagem: modularidade
+	http://s18.postimg.org/x66telh09/componentes.png
+
+
+
+=-=-=-=-=-=-=-=-=-=
+Diagrama de PACOTES
+
+	representa pacotes e suas dependencias
+	pacotes podem agrupar qualquer coisa
+
+	http://s18.postimg.org/60gj88nkp/pacotes.png
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Diagrama de IMPLANTACAO (Instalacao)
+
+	apresenta o layout fisico de um sistema
+	revela quais componentes do software sao executados em quais componentes do hardware
+	pode representar toda a estrutura de hardware e requisitos minimos onde o sistema sera de fato executado
+	sao de responsabilidade da EQUIPE DE IMPLANTACAO DO SISTEMA
+	essa equipe de implantacao deve se preocupar com a configuracao e topologia
+
+	http://s17.postimg.org/54hhcfs7z/implantacao.png
+
+
+
+=-=-=-=-=-=-=-=-=-
+Diagrama de Perfil
+
+	raramente se cria um novo perfil
+	porem, este diagrama possibilita a definicao de novos elementos UML
+	assim, eh possivel estender os diagramas existentes com a inclusao de estruturas customizadas para determinada necessidade
+
+	http://s10.postimg.org/j7q58rw15/perfil.png
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Diagrama de Estrutura Composta
+
+	utilizado para demonstrar a estrutura interna de uma classe,
+	> incluindo referencias que apontam para outras partes de um sistema
+
+	http://s12.postimg.org/thu9eiinh/estrutura.png
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-
+Diagrama de Casos de Uso
+
+	http://www.dsc.ufcg.edu.br/~sampaio/cursos/2007.1/Graduacao/SI-II/Uml/diagramas/usecases/usecases.htm
+
+	descreve a FUNCIONALIDADE do sistema
+	casos de uso servem para descrever as interacoes fornecendo uma narrativa sobre como o sistema eh utilizado
+	CENARIO eh uma INSTANCIA de caso de uso = sequencia de passos
+
+representado por:
+	atores					podem ser humanos, maquinas ou outro sistema cuja interacao executa uma acao significativa
+	casos de uso
+	relacionamentos entre esses elementos
+
+relacionamentos podem ser:
+	associacoes entre atores e casos de uso
+	generalizacoes entre os atores
+	generalizacoes, extends e includes entre os casos de uso	
+
+	4 tipos de  Casos de Uso relevantes:
+		concreto	iniciado por um ator e constitui um fluxo completo de eventos
+		abstrato	jamais eh instanciado diretamente -> sao incluidos, estendidos ou generalizados por outros casos de uso. NOME EM ITALICO
+		primario	representa os objetivos dos atores. representa processos da empresa que estao sendo automatizados pelo sistema de software
+		secundario	
+
+	http://s23.postimg.org/cev2ixca3/caso.png
+
+
+
+Possibilidades de relacionamentos:
+
+		CASOS DE USO		Atores
+
+CASOS DE USO	Extensao		Comunicacao
+		Inclusao
+		Heranca
+
+Atores		Comunicacao		Heranca
+
+
+relacionamentos:
+
+	include			se A inclui B, quer dizer que B eh essencial para o comportamento de A
+	generalizacao		heranca de caracteristicas do caso de uso pai
+	extend			se A extende B, quer dizer que B pode ser acrescentado para descrever o comportamento de A
+
+
+Sistema
+	limites do sistema	representado por um retangulo envolvendo os casos de uso que compoem o sistema
+	nome do sistema		localizado dentro do retangulo
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-
+Diagrama de Atividades
+
+	parecido com fluxograma, mas difere por suportar comportamento paralelo
+	estados mudam quando determinada acao eh executada
+	podem ser representados por SWIMLANES (raias de piscina) -> representadas como linhas paralelas (horizontais ou verticais)
+
+	http://s1.postimg.org/5u6c60atr/atividade.png
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Diagrama de Maquina de Estados
+
+	tambem conhecido como diagrama de TRANSICAO de estados
+	apresenta diversos estados possiveis de um objeto no decorrer da execucao
+	objeto passa de um estado para outro por meio de uma transicao
+	estado eh a condicao de um objeto em um determinado instante
+
+	http://s18.postimg.org/jrdqzjihl/estados.png
+
+
+
+=-=-=-=-=-=-=-=-=-=-=
+Diagrama de Sequencia
+
+	diagrama de Interacao que captura o comportamento de um [unico cenario], mostrando a troca de mensagens entre objetos
+	enfase na ordem temporal
+	mensagem: servico solicitado de um objeto para outro e suas respostas
+	utilizado para cenarios mais complexos
+
+	http://s3.postimg.org/j9f9ntklf/sequencia.png
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Diagrama de Comunicacao (Colaboracao)
+
+	tambem mostra a troca de mensagens entre objetos
+	diagrama de interacao mto semelhante ao de Sequencia, mas com enfase na ordem estrutural
+	verifica-se a ordem por meio de numeros que identificam a sequencia
+	nao ha indicacao cronologica, mas sequencial
+	utilizado para cenarios mais simples, onde basta botar os numeros da sequencia da troca de mensagens e boas =)
+
+	http://s27.postimg.org/zer7b6feb/comunicacao.png
+
+
+
+=-=-=-=-=-=-=-=-=
+Diagrama de Tempo
+
+	tambem uma especie de diagrama de interacao
+	descreve o comportamento dos objetos ao decorrer do tempo e a duracao na qual eles permanecem em determinados estados
+	focam nas restricoes de temporizacao entre mudancas de estado em diferentes objetos
+
+	http://s7.postimg.org/3sz2fmti3/tempo.png
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Diagrama de Interacao Geral
+
+	especie de diagrama que mistura o de Atividades com o de Sequencia
+	fornece uma visao geral do controle de fluxo entre objetos
+	engloba diversos tipos de diagramas de interacao para demonstrar um processo geral
+	mostra a troca de mensagens entre objetos e o estado de atividades
+	objetivo: dar uma visao geral de nao somente um cenario, mas dos diversos casos de uso
+
+	http://s21.postimg.org/gmzwsw72v/interacao_geral.png
+
