@@ -1,0 +1,509 @@
+----------------------------------------------------------------------
+# comandos
+
+	dcpromo		transforma o servico de diretorio e vice-versa
+----------------------------------------------------------------------
+
+
+Versoes anteriores:
+	tinha que definir na hora da instalacao: [Servidor Membro] ou [Domain Controller], dificultando posterior alteracao
+	havia limitacao na quantidade de objetos por dominio >> problema de expansao das redes
+	incompatibilidade do Windows NT com FAT 32
+	a partir do Windows Server 2003, foram incorporados
+		desenvolvimento seguro
+		confiabilidade
+		seguranca
+
+Windows Server 2008 - versoes: (WEDSS)
+	Web Server
+	Enterprise
+	Datacenter
+	Standard
+	Server Core
+
+Windows Server 2012 - versoes: (Feds - Federais)
+	Foundation
+	Essentials
+	Datacenter
+	Standard
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=
+versao Windows Web Server
+
+	projetada para servidores que prestam servicos de hospedagem de
+		sites
+		aplicacoes web
+		aplicacoes baseadas na plataforma .NET
+	servidores esses que utilizam tecnologias como ASPNET, XML, WebServices
+	serve somente Web e acabou, faz mais nada
+!!	NAO PODE FUNCIONAR como servidor de aplicacoes, pois tem recursos reduzidos
+!!	NAO PODE ser controlador de dominio
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=
+versao Datacenter Edition
+
+	voltado para infraestruturas que demandam mais recursos de seguranca e confiabilidade
+	suporta ate 64 processadores
+	acomoda ate 512 GB de RAM para alta disponibilidade para processamento de alta demanda
+
+
+=-=-=-=-=-=-=-=-=-=-=-=
+versao Standard Edition
+
+	projetado para empresas de pequeno a medio porte
+	oferece suporte a compartilhamento de arquivos e impressao
+	funciona com ate 4 processadores
+	acomoda ate 4 GB de RAM
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=
+versao Enterprise Edition
+
+	para empresas de medio e grande porte
+	suporta ate 8 processadores e 64 GB de RAM
+	recomendada para servidores que fornecem servicos como
+		roteamento
+		servidor de banco de dados (SQL Server 2000, ORACLE, etc.)
+		correio eletronico e aplicativos de colaboracao
+		sites de comercio eletronico
+		...outros aplicativos utilizados em rede de grande porte
+
+
+Estao contidos na mesma midia de instalacao: (DES)
+	Datacenter, Enterprise e Standard
+
+
+Server Core:
+	opcao minima de instalacao
+	apenas com os componentes necessarios para um servidor de alta disponibilidade
+	se propoe a [reduzir vulnerabilidades]
+	permite instalacao enxuta, sem interface grafica!
+
+
+
+
+Formas de licenciamento:
+	por Servidor
+		indicado para pequenas empresas, com apenas um servidor Windows instalado
+		define o numero maximo de usuarios conectados ao servidor simultaneamente
+	por Dispositivo
+		disponibiliza uma licenca de acesso para cada estacao de trabalho que se conecta ao servidor
+		tipo de licenciamento mais flexivel quando se tem usuarios que nao permanecem constantemente conectados,
+			> permitindo essa licenca "flutuar" entre os usuarios
+
+
+==========
+INSTALACAO
+
+	3 fases da instalacao:
+		- Operating System Setup
+		- Initial Configuration Tasks
+		- Server Manager
+	possivel para 32 ou 64 bits
+
+1 - Operating System Setup:
+	eh solicitada a chave de ativacao
+	deve-se escolher entre: Full Installation .XOR. Server Core
+	se for Server Core, vai para o terminal -> sem interface grafica!
+		alternativa para ambientes que requerem um maior grau inicial de seguranca (componentes desnecessarios podem dar merda)
+	a opcao entre Full Installation ou Server Core nao limita as funcoes da versao (Datacenter, Enterprise, Standard...)
+		essa funcoes podem ser incluidas ou alteradas posteriormente
+	deve-se escolher entre Atualizar versao ja instalada .XOR. Instalar uma versao nova
+	deve-se informar qual midia sera realizada a instalacao
+	apos a conclusao, eh necessaria a alteracao/criacao da senha de administrador
+
+2 - Initial Configuration Tasks:
+	configuracoes necessarias apos a instalacao
+	- identificar o servidor para os demais recursos
+	- proteger o servidor
+	- permitir que os servicos possam executar tarefas
+	- personalizar o servidor
+	- ...
+
+3 - Server Manager
+	ultima etapa da instalacao
+
+
+
+
+caracteristicas:
+	uma mesma midia pode servir para instalar mais de uma versao do Windows Server. no mesmo cd:
+		Standard Edition, Enterprise Edition..		
+	pode ser executado no regime monousuario ou multiusuario
+	utiliza o servico conhecido como Active Directory
+
+
+RODC (Read-Only Domain Controller):
+	novidade no Windows Server 2008, em relacao 'as versoes anteriores
+	sendo somente leitura, protege-se de alteracoes indevidas ou de ataques indesejaveis
+	implantado em locais onde a seguranca fisica nao pode ser garantida
+
+BitLocker:
+	[seguranca]
+	recurso para proteger dados do servidor pela criptografia de volume completa
+	fornece mecanismo de verificacao de integridade que garante que o ambiente de inicializacao nao foi indevidamente manipulado
+	criptografa TUDO!!!
+	requer um modulo TPM - Trusted Platform Module, para garantir a integridade dos volumes protegidos
+
+NAP - Network Access Protection
+	adota medidas de protecao aos equipamentos da rede, com base em um baseline (comportamento padrao)
+	para os integrantes do dominio acessarem a rede, devem atender a certos criterios de seguranca
+
+SMB/CIFS
+	protocolo padrao utilizado para o compartilhamento de pastas e impressoras atraves de uma rede
+
+Criptografia nativa:
+	quando ha uma pasta criptografada, tudo que for colocado dentro dela tambem sera automaticamente criptografado!
+		porem, um arquivo criptografado pode ser movido para qq lugar nao criptografado que ele vai continuar criptografado!
+	somente arquivos e pastas em volumes NTFS podem ser criptografados
+
+Round Robin:
+	recurso de [equilibrio de carga], para compartilhar e distribuir cargas entre dois ou mais servidores da rede
+	com esse recurso, a um unico nome DNS sao associados [dois ou mais enderecos IP]
+	'a medida que as requisicoes vao chegando, o servidor DNS responde a cada consulta com um dos enderecos IP
+	> e depois faz uma reordenacao da lista de enderecos, para que na proxima requisicao, um endereco IP seja o primeiro da lista
+	isso proporciona uma distribuicao igualitaria de carga entre os diferentes servidores
+
+DNS:
+	servico de resolucao de nomes, sendo sua estrutura baseada no conceito de espaco hierarquico de nomes e arvore de dominios
+	nome para IP, ou IP para nome
+	o DNS passou a ser o servico de resolucao de nomes a partir do Windows Server 2000
+
+DHCP:
+	o servidor DHCP de um dominio precisa ligar-se a um Active Directory.
+		> precisa tambem estar em um servidor que seja membro de um dominio
+	escopo: agrupamento administrativo de enderecos IP em uma rede que use o servico DHCP
+	propriedades do escopo:
+		intervalo de enderecos IP usados para concessao
+		valores de duracao de concessao
+		mascara de sub-rede
+		nome
+		outras opcoes, como DNS, endereco IP do gateway, endereco do servidor WINS...
+	reserva DHCP: recurso opcional que garante que um [cliente receba sempre o mesmo endereco IP]
+	superescopo:
+		grupo de escopos relacionados que pode ser criado para atender redes que trabalhem conjuntamente
+	APIPA:
+		Automatic Private IP Adressing
+		endereco automatico privado que eh atribuido a uma estacao, caso ela nao consiga obter um endereco IP de um servidor DHCP
+
+NTFS - New Technology File System
+	sistema de arquivos hierarquico / em arvore
+	recuperacao em caso de falhas: caso haja um desligamento repentino do computador, o NTFS eh capaz de reverter os dados 'a condicao anterior
+	tambem suporta redundancia de dados, como o RAID
+	esquema de permissao de acessos: permite aos usuarios definir quem pode e acomo acessar pastas ou arquivos
+	compartilhamento de arquivos: permite definir quais serao as permissoes de quem acessar o arquivo
+	suporta dois tipos de permissao: padrao ou especial
+	tipos de permissao padrao:
+		r - ler
+		w - escrever		!! eh possivel ter permissao de escrita e nao ter de leitura
+		rx - ler e executar	arquivos dentro de pastas com direitos RX herdam os direitos da pasta
+		m - modificar		permite ler, escrever, executar ou excluir um arquivo ou pasta
+		l - listar		semelhante ao rx, mas arquivos dentro de pastas com direitos L nao herdarao direitos rx
+		fc - controle total	semelhante ao m, mas tambem permite que o usuario ou grupo mude as permissoes do arquivo ou pasta
+	heranca: permite subpastas ou arquivos criados dentro de uma pasta receberem as permissoes desta pasta
+	copiar ou mover arquivos/pastas:
+		se vc muda ou copia um arquivo para uma pasta, ele herda as permissoes desta pasta
+
+NTFS - caracteristicas exclusivas:
+	criptografia de dados nativa--------------\___ mutualmente excludentes
+	recursos de compactacao nativa------------/
+	permissionamento de arquivos especificos
+
+
+
+
+=-=-=-=-=-=-=-=-=
+Active Directory:
+	contas no DCC e acesso a elas nos labs =)
+	necessita do DNS para
+		sua instalacao
+		agir como servico de resolucao/verificacao de nomes
+		agir como servico de localizacao
+	na instalacao/configuracao eh pedido um servidor DNS ->> UNICA COISA QUE PRECISA e nao pode faltar!
+	eh um banco de dados!
+	na instalacao, cria obrigatoriamente um dominio
+	comporta OBJETOS -> tudo aquilo que se pode atribuir um Access Control List: usuario, grupos, arquivos, pastas, ou (unidades organizacionais)
+	utiliza os conceitos de Arvore e Floresta
+	Arvore:
+		hierarquia (entre dominios)			!! arvores contem dominios !! cada nó da arvore eh um dominio
+	Floresta:
+		[relacao de confianca] (entre dominios) >> A confia em B e B confia em A
+	a criacao/alteracao de contas/grupos de usuarios podem ser feitas nos [Controladores de Dominio] e automaticamente replicadas nos [servidores-membros]
+	controlador de dominio: maquina que roda uma instancia do Active Directory
+	para que possa instalar o Active Directory, eh recomendado que haja um [endereco IP dedicado]
+	o AD cria um [objeto de seguraca externo] no dominio LOCAL para representar cada objeto de seguranca de um dominio externo confiavel
+	elementos que definem as permissoes de controle e acesso sobre os objetos incluem:
+		heranca de objetos
+		autenticacao do usuario
+		descritores de seguranca
+	pasta utilizada, por padrao, para armazenar a base de dados do AD:
+		%SystemRoot%\NTDS
+	base de dados armazenada no arquivo:
+		NTDS.nit
+	esquema de objetos eh modelado de acordo com o padrao X.500
+	depois de criado, pode-se modificar o nome de um dominio
+
+
+OU - Unidades Organizacionais
+!!	objetos do tipo [Conteiners]
+	podem CONTER objetos usuarios, grupos, computadores, impressoras, aplicativos, diretivas de seguranca, pastas, compartilhamento de arquivos...
+
+
+Controlador de Dominio (Domain Controller):
+	maquina que roda uma instancia do AD
+	nomeados usando-se DNS
+
+Dominio:
+	colecao de objetos que formam um limite de gerenciamento
+	no minimo deve existir uma maquina rodando o servico de diretorio Domain Controller
+	criacao de um dominio ocorre, obrigatoriamente, junto com a instalacao do AD
+	eh possivel modificar o nome de um dominio apos sua instalacao
+	soh se pode logar no dominio se a conta existir no Active Directory!
+	::
+	http://s27.postimg.org/rivt2gtb7/floresta_dominio_e_OU.png
+	http://s16.postimg.org/daq9tqq9h/domains.jpg
+
+LDAP:
+	no Windows Server eh implementado pelo servico AD LDS - Active Directory Lightweight Directory Services
+	protocolo de pesquisa em diretorios sobre TCP/IP
+	protocolo utilizado por computadores clientes para realizar procuras em uma base de dados Active Directory
+	estrutura de diretorios possui formato de arvore
+	utiliza TLS para criptografia e autenticacao
+	interopera com outros produtos que utilizam o LDAP - ex: SAMBA
+	segue o modelo X500
+	tende a se basear nos nomes ja existentes no DNS
+
+	pode ser manualmente iniciado pelo comando de shell
+		# rcldap start
+
+Resolucao de nomes:
+	DNS e WINS
+	porem, o WINS nao eh mais utilizado
+	WINS eh utilizado apenas pela familia Windows (Windows Internet Naming Service)
+
+Registro de recurso SRV:
+	mapeia um servico ao computador que fornece esse servico
+
+Operacoes de administracao de DNS:
+	sao aplicadas para gerenciar
+		servidores DNS
+		clientes DNS
+		zonas e registros de recurso
+
+IXFR:
+	transferencia de zona INCREMENTAL
+AXFR:
+	transferencia de zona COMPLETA (All)
+
+
+
+================================
+SERVICOS DE ARQUIVOS E IMPRESSAO
+
+	as impressoras podem ser publicadas no Active Directory, o que permite que usuarios pesquisem por impressoras e as encontrem mais facilmente
+	um relatorio (log) de impressao eh gerado no servidor
+	o driver da impressora fica armazenado no servidor. eh instalado automaticamente!
+	eh possivel o acesso 'as impressoras via HTTP
+	pode-se instalar um UNICO driver de impressora e associa-lo com diversas impressoras  -->>  esse eh o Pool de Impressoras!
+
+LPD
+	Line Printer Daemon
+	instala e inicia o endereco IP usado no servidor de impressao
+	assim, permite que os computadores possam imprimir nesse servidor
+
+
+
+====================
+SERVICOS DE ARQUIVOS
+
+Compartilhamento de arquivos:
+	as permissoes sao cumulativas: se um usuario faz parte de 2 grupos que possuem permissoes em uma pasta, a sua permissao efetiva sera a soma destas
+	negar tem prioridade sobre todas as outras permissoes -> se negou, perdeu todas as permissoes que tinha
+	ao copiar uma pasta compartilhada, a original permanece compartilhada. a copia nao
+	quando se MOVE ou RENOMEIA uma pasta compartilhada, ela deixa de ser compartilhada -> perdeu os poderes
+	nome do compartilhamento e nome da pasta nao precisam ser os mesmos
+	por padrao, somente os membros dos grupos [Administradores] ou [Usuarios Avancados] podem compartilhar uma pasta
+	compartilhamento oculto: $ como ultima letra do recurso compartilhado (recurso com o path completo ../../..)
+		ex:  C:\Users\martins\Desktop\CF1988.pdf$  -->>  compartilhamento OCULTO!!!
+
+
+
+C$
+	compartilhamento adminsitrativo que proporciona maneira rapida de acessar
+	> remotamente um determinado computador atraves da rede e verificar seu conteudo
+
+Admin$
+	compartilhamento administrativo que mapeia diretamente a localizacao de arquivo de sistema  -->>  Windows Server 2008
+	eh o mesmo que o ambiente de variavel %SystemRoot%
+
+IPC$
+	compartilhamento que permite a comunicacao entre os processos  -->>  Windows Server 2008
+
+NETLOGON
+	compartilhamento obrigatorio em controladores de dominio (instancias do AD)
+	destina-se a colocar scripts de logon e logoff, programas e informacoes de perfil para usuarios registrados na rede
+	localiza-se em %SystemRoot%\sysvol\domainname\scripts
+
+SYSVOL
+	compartilhamento usado para operacoes de controlador de dominio interno
+
+
+
+Permissoes NTFS
+	tarefa critica de seguranca do Windows Server
+tipos:
+	Padrao
+		leitura, gravar, ler e executar, listar conteudos da pasta, modificar, controle total
+	Especial
+		existem 14 e sao basicamente combinacoes das permissoes padrao
+
+
+Heranca e Propriedade
+	permissoes migram de cima para baixo num processo conhecido como [heranca], possibilitando o recebimento automatico de permissoes
+	ex: muda-se a permissao de uma pasta. todas as pastas contidas nela e suas subpastas receberao essa nova permissao
+!!	pode-se bloquear essa heranca nas opcoes para uma determinada pasta
+
+
+Maquina como Servidor de Arquivos
+	somente membros do grupo [Administradores, Operadores de servidor, Usuarios avancados] podem autorizar pastas compartilhadas
+	no 2008 permite-se apenas LEITURA aos usuarios autenticados
+	permissoes de compartilhamento (acessadas atraves da rede) != permissoes NTFS (permisao local, como usuario efetivo do sistema)
+	permissoes sao cumulativas (pode-se ter, por ex: permissoes de compartilhamento e permissoes NTFS)
+	permissoes negadas sao pica, se sobrepoem 'as permitidas
+	permisoes de arquivos > permissoes sobre pastas
+	existem 14 permissoes especiais
+
+Armazenamento
+	Cotas: suportado somente em NTFS
+	cotas baseadas em disco somente podem ser aplicadas a [Usuarios individuais]
+	pode-se atribuir cotas distintas para volumes em disco distintos
+	nao existe mais a escrita de tolerancia: nao pode passar do limite de cota!
+		:: se vc tem 100 MB, eh 100 MB e acabou!
+
+Impressoras e compartilhamentos
+	pode existir: varios compartilhamentos apontando para apenas uma impressora
+	e tambem: um unico compartilhamento apontando para varias impressoras (print pool: varias impressoras fisicas e apenas um servidor de impressao)
+
+DFS - Distribution File System
+	permite criar um layout logico de forma que arquivos e pastas espalhados fisicamente pela rede se apresentem unidos do ponto de vista logico
+	um servidor pode hospedar diversas raizes DFS
+	pode trabalhar em conjunto com o Active Directory
+	podem ser acessados a partir de uma pasta: [namespace]
+
+EFS - Encrypting File System
+	criptografia nativa dos sistemas windows
+
+FSRM - File Server Resource Manager
+	controla e administra os tipos de dados armazenados nos servidores de arquivos
+	fornece um console unico para configurar
+		cotas em pastas e volumes,
+		tipos inaceitaveis de arquivos,
+		relatorios sobre utilizacao de espaco em disco
+	o acesso ao FSRM eh feito pelo Server Manager
+	o FSRM permite encontrar certos tipos de arquivos e impedir que eles sejam armazenados nos servidores de arquivos. por ex: MP3 e WMA
+
+
+Shadow Copy
+	versionamento de arquivos: faz imagens instantaneas de arquivos em momentos especificos do dia
+	renomear o arquivo prejudica este recurso: toma como base o nome do arquivo
+	armazena-se as 64 ultimas copias - FIFO
+
+Servico de pesquisa
+	cataloga e classifica os conteudos dos discos rigidos do servidor
+	acelera o processo de busca
+
+
+=-=
+IIS - Internet Information Service
+
+	eh o servidor de paginas web do Windows Server 2008
+	funcao: oferecer uma plataforma para a hospedagem de sites web, servicos e aplicativos,
+		> capaz de integrar outras tecnologias web, como ASP.NET e PHP
+	na versao 7, uma de suas caracteristicas eh a modularidade:
+		eh possivel configura-lo para servir paginas web HTML estaticas,
+		ou carregar dinamicamente modulos que possibilitem diferentes tipos de conteudo
+	a nova interface de gerenciamento do IIS 7 eh orientada para tarefas:
+		permite criar plug-ins personalizados que trabalham diretamente no console de gerenciamento IIS 7
+!!	usa arquivos XML para configuracoes de servidor, sites e aplicacoes
+!!	o arquivo de configuracao principal eh o ApplicationHost.config
+!!	o arquivo Web.config define diretorios de aplicacoes
+	seguranca:
+		foi reforcada, permitindo que as aplicacoes armazenem informacoes confidenciais
+		aplicacoes tambem autenticam formularios para qualquer tipo de conteudo
+
+	o ambiente de administracao do Windows PowerShell eh usado para a administracao:
+		o utilitario Appcmd permite criar e configurar sites, configuracoes, etc.
+
+	WAS - Windows Process Activation Server
+		mantem e administra todos os processos de trabalho e pools de aplicativos para o IIS
+		identifica novas solicitacoes e as atribui a processos
+		o WAS atua como uma central de informacoes de configuracao para sites, pools de aplicativos e aplicacoes web globais em execucao na maquina
+PERFORMANCE
+
+	NLB - Network Load Balance
+		permite aprimorar a disponibilidade e a escalabilidade de servidores
+		se houver apenas um host executando uma aplicacao cliente, havera um nivel limitado de confiabilidade e desempenho
+		por outro lado, a performance pode ser aumentada se forem combinados os recursos de dois ou mais servidores em um unico cluster virtual
+		cada host executa uma copia separada dos aplicativos desejados e o NLB distribui as solicitacoes por esses hosts
+		eh possivel adicionar hosts dinamicamente ao cluster para atender aumentos de carga
+		o NLB pode tambem direcionar todo o trafego para um unico host designado, chamado de host padrao
+
+		o NLB permite que todos os computadores do cluster sejam identificados pelo mesmo conjunto de IPs de cluster
+		mantem tambem um conjunto de IPs DEDICADOS para cada host
+
+		quando um host falha, a carga eh automaticamente distribuida entre os computadores que permanecem em operacao
+!!		se houver necessidade de desligar um host, o comando [drainstop] permite atender a todas as conexoes ativas antes de desligar o servidor
+
+	Cluster
+		conjunto de computadores independentes que [trabalham em conjunto] para aumentar a disponibilidade e escalabilidade
+!!		failover: se um ou mais nós do cluster falhar, o outro nó comecara a fornecer o servico
+
+		as funcoes do cluster sao monitoradas para verificar se estao funcionando adequadamente
+			> caso contrario, elas sao reiniciadas ou movidas para outro nó
+
+		os cluster de failover tambem fornecem a funcionalidade Volume Compartilhado Clusterizado (CSV):
+			disponibiliza um namespace distribuido, que pode ser usado para acessar o armazenamento compartilhado em todos os nós
+
+		os clusters de failover sao gerenciados usando os cmdlets do Windows PowerShell e o snap-in Gerenciador de Cluster de Failover
+
+
+-=-
+LVM - Logical Volume Manager
+
+	gerencia particoes: cria, exclui, redimensiona, expande..
+	armazena suas proprias informacoes em separado
+	se faltar espaco, eh soh adicionar no LVM outros discos rigidos
+
+
+
+-=-=-=-=-=
+PowerShell
+
+	eh um shell de linha de comando
+	linguagem script associada e construida emcima do .NET
+	disponivel para Windows Server 2003 e 2012
+	permite utilizar scripting para automatizar tarefas administrativas
+	pode tambem administrar objetos (Active Directory, banco de dados..)
+	pode ser aberto com o comando powershell.exe
+
+	cmdlets (command-let) sao comandos do Windows PowerShell
+	nomenclatura: verbo-substantivo
+	ex: Get-PSDrive
+
+	exemplo de comandos:
+		Get-PSDrive		exibe todos os recursos do sistema
+		Get-Help		exibe ajuda sobre cmdlets e conceitos do PowerShell. ex: Get-Help Get-PSDrive  -->>  exibe info sobre o cmdlet Get-PSDrive
+		Get-Command		exibe uma lista de todos os cmdlets
+		Get-Process		recupera todo o processo em execucao no Windows
+		Flush-Volume
+		Write-FileSystemCache
+
+	autocompletar:
+		vc digita, por ex, Get-H e pressiona Tab
+		sao exibidos entao alguns cmdlets como Get-Help, Get-History, Get-Host..
+
+	aliases:
+		nomes alternativos atribuidos cmdlets de forma que seja mais facil escrever um cmdlet sem digitar seu nome completo
