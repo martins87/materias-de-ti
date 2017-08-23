@@ -1,0 +1,51 @@
+========
+ISO 9126
+
+	norma ISO para [qualidade de produto de software]
+	estabelece um modelo de qualidade com os seguintes componentes:
+
+		PROCESSO DE DESENVOLVIMENTO
+			a [qualidade do processo de dev] afeta a qualidade do produto de software gerado
+			eh influenciado pela natureza do produto desenvolvido
+
+		PRODUTO
+			compreende os atributos de qualidade do produto (sistema) de software
+			esses atributos podem ser divididos entre atributos INTERNOS e EXTERNOS
+			se diferenciam pela forma como sao aferidos (interna ou externamente ao produto de software)
+			em conjunto compoem a qualidade do produto de software em si
+
+		QUALIDADE EM USO
+			consiste na afericao da qualidade do software em cada contexto especifico de usuario
+			eh tambem a qualidade percebida pelo usuario
+
+	a ISO/IEC 9126 possui sua estrutura dividida em:
+		ISO/IEC 9126-1 referente ao Modelo de Qualidade;
+		ISO/IEC 9126-2 referente 'as Metricas Externas;
+		ISO/IEC 9126-3 referente 'as Metricas Internas;
+		ISO/IEC 9126-4 referente 'as Metricas de Qualidade em Uso
+
+	a norma foca na qualidade do processo de software, propondo [atributos de qualidade]
+	sao distribuidos em 6 caracteristicas principais, cada uma delas subdivididas em sub-caracteristicas
+
+	ATRIBUTOS DE QUALIDADE interna e externa:
+		- Funcionalidade
+		- Confiabilidade
+		- Usabilidade
+		- Eficiencia
+		- Manutenibilidade
+		- Portabilidade
+
+	______________			______________			___________
+	Funcionalidade:			Confiabilidade:			Usabilidade:
+		Adequacao			Maturidade			Inteligibilidade
+		Acuracia			Tolerancia a falhas		Apreensibilidade
+		Interoperabilidade		Recuperabilidade		Operacionalidade
+		Seguranca de acesso		Conformidade			Atratividade
+		Conformidade							Conformidade
+	__________			________________		_____________
+	Eficiencia:			Manutenibilidade:		Portabilidade:
+		Comportamento em		Analisabilidade			Adaptabilidade
+		   relacao ao tempo		Modificabilidade		Capacidade para ser instalado
+		Utilizacao de recursos		Estabilidade			Coexistencia
+		Conformidade			Testabilidade			Capacidade para substituir
+						Conformidade			Conformidade
