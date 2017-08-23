@@ -1,0 +1,216 @@
+CMMI: capability maturity model integration
+
+	modelo de maturidade que PRESCREVE BOAS PRATICAS para o desenvolvimento e manutencao de software
+	mostra O QUE fazer
+	empresas podem ser avaliadas quanto ao CMMI, recebendo certificados emitidos pelo SEI (Software Engineering Institute)
+	CMMI-DEV: foco em desenvolvimento e manutencao de software
+	integra as disciplinas de [engenharia de sistemas] e [engenharia de software] em um unico framework de melhoria de processos
+	identifica 22 areas de processo relevantes para a capacitacao e aprimoramento do processo de software
+	desenvolvido pelo SEI - Software Engineering Institute
+	apresenta 3 modelos/constelacoes:
+		CMMI-DEV
+		CMMI-ACQ
+		CMMI-SVC	possui fundamentos no ITIL, ISO 20000, COBIT e ITSCMM
+
+Constelacoes CMMI:
+
+	CMMI-DEV	processos para desenvolver produtos e servicos
+	CMMI-ACQ	processos para suprimento, aquisicoes e terceirizacao
+	CMMI-SVC	processos para entregar e suportar servicos
+
+Disciplinas/Areas de conhecimento:
+	Engenharia de Software		cobre o desenvolvimento de sistemas de software. foca na aplicacao de metodos para desenvolver e manter softwares
+	Engenharia de Hardware		cobre tecnicas e tecnologias para implementar e manter um produto tangivel, fisico
+	Engenharia de Sistemas		cobre o desenvolvimento de sistemas como um todo, que podem ou nao incluir software
+					> foca em transformar as expectativas dos clientes em solucoes completas
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=
+CONTINUA x POR ESTAGIOS
+
+permite 'a organizacao escolher duas formas distintas de representacao:
+
+	abordagem Continua		[permite a empresa escolher areas de processos nas quais deseja ser avaliada]
+
+					niveis de capacidade (capability levels):
+						0 - Incompleto (ad-hoc)			processo nao eh executado, ou eh executado parcialmente
+						1 - Executado				processo satisfaz 'as [metas especificas] da area de processo
+						2 - Gerenciado				processo planejado e executado de acordo com cada PROJETO
+						3 - Definido				processo eh adaptado a partir do padrao da ORGANIZACAO
+						4 - Gerenciado quantitativamente	processo controlado por meio de tecnicas estatisticas
+						5 - Otimizado				melhoria continua a partir do entendimento das variacoes
+
+		- a organizacao pode escolher a ordem de melhoria que melhor se encaixa a seus objetivos
+		- permite comparacao com outras organizacoes processo a processo
+!		- na real, nao ha total flexibilidade: algumas areas de processo dependem de outras. isso pode limitar as escolhas da organizacao	
+
+	abordagem por e5tagio5		serve para classificar a empresa em um determinado nivel de maturidade
+					oferece uma [classificacao unica] que resume os resultados de avaliacoes
+					permite a comparacao entre organizacoes
+
+					niveis de MATURIDADE5 (maturity level5):
+	mais rigida!				1 - Inicial (Ad-hoc)			processos imprevisiveis e pouco controlados
+					(7)	2 - Gerenciado				processos sao caracterizados por PROJETO e acoes sao reativas
+					(11)	3 - Definido				processos sao caracterizados para a ORGANIZACAO e sao proativos
+					(2)	4 - Gerenciado quantitativamente	processos controlado por meio de tecnicas estatisticas
+					(2)	5 - Otimizado				foco na melhoria continua dos processos
+
+Nivei 1 - Inicial
+	processos ad-hoc e caoticos
+	o sucesso depende do heroismo e da competencia de pessoas individualmente
+	organizacoes neste nivel se comprometem alem da sua capacidade, abandonam os processos em momentos de crise
+	sao incapazes de reproduzir os proprios sucessos
+
+Nivel 2 - Gerenciado
+	os processos sao planejados e executados de acordo com uma politica (conjunto de regras)
+	se consegue alocar pessoas certas para produzir saidas certas
+	ja inclui medicao, analise, controle e revisao dos processos
+	alcancado pelas metas especificas das areas de processos de nivel 2
+	neste nivel, o planejamento de projeto de software compreende:
+		- a elaboracao de estimativas para o trabalho a ser realizado
+		- o estabelecimento de compromissos necessarios
+		- a definicao de planos para a realizacao do trabalho
+	a area [Planejamento de Projeto] cria um plano documentado para o projeto de software,
+		> que sera utilizado como base para
+			acompanhamento das atividades de software
+			comunicacao da situacao do projeto
+			revisao dos planos
+
+Nivel 3 - Definido
+	processos sao bem caracterizados e entendidos
+	sao descritos em padroes, procedimentos, ferramentas e metodos
+	neste nivel, ha um padrao da ORGANIZACAO
+	alcancado pelas metas especificas das areas de processos de nivel 2 e 3
+
+Nivel 4 - Gerenciado quantitativamente
+	:: mensuracao quantitativa!
+	objetivos quantitativos sao estabelecidos para a qualidade e desempenho dos processos
+	medicoes sao feitas atraves de tecnicas estatisticas e quantitativas, APENAS PARA OS SUBPROCESSOS MAIS RELEVANTES
+	alcancado pelas metas especificas das areas de processos de nivel 2 a 4
+
+Nivel 5 - Em otimizacao
+	:: otimizacao continuada de processos!
+	os processos sao melhorados continuamente com base no entendimento quantitativo do nivel 4
+	as melhorias sao escolhidas e comparadas ao seu custo e impacto na organizacao
+	alcancado pelas metas especificas das areas de processos de nivel 2 a 5
+
+
+Desvantagens:	!!!
+	rigidez na escolha das areas de processo a serem melhoradas: vc nao pode escolher, e sim acatar as areas por nivel
+	o custo pode ser maior, caso a empresa nao tenha interesse em algumas areas de processo, mas tenha que implementa-las mesmo assim
+	ex: empresa nao tem interesse em testes, mas eh obrigada a melhorar essa area se quiser atingir determinado nivel de maturidade
+
+
+
+
+O CMMI-DEV possui 22 AREAS DE PROCESSO		zwei und zwanzig!	dois patinhos na lagoa
+pode classificar as areas em categorias:
+	gestao de processos
+	gestao de projetos
+	engenharia
+	suporte
+
+	http://s29.postimg.org/e29gkizav/areas_de_processos_x_categorias.png
+
+!!	as 22 areas sao AS MESMAS tanto para a abordagem por [capacidade] quando para a abordagem por [estagios]	!!
+
+------------------------------------------------------------------------------------------------------------------------------
+GESTAO DE PROCESSOS
+	envolvem atividades transversais aos projetos
+	englobam: definicao, planejamento, execucao, monitoramento e controle, avaliacao, medicao e melhoria de processos
+nivel
+3	Foco nos processos da organizacao		OPF
+3	Definicao dos processos da organizacao		OPD + IPPD
+3	Treinamento na organizacao			OT
+
+4	Desempenho dos processos da organizacao		OPP
+
+5	Implantacao de inovacoes na organizacao		OID
+
+
+GESTAO DE PROJETOS
+	envolvem atividades de gestao relacionadas a planejamento, monitoramento e controle de projeto
+nivel
+2	planejamento de projeto				PP		desenvolver um plano de projeto, interagir com stakeholders, obter comprometimento com o plano
+2	monitoramento e controle de projeto		PMC
+2	gestao de acordo com fornecedores		SAM
+
+3	gestao integrada de projeto			IPM + IPPD
+3	gestao de riscos				RSKM		tratamento efetivo de riscos! identificar potenciais problemas antes que ocorram
+
+4	gestao quantitativa de projeto			QPM		ml 4
+
+
+ENGENHARIA
+	tratam das atividades de desenvolvimento e manutencao das disciplinas de engenharia
+nivel
+2	gestao de requisitos				REQM		foco eh [saber o que o cliente quer] e [capturar as necessidades do negocio]
+
+3	desenvolvimento de requisitos			RD		produzir e analisar requisitos de clientes, produtos e de componentes de produtos
+3	solucao tecnica					TS		projetar, desenvolver e implementar solucoes para requisitos
+3	verificacao					VER
+3	validacao					VAL
+3	integracao de produto				PI
+
+
+SUPORTE
+	tratam de atividades que apoiam o desenvolvimento e manutencao do produto, apoiando todas as areas de processo
+nivel
+2	gestao de configuracao				CM		estabelecer e manter a integridade dos produtos de trabalho
+2	garantia da qualidade de processo e produto	PPQA		PPQA: product and process quality assurrance -> "auditores internos" que checam os trabalhos
+2	medicao e analise				MA		nao sao medicoes quantitativas de alto nivel. apenas medicoes simples
+
+3	analise e tomada de decisoes			DAR
+
+5	analise e resolucao de causas (CAR)		CAR		identifica causas de defeitos e de outros problemas e toma acoes para evitar que ocorram
+									fornece subsidios para identificar causas de defeitos/de outros problemas e corrigi-las
+									melhora a qualidade e produtividade da organizacao
+
+
+
+Componentes das areas de processo
+=================================
+
+cada area de processo possui componentes: REI e MP (metas, praticas)
+
+	_________________
+	Requerido (metas)
+		metas especificas (caracteristicas adequadas)				\__ sao componentes OBRIGATORIOS!
+		metas genericas (caracteristicas para institucionalizar os processos)	/
+		->
+			os componentes requeridos descrevem o que uma organizacao deve realizar para implementar uma area de processo
+			isso deve estar visivelmente implementado nos processos da organizacao
+		!	a [satisfacao de metas] eh o criterio utilizado nas avaliacoes para decidir se uma area de processo foi implementada de maneira adequada
+
+	___________________
+	Esperado (praticas)
+		praticas especificas
+		praticas genericas
+		trazem boas praticas do mercado para o alcance da meta
+		descrevem o que uma organizacao PODE (sem obrigatoriedade) implementar para satisfazer um componente requerido
+		em resumo: "espera-se" que a organizacao implemente os componentes esperados de Praticas Especificas e Genericas
+			> na forma como sao descritas no modelo, mas eh aceitavel substitui-las por praticas alternativas que obtenham os mesmos resultados
+
+	___________
+	Informativo
+		auxiliam a compreensao dos componentes requeridos e esperados
+		auxiliam no entendimento detalhado das metas e praticas, e da forma como podem ser implementadas
+		fornecem detalhes
+		ex:
+			Proposito
+			Notas Introdutorias
+			Areas de processo relacionadas
+			Subpraticas
+			Produtos de trabalho tipicos
+			Orientacoes para aplicacao de Pratica generica
+			Extensoes
+
+
+Entre os modelos:
+	SVC, DEV e ACQ - 16 areas de processo em comum
+
+---------------------------------------------------
+CMMI 1.3
+
+	incorporou notas sobre metodos ageis, na forma de observacoes na descricao dos processos
