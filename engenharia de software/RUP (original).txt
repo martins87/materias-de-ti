@@ -1,0 +1,142 @@
+RUP:
+	http://s11.postimg.org/w0bd7gw77/RUP.jpg
+
+	o RUP eh um processo de EngSoft que proporciona uma abordagem estruturada
+	> para atribuir tarefas e responsabilidades dentro de uma organizacao
+
+	enfase em
+		componentes
+		modelagem visual
+
+	framework iterativo e incremental
+	centrado na arquitetura
+	planejado por riscos
+	guiado por Casos de uso da UML
+	orientado a objetos
+	focado no usuario
+
+Melhores praticas:
+	desenvolvimento iterativo e incremental
+	gestao de requisitos
+	arquitetura baseada em componentes
+	modelagem visual de software
+	verificacao da qualidade de software		objetivo: qualidade elevada no desenvolvimento de software
+	controle de mudancas				controlar, rastrear e monitorar mudancas de forma a promover
+							> desenvolvimento iterativo de software com sucesso
+
+	processo proprietario de engsoft criado pela Rational Software Corporation, adquirido pela IBM
+	nome atual: IRUP (IBM Rational Unified Process)
+	em cada iteracao executam-se todas as fases de desenvolvimento para que uma parte funcional seja ENTREGUE
+
+	existem 32 papeis
+	RUP produz artefatos e documentos em TODAS AS FASES!
+
+
+Dimensoes:
+
+	Dimensao Tempo
+		aspecto dinamico do processo
+		representado pelas fases IECT (iniciacao, elaboracao, construcao, transicao)
+
+	Dimensao Estatica
+		aspecto estatico do processo
+		representado pelas disciplinas (MRAITI)
+
+
+--------
+4 FASES: IECT
+	iniciacao ou concepcao		modelagem do negocio, documento de visao
+	elaboracao			descricao da arquitetura do sw, lista de riscos revisada
+	construcao			modelo de projeto
+	transicao
+
+3 support workflows:
+	ambiente
+	gerenciamento de projeto
+	gerenciamento de configuracao e mudanca
+
+caracteristicas:
+	orientacao a objetos
+	preferencialmente aplicavel a grandes equipes de desenvolvimento e a grandes projetos
+	modular
+	automatizado
+
+linhas mestras:
+	gestao de requisitos
+	arquitetura baseada em componentes
+	uso de software de modelos visuais (UML)
+	verificacao da qualidade do software
+	gestao e controle de mudancas do software
+
+4 fases: IECT
+	iniciacao/concepcao	-> enfase no escopo
+	elaboracao		-> enfase na arquitetura
+	construcao		-> enfase no desenvolvimento
+	transicao		-> enfase na implantacao/deployment
+
+quatro principais marcos/milestones:
+	objetivos do ciclo de vida		iniciacao > elaboracao
+	arquitetura do ciclo de vida		elaboracao > construcao
+	capacidade operacional inicial		construcao > transicao
+	release do produto			fim da transicao
+
+6 disciplinas (core PROCESS workflows) de engenharia: MRAITI
+
+	modelagem de negocios (nao obrigatoria)			ENTENDIMENTO COMUM DA ORGANIZACAO pelos clientes, usuarios e desenvolvedores
+								modelo de dominio: representacao visual de classes conceituais/objetos do mundo real
+	requisitos								   nao representa objetos ou arquiteturas de software
+
+	analise e projeto (design) :	4 modelos especificados:  modelo de analise
+								  modelo de projeto (design)
+	implementacao						  modelo de implantacao		>> decide a topologia do hardware necessaria
+								  modelo de dados
+	teste
+
+	implantacao
+
+3 disciplinas (core SUPPORTING workflows) de apoio/SUPORTE: ACG
+	ambiente/meio ambiente
+	configuracao e gerencia de mudanca
+	gerencia de projeto
+
+boas praticas de engenharia de software:
+	desenvolvimento ITERATIVO
+	gerenciamento de requisitos
+	uso da arquitetura baseada em componentes
+	modelagem visual (UML)
+	contínua VERIFICACAO DA QUALIDADE
+	gerenciamento de mudancas
+
+
+iteracao: ciclo vertical de atividades
+	tempo medio de uma iteracao = 2 a 6 semanas
+	numero medio de iteracoes: 3 a 9 em um projeto de media complexidade
+
+
+6 principios chave para orientar o desenvolvimento:
+	Adaptar processos
+		RUP eh foda, serve pra varios tipos de projetos (desenvolver software de padaria ou sistema de automacao da Coca-Cola)
+
+	Balancear prioridades dos interessados
+		chegar a um consenso, apostar em uma padronizacao geral
+
+	Colaboracao entre times
+		dividir equipes de acordo com habilidades. harmonia entre pessoas eh essencial
+
+	Demonstrar o valor da iteratividade
+		possibilidade de se adaptar a mudancas no escopo, tempo ou custo. tratar de riscos prioritarios no inicio
+
+	Elevar o nivel de abstracao
+		abstracao maior para os usuarios e abstracao menor para os programadores
+
+	Foco continuo na qualidade
+		qualidade eh responsabilidade de TODAS as disciplinas e em TODAS as fases
+
+
+Contrato de operacao:
+	identifica as MUDANCAS DE ESTADO
+secoes:
+	operacao
+	referencias cruzadas		funcoes do sistema, casos de uso..
+	pre-condicoes			estado do sistema antes da execucao da operacao
+	pos-condicoes			estado do sistema apos a execucao da operacao
