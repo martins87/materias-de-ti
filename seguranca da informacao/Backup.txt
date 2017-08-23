@@ -1,0 +1,41 @@
+=-=-=-
+BACKUP
+	manual
+	via software
+	cloud storage (armazenamento em nuvem. dropbox, yunio, google drive)
+
+arquivo morto:
+	marcado		ainda vai pro backup (marcado pra ir pro backup)
+	desmarcado	ja foi
+
+arquivos marcados: novos ou que foram alterados
+
+processo:
+	1 selecionar ativos (dados)
+	2 midia
+		magneticos: HD, fitas LTO/DAT
+		optico (cd, dvd, bluray)
+		flash (pen drive, cartoes de memoria, SSD: substituto do hd)
+	3 tipo/periodicidade
+	4 armazenamento : preferencialmente LONGE do original
+
+.bkf = backup file
+
+TIPO			O QUE FAZ			...E DEPOIS
+normal
+total			copia os arquivos		marca como copiados				esparrento, copia tudo e marca tudo
+global			selecionados			desmarca o atributo "arquivo morto"
+completo
+
+
+incremental		copia os novos e alterados	marca como copiados				copia somente os nao novos
+							desmarca o atributo				marca como copiados
+
+diferencial		copia os novos e alterados	nao marca nada, nao mexe no atributo		CASO DA MARQUINHA NA TREPADA diferencial
+													nao marca nada
+de copia
+de emergencia		copia os selecionados		nao marca nada					se quer SELECIONAR os arquivos para emergencia
+													nao marca nada
+
+diario			copia os arquivos								copia de data especifica
+			de uma data especifica		nao marca nada					nao marca nada

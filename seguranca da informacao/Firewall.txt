@@ -1,0 +1,27 @@
+FIREWALLS
+Firewalls são utilizados para:
+* Registrar tentativas de acesso indevidas a um computador ou rede;
+* Bloquear o envio de informações coletadas por invasores e códigos maliciosos;
+* Bloquear tentativas de invasão e exploração de vulnerabilidades, identificando a origem das tentativas;
+* Analisar continuamente o conteúdo das conexões, filtrando códigos maliciosos e barrando a comunicação entre um invasor e um código malicioso já instalado;
+* Evitar que um código malicioso já instalado se propague, impedindo que vulnerabilidades em outros computadores sejam exploradas.
+
+!!! Firewalls não são e não fazem papel de antivirus
+
+Proxy: Sistemas que atuam como gateway entre duas redes, “obrigando” que determinado fluxo de dados passe por ele. Facilita o controle e gerenciamento de conteúdo na rede.
+
+Bastion Hosts: equipamentos em que são instalados serviços a seremoferecidos para internet. Os Bastion Hosts ficam em zonas desmilitarizadas (DMZs).
+
+Zona Desmilitarizada (DMZ): Rede que fica entre a rede interna, que deve ser protegida, e a externa, por possuir um conjunto de serviços cujo interesse da organização é a divulgação para o público externo.
+
+-> Tipos de Arquitetura de Firewall
+
+Dual-Homed Host Architecture: nesta, um único proxy separando a rede interna da rede externa.
+Screened Host Architecture: é composto por um filtro de pacotes e um Bastion Host.
+Screened Subnet Architecture: acrescenta a DMZ à rede, por meio de filtros externo e interno.
+
+O que diferencia a Screened Subnet da Dual-Homed é que os roteadores interno e externo funcionarão como verdadeiros filtros de pacotes.
+
+
+Sistemas de Detecção de Intrusos (IDS): capazes de detectar atividades suspeitas. É uma solução passiva.
+Sistemas de Prevenção de Intrusos (IPS): capazes de prevenir e combater ataques. É uma solução ativa!

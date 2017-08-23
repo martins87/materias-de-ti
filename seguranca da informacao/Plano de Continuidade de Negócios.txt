@@ -1,0 +1,18 @@
+PCN - Plano de Continuidade de Negocios
+
+objetivo:
+	permitir que a organizacao recupere ou mantenha as atividades
+	> em caso de interrupcao das operacoes normais de negocios
+	elaborado para possibilitar que a organizacao funcione em um nivel aceitavel para sua sobrevivencia
+	> e absorva possiveis impactos financeiros, operacionais e de imagem
+
+constituido pelos seguintes planos:
+	Plano de Contingencia				elaborado quando ha perda de recursos, mas de forma que possam ser recuperados
+	PAC - Plano de Administracao de Crises
+	PRD - Plano de Recuperacao de Desastres
+	PCO - Plano de Continuidade Operacional
+
+deve conter procedimentos:
+	de emergencia
+	operacionais alternativos e temporarios
+	de restauracao, recuperacao e retomada

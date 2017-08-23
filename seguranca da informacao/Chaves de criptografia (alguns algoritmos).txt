@@ -1,0 +1,99 @@
+========
+DES
+	eh uma cifra (metodo de criptografia) SIMETRICA
+	atualmente considerado inseguro
+	motivo: pequena chave de 56 bits
+		-> ja teve sua chave violada em 22 horas
+
+	eh cifra em bloco: toma uma string de tamanho fixo de um texto plano,
+		> e a transforma em um texto cifrado de mesmo tamanho
+	tamanho do bloco: 64 bits
+	a decriptografia soh seria possivel, teoricamente, por quem tiver a chave usada na criptografia
+	CHAVE: 56 bits + 8 (paridade) = 64 bits
+	esses 8 bits para verificar paridade, apos a verificacao, sao descartados
+!	tamanho real da chave = 56 bits
+
+
+
+========
+3DES
+	chave SIMETRICA
+	mais seguro que o DES
+	usa 3 chaves de 56 (+8) bits  ->  tamanho max efetivo: 168 bits
+	dados sao encriptados com a 1a chave, decriptados com a 2a chave e finalmente encriptados novamente com uma 3a chave
+	mais lento que o DES, mas mais seguro
+	a variante mais simples do 3DES opera da seguinte forma:
+		DES(k3; DES(k2; DES(k1; M)))
+		onde M eh o bloco de mensagem a ser criptografado e k1, k2 e k3 sao as chaves DES
+
+
+========
+AES
+	chave SIMETRICA
+	tornou-se um padrao em 2002
+	tem um tamanho de bloco fixo em 128 bits
+	chave pode ter tamanhos 128, 192 ou 256 bits
+
+	opera sob um arranjo bidimensional de bytes com 4x4 posicoes, denominado de estado
+	para criptografar, cada turno do AES (exceto o ultimo) consiste em quatro estagios:
+		- AddRoundKey
+		- SubBytes
+		- ShiftRows
+		- MixColumns
+
+
+========
+RC4
+
+	chave SIMETRICA
+	algoritmo mais usado nos protocolos mais conhecidos, como o SSL e WEP
+	tamanho das chaves: 40, 128 ou 2048
+	aplicacoes:
+		WEP, WPA, TLS/SSL, Kerberos, BitTorrent, PDF..
+
+
+========
+MD5
+
+	funcao de hash
+	digest/resumo de 128 bits
+!	pode ser usado como checksum para verificar INTEGRIDADE
+!	pode ser quebrado por ataques forca-bruta, assim como sofre de diversas vulnerabilidades
+	hoje considerado quebrado
+
+
+========
+SHA-1
+
+	funcao de hash
+	digest/resumo de 160 bits (20 bytes)	
+	SHA = Secure Hash Algorithm
+	os quatro algoritmos sao nomeados SHA-0, SHA-1, SHA-2, SHA-3
+	aplicacoes:
+		- sistemas de controle de versao, como Git e Mercurial,
+		- protocolos de seguranca, como IPsec, S/MIME, PGP..
+
+
+========
+RSA
+	chave ASSIMETRICA
+	numeros primos mto grandes
+	dificuldade: fatorar a multiplicacao de 2 numeros primos grandes
+	chave publica eh da galera. somente os dois primos sao secretos, usados para decriptar a mensagem
+
+
+
+------------------------------------------
+Outros topicos relacionados a criptografia
+
+
+PGP
+	Pretty Good Privacy
+	programa de criptografia e decriptografia
+	fornece autenticacao e privacidade
+
+S/MIME
+	Secure/Multipurpose Internet Mail Extensions
+	protocolo para envio de mensagens assinadas e criptografadas digitalmente
+	permite que se criptografe um e-mail e o assine digitalmente
+	garante a integridade, autenticidade e nao repudio

@@ -1,0 +1,129 @@
+CRIPTOGRAFIA
+a criptografia possui quatro propriedades:
+	* Confidencialidade (privacidade) – sigilo entre as partes envolvidas
+	* Integridade – a informação não sofrer alterações
+	* Autenticação (do remetente) – poder saber quem é o remetente
+	* Não-repúdio – o remetente não poder negar a autoria da mensagem
+
+Esteganografia:
+	é o estudo e uso das técnicas para ocultar a existência de uma mensagem dentro de outra,
+	> uma forma de segurança por obscurantismo.
+
+Cifra de César:
+	se baseia no deslocamento dos caracteres do alfabeto.
+
+ENGENHARIA REVERSA
+Criptoanálise: contam com a natureza do algoritmo e talvez mais algum conhecimento das características gerais do texto claro, ou ainda algumas amostras do texto claro e texto cifrado
+Ataque por força bruta: o atacante experimenta cada chave possível em um trecho de texto cifrado, até obter uma tradução inteligível para o texto claro
+
+
+======================
+Criptografia Simétrica (ou Criptografia de Chave Única)
+	a) Usa apenas uma chave para encriptar e decriptar as mensagens;
+	b) É mais rápido.
+	c) A chave tem que ser compartilhada entre os envolvidos na comunicação, o que torna esse sistema suscetível a falhas de segurança.
+	d) Não é possível “garantir” a identidade da pessoa que enviou a mensagem.
+
+	Os principais algoritmos de Criptografia Simétrica: DES, 3DES (Triple DES) e, mais recentemente, o AES.
+
+	DES:
+		usa chaves de 40 e 56 bits
+		Já está obsoleto, mas é o mais usado ainda
+	3DES (Triple DES):
+		usa chaves de 168 bits
+		É 3 vezes mais “pesado” e mais seguro que o DES, porque criptografa a mensagem 3 vezes seguidas, usando DES
+		usa três chaves diferentes de 56 bits que, combinadas, resultam numa chave de 168 bits
+	AES:
+		usa chaves de 256 bits
+		É o substituto do DES e 3DES
+
+
+========================
+Criptografia Assimétrica (ou Criptografia de Chave Pública)
+	Na criptografia assimétrica não é criada uma única chave, mas um par delas.
+	Uma das chaves serve SOMENTE PARA ENCRIPTAR mensagens. A outra chave serve SOMENTE PARA DECRIPTAR mensagens.
+	As duas chaves são geradas exatamente no mesmo momento
+		* A chave que encripta mensagens (chamada chave de codificação criptográfica, ou chave de encriptação)
+			> será distribuída livremente, e, por isso, eh chamada de Chave Pública ou Chave Compartilhada
+		* Por sua vez, a chave que decripta mensagens (chamada chave de decodificação criptográfica, ou chave de decriptação)
+			> será armazenada secretamente com seu titular (dono). Essa é a Chave Privada ou Chave Secreta
+
+	Praticamente impossível quebrar as chaves atuais em tempo suficientemente hábil: Numeros primos muito grandes
+	Processamento mais lento
+
+Algoritmos de criptografia assimétrica:
+	RSA. O Algoritmo RSA utiliza chaves de 256, 512, 1024 e 2048 bits
+	(comercialmente, só até o 1024, porque o Departamento de Defesa Americano proíbe, até agora, o uso de chaves de 2048 bits – só eles podem usar!).
+
+
+Algoritmos de CRIPTOGRAFIA
+
+	SIMETRICO: DES, RC4, RC5, BLOWFISH, IDEA, AES, RC6
+
+	HASH: MD5, SHA-1, RIPEMD-160, TIGER
+
+	ASSIMETRICO: ECC (CURVAS ELÍPTICAS), DIFFIE-HELLMAN, DSA, EL GAMAL, RSA.
+
+-> Criptografia Híbrida
+Utiliza-se a chave pública para estabelecimento da comunicação segura e depois a chave simétrica para o sigilo das informações.
+Ex: SSL:  O RSA forma o canal segura e o RC4 é usado para o sigilo das informações.
+
+CRIPTOGRAFIA GARANTE O QUE: 
+Criptografia Simétrica – Confidencialidade 
+Criptografia de Chave Pública – Confidencialidade, Autenticidade e Irretratabilidade (Não-Repúdio)
+
+!! O único serviço que não pode ser obtido por meio do uso da criptografia é a disponibilidade.
+
+-> ASSINATURA DIGITAL
+A assinatura digital se baseia em criptografia assimétrica, ou seja, na existência de um par de chaves para cada usuário (uma pública e outra privada). A principal diferença entre a criptografia assimétrica em si e a assinatura digital é como essas chaves vão ser usadas.
+No processo de assinatura digital, com o qual se deseja a autenticidade, o remetente usará sua chave privada para “assinar” a mensagem. Por outro lado, o destinatário usará a chave pública do remetente para confirmar que ela foi enviada realmente por aquela pessoa. A mensagem não é sigilosa, porque não é criptografada, e também porque teoricamente “todos” têm acesso à chave pública do remetente (afinal, ela é pública).
+
+O Algoritmo DSA usa as chaves criptográficas de um usuário para assinar mensagens. Esse algoritmo não pode ser usado para criptografia, somente para assinatura digital.
+
+O que se obtém com a Assinatura Digital?
+1) Autenticidade: o fato de a assinatura ter sido realizada pela chave privada do remetente e confirmada por sua chave pública (no destino) tem-se a garantia de que foi realmente aquele usuário que a enviou;
+2) Integridade: Como a assinatura digital usa hash, é possível garantir que a mensagem não foi alterada no meio do caminho;
+3) Não-Repúdio: o usuário não poderá dizer que não foi ele quem escreveu aquela mensagem.
+
+-> CERTIFICADO DIGITAL
+
+um certificado digital é um conjunto de dados (um arquivo), assinado digitalmente pela autoridade certificadora e contento tipicamente informações como: Chave pública do certificado; Nome e endereço de e-mail do dono do certificado; Nome e assinatura digital da autoridade certificadora; Privilégios de acesso a sites seguros.
+Um certificado digital é um arquivo de computador que contém um conjunto de informações referentes à entidade para o qual o certificado foi emitido (seja uma empresa, pessoa física ou computador) mais a chave pública referente à chave privada que se acredita ser de posse unicamente da entidade especificada no certificado.
+
+No Certificado digital podem existir as informações : 1-Nome, End. e Empresa do solicitante 2-Chave pública do solicitante 3-Validade do certificado 4-Nome e End. da Autoridade Certificadora (CA) 5-Política de utilização (limites de transação, etc.)
+A função das autoridades certificadoras: Criar, manter e controlar todos os certificados por elas emitidos, incluindo a invalidação de certificados comprometidos ou expirados.
+O padrão mais comum para certificados digitais: X.509.
+
+Modelos de certificação
+Modelo de malha de confiança (web oftrust): é baseado na criação de uma rede em que as entidades pertencentes devem confiar umas nas outras.
+	Vantages: 	- A infraestrutura física para manter esse modelo é mais simples que a do modelo hierárquico; 
+			- Se a chave de uma das entidades que autenticam o certificado for comprometida, não há interferência nas demais chaves. Só ocorre apenas a sua exclusão na rede de confiança.
+	Desvantagens: 	- O gerenciamento dessa estrutura é complicado 
+			- E menos seguro, pois uma pessoa pode mudar seu comportamento se valendo da confiança adquirida; 	
+			- O certificado digital precisa da assinatura de todas as entidades que confiam na sua validade, ou seja, quanto mais as pessoas confiam em você, maior será o seu certificado.
+
+Modelo hierárquico: é baseado na montagem de uma hierarquia de Autoridades Certificadoras (AC).
+	Vantagens: 	- Possui um gerenciamento mais simples e prático 
+			- É muito mais seguro, pois a confiança parte de uma entidade governamental; 
+			- Se o certificado não estiver revogado, ele tem validade em toda a jurisdição a qual ele está ligado perante terceiros; 
+			- Permite que assinaturas digitais sejam consideradas juridicamente válidas desde que seja garantida a segurança de toda a infraestrutura da AC-Raiz e das demais AC’s.
+	Desvantagens: 	- Se a chave de uma AC for comprometida, todos os certificados emitidos por ela tem sua validade comprometida; 
+			- O custo de montagem da infraestrutura é maior, devido à necessidade de investimentos pesados em segurança para se mantiver uma AC; 
+
+Modelo de autoridade central: a autoridade certificadora é única e absoluta.
+Usa o padrão x.509
+
+!!Segundo o padrão X.509, o certificado digital não deve conter a chave privada do usuário.Isso ocorre justamente para que ela não seja comprometida. Para se armazenar a chave privada, usam-se dispositivos físicos que evitam o acesso direto à chave, como Tokens e Smart Cards.
+
+-> PKI – Public Key Infrastructure – Infra-Estrutura de Chaves Públicas
+O Ambiente, formado por vários níveis (ACs, Usuários, ACs Raiz, ARs) é chamado PKI, ou ICP: Infra-estrutura de Chaves Públicas. Uma PKI é um conjunto de regras, técnicas, práticas e procedimentos que existe para gerar garantias aos seus usuários. Uma PKI é, em suma, uma grande “cadeia de confiança” em que, quando se confia em um de seus componentes, se está confiando também, em toda a PKI.
+Definição: É uma infraestrutura de segurança na qual os serviços são implementados e utilizados, por meio de conceitos e técnicas de chaves públicas. É também um conjunto de HW, SW, pessoas, políticas e procedimentos necessários para criar, gerenciar, armazenar, distribuir e revogar certificados digitais, c/ base na criptografia de chave pública.
+
+TIPOS DE CIFRAGEM DE BLOCOS
+
+Cifras em Bloco: Cifras em bloco operam em blocos de dados
+DES-64 bits: sendo 56 bits realmente utilizados pelo algoritmo e 8 bits para checar a paridade
+AES: o algoritmo possui uma chave principal e, a partir dela, são geradas Nr + 1 chaves
+
+Cifras de Fluxo: Cifras de fluxo, também conhecidas como cifras em cadeia, operam em unidades menores, geralmente bits, o que as torna bem mais rápidas.
+RC4, utilizado nos protocolos mais conhecidos: SSL e WEP
