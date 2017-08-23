@@ -1,0 +1,89 @@
+=====
+PMBOK
+
+	projeto:
+		esforco TEMPORARIO empreendido para criar um produto, servico ou resultado [exclusivo]
+		sua natureza temporaria indica um inicio e um termino definidos
+
+
+	projetos x programas x portfolios
+
+		programa:
+			grupo de projetos relacionados de modo coordenado
+			podem incluir projetos e tarefas extra-projeto
+			seu foco eh o relacionamento e as interdependencias dos projetos
+
+		portfolio:
+			conjunto de projetos e/ou programas e outros trabalhos,
+			> agrupado para facilitar o gerenciamento eficaz desse trabalho
+			> a fim de atingir os objetivos de negocio estrategicos
+
+	ex:
+		uma grande empresa de eletronicos
+		em seu portfolio existem produtos como refrigeradores, televisores, smartphones e outros
+		cada eletronico tem seu programa
+		cada gama de produtos similares deve estar na alcada de um programa
+		assim, podem obter beneficios comuns,
+		> desfrutando de uma mesma equipe de testadores independentes e especialistas compartilhados, por exemplo
+
+___
+PMO
+	Project Management Office -> ou Escritorio de Projetos
+	eh uma entidade organizacional que recebe responsabilidades relacionadas ao gerenciamento de projetos sob seu dominio
+	"centro de expertise" em projetos, dando suporte aos gerentes de projetos
+
+pode:
+	recomendar cancelamento de projetos
+	priorizar projetos
+	ajudar a fornecer recursos
+	fazer parte do comite de controle de mudancas
+	ser considerado stakeholder
+	oferecer servicos de suporte administrativo, como politicas, metodologias e modelos
+
+funcoes:
+	TREINAMENTO de equipes de trabalho quanto aos procedimentos a serem seguidos
+	desenvolvimento de procedimentos a serem seguidos no desenvolvimento de projetos
+	orientacao, aconselhamento, treinamento, supervisao de gerentes de projeto
+	gerenciamento de recursos compartilhados entre todos os projetos administrados pelo PMO
+	monitoramento da conformidade com as politicas, procedimentos e modelos padroes
+	auditoria de projetos
+	identificacao e desenvolvimento de metodologia, melhores praticas e padroes de gerenciamento de projetos
+	
+
+Stakeholders:
+	gerente do projeto
+	patrocinador do projeto
+	cliente
+	diretoria
+	gerente executivo
+	gerentes de departamento
+	fornecedores
+	distribuidores
+	PMO - escritorio de projetos
+
+
+_____________________________________
+Ciclo de vida de PRODUTO e de PROJETO
+
+	projeto:
+		seu ciclo de vida diz respeito a suas fases, geralmente sequencias e que 'as vezes se sobrepoem
+		via de regra, projetos podem ser mapeados por um ciclo, contendo:
+			- inicio do projeto
+			- organizacao e preparacao
+			- execucao do trabalho do projeto
+			- encerramento do projeto
+		caracteristicas:
+			nivel de custo e de pessoal sao baixos no inicio, atingem valor maximo na execucao e caem no fim
+			a influencia de stakeholders eh maior do inicio, assim como as incertezas
+			custos de mudancas aumentam significativamente no fim do projeto
+
+	produto:
+		seu ciclo de vida consiste em fases do produto, geralmente sequenciais e nao sobrepostas
+		as fases sao determinadas pela necessidade de producao e controle da organizacao
+		a ultima fase do ciclo de vida de um produto eh a morte, ou retirada de circulacao do produto (ex do Orkut)
+	!	nem todo projeto resulta em um produto. pode-se ter:
+			projeto desenvolvendo um produto
+			projeto para atualizar um produto
+			projeto para realizacao de estudo de viabilidade de um produto
+			projeto para campanha publicitaria de um produto
+
