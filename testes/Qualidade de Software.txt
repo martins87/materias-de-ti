@@ -1,0 +1,119 @@
+Objetivo:
+	obter uma MAXIMA PROBABILIDADE de encontrar erros
+	um software NUNCA vai estar livre de erros
+
+
+Tipos de Manutencao de Software:
+	corretiva
+		correcao de erros encontrados na verificacao ou validacao
+	adaptativa
+		adaptacao a mudancas externas
+	melhoria (perfectiva)
+		melhorias requeridas pelos usuarios
+	preventiva / reengenharia
+		abordagem pro-ativa com foco na melhoria da manutenibilidade
+
+
+Falta, Erro e Falha
+
+	Falta (Fault) / Defeito
+		problema por tras do problema
+		causa raiz de tudo
+		causa de uma falha
+		ex: codigo incorreto ou faltando, defeito de hardware..
+	!!	defeitos encontrados pelas revisoes referem-se a FALTAS
+
+	Erro (Error)
+		estado INTERMEDIARIO, de INSTABILIDADE
+		pode resultar em falha, se propagado ate a saida
+		pode ou nao resultar em uma falha. tem chance de nao ocorrer falha
+
+	Falha (Failure)
+		falha eh o que estoura nas maos do usuario
+		comportamento operacional (execucao) diferente do esperado
+		incapacidade do software de realizar a funcao requisitada (aspecto externo)
+		manifestacao observavel
+	!!	defeitos encontrados por testes sao FALHAS do software,
+	!!	> pois testes avaliam a qualidade comparando o comportamento esperado com o observado
+
+	Falta -> Erro -> Falha
+	TAROLHA
+	http://s21.postimg.org/3woabwfkn/tarolha.png
+
+
+
+Como tornar os sistemas mais confiaveis?
+
+	prevencao de faltas
+		especificacao rigorosa
+		protecao de hardware (quando se tratar de hardware)
+		ambientes e linguagens apropriados (ex: ponteiros, coleta de lixo, coleta de excecoes...)
+
+	tolerancia a falhas
+		replicacao/redundancia - ex: caso um falhe, podemos substituir por outro
+		isolamento do componente faltoso
+		Hot Swapping (troca de componente sem a necessidade de reiniciar o sistema)
+
+
+
+Verificacao e Validacao
+	nao garantem que o software esta livre de defeitos, mas sim que ha um certo nivel de confiabilidade
+
+	Verificacao
+		>> checar se esta ok <<
+		objetivo: descobrir defeitos no sistema
+		conjunto de tarefas que garante que o software implementa corretamente determinada funcao
+		proposito de mostrar que um sistema atende a suas especificacoes
+		principais atividades:
+			inspecoes (verificacao estatica)
+			testes (verificacao dinamica)
+
+	Validacao
+		>> dar o ok <<
+		avaliar se o sistema vai ser util ao seu proposito quando em execucao
+		demonstrar que o software atende 'as expectativas do cliente
+		garantir que o software esta alinhado 'as reais necessidades do cliente
+		principais atividades:
+			homologacao, testes de aceitacao (beta)
+			revisoes
+
+
+
+Garantia da Qualidade x Controle da Qualidade
+
+	Garantia
+		antes
+		focada no processo
+		orientada a prevencao
+		garante que vc esta fazendo as coisas de maneira certa
+		ex: metodologias e padroes de desenvolvimento
+
+	Controle
+		depois
+		focada no produto ja pronto
+		orientada a deteccao
+		garante que os RESULTADOS do trabalho estao de acordo com o esperado
+		ex: testes, checagem de requisitos
+
+
+
+Inspecao
+
+	objetivo: somente ENCONTRAR defeitos, e nao resolve-los
+	os participantes tem papeis definidos:
+		moderador - conduz reunioes
+		inspetor - descreve os problemas identificados. NAO EH SUA RESPONSABILIDADE falar sobre solucoes
+	galera soh registra os defeitos encontrados
+	inspecoes automatizadas:
+		utilizam Analisadores Estaticos
+		ferramentas CASE AUXILIAM as inspecoes, mas nao as substituem
+		exemplos de possiveis analises:
+			analise de controle de fluxo: checa loops, codigo inalcancavel..
+			analise de dados: detecta variaveis nao inicializadas, variaveis nunca utilizadas..
+			analise de interfaces: checa consistencia de declaracoes de rotinas e procedimentos e como sao utilizadas..
+	quando da inspecao de codigo, uma checklist eh utilizada
+	o conteudo dessa checklist DEPENDE da linguagem de programacao utilizada: lista para Java, lista diferente para C..
+
+	walkthroughs:
+		inspecoes informais, rapidas, mais leves
+
