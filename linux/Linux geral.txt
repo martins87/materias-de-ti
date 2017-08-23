@@ -1,0 +1,386 @@
+4 liberdades basicas do Software Livre:
+
+	liberdade 0:		usar o programa - para qualquer proposito
+	liberdade 1:		estudar como o programa trabalha - acesso ao codigo fonte eh primordial
+	liberdade 2:		redistribuir copias - ajudar o proximo
+	liberdade 3:		melhorar o programa - acesso ao codigo fonte primordial
+
+Kernel:
+	nucleo que serve de comunicador entre o hardware e o usuario
+
+Linux = GNU/Linux na verdade
+
+Distribuicoes Linux:
+	na pratica sao o kernel Linux acrescido de softwares desenvolvidos por empresas que empacotam a distribuicao
+	exemplos: gentoo, ubuntu, slackware, fedora, redhat, debian, opensuse...
+	duas categorias:
+		livres
+			mantidas por comunidades sem fins lucrativos - "comunidade linux"
+			se divide ainda em 2 tipos: convencionais (HD) e live (para serem testadas)
+
+		corporativas
+			mantidas por empresas que COMERCIALIZAM o Linux
+			exs: Red Hat, Mandriva, SuSe
+
+o Linux le executaveis sob demanda, onde o sistema traz do disco apenas o que esta sendo usado pelo programa, nao o sobrecarregando
+
+=-=-=
+SHELL
+
+	eh o interpretador de comandos
+	viabiliza a interacao com o kernell
+
+	Hardware <- -> Kernell <- -> Shell <- -> user
+
+tipos:
+	sh		Bourne Shell		<< mais usado
+	bash		Bourne Again Shell
+
+
+
+=-=-=-=-
+COMANDOS
+
+	ctrl + d	fecha o Shell
+
+	nohup		mantem a execucao de um processo apos o logout
+
+	cat		imprime na tela o conteudo do arquivo
+			::
+			cat > file		cria um arquivo
+			cat file1 > file2	faz com que file2 receba o conteudo de file1
+			cat file1 >> file2	adiciona o conteudo de file1 no fim de file2
+
+	cp		copia um arquivo
+			::
+			cp ~/picture.jpg ~/backup/picture.jpg		copia o arquivo no diretorio do segundo argumento
+
+	cut		le o conteudo de um ou mais arquivos. tem como saida uma coluna vertical
+	chown		change owner >> altera o dono ou grupo do arquivo
+
+	chmod		change mode >> altera as permissoes de um arquivo
+	chmod +r arq	concede permissao de leitura ao arquivo arq
+	chmod g -w arq	retira ou nega acesso de escrita ao grupo
+	diff		compara o conteudo de 2 arquivos ASC II
+	du		saber o espaco em disco de pastas ou arquivos. du = disc usage
+	find		pesquisa arquivos em uma hierarquia de diretorios
+	fsck		verifica a consistencia de um sistema de arquivos
+	grep		procura um padrao em um arquivo. util quando se quer encontrar algum conteudo dentro de um arquivo
+	gzip		comprime ou expande arquivos SEM COMPACTA-LOS
+	jobs		lista processos do sistema
+	head		mostra as primeiras linhas de um arquivo
+	tail		forma inversa do head. mostra as ultimas linhas de um arquivo
+	kill		encerra um ou mais processos em andamento
+			::
+			kill -1 340		reinicia o processo de id 340
+			kill -9 223		mata o processo 223
+			killall chrome		mata o processo pelo seu nome
+	history		mostra os comandos que o usuario digitou
+	ls		lista o conteudo de um diretorio: arquivos e subdiretorios
+
+		-l	long listing format. detalhes: numero de links, permissoes, dono, grupo, tamanho em bytes..
+		-a	lista todos do diretorio corrente ./
+		-d	lista entrada de diretorios, ao inves do conteudo
+		-f	nao ordena
+		-G	nao lista informacoes de grupos
+		-h	imprime tamanhos em formato tipo 1K, 234MB, 2G
+		-i	exibe o inode de cada arquivo
+
+	mkdir		cria um diretorio
+	mount		monta uma particao
+
+	mv		move arquivos. tambem pode alterar o nome de arquivos
+			::
+			mv nomeantigo.txt nomenovo.txt
+
+	make		faz a compilacao de codigo fonte utilizando o Makefile criado pelo configure como referencia
+	make install	faz a instalacao do programa ja compilado
+	passwd		cria ou modifica senha de usuario ou grupo
+			somente o root ou o proprio usuario podem alterar propriedades de senha
+
+		-g	altera senha do grupo. somente o root ou o administrador do grupo podem
+		-x	define o numero max de dias que a senha podera ser usada. terminado o prazo, deve-se modificar a senha
+		-i	desativa a conta do usuario caso nao troque a senha apos o tempo especificado por -x. pode definir um parametro de dias para desativar
+		-n	define numero minimo de dias para alterar a senha. usuario deve esperar n dias para alterar a senha
+		-w	alerta que faltam w dias para trocar a senha. ex: passwd -w 2  -->>  2 dias antes do limite max pipoca um alerta pra mudar a senha
+		-l	usado apenas pelo root, bloqueia a conta de um usuario
+		-u	desbloqueia a conta de um usuario bloqueada com o -l
+		-S	mostra o status da conta de usuario
+
+		ex: passwd -x 10 -w 3 -i 2 martins
+			senha deve ser alterada em 10 dias, warning 3 dias antes do prazo, apos o limite tem mais 2 dias pra alterar
+
+	ps		exibe os processos em execucao no sistema
+			::
+			ps -aux				exibe todos os processos em execucao no sistema
+			ps -aux | grep mysql		exibe o processo do mysql, buscado pelo padrao do seu nome
+			
+	pwd		mostra o diretorio atual  -->>  pwd: print working directory
+	rm		remove arquivos ou diretorios
+	shutdown	desliga o sistema
+	su		passa para o superusuario (root)
+	sudo		executa um comando usando privilegios de superusuario
+	tar		agrupa arquivos SEM COMPACTA-LOS
+	touch		modifica data e hora de acesso e modificacao de arquivos, criando o arquivo caso ele nao exista
+	uname		exibe as informacoes do sistema, como por exemplo, nome e versao do SO, nome da maquina na rede..
+
+	adduser		\__ criam um novo usuario. por padrao, cria um grupo com o mesmo nome do usuario
+	useradd		/   pode ser usado tambem para adicionar um usuario a um grupo, por meio da opcao gid
+
+	userdel		remove contas de usuario. para deletar o diretorio home do usuario, utiliza-se a opcao -r  ->>  userdel -r nome-do-usuario
+	addgroup	cria um grupo de usuarios
+	groupadd	cria um grupo de usuarios
+	unzip		descomprime arquivos .zip  -->>  unzip arquivo.zip
+	gunzip		descompacta arquivos compactados com o gzip
+	tar		compacta e descompacta arquivos de extensao .tar
+		-c	cria um arquivo tar
+		-x	extrai arquivos de um arquivo tar
+		-z	comprime ou extrai arquivos tar resultantes com o gzip
+
+
+=-=-=-
+Grupos
+
+	agrupamento logico para facilitar o gerenciamento de usuarios com caracteristicas e necessidades em comum
+	cada grupo possui um identificador unico, denominado GroupID (GID)
+	as informacoes sobre os grupos estao contidas nos arquivos:
+		/etc/group
+		/etc/gshadow
+
+	exemplo de linha referente ao grupo alunos no arquivo /etc/group :
+		alunos:s3nh4d0grup0:1002:aluno1,aluno2,aluno3::
+
+	todo usuario pertence a pelo menos um grupo, denominado primario
+	os comandos # addgroup e # groupadd criam entradas no arquivo /etc/gshadow, e podem ser utilizados para criar grupos no sistema
+
+
+=-=-=-=-
+Usuarios
+
+	cada usuario possui seu identificador: UserID (UID)
+	as informacoes sobre os usuarios estao armazenadas nos arquivos:
+		/etc/passwd
+		/etc/shadow
+
+	o arquivo /etc/shadow armazena um hash de senha do usuario  -->>  nao eh a senha, eh um hash dela, o que aumenta a seguranca
+	cada linha desses arquivos possui informacoes relativas a um unico usuario. exemplo de entrada:
+		martins:abcde:101:100:DanielMartins:/home/martins:/bin/bash::
+
+	o arquivo shadow tambem contem informacoes sobre troca de senha do usuario, tais como:
+		numero de dias que a senha foi trocada pela ultima vez
+		numero de dias que a senha sera valida
+		numero de dias antes de a senha expirar
+
+	root possui UID igual a 0
+	exemplos de usuarios administrativos do sistema:
+		bin
+		daemon
+		sys
+	-> alguns desses nao podem fazer login e sao utilizados apenas para controlar os recursos acessados pelos processos
+
+	tipos de contas de usuarios:
+		conta root		usada pelo administrador e possui acesso irrestrito a todos os recursos do sistema
+		contas de sistema	sao utilizadas por servicos para gerenciar seus processos: ftp, bin, sys, daemon...
+		contas de usuario
+
+
+
+=-=-=-=-=-=
+PERMISSOES:
+
+
+dono (proprietario):
+	r	leitura
+	w	escrita
+	x	eXecucao
+grupo:
+	r	leitura
+	w	escrita
+	x	eXecucao
+outros:
+	r	leitura
+	w	escrita
+	x	eXecucao, para diretorio indica permissao de abri-lo
+
+drwxr-xr-- indica que:
+
+	d	eh um diretorio (directory)
+	rwx	para o proprietario do diretorio, eh permitido ler, escrever e abrir
+	r-x	para o grupo do dono do diretorio, eh permitido ler e executar. nao eh permitido escrever
+	r--	para outros eh permitido somente ler
+
+
+=-=-=
+chmod
+
+2 modos:
+	letras
+		u	rwx
+		g	rw-
+		o	r--
+
+	binario		rwx
+		0	000	nada
+		1	001	somente executar
+		2	010	somente escrever
+		3	011	escrever e executar
+		4	100	somente ler
+		5	101	ler e executar
+		6	110	ler e escrever
+		7	111	soh nao vale dar o cu
+
+		ex: chmod 540 file.txt = ?
+		5 = 101
+		4 = 100
+		0 = 000
+		540 = r-xr-----
+
+
+
+=-=-=-=-=-=-=-=-
+ambiente grafico
+
+	fornecido por um servidor de janelas: X-Window, ou X11, ou simplesmente X
+	Linux permite tambem escolher o [gerenciador de Desktop] que sera utilizado: GNOME e KDE sao os mais comuns
+
+
+
+=-=-=-=-=
+processos
+
+	INIT eh o primeiro processo a rodar -> pai de todos os outros
+	cada processo tem seu PID
+	todo processo tem um processo pai (PPID), que eh o que o criou		!! exceto o INIT, que nao tem pai
+
+	controle das permissoes dos processos eh realizado atribuindo numeros para os usuarios (UID) e para grupos (GID)
+	root tem UID = 0
+	para que um usuario tenha privilegios de root, tem que setar o GID dele igual a 0 no arquivo /etc/passwd
+
+	para que um processo seja executado em backgroud (ser executado em segundo plano) utiliza-se o parametro &:
+		comando &
+	essa execucao em backgroud permite executar outros comandos simultaneamente
+
+	DAEMON: processo executado em background, sem tempo de execucao definido
+	o linux utiliza daemons para realizar rotinas e tarefas, como paginacao de memoria, solicitacao de login, transferencia de arquivo...
+
+	daemon util: [cron]
+	verifica de minuto a minuto se existe algum trabalho a ser feito -> se existir, o faz
+	para programar as tarefas a serem realizadas pelo cron, eh necessario editar o crontab (arquivo de config do cron) atraves do comando:
+		# crontab -e
+	o crontab tem uma sintaxe propria, que permite agendar minutos, horas, dias, etc. e a tarefa a ser executada (por ex um backup)
+
+
+
+=-=-=-=
+pacotes
+
+	sao manipulados por programas especiais, que instalam, desinstalam ou atualizam um pacote
+	formatos mais populares:
+		rpm		abreviacao de RedHat Package Manager
+		deb		criados pela distribuicao Debian
+
+	rpm:
+		<nome>-<versão>-<release>.<arquitetura>.rpm		<release> = arquitetura de hardware na qual o pacote foi compilado
+		ex: nano-0.98-2.i386.rpm
+		ao instalar ou desinstalar um pacote, o rpm verifica se ele tem dependencias
+		.
+		comando:
+			rpm -<opcao> package
+			# rpm -qlp PACKAGE1.*.rpm | sort > ,1
+
+
+=-=-=-=-=-=-=-=-=-=-
+Sistemas de Arquivos
+
+	hierarquia de diretorios  -->>  nomes de diretorios podem conter ate 256 caracteres
+	root eh o unico diretorio que nao tem pai, pois eh o pai de todos: /
+
+	/bin		contem programas executaveis, binarios do sistema utilizado pelos usuarios
+	/boot		arquivos de inicializacao do sistema
+	/dev		arquivos de dispositivos de entrada e saida
+	/etc		arquivos de configuracao, scripts de inicializacao
+	/lib		bibliotecas compartilhadas pelos programas e pelo sistema
+	/mnt		diretorio utilizado como ponto de montagens para dispositivos removiveis
+	/opt		softwares que nao sao default do sistema. ex: o Google Chrome no Ubuntu nao eh instalado por default
+	/proc		diretorio virtual que contem o sistema de arquivos do kernel
+	/sbin		comandos de administracao do sistema, utilizados pelo usuario root
+	/home		diretorio dos usuarios do sistema
+	/tmp		arquivos temporarios, que mudam com o tempo: sao deletados ou sofrem mudancas
+	/var		arquivos de tamanho variavel, como cache, dados variaveis, log files...
+
+	.	diretorio corrente
+	..	diretorio acima do corrente (cd ../)
+
+	links:
+		sao como atalhos para um arquivo, que esta em outro diretorio
+		exemplo de arquivo das notas da classe que estao em diretorio do usuario professor,
+			> mas podem ser acessados por links nos diretorios dos alunos
+
+	sockets:
+		comunicacao de processos, que podem estar no mesmo computador ou em computadores diferentes na rede
+		2 tipos:
+			IPC socket - Inter Process Communication	mesmo SO
+			socket de rede					processos executados em computadores diferentes
+
+=-=-=-=
+Drivers
+
+	fazem a interface entre o software e o hardware
+	o papel do driver eh traduzir requisicoes para comandos compreensiveis pelo dispositivo de hardware
+!!	a grande maioria dos dispositivos no Linux esta associada a um arquivo especial no diretorio /dev
+
+	o numero de dispositivos suportados eh bastante grande e embutir todos os drivers diretamente no kernel o torna grande demais
+	a solucao se encontra nos [Modulos]:
+		tornam possivel separar os drivers em pequenos arquivos que podem ser carregados pelo kernel conforme necessidade
+	modulos sao arquivos que contem trechos de codigos que implementam funcionalidades do kernel
+	sao especificos para cada versao e se encontram no diretorio
+		/lib/modules/versao_kernel/
+comandos:
+	# lsmod			lista todos os modulos carregados pelo kernel
+	# insmod		carrega um modulo manualmente inserindo apenas o modulo passado na linha de comando
+	# modprobe		tbm carrega o modulo especificado na linha de comando e carrega de forma automatica suas dependencias
+
+
+=-=-=-=-=-=-
+Dispositivos
+
+	hotplug
+		subsistema do Linux que detecta e gera eventos toda vez que um novo dispositivo eh conectado a um barramento de dispositivos
+		ex: USB, PCI..
+		tambem identifica os dispositivos presentes durante o processo de boot do sistema
+		tambem pode executar scripts localizados nos diretorios /etc/hotplug e /etc/hotplug.d
+		scripts podem, por ex, criar um icone no desktop para acesso a um pen drive, sempre que este for conectado ao computador
+
+	# lspci			traz a posicao do dispositivo no barramento, seguida de sua descricao
+	# lspcu			exibe diversos parametros da CPU, que sao obtidos atraves do arquivo /proc/cpuinfo
+	# lshw			exibe informacoes detalhadas a respeito do hardware instalado no computador
+	# lsusb			exibe informacoes sobre os barramentos USB disponiveis no sistema e sobre os dispositivos a eles conectados
+
+	o diretorio /proc eh tambem uma fonte de informacoes sobre o hardware instalado no computador
+	nele temos varios arquivos, entre os quais se destacam:
+		/proc/cpuinfo		informacoes sobre a CPU
+		/proc/meminfo		informacoes sobre a memoria
+		/proc/devices		informacoes sobre dispositivos ativos no sistema
+
+
+======================================================
+Processo de inicializacao do RedHat Enterprise Linux 5
+
+1.
+	o BIOS faz a conferencia inicial do sistema e registra o initializationloader
+	> do primeiro estagio no MBR (Master Boot Recording) do disco (HD) primario
+2.
+	o initializationloader do primeiro estagio eh enviado para a memoria
+	> e este carrega o initial loader do segundo estagio partindo da particao /boot/
+3.
+	o kernel eh posto na memoria pelo initializationloader do segundo estagio,
+	> que, alem de carregar modulos que sejam necessarios, monta a particao raiz / apenas no modo de leitura
+4.
+	eh feita pelo kernel a transferencia do controle do processo de inicializacao para o programa /sbin/init
+5.
+	todos os servicos e ferramentas de espaco de usuario sao carregados pelo programa /sbin/init
+	> que tambem monta todas as particoes listadas em /etc/fstab
+6.
+	uma tela de login para o sistema Linux recem instalado eh mostrada
+
+
