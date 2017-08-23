@@ -1,0 +1,29 @@
+====
+ReFS
+
+	novo FS da Microsoft
+	primeiramente apresentado em 2012, com o Windows Server 2012
+	veio para substituir o NTFS
+!	nao foi desenvolvido do zero, tendo aproveitado o melhor do NTFS
+	alto grau de compatibilidade com discos NTFS
+	compativel com FAT e FAT32
+	verificacao e correcao automatica de erros no disco
+	melhor suporte ao Bitlocker (mecanismo de criptografia nativo do Windows)
+	suporte a discos de ate 16 EB
+	nao eh suportado em midias removiveis
+
+	features:
+		integridade de metadados
+		copy on write
+		grandes tamanhos para arquivos, diretorios e volume
+		pool de armazenamento
+		disk scrubbing
+		resiliencia a corrupcao de dados
+		campatibilidade com pools de armazenamento compartilhadas
+
+
+https://itonlineblog.wordpress.com/2012/01/17/windows-8-detalhes-sobre-o-refs-resilient-file-system/
+https://en.wikipedia.org/wiki/ReFS#Feature_changes_compared_to_NTFS
+Introducing ReFS - file:///C:/Users/martins/Downloads/www_windowsnetworking_com_articles-tutorials_windows-server-2012_refs-what-you-need-know-about-resilient-file-system-part1.pdf
+
+

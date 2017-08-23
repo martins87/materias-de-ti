@@ -1,0 +1,98 @@
+====
+NTFS
+
+	New Technology File System
+	eh o sistema de arquivos padrao para o Windows NT e seus derivados
+		-> o Windows NT surgiu para competir com as solucoes baseadas em Unix
+	qndo o Windows NT surgiu, o sistema de arquivos FAT nao era adequado
+	a [confiabilidade e desempenho] do NTFS fizeram com que fosse adotado nos SOs posteriores da Microsoft,
+		> como Windows XP, Vista, 7 e Windows Server 2008
+
+	a Microsoft utilizou como base o HPFS (High Performance FS), fs que tinha a IBM por tras
+
+
+
+===============
+CARACTERISTICAS
+
+	recuperacao:
+		em caso de falhas (ex: desligamento repentino do computador),
+		  > eh capaz de reverter os dados 'a condicao anterior ao incidente
+
+	suporta redundancia de dados (replicacao), como o que eh feito por sistemas RAID
+
+	trabalha com esquema de permissoes de acesso:
+		assim como o Unix, tambem permite que o usuario defina quem pode e como pode acessar pastas ou arquivos	
+
+	bastante eficiente no trabalho com *arquivos grandes* e unidades de discos volumosos,
+	  > especialmente qndo comparado ao FAT 32
+
+!	utiliza 64 bits para enderecamento:
+		isto determina o [volume maximo de dados] com que [cada particao] do NTFS pode trabalhar
+		com o uso de clusters de 64 KB, esse limite pode chegar a 256 fucking TB!!!
+
+	tamanho max de arquivos		  16 EiB
+	tamanho max de volume (particao)  256 TB
+	64 KB por cluster
+	tamanho max de nome de arquivo: 255 caracteres
+
+	eh organizado como uma hierarquia de diretorios
+!!!	cada diretorio utiliza uma estrutura de dados denominada Arvore B+
+
+
+
+===================
+TOLERANCIA A FALHAS - Journaling
+
+	para preservacao dos dados, o NTFS utiliza um esquema de journaling
+	eh um arquivo de log que registra as alteracoes em arquivos
+
+funcionamento:
+	o log registra todas as acoes que acontecem no SO em relacao aos arquivos
+	qndo um arquivo eh criado, eh alocado um espaco em disco para ele, suas permissoes sao definidas, etc.
+	pode acontecer de um espaco alocado nao ser utilizado, por ex: desligamento repentino do computador
+	qndo o SO eh reativado, consulta-se o log para saber o que nao foi realizado por completo
+	assim, as acoes corretivas sao executadas
+
+	para manter a integridade do sistema, basicamente 3 passos sao executados:
+		- verificacao de log para checar quais clusters devem ser corrigidos
+		- nova execucao das transacoes no final do log (ultimas)
+		- reversao de procedimentos que nao puderam ser concluidos
+
+	pode acontecer de o NTFS nao conseguir recuperar os ultimos dados gravados antes da interrupcao
+	mas ele garante o pleno funcionamento do SO,
+	  > eliminando erros que podem comprometer o desempenho ou causar problemas maiores
+
+
+
+==========
+PERMISSOES
+
+	continuar:
+		http://www.infowester.com/ntfs.php
+		http://windows.microsoft.com/pt-br/windows-vista/comparing-ntfs-and-fat-file-systems
+		http://www.tecmundo.com.br/particao/1506-fat32-ou-ntfs-qual-o-melhor-parte-1-de-2-.htm
+		https://en.wikipedia.org/wiki/NTFS
+
+
+========================
+VANTAGENS x DESVANTAGENS
+
+	vantagens:
+		aceita volumes de ate 2 TB
+		tamanho dos arquivos limitado apenas pelo tamanho do volume
+		suporte a compactacao, criptografia e indexacao
+		suporte a clusters de 512 bytes
+		eh possivel inserir imagem do sistema em um volume NTFS - o que nao era possivel em algumas versoes FAT
+		mais seguro que o FAT
+		permite politicas de seguranca e gerenciamento
+		volumes NTFS sao menos vulneraveis a fragmentos
+		melhor desempenho (em geral)
+		volumes NTFS podem se recuperar de um erro mais facilmente
+		aceita nomes de volumes de ate 32 caracteres
+
+	desvantagens:
+		se usado em uma midia removivel, pode se corromper mais facilmente
+		nao eh possivel otimizar para remocao rapida
+		reconhecimento de volumes: apenas versoes a partir do NT 3.1
+		mais lento que o FAT32, em razao das diversas diretrizes de seguranca

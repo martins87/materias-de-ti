@@ -1,0 +1,62 @@
+conceitos iniciais:
+	sistema de arquivos da Microsoft
+	atualmente nao eh mais o sistema de arquivos padrao dos SOs Windows
+	FAT = File Allocation Table
+
+
+===
+FAT - Original 8-bit FAT
+
+	introduzida originalmente em 1977, para uso em floppy disks
+	era suficiente para os usos limitados dos SOs na epoca
+	era simples e provia boa performance
+	espaco de enderecamento de 8 bits
+	mostrou limitacoes assim que as versoes do Windows se tornaram mais sofisticadas e os programas exigiram mais
+	eh a versao mais antiga
+	caracteres: ASC II
+	usaram o FAT: o MS-DOS e o Windows 3.x
+
+	desvantagens:
+		baixa tolerancia a falhas
+		inviabilidade de uso de permissoes de arquivos
+		limitacoes para o trabalho com grande volume de dados
+
+
+=====
+FAT12
+
+	a tabela foi extendida para 12 bits
+	foi usado no MS-DOS e nos pcs da IBM chamados PC-DOS
+	tinha um limite de tamanho de disco de 32 MiB
+	inicialmente nao era um problema, mas assim que os HDs foram crescendo, deu ruim
+
+
+=====
+FAT16
+
+	usa enderecos de 16 bits, permitindo um maximo de 65536 clusters
+	limite de particao: 2 GB
+	a versao original do Windows 95 suportava apenas o FAT16,
+		> obrigando quem possuia HDs maiores que 2 GB a dividi-los em 2 ou mais particoes
+
+=====
+FAT32
+
+	foi a solucao para a limitacao do FAT16
+	foi incorporado no Windows 95 OSR/2 e continuou sendo usado nas versoes seguintes
+	novidade de enderecos de 32 bits para o enderecamento dos clusters
+!	isso possibilitou a criacao de particoes mto maiores, de ate 2 TB
+	foi possivel pq o Windows 95 era um SO de 32 bits
+	o Windows 98 permitia a conversao de particoes FAT16 para FAT32
+	principal limitacao:
+		-> tamanho maximo dos arquivos
+		mesmo usando uma grande particao, nao eh possivel armazenar arquivos com mais de 4 GB
+		problema pratico:
+			nao poder armazenar a ISO de um DVD,
+			  > ja que a copia/transferencia sera sempre abortada depois de transferidos os primeiros 4 GB
+
+
+outros links:
+	http://www.infowester.com/fat.php
+	http://www.hardware.com.br/livros/hardware-manual/sistema-fat.html
+	http://www.hardware.com.br/livros/hardware-manual/sistema-fat-1.html

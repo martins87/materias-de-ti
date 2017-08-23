@@ -1,0 +1,41 @@
+===================
+SISTEMA DE ARQUIVOS
+
+	nao eh possível gravar dados em um HD ou em qualquer outro dispositivo de armazenamento
+		> de forma a manter as informacoes acessiveis e organizadas
+		-> sem um sistema de arquivos (file system)
+	essencialmente, eh um tipo de estrutura que indica como os arquivos devem ser gravados e lidos pelo SO
+
+	eh o sistema de arquivos que determina como as informacoes podem ser
+		> guardadas, acessadas, copiadas, alteradas, nomeadas e ate apagadas
+	resumindo, toda e qualquer manipulacao de dados em um dispositivo de armazenamento necessita de um sistema de arquivos
+		> para que estas acoes sejam possiveis
+	sem um sistema de arquivos, os dados armazenados seriam apenas um conjunto de bits sem utilidade
+
+	ha varios sistemas de arquivos disponiveis, para os mais diversos SOs e para as mais variadas finalidades
+
+
+---------------
+PERDA DE ESPACO
+
+	em um disco rigido, a area de armazenamento eh dividida em trilhas
+	cada trilha eh subdividida em setores, cada um com 512 bytes, geralmente
+		-> ha um projeto de migracao para 4096 bytes, conhecido como ADVANCED FORMAT
+	FAT e NTFS trabalham com conjuntos de setores
+	cada setor eh conhecido como CLUSTER (ou unidade de alocacao)
+	o FAT16, por exemplo, pode ter clusters de 2, 4, 8, 16 e 32 KB
+	problema:
+		o tamanho de arquivos e seu espaco utilizado sao variaveis
+		cada arquivo gravado utiliza tantos clusters qnto forem necessarios para cobrir o seu tamanho
+		por ex, se um arquivo tiver 50 KB, eh possivel guarda-lo em dois clusters de 32 KB cada
+		essa area que sobra NAO PODE ser utilizada por outro arquivo,
+			> porque cada cluster soh pode ser utilizado por UM UNICO arquivo!
+		se sobrar espaco, este permanecera vazio
+		este eh um dos problemas do FAT
+
+	por padrao, o tamanho dos clusters
+		> eh definido durante o processo de instalacao do SO ou de formatacao de uma particao
+	vai de 512 bytes a 64 KB
+	pode tambem ser definido pelo usuario com procedimentos especificos
+
+
