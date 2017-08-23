@@ -1,0 +1,294 @@
+http://www.tutorialspoint.com/compile_java_online.php
+/\
+
+nao suporta Heranca Multipla
+
+nao eh totalmente orientada a objetos pq possui tipos de dados que nao sao objetos: int, double, char..
+
+Compilador: JIT - Just in Time
+
+eh uma linguagem WORA: write once, run anywhere
+
+compilado em bytecode, roda em qq equipamento que possua uma JVM (java virtual machine) = PORTABILIDADE!
+
+criada pela SUN, adquirida pela Oracle!
+
+o Garbage Collector realiza a gerencia de memoria = desaloca memoria de variaveis instanciadas pelo programa
+
+Exception Handling permite o tratamento de erros em tempo real de execucao
+
+eh uma linguagem concorrente = Multithread
+	usa threads, que sao suportadas de modo nativo
+
+possui o Security Manager, utilizado para impedir, por exemplo, que applets executem codigos arbitrariamente
+
+eh uma linguagem EXTENSIVEL, pois integra diversas bibliotecas com o codigo nativo
+	alem de permitir o carregamento dinamico de classes em tempo de execucao
+
+tipos:
+	Java Standard Edition		aplicacoes Java
+	J2EE				sistemas corporativos
+	Java ME				dispositivos moveis: smartphones, tablets, controles remotos...
+	Java Card			pequenos aplicativos (tipo applets) sejam executados em smartcards: chip de celular, chip de cartao de credito
+	Java FX
+
+
+JRE - Java Runtime Environment
+	ambiente de execucao
+	contem JVM, bibliotecas (APIs)
+
+JDK - Java Development Kit
+	contem a JRE e outros componentes uteis para executar aplicacoes (Javac, Javadoc, Jar, Appletviewer..)
+
+
+precisa somente executar Java na sua maquina? JRE!
+
+precisa desenvolver? JDK nelas!
+
+
+
+-=-=-=-=
+java.sql
+
+algumas classes/interfaces:
+
+	CallableStatement
+	Connection
+	Data
+	DatabaseMetaData
+	Driver
+	DriverManager
+	ParameterMetaData
+	PreparedStatement
+	Statement
+	ResultSet
+	ResultSetMetaData
+	SQLData
+	SQLInput
+	SQLOutput
+	SQLXML
+	Struct
+	Wrapper
+
+
+
+-=-=-=-=-=-=
+classe Class
+	Class eh uma classe basica de Java
+	traz informacoes sobre a classe a qual um objeto pertence
+	todo objeto, ao ser instanciado, possui uma instancia da classe Class associada a ele
+	Class.forName("nome-da-classe-a-ser-inicializada")  -->>  inicializa a classe passada como parametro
+
+
+
+=-=-=-=-=-=-=-=-=-=-=
+COMPILACAO E EXECUCAO
+
+	HelloWorld.java  ->  HelloWorld.class (bytecode)  ->  JVM executa em qq maquina (Win32, OS X, Unix..)
+
+	nego escreve codigo Java e salva com a extensao .java
+	compilador Javac transforma o arquivo .java em codigo de maquina e em um arquivo .class, famoso BYTECODE
+	bytecode eh um codigo intermediario, que eh entao interpretado e executado pela JVM
+	dai entao pode rodar em qq maquina
+
+!!	pode acontecer tbm de um bytecode ter sido gerado por outra linguagem que nao Java. ex: Pascal, Python, C..
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+PASSAGEM POR PARAMETROS x POR REFERENCIA
+
+	resumo da obra: Java soh rola passagem por VALOR
+
+
+
+=-=-=-=-=-=-=
+EMPACOTAMENTO
+
+	empacotamento gera um arquivo .jar, que pode ser adicionado no classpath da aplicacao
+	referenciando:
+		package br.com.site.pacoteExemplo;
+
+	pacote java ja possui as classes padroes para o funcionamento da linguagem
+	pacote javax possui pacotes de extensao que fornecem ainda mais classes e objetos
+	para importar um pacote usamos a palavra reservada import:
+		import javax.swing.JOptionPane;
+
+	para separar um pacote de seu subpacote usam-se pontos: javax.swing.JOptionPane
+	asterisco * importa todos os subpacotes:
+		import java.awt.*;
+
+	diferenca entre importar tudo e importar um pacote especifico: consumo de recursos do computador
+	como o * importa tudo, o consumo de memoria sera alto
+
+
+
+=-=-=-=-=-=-=
+Modificadores
+
+	public			acessivel em qq lugar
+
+	protected		acessivel pela classe, subclasses e no mesmo pacote
+
+	private			acessivel somente pela propria classe
+
+	padrao (default)	acessivel somente pela propria classe e no mesmo pacote
+
+
+
+=-=-=-=-=-=-=-=
+IDENTIFICADORES
+
+pode:
+	A-Z, a-z
+	_ (underscore)
+	$
+	0-9
+
+nao pode:
+	true, false, null
+	comecar com numeros
+	conter espacos em branco ou caracteres de formatacao
+
+
+
+=-=-=-
+TIPOS
+
+logico
+	boolean				false or true
+
+caractere
+	char		16 bits		0 ate 2^16 -1
+
+inteiro
+	byte		8 bits		-2^7 ate 2^7		128
+	short		16 bits		-2^15 ate 2^15		casa das milhares
+	int		32 bits		-2^31 ate 2^31		casa dos bilhoes
+	long		64 bits		-2^63 ate 2^63		casa dos quintilhoes
+
+decimal
+	float		ponto flutuante de 32 bits
+	double		ponto flutuante de 64 bits
+
+Obs:
+	valor padrao para decimal eh DOUBLE!
+	se quiser q seja float tem que botar o "f" no fim  :  3.14f
+
+
+
+=-=-=-===-=-=-=-=-=-
+PALAVRAS RESERVADAS
+
+	abstract	indica que a implementacao completa do metodo ou classe eh feita posteriormente por uma subclasse
+	const		sem uso especifico (SUE)
+	continue	pula para prox iteracao
+	enum		adicionada na versao Java 5. assemelha-se com uma classe que tem operacoes e dados internos
+	finally		parte do try catch finally
+	goto		SUE
+	instanceof	testa se objeto eh instancia de uma classe especifica ou se eh nulo
+	native		metodos native indicam que sua implementacao eh feita em outra linguagem de programacao
+	strictfp	serve para aumentar a precisao em operacoes com pontos flutuantes
+	super		chama membros da classe pai
+	syncronized	indica que nao possa haver duas threads acessando o mesmo objeto
+	this		representa a instancia que esta atualmente sendo executada
+	throw		lanca uma excecao
+	throws		declara que um metodo pode lancar uma excecao
+	transient	indica que uma determinada variavel de instancia nao sera serializada junto com o objeto da classe
+	volatile	indica que variavel de instancia pode ser modificada em duas threads DISTINTAS ao mesmo tempo
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+OPERADORES bit a bit (base 2)
+
+	&	and	34 & 435	000100010 & 110110011 = 100010 = 34
+	|	or	34^46		000100010 ^ 000101110 = 000001100 = 12
+	^	xor	436|547		0110110100 | 1000100011 = 1110110111 = 951
+	<<		2 << 1		00000010 << 1 = 00000100 = 4
+	>>		5 >> 1		00000101 >> 1 = 00000010 = 2
+	>>>	shift para direita SEM SINAL
+
+
+
+=-=-=-=-=-=-=-=-=-=
+TRATAMENTO DE ERROS
+
+	classe Throwable modela todos os tipos de erros de execucao
+	se divide em duas subclasses:
+
+		Error		define erros que nao devem ser capturados pelas aplicacoes,
+				> pois representam erros graves que nao permitem a execucao de maneira satisfatoria
+
+		Exception	define erros para os quais rola tratamento
+
+	try{
+		... // bloco de codigo que PODE gerar algum erro
+	} catch( ){
+		... // blocos catch capturam os possiveis erros
+	} catch( ){
+		...
+	} catch( ){
+		...
+	} finally {
+		... // este finally eh opcional, mas se existir sera sempre executadof
+	}
+
+	implicitamente, todas as classes Java lancam uma excecao de RunTimeException
+
+	no caso de outras classes chamarem metodos que podem lancar excecoes, essas classes deverao tratar os erros
+	isso eh feito com um throws:
+
+		tipoDeRetorno nomeDoMetodo(...) throws tipoExcecao1, tipoExcecao2, ...;
+
+	podemos fazer tambem com que um metodo lance um throwable sem exigir que aqueles que o chamem tratem essa excecao:
+
+		throw new Exception("Numero nao pode ser negativo!");
+
+	throw: usada DENTRO do metodo
+	throws: usada na assinatura do metodo
+
+
+--------------------------------------------------------------------------------------------------------------------------
+Especifico
+
+	FlowLayout
+		gerenciador de layout mais simples, trata o container como um conjunto de linhas, da esquerda para a direita
+		> na ordem que forem adicionados
+		container.setLayout( new FlowLayout );
+
+	BorderLayout
+		divide o container em 5 areas: Norte, Sul, Leste, Oeste e Centro
+
+	GridLayout
+		divide o container em linhas e colunas
+
+	GridBagLayout
+		semelhante ao GridLayout, mas permite que um componente ocupe mais de uma celula da grade
+
+	Appendable
+		[interface] de objetos que recebem caracteres ou sequencia de caracteres como ANEXOS
+		ou seja, ir somando caracteres ou sequencia de caracteres
+		essa interface tem como exemplos de classes:
+			StringBuffer, BufferedWriter, CharBuffer, CharArrayWriter...
+
+
+
+ODBC - Open Database Connectivity
+	torna possivel para aplicacoes acessar dados de uma grande variedade de SGBDs
+	desenvolvido para BDs relacionais
+	possibilita, por exemplo, conexao entre um aplicativo Java e um BD para processar instrucoes SQL
+
+API java.sql
+	contem as classes
+		Connection
+		DriverManager
+		Statement
+
+-=-=-=-
+metodos
+
+	int Integer.parseInt(String s)				converte um String em int
+	String JOptionPane.showInputDialog(String s)		recebe um string			-->>  import javax.swing.JOptionPane;
+	void JOptionPane.showMessageDialog(null, String s)	exibe uma mensagem na tela		-->>  import javax.sqing.JOptionPane;
+
