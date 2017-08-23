@@ -1,0 +1,55 @@
+==============
+BANCO DE DADOS
+
+	Controle de Acesso
+	Controle de Inferencia
+	Controle de Fluxo
+	Criptografia de Dados
+
+	ler: http://www.diegomacedo.com.br/conceitos-sobre-seguranca-em-banco-de-dados/
+
+	chaves - podem ser:
+		primarias			identifica unicamente uma tupla na tabela
+		secundarias/alternativas	chaves que tambem poderiam ser primary keys. ex: CPF e RG de uma pessoa
+		estrangeiras			identifica um campo de outra tabela
+
+	tipos de BDs:
+		Relacional
+		Relacional de Objetos
+		Hierarquico			dados arranjados hierarquicamente (formato de arvore)
+		de Rede				parecido com o Hierarquico, mas tabelas filhas podem ter mais de uma tabela pai
+
+
+cardinalidade:
+	representacao de qtas ocorrencias de uma entidade podem estar associadas a uma determinada ocorrencia de outra entidade
+	Navathe: numero maximo de instancias de relacionamento que uma entidade pode participar
+	4 mapeamento de cardinalidade possiveis para relacionamentos binarios:
+		(1,1) um para um
+		(1,N) um para muitos
+		(N,1) muitos para um
+		(N,N) muitos para muitos
+
+restricao de participacao:
+	indica se a existencia de uma entidade depende de sua existencia relacionada a outra entidade
+	determina tambem a cardinalidade MINIMA, ou seja, numero minimo de ocorrencias que cada entidade pode ter no relacionamento
+	a relacao de participacao pode ser total ou parcial:
+
+		- total/obrigatoria/DEPENDENCIA DE EXISTENCIA
+			toda entidade (ocorrencia) do conjunto de entidades deve estar relacionada a uma entidade de outro conjunto
+			ex: TODO departamento tem que ter um gerente (funcionario)
+			(1,1) ou (1,N)
+
+		- parcial/opcional
+			pode haver alguma entidade no conjunto de entidades que nao esteja relacionada a entidade de outro conjunto
+			(0,1) ou (0,N)
+
+componentes do BD Oracle:
+	tablespaces, segments, extents e blocks
+
+
+Modelo FISICO:
+	descreve a forma como os dados sao [armazenados] no SGBD
+	aqui o modelo logico eh convertido em linguagem DDL (definicao: create, drop...)
+	as regras descritas no modelo conceitual sao convertidas em regras de integridade
+	define-se aqui tambem os tipos de dados
+

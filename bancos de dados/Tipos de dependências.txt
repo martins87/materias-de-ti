@@ -1,0 +1,20 @@
+=====================
+TIPOS DE DEPENDENCIAS
+
+	---------------------
+	dependencia funcional
+		um atributo B possui uma dependencia funcional do atributo A se,
+		  para cada valor do atributo A, existe exatamente um unico valor do atributo B
+		a dependencia funcional eh representada por A -> B
+		ex:
+			TabelaCliente
+			CPF	Nome
+			---	----
+			1	Jose
+			2	Joao
+			3	Gabriel
+			4	Danilo
+
+			aqui existe uma dependencia entre os valores dos conjuntos
+			nome eh funcao do CPF, pois se estou com um numero de CPF consigo encontrar o nome correspondente
+			essa dependencia eh expressa por CPF -> Nome

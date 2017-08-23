@@ -1,0 +1,286 @@
+===
+SQL
+
+	Structured Query Language
+	publicado em 1986 pelo orgao ANSI
+
+
+DDL (Data Definition Language)
+	serve para a definição de estruturas de dados, incluindo linhas, colunas, tabelas, índices e localizações de arquivos
+	ex:
+		CREATE		cria tabelas
+		ALTER		modifica a tabela, como para incluir um atributo
+		DROP		elimina a tabela
+
+
+DML (Data Manipulation Language)		-> CRUD!!!
+	voltada para a manipulação dos dados
+	ex:
+		INSERT		inserir
+		SELECT		consultar
+		UPDATE		atualizar, modificando alguns atributos
+		DELETE		autoexplicativo
+
+
+VDL (View Definition Language)
+	voltada para especificar as visões dos usuários e seus mapeamentos para o esquema conceitual
+	ha autores que consideram a VDL como integrante da DDL.
+	ex:
+		CREATE VIEW
+		DROP VIEW
+
+
+DTL (Data Transaction Language)
+	para a transação no banco de dados
+	ex:
+		BEGIN WORK	iniciar uma transação
+		COMMIT		gravar a transação do buffer para o disco rígido
+		ROLLBACK	desfazer transação
+
+
+DCL (Data Control Language)
+	controla aspectos de autorização de dados e licenças de usuários para controlar quem tem acesso dentro do banco
+	ex:
+		GRANT		dar acesso
+		REVOKE		retirar acesso
+
+
+_________________________
+RESTRIÇÕES DE INTEGRIDADE (constraints)
+
+	ON DELETE:
+		define alguma acao a ser tomada quando na tabela de origem uma chave eh excluida, sendo esta chave referenciada na tabela em questao
+		comandos comuns:
+			SET NULL		valor nulo
+			CASCADE			exclusao da tupla que referencia a chave excluida
+			DEFAULT 'valor'		substituicao por um valor padrao
+
+	ON UPDATE:
+		analogo ao ON DELETE
+
+	UNIQUE:
+		impede que o atributo apresente dois valores iguais na tabela
+
+
+____________
+CREATE TABLE
+
+	CREATE TABLE table_name(
+		column_name1 data_type(size),
+		column_name2 data_type(size),
+		column_name3 data_type(size),
+		...
+	);
+
+	ex:
+	CREATE TABLE Persons(
+		personID int,
+		firstName varchar(255),
+		lastName varchar(255),
+		address varchar(255),
+		city varchar(255),
+!		PRIMARY KEY(personID)
+	);
+
+______
+SELECT
+
+	sintaxe:
+		SELECT column1, column2...		ou	SELECT * FROM table;
+			FROM table1, table2...;
+
+	COUNT(*): quantidade de registros
+
+	ORDER BY:
+		ordena os registros segundo algum criterio
+		criterios podem ser ASC e DESC
+		pode definir mais de uma coluna para ordenar tambem
+		ex:
+			SELECT * FROM Customers
+				ORDER BY Country ASC, CustomerName ASC;
+
+	GROUP BY:
+		agrupa os registros segundo um critério
+		ex:
+			SELECT Tipo, SUM(Quantidade) AS 'Quantidade em estoque'
+				FROM Produtos
+				GROUP BY Tipo;
+			resultado:
+				Tipo		Quantidade em estoque
+				-------------------------------------
+				Armario		5.000
+				Celular		13.000
+				Notebook	4.500
+				Refrigerador	3.000
+		-> HAVING:
+			soh pode ser usada em conjunto com GROUP BY
+			determina uma condicao de busca para um grupo ou conjunto de registros
+			criterio de restricao que se aplica ao grupo, e nao aos registros
+			ex:
+				SELECT Tipo, SUM (Quantidade) AS 'Quantidade em estoque'
+					FROM Produtos
+					GROUP BY Tipo
+					HAVING SUM(Quantidade) > 5.000;
+			resultado:
+				Tipo		Quantidade em estoque
+				-------------------------------------
+				Armario		5.000
+				Celular		13.000
+
+
+	AVG:									PRODUCTS table
+		retorna o valor medio de uma coluna numerica			id	name	price
+		ex:								---------------------
+			SELECT AVG(Price) AS 'Averige Price' FROM Products;	1	lemon	3.00
+		resultado:							2	orange	3.20
+			Averige Price						3	banana	2.58
+			-------------
+			2.926666
+
+	DISTINCT:
+		elimina resultados repetidos, nao permitindo que dois registros iguais sejam mostrados
+		retorna apenas um registro caso haja dados duplicados em um campo (banca CETRO)
+		sintaxe:
+			SELECT DISTINCT column_name, column_name
+				FROM table_name;
+		ex:
+			ha a tabela Clientes, que tem o atributo Cidade
+			se selecionar "SELECT Cidade FROM Clientes;" vai trazer um monte de registros repetidos
+			assim, "SELECT DISTINCT Cidade FROM Clientes;" vai retornar uma ocorrencia soh de cada cidade
+
+___________
+INSERT INTO
+
+	INSERT INTO table_name					ou	INSERT INTO table_name (column1, column2, column3,...)
+		VALUES (value1, value2, value3, ...)				VALUES (value1, value2, value3, ...)
+	ex:
+		INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+			VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'New York', '4006', 'Norway');
+
+	pode-se especificar uma insercao em apenas algumas colunas:
+		INSERT INTO Customers (CustomerName, City, Country)
+			VALUES ('Cardinal', 'Stavanger', 'Norway');
+
+______
+UPDATE
+
+	UPDATE table_name
+		SET column_name1 = 'value1',
+		    column_name2 = 'value2'
+		WHERE some_column = 'some_value';
+
+	a clausula WHERE eh obrigatoria!
+	obvio, pq vc tem que especificar o registro que esta sendo atualizado
+
+
+______
+DELETE
+
+	DELETE FROM table_name
+		WHERE some_column = 'some_value';
+
+	aqui basta especificar a(s) tupla(s) que se quer excluir
+
+	DELETE FROM bilionarios
+		WHERE patrimonio < 1.000.000.000;
+
+
+Funcoes de agregacao:
+	AVG		calcula a media dos valores de um atributo
+	COUNT(*)	obtem o numero de registros do atributo selecionado
+	SUM		soma todos os valores de um atributo
+	MAX		retorna o maior dos valores de um atributo
+	MIN		retorna o menor dos valores de um atributo
+
+
+LIKE
+	usa-se o operador LIKE em uma clausula WHERE para procurar uma string padrao,
+	  usando o LIKE com o sublinhado (_) (posicao exata) e percentagem (%) (qualquer quantidade de caracteres)
+	ex:
+		SELECT * FROM Customers WHERE City LIKE 'S%';
+		seleciona todas as cidades que comecam com a letra S
+
+IN:
+	filtra o resultado da pesquisa, aceitando qualquer resultado que seja igual ao [conjunto] delimitado pelo IN
+	ex:
+		SELECT FROM Customers WHERE City IN ('New York', 'Dubai', 'Tokyo');
+
+
+BETWEEN
+	recupera-se linhas onde os valores estao em um intervalo especificado
+	SELECT * FROM Products
+		WHERE Price BETWEEN 5 AND 10;
+
+
+JOIN
+	INNER JOIN:
+		exibe somente os registros comuns 'as duas tabelas
+		exige a existencia de igualdade entre atributos de ambas as tabelas
+
+ 	NATURAL JOIN:
+		igual ao INNER JOIN, mas exige atributos tenham exatamente o mesmo nome nas tabelas envolvidas
+
+	LEFT (OUTER) JOIN:
+		"forca" a exibição de todos os registros da tabela da esquerda,
+		  > mesmo que nao haja correspondencia com a tabela da direita
+
+	RIGHT (OUTER) JOIN:
+		analogo ao LEFT OUTER JOIN, mas forcando o aparecimento dos registros da tabela 'a direita do JOIN
+
+	FULL OUTER JOIN:
+		mostrara todos os registros de ambas as tabelas
+
+
+
+CASE
+	verifica uma condicao e manda executar uma acao
+	ex:
+		tabela tem os valores 11, 12 e 13
+		SELECT CASE
+			WHEN valor > 12 THEN
+			COUNT(*) ELSE 11 END AS VAL
+			FROM tabela;
+		como a tabela tem, de fato, [algum] valor maior que 12, vai retornar o numero de linhas da tabela
+		-> se nao tivesse, retornaria o valor 11
+
+
+AUTO_INCREMENT
+	permite um numero unico ser gerado automaticamente qndo um novo registro eh inserido na tabela
+	mtas vezes eh criado com a funcao de ser uma primary key
+	por padrao, o valor inicial eh 1
+	ex:
+		CREATE TABLE Person(
+			Id INT NOT NULL AUTO_INCREMENT,
+			Name VARCHAR(200),
+			PRIMARY KEY(Id)
+		);
+	para fazer o proximo valor da sequencia ser outro, pode-se fazer: ALTER TABLE Person AUTO_INCREMENT = n;
+	para inserir um novo registro na tabela, nao precisamos entao especificar qual o valor do atributo Id:
+		INSERT INTO Person VALUES ("Daniel");
+
+
+
+_________________
+Questoes praticas:
+
+	CREATE TABLE Aluno (ID INTEGER PRIMARY KEY, NOME VARCHAR(20));
+	INSERT INTO Aluno (ID,NOME) VALUES(1, Jose);
+	INSERT INTO Aluno (ID,NOME) VALUES(“1”, “Joao”);
+	INSERT INTO Aluno (ID,NOME) VALUES (2, “Alfredo”);
+
+	serao inseridos os alunos Joao e Alfredo
+	no entanto, a primeira linha nao sera interpretada, pois o nome Jose esta sem aspas
+	strings devem estar em aspas (simples ou duplas)
+
+	GROUP BY e HAVING:
+		tabelas aluno, inscricao e disciplina indicam as matriculas dos alunos nas disciplinas
+		aluno e disciplina configuram uma relacao M:N, com a tabela inscricao resolvendo o problema
+		para a listagem da matricula e nome dos alunos que estao inscritos em mais de 2 disciplinas, faz-se:
+
+			SELECT aluno.matricula, aluno.nome
+				FROM inscricao, aluno, disciplina
+				WHERE inscricao.matricula = aluno.matricula AND
+				      inscricao.codigo = disciplina.codigo
+				GROUP BY aluno.matricula, aluno.nome
+				HAVING COUNT(*) > 2;
+

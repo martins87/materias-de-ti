@@ -1,0 +1,51 @@
+﻿DDL (Data Definition Language) – serve para definir estruturas de dados,incluindo linhas, colunas, tabelas, índices e localizações de arquivos.
+	Comandos DDLs mais usados: CREATE SCHEME (cria um esquema), CREATE TABLE (cria uma tabela), DROP (apaga uma tabela), ALTER TABLE(altera a estrutura de uma tabela).
+	Além disso, podem ser inseridos condições na atualização(ON UPDATE) e na exclusão (ON DELETE) de uma tabela. As condições são SET NULL (inserção de valor nulo), 		DEFAULT (substituição por um valor padrão) e CASCATE (exclusão da tupla que referencia a chave excluída).
+
+DML (Data Manipulation Language) – voltada para a manipulação dos dados, como o próprio nome  diz.
+	Comandos DMLs mais usados: INSERT(insere um registro em uma tabela) DELETE (exclui um registro em uma tabela), UPDATE ( atualiza uma registro em uma tabela) e TRUNCATE( exclui todos os registros da tabela)
+
+SDL(Storage Definition Language)–utilizada para especificar o esquema interno de armazenamento. Pertencia às versões a ntigas do SQL, mas foi absorvida pela DDL. Alguns autores nem citam mais esta modalidade. 
+
+DTL ( Data Transaction Language )– para a transação no banco de dados.
+	Comandos DTL mais usados: BEGIN WORK(iniciar uma transação), COMMIT(gravar a transação do buffer para o disco rígido), ROLLBACK(desfazer transação). 
+
+DCL (Data Control Language)–controla aspectos de autorização de dados e licenças de usuários para controlar quem tem acesso dentro do banco. 
+	Comandos DCL mais usados: GRANT(dar acesso) e REVOKE (retirar acesso).	
+
+VDL (View Definition Language)–voltada para especificar as visões dos usuários e seus mapeamentos para o esquema conceitual.Há autores que consideram a VDL como integrante da DDL.
+	Comandos VDL mais usados: CREATE VIEW, DROP VIEW . 
+
+Funções de Agregação usadas geralmente com a CLÁUSULA GROUP BY:
+
+COUNT: retorna o número de linhas afetadas pelo comando.
+SUM: retorna o somatório do valor das colunas especificadas.
+AVG: retorna a média aritmética dos valores das colunas.
+MIN: retorna o menor valor da coluna de um grupo de linhas.
+MAX: retorna o maior valor da coluna de um grupo de linhas.
+
+Operadores SQL comumente cobrados em provas de concursos:
+
+LIKE: Usa-se o operador LIKE em uma cláusula WHERE para procurar uma string padrão, usando o LIKE com o Sublinhado (_) e Porcentagem (%). 
+IN: Esse operador é usando quando se precisam recuperar as linhas onde os valores a serem comparados estão em lista. 
+BETWEEN: Esse operador é usando quando se precisa recuperar as linhas onde os valores estão em um intervalo especificado.  
+
+
+Tipos de JOINs
+
+INNER JOIN: exige a  existência  de  igualdade  entre  atributos  de  ambas  as  tabelas.
+NATURAL JOIN: possui a mesma “filosofia” do INNER  JOIN, mas exige que os atributos possuam exatamente o mesmo  nome  nas  tabelas  envolvidas. 
+LEFT (OUTER) JOIN: como o no me diz, ele irá “forçar” a exibição de todos os registros da tabela da esquerda, mesmo  que  não  haja  correspondência com a  tabela da direita.
+RIGHT (OUTER) JOIN: análogo ao LEFT OUTER JOIN, mas forçando o aparecimento dos registros da tabela à direita do JOIN.
+FULL OUTER JOIN: Como  você  deve  estar  imaginando,  o  FULL  OUTER  JOIN  mostrará todos os registros de ambas as tabelas.
+
+
+Trigers:
+
+O termo trigger (gatilho em inglês) define uma estrutura do banco de dados que funciona, como o nome sugere, como uma função que é disparada mediante alguma ação. Geralmente essas ações que disparam os triggers são alterações nas tabelas por meio de operações de inserção, exclusão e atualização de dados (insert, delete e update).
+Exemplo:
+	CREATE TRIGGER [NOME DO TRIGGER]
+	ON [NOME DA TABELA]
+	[FOR/AFTER/INSTEAD OF] [INSERT/UPDATE/DELETE]
+	AS
+	--CORPO DO TRIGGER

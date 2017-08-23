@@ -1,0 +1,73 @@
+O Cost Base Optimizer, ou otimizador, é programa que realiza a
+transformação dos comandos SQL em planos de execução. 
+
+Ele é composto por três blocos principais e um componente acessório:
+I. Query Transformer, ou transformador da consulta, recebe o comando e divide em diferentes blocos, verificando se é possível otimizar a consulta de modo a gerar o mesmo resultado;
+II. Estimator, ou estimador, indica o esforço para cara plano de consulta apresentado pelo transformador.
+III. Plan Generator, ou gerador de plano, testa os diferentes planos de execução e escolhe o que apresenta o menor custo.
+IV. O dicionário de dados, por fim, é componente acessório.
+
+View materializada: O resultado de uma consulta SQL pode ser armazenado em uma tabela e usado para o processamento posterior de uma consulta.
+
+Configuration Change: Console fornece uma estrutura de TI pronta para uso que conecta as políticas e controles de TI diretamente à coleta de dados. Isso inclui rastrear e registrar ações e eventos manuais e automatizados em relação a itens de configuração, aplicações e componentes de TI como parte das operações diárias normais.
+
+O módulo de nuvem do Oracle Secure Backup é implementado por meio da interface SBT do Oracle Recovery Manager (RMAN).A interface SBT permite que bibliotecas de backup externas sejam perfeitamente integradas com este recurso.
+O Oracle Secure Backup aproveita a capacidade do RMAN para criptografar backups e garantir a segurança dos dados.
+A integração com o mecanismo do banco de dados Oracle permite que o Oracle Secure Backup identifique e ignore o espaço não utilizado (blocos) no banco de dados.Os usuários também se beneficiam dos recursos sofisticados de compressão do RMAN.
+
+O Oracle Advanced Security Transparent Data Encryption é uma solução de criptografia avançada no setor.Essa tecnologia usa algoritmos de criptografia padrão no setor e um gerenciamento de chaves integrado para fornecer uma criptografia transparente de dados de aplicativos confidenciais.
+
+Quando uma base de dados é criada no Sistema Gerenciador de Bancos de Dados Oracle, são criadas, automaticamente, duas contas administrativas, cujas denominações são SYS e SYSTEM. A conta SYSTEM não pode realizar backup, recuperação e atualização do banco de dados, estando livre, contudo, para realizar as demais funções administrativas.
+
+O Oracle Advanced Security é uma solução de criptografia transparente para as bases de dados das organizações.
+No Oracle 12c, ele disponibiliza dois recursos: o Oracle Advanced Security Transparent Data Encryption (TDE), que previne ataques e a leitura de dados sensíveis por usuários não autorizados, e o Oracle Advanced Security Data Redaction, que complementa o TDE na exposição de dados não autorizados.
+Para autenticação, o OAS permite a configuração tanto da criptografia nativa Oracle Net ou do SSL.
+
+COPY - Comando em SQL capaz de serializar dados de uma tabela para um arquivo em disco, ou efetuar a operação contrária,transferindo dados de um arquivo em disco para uma tabela de um banco de dados. COPY TO copiará o conteúdo de uma tabela (ou uma query) para um arquivo. COPY FROM copiará o conteúdo de um arquivo para uma tabela.
+TRUNCATE – exclui todos os registros de uma tabela
+DELETE – exclui registros de uma tabela, permitindo a utilização conjunta da cláusula WHERE para a adoção de critérios de seleção
+DROP – derruba tabelas.
+ROUND(numero, casas_apos_a_virgula) - retorna um número, com o número de casas após a vírgula definido no parâmetro, se houver fração. Se o parâmetro for menor ou igual a zero, o número será arredondado para o inteiro mais próximo.
+
+
+Em PL/SQL, um operador lógico pode ser TRUE, FALSE ou NULL
+
+* true AND null = null
+* true OR null = true
+
+* false AND null = false
+* false OR null = null
+
+
+Em PL/SQL, é possível passar parâmetros para procedures de três formas:
+IN: para enviar valores para procedures
+OUT: para receber valores de procedures
+IN OUT: é possível enviar e receber valores para a procedure usando o mesmo parâmetro.
+
+A função NVL (expressao, expressão substituta) substitui uma expressão (quando nula) ou uma string vazia por uma string válida.
+
+PCTFREE é um parâmetro para especificar um percentual livre em um “data block”, para atualizações futuras das linhas que já existem
+
+O tablespace SYSTEM (tablespace de sistema) é uma parte obrigatória de todo banco de dados Oracle. É onde o Oracle armazena todas as informações necessárias para o seu próprio gerenciamento. Em resumo, SYSTEM é o tablespace mais crítico do banco de dados porque ele contém o dicionário de dados.
+
+Os três tipos fundamentais de arquivos físicos que compõem uma base de dados do Oracle 11g são: arquivos de controle, arquivos de log de repetição e arquivos de dados.
+
+CALL é o comando para executar rotinas (que não possuem parâmetros de entrada).
+
+Os segmentos são objetos que ocupam espaço em um banco de dados.
+Há diferentes tipos de segmentos incluem: segmentos de dados , segmentos de índice, segmento de undo e segmentos temporários 
+
+Em Oracle existem dois tipos de backups:
+* Backups Lógicos: Que contêm dados e\ou definições de objetos
+* Backups Físicos: Que contém os arquivos físicos do banco de dados como datafiles, archive logs ou controlfiles. Podem ser feitos pelo banco (Recovery Manager - RMAN ou manualmente com o BEGIN\END BACKUP) ou diretamente pelo usuário administrador via servidor.
+
+Dentro dos backups físicos ainda existem dois subtipos:
+* - Backups Consistentes (também conhecidos como cold backup): Feitos com a base “desligada” ou em modo mount. A característica deste tipo de backup é que há a garantia de que todos os SCNs estão idênticos, ou seja, todas as alterações que estavam no redo log e no buffer estão gravadas nos datafiles
+* - Backups Inconsistentes (também conhecidos como hot backup): Feitos com a base aberta e gerando transações
+
+Algumas ferramentas Oracle:
+- SQL Tuning Advisor - analisa comandos SQL e faz recomendações de como melhorá-los.
+- SQL Access Advisor – faz recomendações para otimizar views materializadas, índices e logs de views materializadas
+- Automatic Database Diagnostic Monitor – de visão mais holística, procura diminuir o tempo das consultas na base de dados, detectando problemas até mesmo no hardware
+-SQL Performance Impact Advisor – auxilia a previsão de como uma mudança de Sistema pode impactar a performance SQL
+

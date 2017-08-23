@@ -1,0 +1,27 @@
+=========================
+RESTRICOES DE INTEGRIDADE
+
+	restricoes de integridade sao usadas para garantir a exatidao e consistencia dos dados em um banco de dados relacional
+	ou seja, garantir que dados representem assertivamente a realidade modelada
+	a integridade dos dados eh tratada nas bases de dados atraves do conceito de integridade relacional e eh garantida pelo proprio SGBD
+
+	Restricao de Chave
+		impede que uma chave primaria se repita
+		um campo chave primaria diferencia de forma unica os registros (linhas) de uma relacao (tabela)
+
+	Restricao de Dominio
+		define o conjunto de valores possiveis ou permitidos que um campo pode ter
+		o dominio indica os possiveis valores de um atributo
+		a integridade de dominio verifica se os dados sao
+		  > do tipo permitido (alfanumerico, texto), tamanho do campo, se ele pode ser nulo ou nao...
+
+	Integridade de Vazio
+		verifica se um campo pode ou nao receber um valor nulo (NULL)
+		eh sub-item da integridade de dominio
+
+	Integridade Referencial
+		uma chave estrangeira de uma relacao tem que coincidir com uma chave primaria da sua tabela "pai" a que a chave estrangeira se refere
+		ou sejal, nao so deve existir o atributo (campo), como tambem, o valor referenciado
+
+	Integridade de coluna
+		determina os valores aceitos para a respectiva coluna

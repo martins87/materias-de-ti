@@ -1,0 +1,168 @@
+============
+NORMALIZACAO
+
+	resumo:
+		1fn	nao possuir atributos multivalorados
+		2fn	atributo nao-chave deve depender da PK [COMPLETA]
+		3fn	atributo nao-chave nao pode ter dependencia transitiva
+		fnbc	atributo nao-chave deve depender diretamente da PK
+		4fn	nao pode ter dependencia multivalorada
+		5fn	"nao puder mais reconstruir tabelas originais"
+
+	objetivo:
+		evitar problemas provocados por falhas no projeto de BD,
+		bem como eliminar a mistura de assuntos e as correspondentes redundancias de dados
+
+	permite um armazenamento consistente e eficiente acesso
+!!!	reduz a redundancia e as chances dos dados se tornarem inconsistentes
+	consiste em processo matematico formal fundamentado na Teoria dos Conjuntos
+	anomalias de atualizacao (inclusao, alteracao, exclusao) podem deixar o banco redundante e inconsistente
+
+	dependencia funcional:
+		restricao nos valores de X em funcao do valor de Y
+		exemplo: valor de CPF restringe o valor NOMECOMPLETO, pois um CPF eh unico e pertence a um determinado nome
+
+
+===
+1FN
+	nao possuir atributos multivalorados
+	ex: tabela que permite multiplos valores para telefone
+		Nome		Telefone
+
+		Paulo		(11) 99999-8888
+				(11) 99999-7777
+				(11) 3030-3131
+		Marta		(11) 5678-9012
+				(11) 99988-9876
+	normalizacao:
+		Paulo		(11) 99999-8888
+		Paulo		(11) 99999-7777
+		Paulo		(11) 3030-3131
+		Marta		(11) 5678-9012
+		Marta		(11) 99988-9876
+
+	palavra-chave:
+		nao pode ter atributo multivalorado
+
+
+
+===
+2FN
+	deve estar na 1FN e todo atributo nao-chave deve depender da PK [COMPLETA]
+	-> se a PK for composta de mais de um atributo, os nao-chave nao podem depender de apenas um dos atributos da PK
+	ex:
+		Projetos( [codP], tipo, descricao )
+		EmpregadosProjetos( [codE, codP], nome, categ, salario, data_início_projeto, tempo_aloc_projeto )
+	
+	neste caso os atributos nome, categ, salario nao dependem da chave completa, mas somente do atributo chave "codE"
+
+	normalizacao:
+		Projetos( [codP], tipo, descricao )
+		EmpregadosProjetos( [codE, codP], data_início_projeto, tempo_aloc_projeto )
+		Empregados( [codE], nome, categ, salario )
+
+	palavra-chave:
+		atributo nao-chave deve depender da PK [COMPLETA]
+
+
+
+===
+3FN
+	deve estar na 2FN e nao pode haver dependencia transitiva
+	no exemplo acima, salario depende de categ (categoria), que depende de codE
+	normalizacao:
+		Projetos( [codP], tipo, descrição )
+		EmpregadosProjetos( [codE, codP], data_início_projeto, tempo_aloc_projeto )
+		Empregados( [codE], nome, categ )
+		Categorias( [categ], salario )
+
+	palavra-chave:
+		atributo nao-chave nao pode ter dependencia transitiva
+
+
+
+====
+FNBC - Forma Normal de Boyce Codd
+
+	deve estar na 3FN e todo atributo deve depender diretamente da PK
+!!!	eh mais rigida que a 3FN pois define de cara que nao pode haver dependencia entre atributos nao-chave
+!!	toda tabela que esta na FNBC esta na 3FN, mas pode haver tabela que esta na 3FN e nao esta na FNBC
+
+	palavra-chave:
+		atributo nao-chave deve depender diretamente da PK
+
+
+
+===
+4FN
+	deve estar na 3FN e nao podem existir dependencias multivaloradas
+	ex:
+		Livros( [nrol], título, editora, ano_public )
+		AutorAssuntoLivro( [nrol], autor, assunto )
+
+		neste exemplo, uma busca por assunto vai retornar varias vezes o mesmo livro (caso haja livros com mais de um autor)
+
+	normalizacao:
+		Livros( [nrol], título, editora, ano_public )
+		AutorLivro( [nrol], autor )
+		AssuntoLivro( [nrol], assunto )
+
+		agora, se filtrar por assunto cada livro vai vir somente uma vez
+
+	palavra-chave:
+		nao pode ter dependencia multivalorada
+
+
+
+===
+5FN
+	envolve a nocao dependencia de juncao
+	existem tabelas na 4FN que nao podem ser divididas em duas relacoes sem haver como consequencia a perda de informacao
+	ex:
+		ProjetoRecurso(CodEmp, CodPrj, Papel)
+
+	normalizacao:
+		R1(CodEmp, Papel)
+		R2(CodPrj, CodEmp)
+
+	essas relacoes R1 e R2 sao o resultado da aplicacao da quinta norma formal
+	consequencia: nao eh mais possivel saber qual papel cada empregado desempenhou em um projeto especifico
+
+	eh zuado assim mesmo
+
+
+
+
+============================
+Anomalias em Bancos de Dados
+
+	qndo boas praticas de normalizacao nao sao seguidas, algumas anomalias podem surgir
+	anomalias sao fruto de informacoes redundantes que
+		comprometem espaco em disco
+		comprometem performance do banco de dados
+ex:
+	EMPREGADO_PROJETO( [cod_emp], emp_nome, cod_proj, proj_nome)
+	a unica vantagem dessa abordagem eh a criacao de menos tabelas, mas as desvantagens sao muitas
+	esta tabela nao obedece a 2FN, pois os atributos cod_proj e proj_nome nao dependem da PK cod_emp
+
+	-> Anomalia de Insercao
+		acontece quando a insercao de uma informacao esta "amarrada" a outra informacao
+		no exemplo, nao se pode inserir um empregado sem este estar associado a um projeto
+		nao se pode tambem inserir um projeto sem existir no minimo um empregado que trabalhe nele
+
+	-> Anomalia de Remocao
+		quando se remove um projeto, todos os empregados que nele trabalham sao removidos
+		por outro lado, quando o ultimo empregado de um projeto eh removido, o projeto deixa de existir
+
+	-> Anomalia de Atualizacao
+		atualizar os dados de um projeto faz com que todos os empregados que pertencam a ele precisem ser atualizados
+
+	assim, uma abordagem muito melhor seria:
+		EMPREGADO( [cod_emp], emp_nome )
+		PROJETO( [cod_proj], proj_nome )
+		EMPREGADO_PROJETO( [cod_emp], [cod_proj] )
+
+
+
+http://www.sysrad.com.br/redmine/projects/ace/wiki/4FN_e_5FN
+https://www.scribd.com/doc/37452635/48/Quinta-Forma-Normal-%E2%80%93-5FN

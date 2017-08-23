@@ -1,0 +1,181 @@
+===========
+DATA MINING
+
+	pode ser aplicado tambem em BD convencionais
+
+DEF1:	"processo de explorar grandes quantidades de dados 'a procura de padroes consistentes,
+		como regras de associacao ou sequencias temporais,
+		para detectar relacionamentos sistematicos entre variaveis,
+		detectando assim, novos subconjuntos de dados"
+
+DEF2:	"processo de analise de grandes quantidades de dados a fim de encontrar padroes e regras
+		que possam ser usadas para orientar a tomada de decisoes e prever o comportamento futuro"
+
+
+caracteristicas:
+	extrair e integrar dados de multiplas fontes
+	procurar relacoes de causa e efeito
+	transformar registros obtidos em informacao util para o conhecimento empresarial
+	analisar dados contextualizados
+	trabalhar com hipoteses
+
+tecnicas:
+	associacao			enxergar alguma forma de relacao entre variaveis. ex: idade influencia valor do carro comprado
+	classificacao			classificacao por grupos. eh realizada nao por computador, mas por humanos mesmo
+	agrupamento (clustering)	classificacao realizada por MAQUINAS. sistema por si so cria grupos
+	padroes sequenciais		sequencia de registros. ex: se compra pao, eh provavel que compre manteiga
+	padroes em series temporais	venda de guarda-chuvas na epoca da chuva
+	regressao			ex: ver exames de paciente e calcular a chance de sobreviver a uma cirurgia
+	redes neurais			utiliza principios da inteligencia artificial
+	algoritmos geneticos		inspirado na biologia evolutiva: hereditariedade, mutacao, selecao natural
+
+
+
+==============
+Data Warehouse
+
+	banco de dados com dados historicos usado para analises e decisoes
+
+	multidimensionais
+	"OVNI":
+	Orientado por assuntos	armazena dados importantes sobre temas especificos para os usuarios
+	Variante no tempo	manutencao de um historico de dados maior que o comum. possi chave de tempo que indica quando foram extraidos
+	Nao volateis		apenas recebe informacoes. soh mudam para CORRIGIR dados anteriormente carregados
+	Integrado		globaliza os termos. ex: manipula as formas M e F, macho e femea, 0 e 1, homem e mulher...
+
+
+	tabelas de fato x tabelas de dimensao:
+		tabelas de fato		sao as centrais
+		tabelas de dimensao	sao as perifericas, ligadas 'as tabelas de fato
+
+
+	modelo estrela x modelo floco de neve:
+		estrela
+			todas as tabelas dimensionais relacionam-se com a tabela de fatos
+			menos tabelas, mais facil navegacao
+			DESPERDICA ESPACO repetindo as mesmas descricoes
+
+		floco de neve
+			algumas dimensoes relacionam-se entre si
+			REDUZ o espaco de armazenamento
+			acrescenta varias tabelas ao modelo
+			com mais tabelas torna-se mais dificil a navegacao pelos softwares que utilizam o banco de dados
+			com mais tabelas, mais JOINS de instrucoes SQL, tornando o acesso aos dados MAIS LENTO
+
+!	camadas de um Data Warehouse:
+		BD operacionais			dados das bases de dados operacionais da organizacao que serao tratados para compor o DW
+		acesso 'a informacao		camada com a qual os usuarios finais interagem. representa ferramentas utilizadas pelo usuario
+		acesso aos dados		liga as ferramentas de acesso 'a informacao e os dados operacionais
+		metadados (funcoes)		informacoes sobre os dados mantidos pela empresa
+		gerenciamento de processos	controle das diversas tarefas a serem realizadas
+		transporte (middleware)		gerencia o transporte de informacoes pelo ambiente de redes
+		DW				o DW propriamente dito. em alguns casos, eh simplesmente uma visao logica ou virtual dos dados
+		gerenciamento de replicacao	inclui processos necessarios para selecionar, editar, resumir, combinar e carregar o DW
+
+
+
+=========
+Data Mart
+
+	DW pequeno
+	geralmente envolve apenas um setor da organizacao
+	possibilita, assim, uma especializacao maior
+
+	Abordagens bottom-up e top-down:
+		bottom-up	organizacao inicia o repositorio de dados pelos data marts e depois vao para os DWs
+		top-down	cria primeiro o DW para depois dele criar seus data marts. organizacoes mais maduras utilizam esta
+
+
+___________________
+OLAP e ARQUITETURAS
+
+	OLAP = online analytical processing
+
+	recurso que permite manipular e analisar grandes volumes de dados sob multiplas perspectivas
+	ferramenta mais popular para exploracao de um DW
+	tem como funcao a navegacao nos dados de um DW, possuindo estrutura adequada tanto para pesquisas como para apresentacao de informacoes
+
+	MOLAP
+		multidimensional OLAP
+		dados sao armazenados de forma multidimensional (eh o cubo)
+		frequentemente implementado em um banco de dados RELACIONAL
+		alta performance
+
+	ROLAP
+		relational OLAP
+		dados tambem armazenados no modelo relacional
+		consultas processadas pelo SGBD (gerenciador do banco relacional)
+
+	DOLAP
+		desktop OLAP
+		existe para fornecer PORTABILIDADE aos dados
+		criado no servidor e transferido para o Desktop
+		vantagem: reducao do trafego na rede, pois ja esta tudo no computador
+
+	HOLAP
+		hybrid OLAP: ROLAP + MOLAP
+		vantagem da alta performance do MOLAP com a escalabilidade do ROLAP
+
+	WOLAP
+		web OLAP
+		dispara consultas via navegador web
+
+operacoes:
+	drill down		diminui o grau de granularidade. ex: semestre para trimestre. IR MAIS FUNDO NO GOOGLE MAPS
+	drill up (roll up)	aumenta o grau de granularidade. ex: mes para trimestre
+	drill across		passa por ex de ano para mes, "pulando" uma dimensao (semestre, trimestre, bimestre)
+	drill through		passa de uma informacao em uma dimensao para outra. ex: tempo para regiao  -->>  "through dimensions"
+	slice and dice		slice: seleciona dados de uma unica dimensao do cubo. dice seleciona um subcubo do cubo maior
+	cross-join		dados sao unidos e colunas sao invertidas, permitindo uma otica por outro foco. ex: muda foco de cliente para produto
+	pivot			simples rotacao do cubo
+	sort			ordenam uma informacao
+	break			separa o relatorio em grupos de informacoes. ex: dividir por cidades
+
+
+_________
+METADADOS
+
+	conceito considerado como sendo "dados sobre dados"
+	sao informacoes e definicoes sobre os dados armazenados
+
+___
+ETL
+
+	Extract		extracao de dados de fontes externas
+	Transform	transformacao para atender 'as necessidades de negocios
+	Load		carga dos dados dentro do DW
+
+	extrai dados de fontes como bancos relacionais, sistema operacional, sistema ERP, CRM, flat files...
+	transforma e carrega no DW para posterior analise
+
+	um sistema ETL precisa ser capaz de ler diversos formatos diferentes de dados
+
+	@ Extracao:
+		coleta de dados dos sistemas de origem (tambem chamados Data Sources ou SOs)
+	
+	@ Limpeza, ajustes e consolidacao:
+		eh nesta etapa em que sao realizados os devidos ajustes, de forma a melhorar a qualidade dos dados
+		fontes diferentes necessitam de muita ou pouca manipulacao de dados
+
+	@ Entrega ou carga dos dados:
+		consiste em fisicamente estruturar e carregar os dados para dentro da camada de apresentacao seguindo o modelo dimensional
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,92 @@
+caracteristicas:
+	extensao do SQL
+	desenvolvida pela Oracle para melhorar as capacidades do SQL
+	adiciona ao SQL caracteristicas de linguagens procedurais
+	nao eh um produto separado e sim INTEGRADO ao SGBD Oracle
+	eh possivel trabalhar tanto de forma declarativa (SQL) quanto procedural (PL/SQL)
+
+Anatomia:
+
+	DECLARE (opcional)
+		variable_declarations
+	BEGIN
+		program_code
+	EXCEPTION (opcional)
+		exception_handlers
+	END;
+
+Condicionais:
+
+	IF condicao THEN
+		statements
+	END IF;
+
+
+	CASE type
+		WHEN 'A' THEN statement1;
+		WHEN 'B' THEN statement2;
+		ELSE statementElse;
+	END CASE;
+
+
+	IF condicao1 THEN
+		statement1
+	ELSIF condicao2 THEN
+		statement2
+	ELSE
+		statementElse
+	END IF;
+
+Repeticao:
+
+	LOOP
+	EXIT WHEN
+	EXIT
+	WHILE LOOP
+	FOR LOOP
+ex:
+	FOR row IN (SELECT * FROM empregado) LOOP
+		EXIT WHEN UPPER(row.nome) LIKE 'MARIA%';
+	END LOOP
+
+Imprimir valor
+	DBMS_OUTPUT.PUT_LINE(valor)
+
+
+Funcoes embutidas:
+	grande variedade de funcoes
+	fornecem mais usabilidade ao PL/SQL
+	evita necessidade de reescrita de codigo
+	ex: Length(), Abs(), To_Date(), Count(), ...
+
+
+Procedures
+
+	CREATE OR REPLACE PROCEDURE MOSTRA_CLIENTE(P_COD_CLI NUMBER)
+		IS
+		V_CLIENTE%ROWTYPE;
+	BEGIN
+		SELECT * INTO V_CLIENTE	FROM CLIENTE WHERE COD_CLI = P_COD_CLI;
+		DBMS_OUTPUT.PUT_LINE(V_CLIENTE.NOME_CLI || ' - ' || V_CLIENTE.EMAIL_CLI);
+	END MOSTRA_CLIENTE;
+
+
+-=-=-=-=-
+Exemplos:
+
+
+DECLARE
+	v_TotalStudents NUMBER;
+BEGIN
+	SELECT COUNT(*) INTO v_TotalStudents FROM students;
+
+	IF v_TotalStudents = 0 THEN
+		INSERT INTO temp_table(char_col) VALUES ('Nao ha alunos inscritos');
+	ELSIF v_TotalStudents < 5 THEN
+		INSERT INTO temp_table(char_col) VALUES ('Ha poucos alunos registrados');
+	ELSIF v_TotalStudents < 10 THEN
+		INSERT INTO temp_table(char_col) VALUES ('Ha um pouco mais de alunos cadastrados');
+	ELSE
+		INSERT INTO temp_table(char_col) VALUES ('Ha bastantes alunos registrados');
+	END;
+END;
