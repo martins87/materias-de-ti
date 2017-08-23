@@ -1,0 +1,40 @@
+objetivos principais de um Caso de Uso:
+	facilitar a parada pros stakeholders e usuarios, com o objetivo dele entender os requisitos funcionais
+
+	apresentar, documentar e facilitar o entendimento, por parte dos stakeholders, acerca dos [requisitos funcionais] do projeto,
+	> explicitando, de forma simples, qq pega no caso de uso:
+		acoes executadas pelos atores que interagem com o sistema
+		e as respostas do sistema
+
+
+formulario de Casos de Uso - secoes:
+	descricao resumida do caso de uso
+	entradas e pre condicoes
+	descricao das acoes executadas pelos atores
+	descricao das respostas e retornos do sistema
+	saidas e pos condicoes
+	possiveis pontos de inclusao, extensao e generalizacao
+
+
+realizacoes de caso de uso
+	descricoes dinamicas que detalham as colaboracoes e interacoes entre as entidades do projeto,
+		de forma a realizar-se o caso de uso
+
+	para documenta-las pode-se utilizar diagramas de sequencia e colaboracao,
+		que irao explicitar o tempo e a ordem, respectivamente,
+		em que as acoes sao praticadas no caso de uso
+
+
+caso de teste:
+	cenario planejado com o objetivo de testar se as funcionalidades do sistema foram corretamente implementadas
+	> em conformidade com as especificacoes
+
+
+como gerar casos de teste a partir de casos de uso?
+	casos de uso contem cenarios
+	cada cenario eh uma execucao isolada do sistema
+	gera-se entao casos de teste para cada cenario
+
+	considerar tambem:
+		analise das entradas e saidas do caso de uso e configurar o caso de teste para tais entradas e saidas
+		tambem cobrir, no caso de teste, as acoes executadas no caso de uso

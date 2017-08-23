@@ -1,0 +1,255 @@
+=-=-=
+SCRUM
+
+DEF:	framework estrutural
+
+	eh fundamentado nas [teorias empiricas] de controle e processo, ou empirismo.
+	o empirismo afirma que o conhecimento vem da experiencia e de tomada de decisoes baseadas no que eh conhecido.
+	o Scrum emprega uma abordagem [iterativa e incremental] para aperfeicoar a previsibilidade e o controle de riscos
+
+	aquele do Rugby
+	framework estrutural usado para gerenciar o desenvolvimento de produtos complexos
+	framework de desenvolvimento iterativo e incremental
+	podem ser empregados varios processos e tecnicas
+	alto nivel de cooperacao da equipe
+	emprega uma abordagem iterativa e incremental
+	3 pilares do empirismo:
+		transparencia		aspectos significativos devem estar visiveis aos responsaveis pelos resultados
+		inspecao		inspecao frequente para detectar indesejaveis variacoes
+		adaptacao		deve rolar adaptacoes sempre que um inspetor verificar desvios
+
+!	consiste nos times Scrum associados a:
+		papeis, eventos, artefatos e regras
+	or	roles, artifacts, activities	
+
+
+caracteristicas:
+
+	clientes se tornam parte da equipe de desenvolvimento
+	entregas frequentes e intermediarias de funcionalidades 100% desenvolvidas
+	planos frequentes de mitigacao de riscos desenvolvidos pela equipe
+	discussoes diarias de status com a equipe
+	discussao diaria na qual cada membro da equipe responde 'as perguntas:
+		o que fiz desde ontem?
+		o que planejo fazer ate amanha?
+		existe algo me impedindo de atingir minha meta?
+	transparencia no planejamento e desenvolvimento
+	reunioes frequentes com os stakeholders para monitorar o progresso
+	problemas nao sao ignorados e ninguem eh penalizado por reconhecer ou descrever qualquer problema nao visto
+	ritmo de trabalho de forma a render bastante
+!	pode utilizar [quadro de tarefas], como o Kanban
+	pequenas equipes de trabalho sao organizadas de modo a:
+		- maximizar a comunicacao
+		- minimizar a supervisao
+		- maximizar o compartilhamento de conhecimento tacito informal
+	atividades do processo:
+		requisitos, analise, projeto, evolucao e entrega
+	testes e documentacao devem ser feitos dentro de cada iteracao do programa
+	prega a utilizacao de testes e recomenda a criacao dos testes antes do inicio da programacao
+
+
+
+3 pilares apoiam a implementacao de controle de processo empirico:
+
+	Transparencia
+		aspectos significativos do processo devem estar visiveis aos responsaveis pelos resultados
+		requer um padrao comum para que os observadores compartilhem um mesmo entendimento do que esta sendo visto
+	Inspecao
+		inspecao frequente dos artefatos e progresso em direcao ao objetivo, para detectar variacoes indesejaveis
+		mas nem tao frequentes para nao atrapalhar a propria execucao das tarefas
+	Adaptacao
+		se algo desviar para fora dos limites aceitaveis e o resultado for inaceitavel, deve ser feito um ajuste
+		ajustes devem ser realizados o mais rapido possivel para minimizar desvios
+
+
+
+time scrum:
+	product owner
+		unico que pode gerenciar o backlog
+!		responsavel por maximizar
+			o valor do produto
+			o valor do trabalho da equipe de desenvolvimento
+		pode ate delegar as atividades de gerenciamento, mas ainda assim sera considerado o RESPONSAVEL PELOS RESULTADOS
+!		pode decidir o tempo de entrega de uma versao (apos fazer algumas analises sobre o projeto)
+		eh quem faz analises, como avaliacoes de mercado ou necessidades dos clientes
+		unico que pode gerenciar o backlog, o que inclui:
+			- expressar claramente os itens do Backlog do Produto
+			- ordenar os itens para alcancar melhor as metas e missoes
+			- garantir o valor do trabalho realizado pelo dev team
+			- garantir que seja visivel, transparente, claro para todos
+			- garantir que o dev team entenda seus itens no nivel necessario
+		
+	scrum master ("mestre de obras")
+		[facilitador] que garante que o Scrum [seja entendido e aplicado]
+		deve comunicar claramente a visao, objetivo e itens do Product Backlog
+		ensinar a equipe a criar itens claros e concisos
+		treinar a equipe em gerenciamento e interdisciplinaridade
+		suas atribuicoes convergem para realizar a lideranca da equipe
+		faz o "meio-campo" entre o product owner e o dev team
+		tambem possui habilidade tecnica e desempenha papeis de lideranca
+
+	equipe de desenvolvimento
+		nao reconhece titulos para seus integrantes (brotherhood)
+		todos sao considerados desenvolvedores, nao importando o que facam. SEM EXCECOES!
+		deve ter entre 3 e 9 integrantes
+		sao auto organizaveis
+		ninguem (nem mesmo o Scrum Master) diz 'a ela como transformar o Product Backlog em incrementos de funcionalidades potencialmente utilizaveis
+		sao multifuncionais, possuindo todas as habilidades necessarias, enquanto equipe, para criar o incremento do produto
+		individualmente os integrantes podem ter habilidades especializadas e area de especializacao, mas a responsabilidade pertence 'a equipe!
+		-> ou seja, pode ter nego fera em determinado assunto, mas no fim a responsabilidade eh da equipe como um todo
+		nao contem subequipes dedicadas a dominios especificos de conhecimento, tais como teste ou analise de negocios
+		sao responsaveis pela definicao do estado de "pronto", medida subjetiva determinada pelo dev team
+
+
+o controle no time scrum eh [descentralizado]:
+	o product owner nao interfere no scrum master, que nao interfere na equipe de desenvolvimento
+
+
+
+=-=-=-=-=-=-
+Regras SMART
+
+	Specific	um objeto deve ser especifico, evitando as generalizacoes. deve-se saber exatamente o que se quer obter
+	Measurable	mensuravel! deve ser possivel verificar a eficacia da atividade
+	Achievable	o objetivo estabelecido deve ser atingivel
+	Realistic	o objetivo deve estar dentro da realidade que se tem, e da realidade que se quer chegar
+	Time-based	eh necessario estabelecer um periodo para alcancar o objetivo (Time-boxes: Sprint)
+
+
+
+-------------------
+Ciclo de vida SCRUM
+
+	Pre-planejamento (Pre-game Phase)
+		define o sistema sendo desenvolvido
+		cria-se o Product Backlog, que contem:
+			requisitos atuais
+			informacoes sobre o planejamento do projeto
+		cria-se tambem uma arquitetura de alto nivel
+
+	Desenvolvimento (Game Phase)
+		o sistema eh desenvolvido em sprints, por meio de uma [abordagem iterativa]
+		a cada sprint, novas funcionalidades sao adicionadas de modo tradicional
+
+	Pos-planejamento (Post-game Phase)
+		sao feitas reunioes para analisar o progresso do projeto e demonstrar o software atual para os clientes
+		sao feitas as etapas de integracao, testes finais e documentacao
+
+eventos scrum:
+	time-boxed - com duracao maxima permitida: 2 a 4 semanas
+	sao usados para criar uma rotina e minimizar a necessidade de reunioes nao definidas pelo scrum
+
+
+burndown chart:
+	eh uma ferramenta de controle de trabalho realizado
+	grafico simples de [dias x quantidade de tarefas] da Sprint
+
+-------
+Sprint:
+	1 mes ou menos
+	eh uma time-box de um mes ou menos
+	nele eh criado um "pronto": versao incremental potencialmente utilizavel do produto
+	cada sprint se inicia imediatamente apos a conclusao da sprint anterior
+	uma sprint pode ser cancelada antes de seu time-box terminar SOMENTE PELO:
+		product owner
+	o trabalho a ser realizado eh planejado na [reuniao de planejamento]
+
+	-> Product Backlog:
+		lista ordenada (por valor, risco, prioridade, necessidade..) de tudo que deve ser necessario no produto
+		eh uma origem unica dos REQUISITOS para qualquer mudanca a ser feita no produto
+		NUNCA estara completo e existira enquanto o produto tambem existir
+		artefato dinamico: esta sempre sofrendo alteracoes
+		fica sob a responsabilidade do [Product Owner]
+
+	composto por:
+		1. reuniao de planejamento		8 horas
+		2. reunioes diarias			15 minutos. busca criar um plano para as proximas 24 horas e inspecionar o trabalho desde a ultima
+		3. trabalho de desenvolvimento		maximo 1 mes
+		4. revisao da sprint			4 horas
+		5. retrospectiva da sprint		3 horas
+
+!	reuniao de PLANEJAMENTO - resultados:
+		- objetivo da Sprint
+		- lista de membros da equipe
+!		- sprint backlog (= lista de historias)
+			eh mutavel -> somente pode ser alterado pelo dev team
+			pode ser negociado pelo product owner
+		!!!	[conjunto de itens do Product Backlog] selecionados para a Sprint atual
+			eh a previsao do dev team sobre qual funcionalidade estara no proximo incremento
+			contem o trabalho necessario para entregar uma determinada funcionalidade em um incremento -> "pronto"
+		- data definida para a apresentacao da Sprint
+		- data e local definidos para as reunioes diarias
+
+	reuniao de REVISAO:
+		product owner identifica o que foi ou nao efetuado
+		dev team discute o que foi bem na Sprint, problemas encontrados e como foram solucionados
+		dev team apresenta trabalho efetuado e responde perguntas sobre o incremento
+		todos colaboram a respeito do que tem que ser feito agora
+
+	para inspecao e adaptacao o Scrum prescreve esses 4 eventos formais:
+		reuniao de planejamento da Sprint
+		reuniao diaria
+		reuniao de revisao da Sprint
+		retrospectiva da Sprint
+
+	durante a sprint:
+		nao sao feitas mudancas que podem afetar o objetivo/meta da sprint
+		a composicao da equipe de desenvolvimento PERMANECE CONSTANTE (ngm entra, ngm sai)
+		as metas de qualidade nao diminuem
+!!		o ESCOPO pode ser clarificado e renegociado entre o [1 product owner] e a [3 equipe de desenvolvimento] quanto mais for aprendido
+
+	chaos list:
+		lista de relatos de problemas/dificuldades no desenvolvimento
+		precisa-se identificar qual processo esta lento/parado e suas causas
+		a partir dai registra-los na chaos list
+
+	sprint burndown:
+		"analise do que que ta pegando"
+		torna possivel
+			rastrear quanto trabalho resta em uma lista de pendencias de sprint
+			entender a rapidez com que a equipe concluiu as tarefas
+			prever quando a equipe atingira as metas da sprint
+
+	metaphor list:
+		lista de palavras nas quais cada uma representa um tipo de objeto ou ideia
+		conceito de analogias
+
+
+	1. reuniao de planejamento . 8 horas
+		a equipe prioriza os elementos do Product Backlog a serem implementados
+		transfere entao esses elementos para o Sprint Backlog
+!!		o Product Owner se compromete a nao trazer novas funcionalidades durante o mesmo sprint
+		o trabalho a ser realizado na Sprint eh planejado nessa reuniao
+		responde as seguintes questoes:
+			- O que pode ser entregue como resultado do incremento da proxima Sprint?
+			- Como o trabalho necessario para entregar o incremento sera realizado?
+
+	2. reunioes diarias . 15 min
+		o dev team que eh responsavel por conduzir a reuniao
+		melhoram a comunicacao entre os integrantes
+		eliminam a necessidade de outras reunioes
+		identificam e removem impedimentos
+		destacam e promovem rapidas tomadas de decisao
+		melhoram o nivel de conhecimento da equipe
+		permite o dev team sincronizar as atividades e criar um plano para as proximas 24h
+		inspeciona o trabalho desde a ultima reuniao diaria
+		preve o trabalho que devera ser feito antes da proxima reuniao diaria
+
+	4. revisao da sprint (Sprint review) . 4 horas
+!!		executada no fim da sprint para [inspecionar o incremento]
+!!		executada para adaptar o Backlog do produto, se necessario
+		reuniao informal, na qual o time scrum e os stakeholders colaboram sobre o que foi feito na sprint
+		resultado: Product Backlog revisado e ajustado
+		a reuniao inclui os elementos:
+			- product owner identifica o que foi "pronto" e o que nao foi
+			- equipe de dev discute o que foi bem, quais problemas ocorreram e como esses problemas foram resolvidos
+			- equipe de dev demonstra o trabalho que esta "pronto" e responde as questoes sobre o incremento
+			- o grupo todo colabora sobre o que fazer a seguir. esse resultado eh a entrada da reuniao de planejamento da prox sprint
+			- product owner discute o backlog do produto como esta. projeta provaveis datas de conclusao baseado no progresso ate a data
+
+	5. retrospectiva da sprint (meio que um fechamento da Sprint) . 3 horas
+		chance para o scrum team inspecionar a si proprio e criar um plano de melhorias para a proxima sprint
+		inspeciona como a sprint foi em relacao 'as pessoas, aos relacionamentos, aos processos e 'as ferramentas
+		identifica e ordena os principais itens que foram bem e as potenciais melhorias
+		cria um plano para implementar melhorias no trabalho
+

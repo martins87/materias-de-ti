@@ -1,0 +1,46 @@
+=================
+MODELO EM CASCATA
+
+	cascata = classico = sequencial = linear = rigido = monolitico = tradicional = waterfall
+	mais simples
+	deve ser usado quando:
+		os requisitos forem bem compreendidos
+		houver POUCA PROBABILIDADE de mudancas radicais durante o desenvolvimento
+
+	cada fase soh se inicia apos o TERMINO e APROVACAO da fase anterior
+	o desenvolvimento nao continua ate que o cliente ESTEJA SATISFEITO com os resultados alcancados
+	ha uma SEQUENCIA, dependendo do autor:
+
+	Sommerville:				Yourdon:			Pressman:
+		definicao de requisitos			requisitos de sistema		comunicacao
+		projeto de sistema e software		requisitos de software		planejamento
+		implementacao e teste de unidade	analise				modelagem
+		integracao e teste de sistema		projeto				construcao
+		operacao e manutencao			codificacao			implantacao
+							teste
+							operacao
+
+	EM RESUMO, segue mais ou menos essa ordem:
+		planejamento
+		analise e especificacao de requisitos
+		projeto
+		implementacao
+		teste
+		implantacao, operacao, manutencao
+
+vantagens:
+	facil de gerenciar, devido 'a sua rigidez
+	funciona bem com [projetos pequenos]
+	o desenvolvimento eh dividido em FASES distintas, padronizadas
+
+desvantagens:
+	em projetos complexos demora-se mto para chegar ate a fase de testes
+!	o cliente nao ve nada rodando ate a fase de implantacao
+!	acumula os riscos ate a fase de testes, qndo somente ai sao descobertos
+	cliente deve saber todos os requisitos no inicio do projeto
+!	quanto mais ao fim do projeto um erro eh descoberto, mais caras se tornam as modificacoes
+
+deve ser usado quando:
+	os requisitos forem BEM COMPREENDIDOS
+	houver pouca probabilidade de mudancas radicais durante o desenvolvimento
+

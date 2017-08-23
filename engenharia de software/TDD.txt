@@ -1,0 +1,37 @@
+=============================
+TDD - Test-Driven Development
+
+	metodo agil de desenvolvimento baseado/direcionado por testes constantes
+	eh uma abordagem para DESENVOLVER software
+	se baseia na repeticao de um ciclo de desenvolvimento curto, focado em [testes unitarios]
+	casos de teste que verificam uma nova funcionalidade sao escritos antes mesmo da propria funcionalidade
+	Red, Green, Refactor:
+		1. Escreva um teste que falhe			casos de teste sao escritos sem que exista o recurso a ser testado, levando o teste a falhar
+		2. Escreva codigo para passar no teste		recurso eh implementado com o minimo de codigo necessario para passar no teste
+		3. Refatore-o					codigo que implementa o recurso eh refinado, sem que sejam adicionadas novas funcionalidades
+
+		http://s4.postimg.org/9eq9pjhal/tdd.png
+
+		Red		casos de teste sao escritos sem o recurso a ser testado, levando o teste a falhar
+		Green		recurso eh implementado com o minimo de codigo necessario para que passe no teste
+		Refactor	o codigo que implementa o recurso eh refinado e melhorado, sem que sejam adicionadas novas funcionalidades
+
+	para cada parte da aplicacao adiciona-se um teste escrito, antes mesmo do desenvolvimento do codigo em si
+	o teste eh executado e ele falha! - ele deve falhar mesmo, pois a funcionalidade ainda nem foi criada
+	entao adicionamos uma nova funcionalidade ao sistema apenas para que ele passe no teste - agora ela passa no teste
+	um novo teste eh adicionado e sao rodados o teste anterior e o novo teste
+	se algum deles falhar, modifica-se o codigo da funcionalidade e rodam-se todos os testes novamente, e assim por diante:
+		http://s17.postimg.org/rtwrjpmqn/tdd.png
+
+	em geral, utilizam-se testes unitarios, testes de integracao ou testes de aceitacao
+	os mais comuns sao os testes de unidade
+	algumas ferramentas geralmente utilizadas:
+		JUnit, Teste NG, PHPUnit, SimpleTest, NUnit, Jasmine, CUnit, PyUnit...
+
+	tipico ciclo de vida:
+		1. Criar o teste
+		2. Executar todos os possiveis testes e ver a aplicacao falhar
+		3. Escrever a aplicacao a ser testada
+		4. Executar os testes para ver se todos estes testes obtiveram exito
+		5. Refatorar
+		6. Executar os testes novamente e garantir que estes continuem tendo sucesso

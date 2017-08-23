@@ -1,0 +1,44 @@
+=================
+MODELO EM ESPIRAL
+
+	proposto em 1988 por Boehm
+	processo representado como uma espiral
+	ocorrem ITERACOES e o sistema evolui para estagios superiores a cada iteracao
+	combina PROTOTIPAGEM com o modelo em CASCATA: conhecido entao como PROTOTIPAGEM-EM-ETAPAS
+	cada loop representa uma fase, mas as atividades sao fixas para toda fase
+	ao final de cada loop, ha uma tomada de decisao a respeito do projeto para decidir se o projeto continua ou eh interrompido
+	pq isso? ANALISE DE RISCOS!!!
+	modelo eh utilizado geralmente em sistemas criticos e grandes
+	obtem-se versoes do sistema a cada iteracao
+	combina atividades de desenvolvimento com gerenciamento de riscos, de forma a MINIMIZAR e CONTROLAR os RISCOS 
+	nao ha retorno a fases anteriores!
+	rola desenvolvimento ITERATIVO
+	OS RISCOS SAO CONSIDERADOS!
+
+
+de acordo com Sommervile, 4 etapas:
+	determinar objetivos
+	identificar e resolver riscos
+	desenvolver e testar
+	planejar
+
+de acordo com Pressman, cada espiral eh dividida em cinco etapas:
+	comunicacao
+	planejamento
+	modelagem
+	construcao
+	implantacao
+
+FASES:
+	comunicacao
+	planejamento		<- aqui tbm rola ANALISE DE RISCO
+	analise de risco
+	engenharia
+	construcao e release
+	avaliacao do cliente
+
+modelos iterativos e incrementais:
+	espiral
+	processo unificado
+	prototipacao
+	RAD

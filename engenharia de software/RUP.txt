@@ -1,0 +1,111 @@
+===
+RUP
+
+	processo de eng soft expresso em termos de fases e iteracoes
+	em cada iteracao executam-se todas as fases de desenvolvimento para que uma parte funcional ou versao seja entregue
+	esse ciclo se repete inumeras vezes ate que o sistema seja concluido
+
+	Disciplinas:
+		sao 9, sendo seis delas diretamente relacionadas 'a eng soft (engineering activities)
+		6 sao core disciplines		-> engineering activities
+			Modelagem de negocios
+			Requisitos
+			Analise e projeto
+			Implementacao
+			Testes
+			Implantacao
+		3 sao supporting disciplines	-> umbrella activities
+			Ambiente
+			Configuracao e gerencia de mudanca
+			Gerencia de projeto
+
+	Marco:
+		ponto onde termina formalmente uma iteracao
+		esse ponto corresponde a um ponto de release, versao estavel e executavel do produto
+		4 principais marcos:
+			- Objetivos do ciclo de vida		Iniciacao
+			- Arquitetura do ciclo de vida		Elaboracao
+			- Capacidade operacional inicial	Construcao
+			- Release do produto			Transicao
+
+	Capacidade operacional inicial:
+		presente na fase CONSTRUCAO
+		terceiro maior milestone
+		onde eh decidido se o software, sites e usuarios estao operacionalmente prontos
+
+_________
+INICIACAO
+	transforma os requisitos do sistema em casos de uso
+	produz o modelo inicial de caso de uso
+	produz os planos de teste - tomar cuidado que aqui soh produz os PLANOS de teste e nao os procedimentos de teste!
+
+__________
+ELABORACAO
+	produz o prototipo arquitetural executavel
+	produz os requisitos nao-funcionais
+	produz a lista de riscos revisada
+
+__________
+CONSTRUCAO
+
+_________
+TRANSICAO
+
+
+---------------------
+Contratos de Operacao
+
+	-> descreve os efeitos das operacoes do sistema, ajudando a definir seu comportamento
+	identifica [mudanca de estado num sistema] quando uma operacao ocorre
+	tem a seguinte sintaxe:
+		Nome			nome apropriado para operacao e parametros
+		Responsabilidades	responsabilidades a serem cumpridas
+		Tipo			pode ser Conceito, Sistema, Classe de software ou interface, etc.
+		Referencias Cruzadas	funcoes do sistema, casos de uso, etc.
+		Anotacoes		indicador da fase do projeto, notas, algoritmos, detalhes da codificacao, etc.
+		Excecoes		casos excepcionais
+		Saida			mensagens enviadas para fora do sistema
+		Pre-condicoes		estado do sistema antes da execucao da operacao
+		Pos-condicoes		estado do sistema apos a execucao da operacao
+
+
+_____________________
+MODELAGEM DE NEGOCIOS
+
+	atividades:
+		entender a estrutura e a dinamica da organizacao na qual o sistema deve ser implantado
+		assegurar que os clientes, usuarios e desenvolvedores tenham um entendimento comum da organizacao alvo
+		entender como funciona a organizacao
+		entender os problemas atuais da organizacao alvo e identificar as possibilidades de melhoria
+		derivar os requisitos de sistemas necessarios para sustentar a organizacao alvo
+
+!	Modelo de Dominio:
+		artefato de alto nivel
+		eh derivado do modelo de casos de uso de negocios
+		descreve a realizacao de casos de uso de negocios
+		eh um subconjunto do [modelo de objetos de negocio]
+		nao representa objetos ou arquiteturas de software nem mesmo possui informacoes sobre implementacoes
+		nao tem a ver com implementacao
+
+
+_________________
+ANALISE E PROJETO
+
+	Analise Arquitetural:
+		atividade da disciplina Analise e projeto
+		pode ser vista como uma especializacao da analise de requisitos
+		esta preocupada com a identificacao  e resolucao dos requisitos nao-funcionais do sistema
+
+
+
+
+
+
+
+
+
+
+
+
+
+

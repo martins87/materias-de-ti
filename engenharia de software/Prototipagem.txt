@@ -1,0 +1,55 @@
+============
+PROTOTIPAGEM
+
+	problema:
+		dificuldades de comunicacao entre desenvolvedor e usuario
+
+	motivacao:
+		insatisfacao do usuario com o produto acabado por nao haver troca de informacao suficiente entre cliente e desenvolvedor
+		usuario prove feedback ao desenvolvedor
+		um prototipo deve ser empregado como um instrumento de analise, com objetivo de superar dificuldades de comunicacao entre usuario e desenvolvedor
+
+	desenvolver um prototipo significa trabalhar diretamente com os REQUISITOS
+	o cliente INTERAGE com o desenvolvedor, apresentando as funcionalidades de acordo com sua necessidade
+
+	fases:
+		1. coleta e refinamento dos requisitos
+		2. projeto rapido
+		3. construcao do prototipo
+		4. AVALIACAO DO PROTOTIPO PELO CLIENTE  -->>  essa fase pode fazer voltar 'a fase 1 quantas vezes for necessario
+		5. refinamento do prototipo
+		6. engenharia do produto
+
+	tipos:
+		baixa fidelidade
+			nao se assemelha com o produto final
+			util na fase inicial, para exploracao e testes
+			prototipos simples, baratos e de facil producao e alteracao
+			este tipo de prototipo nunca eh desenvolvido com o objetivo de ser incorporado ao produto final
+
+		alta fidelidade			
+			se assemelha com o produto final
+			utiliza as mesmas tecnicas e materiais que o sistema final
+			permite elevado grau de interatividade com os utilizadores
+			facilita a venda da ideia do sistema final
+
+		throw-away
+			objetivo: identificar e validar os requisitos
+
+		evolutiva
+			objetivo: minimizar o tempo de desenvolvimento do sistema
+
+
+=========
+PROTOTIPO
+
+	Propositos do ponto de vista do Modelador:
+		Fazer com que a estrutura conceitual de uma especificacao de requisitos seja mais CONCRETA,
+		> possibilitando, desta forma, verificar a funcionalidade dessa especificacao quanto 'a sua
+		> consistencia, correcao, validade e facilidade de uso do produto real que sera gerado.
+
+	Propositos do ponto de vista do Usuario:
+		Ser o instrumento que ira validar os aspectos funcionais que o software em construcao devera possuir,
+		de forma a atender as necessidades de seu usuario e garantir que a interface humana trara simplicidade 'a sua operacao
+
+

@@ -1,0 +1,23 @@
+==============================
+MODELO ITERATIVO E INCREMENTAL
+
+ja comeca a reduzir os riscos desde o inicio do processo
+
+desvantagens do cascata:
+	analisa todos os requisitos e soh vai ter um resultado mais ao fim do processo
+	o cliente soh vai ver um sistema funcionando na fase de implementacao
+	quanto mais ao fim do projeto um erro eh descoberto, mais caras se tornam as correcoes
+	chance grande de dar merda
+
+solucao:
+	dividir os requisitos em miniprojetos e utilizar o cascata para eles
+	"dividir para conquistar"
+	assim, entrega-se mais frequentemente partes diferentes do projeto
+
+iterativo e incremental costumam ser a mesma coisa, mas caso cobrem:
+	iterativo	vai fazendo aos poucos em iteracoes o todo
+	incremental	vai fazendo separadamente as partes e no fim se tem o todo. "dividir para conquistar"
+
+vantagens:
+	o cliente pode receber, avaliar e validar as entregas do produto mais cedo
+	ha maior tolerancia a mudancas com consequente reducao do risco de dar merda

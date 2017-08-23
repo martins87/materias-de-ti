@@ -1,0 +1,62 @@
+============================
+Behaviour-Driven Development
+
+	metodologia de desenvolvimento agil!
+	meio que evolucao do TDD
+	foque na entrega de valor, atraves de um vocabulario comum e FACIL
+	assim, reduz a distancia entre o negocio e a TI
+	como os casos de uso sao facilmente entendiveis, os stakeholders ficam felizes
+	cliente prove 'a equipe de desenvolvimento informacoes sobre o problema que ele quer resolver
+	essa metodologia lida com exemplos bem simples de serem entendidos
+	descricao bem simples e objetiva dos cenarios. nego leu, entendeu na hora!
+	foco do BDD: comunicacao
+
+	principais praticas:
+
+		Outside-in Development
+			envolve os stakeholders de fora para dentro
+			nego le o cenario e ja sabe como tem que funcionar, sem precisar saber detalhes de implementacao
+			testes tambem sao feitos de fora pra dentro
+		usar exemplos para descrever o comportamento de aplicacoes ou unidades de codigo
+		automatizar os exemplos para prover feedback rapido
+
+	BDD associa os beneficios de uma [documentacao formal] com [testes de unidade] que demonstram a validez da documentacao
+	encoraja a criacao de especificacoes simples e colaborativas que tanto
+	> o pessoal de negocios quanto o pessoal da TI podem ler e chegar em acordos
+
+	exemplo:
+		# Cliente deve estar ciente de fornecer um numero valido de cartao de credito
+	bem mais simples:
+		# se o cliente entrar com um numero que nao contem 16 digitos,
+		  uma mensagem de erro deve ser exibida, sugerindo para o cliente entrar com o numero de digitos correto
+
+
+	+ beneficios:
+		usabilidade
+		documentacao pratica		testes descrevem o comportamento do sistema
+		qualidade maior de codigo	codigo testavel tende a ser melhor projetado
+		confianca			testes garantem partes menores funcionais, facilitando o crescimento
+		entrega mais rapida		duvidas sobre requisitos aparecem mais cedo no ciclo de desenvolvimento
+
+
+	3 amigos meeting:
+		Product Owner
+		Programmer
+		Tester
+
+	utiliza uma sintaxe chamada Gherkin para construir cenarios
+	os cenarios Gherkin sao facilmente entendidos pelos stakeholders
+	a sintaxe contem poucas keywords, o que torna facil de ser usado pela equipe:
+		GIVEN <condition>
+		WHEN <action>
+		THEN <result>
+
+	Gherkin: http://s27.postimg.org/73xuu7tlf/gherkin.png
+
+	ciclo de vida de uma historia:
+		1. Product owner cria uma historia de usuario com cenarios
+		2. 3 amigos (PO, 1 dev & 1 tester) melhoram as historias adicionando o criterio Given-When-Then
+		3. Developer e Tester trabalham na historia
+		   Developer usa o ciclo Red-Green-Refactor (do TDD) para projetar, desenvolver e testar
+		   Red-Green-Refactor: http://s4.postimg.org/9eq9pjhal/tdd.png
+

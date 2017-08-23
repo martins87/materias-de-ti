@@ -1,0 +1,15 @@
+===
+FDD - Feature-Driven Development
+
+	desenvolvimento guiado por FUNCIONALIDADES
+	enfatiza o uso de POO - orientacao a objetos
+	possui apenas 2 grandes fases:
+
+		Concepcao e Planejamento
+			desenvolver modelo abrangente
+			construir lista de funcionalidades
+			planejar por funcionalidade
+
+		Construcao
+			detalhar por funcionalidade
+			construir por funcionalidade

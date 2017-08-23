@@ -1,0 +1,10 @@
+modelo ITERATIVO e INCREMENTAL
+
+ciclo de desenvolvimento curto: 60 a 90 dias
+
+fases:
+	modelagem de negocios
+	modelagem de dados
+	modelagem de processos
+	geracao da aplicacao
+	teste e modificacao

@@ -1,0 +1,237 @@
+===============
+DESIGN PATTERNS
+
+GoF = Gang of Four
+
+!!!	anti-patterns:
+		sao padroes para solucionar problemas de uma maneira ruim
+		eh como se fossem "a pior solucao possivel" para o problema sob algum aspecto,
+			> como dispendio computacional, eficiencia, dificuldade de manutencao, etc.
+		mas AINDA ASSIM eh uma solucao que resolve o problema
+		ex:
+			anti-pattern THE BLOB
+			[centraliza] e amontoa uma quantidade mto grande de metodos de tratamento de dados de diversas classes existentes
+			ex: analista concentra maior parte do sistema em uma classe central com dezenas de metodos e atributos. famoso FAZ TUDO
+
+
+VANTAGENS:
+	aprender com problemas de outros, identificando problemas comuns de EngSoft, utilizando solucoes testadas e documentadas
+	utilizar solucoes que facilitam a comunicacao, compreensao e documentacao
+	facilitam o reuso de solucoes arquiteturais bem sucedidas
+	desenvolver software de melhor qualidade
+	utilizam tecnicas de POO (polimorfismo, heranca, ...) para construir codigo reutilizavel, eficiente
+
+Observacao:
+	alguns linguagens de programacao, como LISP, nao precisam de alguns padroes de projeto pq implementam o que eles implementam
+	isso mostra que algumas linguagens falham em oferecer determinadas caracteristicas
+
+Cada padrao eh organizado segundo 4 elementos:
+	Nome
+	Problema	descreve a condicao em que ele deve ser aplicado
+	Solucao		descreve como resolver o problema
+	Consequencia	descreve os impactos
+
+
+
+Sao classificados em 3 categorias:
+
+CRIACIONAL
+	abstraem o processo de criacao de objetos a partir da instanciacao de classes
+	"a fabrica abstrata constroi um prototipo unico"
+
+	abstract factory
+	builder
+	factory method
+	prototype
+	singleton
+
+
+COMPORTAMENTAL
+	se preocupam com algoritmos e responsabilidades dos objetos, que ocorrem em tempo de execucao
+
+	chain of responsibility
+	command
+	interpreter
+	iterator
+	mediator
+	memento
+	observer
+	state
+	strategy
+	template method
+	visitor
+
+
+ESTRUTURAL
+	tratam da forma como classes e objetos estao organizados para formar estruturas maiores
+	"a ponte adaptada eh composta de decoracoes na fachada para o peso mosca se aproximar"
+
+	adapter
+	bridge
+	composite
+	decorator
+	facade
+	flyweight
+	proxy
+
+
+================================================================================================================================
+CRIACIONAIS:
+
+
+=-=-=-=-=-=-=-=-
+Abstract Factory
+	FORNECE UMA INTERFACE para criar familias de objetos relacionados (ou dependentes) sem especificar suas classes concretas
+
+	revela apenas a interface (classe abstrata)
+	deve-se entao, para cada caso especifico, implementar as classes concretas
+
+	ex:
+		hipotese de visualizar o globo.com de um Desktop ou de um Smartphone
+		em tempo de execucao a interface descobre, a partir de algum parametro fornecido, qual o caso especifico
+		eh instanciada entao a classe concreta especifica que renderiza a interface grafica pretendida
+
+=-=-=-=
+Builder
+	separa a construcao de um objeto complexo da sua representacao,
+	> de forma que o mesmo processo de construcao possa criar diferentes tipos de representacoes
+
+	se constroi partes do objeto passo-a-passo
+	o Builder possui uma classe que coordena a construcao das pequenas partes ate a criacao da representacao final
+
+	ex:
+		caso da criacao do robo
+		https://www.youtube.com/watch?v=9XnsOpjclUg
+
+=-=-=-=-=-=-=-
+Factory Method
+	https://www.youtube.com/watch?v=L7MRQIVl3M0
+	define uma interface para criar um objeto, mas deixa as subclasses decidirem qual classe instanciar
+
+	deve ser usado quando uma classe nao puder antecipar qual objeto ela vai criar
+	deve ser usado tambem quando uma classe quer que suas subclasses especifiquem os objetos que ela criar
+	deve ser usado para delegar responsabilidades a deversas outras subclasses
+
+	ex:
+		vc quer visualizar as caracteristicas de um carro na concessionaria
+		como existem diversos modelos, uma classe abstrata base representa todos os tipos de carro
+		se especializa entao essa classe abstrata em um modelo especifico
+		a instancia especifica eh definida EM TEMPO DE EXECUCAO
+
+=-=-=-=-=
+Prototipo
+	define uma instancia base e cria novos objetos copiando esse prototipo
+
+	deve ser usado quando um sistema possuir componentes cujo estado inicial tenha poucas variacoes
+	disponibiliza um conjunto pre-estabelecido de prototipos que dao origem aos objetos que compoem o sistema
+	assim, basta modificar os atributos que forem diferentes e adaptar o objeto para o uso pretendido
+
+	ex:
+		preenchimento de dados de pessoas de uma mesma familia
+		varios dados sao comuns a todos, como sobrenome, endereco, telefone residencial, classe social..
+		ao inves de se criar um novo objeto para cada membro e preenche-los um a um integralmente,
+		> pode-se clonar o objeto pai ja preenchido e modificar apenas os atributos diferentes
+
+=-=-=-=-=
+Singleton
+	garante que uma classe tenha APENAS UMA INSTANCIA e prove um ponto de acesso global a ela <- !!!
+
+	deve ser usado quando houver a necessidade de existir exatamente uma instancia de uma classe
+	> e ela devera ser acessivel aos clientes a partir de um ponto de acesso conhecido
+
+	ex:
+		durante a execucao de um sistema, ocorrem diversas conexoes a um banco de dados
+		se a classe de conexao for instanciada diversas vezes, o sistema perde no desempenho
+		o Singleton resolve esse problema garantindo que pelo menos durante determinada execucao a classe sera instanciada somente uma vez
+
+
+================================================================================================================================
+ESTRUTURAIS:
+
+=-=-=-=
+Adapter
+	converte/adapta a interface de uma classe que vc quer usar mas nao pode por motivos de incompatibilidade
+	funciona como se fosse um adaptador de tomada de 3 para 2 pinos
+
+	ex:
+		objeto que tenha dados de formulario de Visto de Imigracao
+		no BR o formato da data eh dd/mm/aaaa
+		nos EUA eh mm/dd/aaaa
+		assim, se usa o adapter para essa conversao
+
+=-=-=-
+Bridge
+	desacopla uma interface de sua implementacao, de forma que tanto a interface quanto a implementacao possam mudar independentemente
+
+	ex:
+		janelas graficas em diversas plataformas: Windows, Mac, Linux..
+		varios tipos de janelas: Aviso, Erro, Dialogo..
+		cria-se entao uma interface para as plataformas e outra interface para os tipos de janelas
+		cada interface implementa as classes concretas
+		-> assim, caso se queira adicionar mais plataformas ou mais tipos de janelas, suas interfaces independentes proporcionam isso
+
+=-=-=-=-=
+Composite
+	compoe objetos em estruturas de arvore para representar hierarquias parte-todo
+	isso permite aos clientes desconhecer a diferenca entre objetos individuais e composicoes de objetos e trata-los uniformemente
+
+	ex:
+		uma interface grafica composta de varios objetos, que por sua vez sao compostos de outros objetos
+		uma arvore implementa essa hierarquia, mas tudo deve ser transparente para o cliente
+		-> cliente nao sabe diferenciar entao objetos individuais de objetos compostos
+
+=-=-=-=-=
+Decorator
+	anexa responsabilidades adicionais a um objeto dinamicamente
+	fornece uma alternativa flexivel em relacao 'a heranca para estender funcionalidades
+
+	deve ser utilizado qndo extensoes por subclasses forem impraticaveis, tendo em vista o numero de extensoes independentes
+
+	ex:
+		considerar todas as combinacoes de sanduiches que podem ser feitas no Subway com os diversos ingredientes
+		cria-se entao uma classe abstrata sanduiche e varias classes concretas para implementa-la
+		fica inviavel construir classes abstratas para cada uma das combinacoes possiveis de sanduiches
+		assim, o Decorator sugere que o objeto sanduiche anexe diversas responsabilidades dinamicamente
+		dessa forma, em tempo de execucao, 'a medida que se adiciona um novo ingrediente, cria-se mais uma responsabilidade
+		decora-se entao dinamicamente com novas responsabilidades os objetos
+
+
+=-=-=-
+Facade
+
+	oferece uma interface unificada para um conjunto de interfaces em um subsistema
+	define uma interface de alto nivel (abstracao) que facilita a utilizacao do subsistema
+	::
+	deve ser utilizado quando se deseja fornecer uma interface simples para um subsistema complexo
+			ou quando se deseja dividir em camadas os subsistemas
+	ex:
+		banco com um sistema legado de informacoes de credito muito complexo, que deve interagir com um BD recem implementado
+		utiliza-se entao o Facade para implementar essa interface de alto nivel,
+		> nao tendo que interagir diretamente com o sistema complexo
+
+
+=-=-=-=-=
+Flyweight
+
+	usa compartilhamento (de mesmos dados) para suportar eficientemente grandes quantidades de objetos de baixa granularidade (alto detalhamento)
+	deve ser usado quando uma aplicacao usa grandes numeros de objetos e os custos de armazenamento forem altos
+
+	ex:
+		texto no Office, em que cada caractere seja um objeto que contenha uma posicao, formato, tamanho...
+		isso poderia ocupar mto espaco, mas varios caracteres se repetem (ex: letra A) e possuem caracteristicas iguais (formato, tamanho)
+		assim, cada caractere possui uma REFERENCIA para um objeto Flyweight que armazena os dados em comum
+		a unica coisa que muda no caso eh a posicao
+		-> resultado: cada um dos caracteres possui um atributo (posicao) e uma referencia para um objeto Flyweight (dados em comum)
+
+
+=-=-=
+Proxy
+
+	parecido com o conceito de proxy de redes: uma entidade no meio do caminho que funciona como intermediario
+	deve ser utilizado quando se deseja uma referencia mais sofisticada para um objeto do que um simples ponteiro
+
+	ex:
+		um sistema que acesse um banco de dados por meio de uma classe de conexao
+		porem, se deseja que o sistema nao tenha acesso direto ao BD por questoes de seguranca
+		assim, o usuario se conectara ao Proxy (classe substituta) e o Proxy se conectara ao BD
+		tudo deve acontecer de maneira transparente para o usuario

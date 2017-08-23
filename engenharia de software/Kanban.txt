@@ -1,0 +1,42 @@
+______
+KANBAN
+
+	significa Cartao Visual, em japones
+	http://s24.postimg.org/yhznqlput/kanban.png
+
+	abordagem EVOLUCIONARIA
+	abordagem incremental
+
+	metodo agil de desenvolvimento de software
+	tem o objetivo de acelerar a introducao de mudancas, com foco no trabalho em processo (Work in Progress)
+	a evolucao eh apresentada de forma visual (kanban)
+	construido sob o conceito de MELHORIA CONTINUA
+	possui como uma de suas praticas o [gerenciamento do fluxo de trabalho]
+
+	esse cartao visual se assemelha a um post-it (papelzinho de lembretes)
+	permite uma melhor visualizacao do fluxo de trabalho
+	favorece a transparencia
+	permite mudar prioridades facilmente, e entregar funcionalidades a qualquer momento
+	o nivel de informacao contida nos cartoes kanban eh bastante reduzida
+
+	todo o fluxo de trabalho se torna visivel
+	o fluxo eh continuo sem requerer estimativas
+	a equipe:
+		assume a responsabilidade sobre o processo
+		se auto-organiza para otimiza-lo
+		se auto-organiza para ajudar a resolver seus problemas
+
+	principios a serem respeitados:
+		comece com o que vc tem hoje
+		implemente mudancas evolutivas e incrementais
+		respeite o processo atual, seus papeis, responsabilidades e cargos
+		estimule a lideranca em todos os niveis da organizacao
+
+	praticas que melhoram os processos:
+		visualize o processo
+!!		limite o Work in Progress (WIP) - tarefas que estao em execucao em determinado ponto do processo
+		gerencie e meça o Fluxo de Trabalho
+		torne explicitas as politicas dos processos
+		implemente mecanismos de feedback
+		melhore colaborativamente e com metodos cientificos
+

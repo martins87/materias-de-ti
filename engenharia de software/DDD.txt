@@ -1,0 +1,26 @@
+===
+DDD
+
+	Domain-Driven Design
+	livro base: "Domain-Driven Design: Tackling complexity in the heart of software" de Eric Evans
+
+	foco principal: dominio do produto/software
+	dominios complexos devem estar baseados em um modelo
+	software com foco no desenvolvimento da camada de dominio!
+	padrao de modelagem de software orientado a objetos
+	procura reforcar conceitos e [boas praticas] relacionadas 'a OO
+	preocupacao maior em como representar melhor as [necessidades de negocio] em classes e comportamentos (metodos)
+	procura:
+		modelar as entidades principais de negocio usando a linguagem adequada daquele dominio
+		> para facilitar a manutencao, extensao e entendimento
+
+	alguns elementos:
+		alinhamento do codigo com o negocio	grande contato de desenvolvedores com especialistas do dominio
+		favorecer reutilizacao			aproveitar um mesmo conceito de dominio em varios lugares
+		minimo de acoplamento			partes do sistema interagem sem que haja mta dependencia entre modulos ou classes
+		independencia de tecnologia		maior preocupacao: reflexo das regras de negocio no codigo e dominio
+
+
+https://engenhariadesoftwareunifacs2013.wordpress.com/2014/02/11/design-dirigido-ao-dominio-ddd/
+http://blog.digithobrasil.com.br/domain-driven-design-rapido-e-rasteiro/
+http://pt.stackoverflow.com/questions/19548/o-que-realmente-%C3%A9-ddd-e-quando-ele-se-aplica
