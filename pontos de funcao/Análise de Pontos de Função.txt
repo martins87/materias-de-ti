@@ -1,0 +1,188 @@
+===========================
+ANALISE de pontos de funcao
+
+	tecnica que PERMITE MEDIR as funcionalidades de um software,
+	independente de tecnologia, sob o ponto de vista dos [requisitos funcionais] DO USUARIO.
+	mede TAMANHO DE UM SOFTWARE.
+	mede o ESFORCO NECESSARIO para o desenvolvimento de um sistema
+	mede o TAMANHO FUNCIONAL de um software
+	apoia-se no levantamento de custos, analise de qualidade, analise de produtividade
+	mede-se a funcionalidade sem ligacao alguma com tecnologia empregada no desenvolvimento
+!!	baseia-se na [arquitetura logica], considera as caracteristicas gerais do sistema
+
+!!!	pode ser aplicada para medir o tamanho de um sistema ANTES de desenvolve-lo, de forma a prever seu custo mais adequadamente
+	mas antes? antes mesmo?
+		sim!!!
+
+	IFPUG - international function point users group
+	CPM - counting practices manual
+	PF: unidade de medida (ponto de funcao)
+		-> ou FP (function point)
+
+	busca medir O QUE O SOFTWARE FAZ:
+		requisitos FUNCIONAIS!!!
+
+!	mede as funcionalidades requisitadas pelo USUARIO
+!	sempre sob o ponto de vista do USUARIO
+
+	a natureza SUBJETIVA da estimativa de complexidade depende do estimador
+	pessoas diferentes possuem nocoes diferentes de complexidade
+
+	APF eh independente de:
+		tecnologia
+		linguagem de programacao
+		ambiente de desenvolvimento
+
+	benchmarking: busca das melhores praticas
+
+beneficios:
+	avaliar se vale a pena adquirir um pacote de aplicativos, ao invez de desenvolve-lo
+	determinar o tamanho de um pacote adquirido
+	da suporte 'a analise de produtividade e qualidade
+	atraves das analises, eh possivel determinar se vale a pena comprar ou fabricar
+	apoia o gerenciamento de escopo dos projetos: possivel determinar se requisitos funcionais cresceram ou diminuiram
+	auxilia na verificacao da solidez e completeza dos requisitos especificados
+	beneficios semelhantes ao de uma revisao por pares
+	meio de estimar custos e recursos para o desenvolvimento e manutencao de software
+	fundamentar a negociacao de contratos
+	comparacao de produtividade na utilizacao de diferentes tecnicas
+
+
+como saber a produtividade esperada?
+	uso de repositorio privado: com dados sobre seus projetos anteriores
+	uso de repositorio publico: com dados de diversos projetos
+				    ISBSG (international software benchmarking standards group): repositorio publico mais conhecido
+
+
+______
+ETAPAS do procedimento de contagem:
+
+	1. Determinar o tipo de contagem de pontos de funcao
+	2. Identificar o escopo da contagem e a fronteira da aplicacao
+	3. Calcular PF nao-ajustados
+		3.1 Contar as funcoes de dados
+		3.2 Contar as funcoes de transacoes
+		3.3 Determinar total de PF nao-ajustados
+	4. Determinar o fator de ajuste
+	5. Calcular pontos de funcao ajustados
+
+								EXEMPLO DE UM SISTEMA DE NOTA FISCAL
+	funcoes do tipo DADO:
+		AIE	arquivo de interface externa		Cliente			->  compoe a interface externa
+		ALI	arquivo logico interno			Nota fiscal		->  eh um arquivo que esta contido no sistema
+
+	funcoes de tranSAcao:
+		CE	consulta externa			Listar Nota fiscal	->  consulta simples que vem de fora. nao informa dados
+		EE	entrada externa				Incluir Nota fiscal	->  dados que ENTRAM no sistema, vindos de fora
+		SE	saida externa				Consultar detalhes NF	->  dados sao fornecidos para obter informacoes que vao para fora
+
+	entrada e saida externas possuem dados entrando no sistema, para consultar ou alterar
+
+			Simples	Media	Complexa
+		CE/EE	3	4	6
+		SE	4	5	7
+		AIE	5	7	10
+		ALI	7	10	15
+
+
+	_________________________________
+	1 - determinar o tipo de contagem
+		projeto de desenvolvimento:		mede funcionalidades para a PRIMEIRA instalacao. pode haver mudancas. ESTIMATIVA!
+		projeto de melhoria/manutencao: 	mede as modificacoes realizadas. manutencoes sao somente EVOLUTIVAS
+		projeto de aplicacao (pronta):		mede uma aplicacao ja instalada, em pleno funcionamento. bastante PRECISA!
+
+	___________________________________
+	2 - determinar o escopo e fronteira
+		determina-se a fronteira, separacao entre o [projeto que esta sendo medido] e as aplicacoes externas
+!!		quem decide o que incluir na contagem eh o USUARIO!
+			-> sempre do ponto de vista do usuario
+!!		soh sao considerados no escopo os requisitos FUNCIONAIS de usuario
+
+	_____________________________
+	3 - calcular PF nao-ajustados
+		mede apenas os requisitos funcionais
+		mede-se a complexidade dos ALI e AIE pela quantidade de DER e RLR
+		DER: dado elementar referenciado - atributo unico (ex: idade, nome, sexo...)
+			-> itens de dados
+		RLR: subgrupo de dados elementares referenciados - SUBGRUPO! (ex: objeto, registro que pode ser decomposto...)
+			-> itens de registro
+		a complexidade de cada funcao eh calculada de acordo com a tabela: (em funcao dos registros e dados elementares)
+						DER
+				1-19		20-50		>50
+			1	Baixa		Baixa		Media
+		RLR	2-5	Baixa		Media		Alta
+			>5	Media		Alta		Alta
+
+		como decorar:
+			1-2-5 e 1-20-50
+			eixo y: RLR	eixo x: DER
+			diagonal 45o = media, baixa na esquerda, alta na direita
+
+
+		Formula:
+			Projetos de desenvolvimento:
+				DFP = ADD + CFP
+
+				DFP:   funcoes de desenvolvimento
+				  ADD: funcoes a serem entregues pelo projeto de desenvolvimento
+				  CFP: funcoes de conversao
+
+			Projetos de melhoria:
+				EFP = ADD + CFP + CHGA + DEL
+
+			Projetos de aplicacao:
+				AFP = ADD
+
+	___________________________________
+	4 - calcular o FATOR DE AJUSTE (FA)
+		aspectos tecnologicos que influenciam:
+			1 - comunicacao de dados
+			processamento distribuido
+			performance
+			configuracao do equipamento
+			volume de transacoes
+			entrada de dados online
+			interface com o usuario
+			atualizacao online
+			processamento complexo
+			reusabilidade
+			facilidade de implantacao
+			facilidade operacional
+			multiplos locais
+			14 - facilidade de mudancas
+
+		com base nos requisitos de usuario, cada caracteristica de influencia
+			> deve ter seu nivel de influencia avaliado numa escala de 0 a 5
+
+		calcula-se o FATOR DE AJUSTE a partir da soma dos pontos obtidos
+		de cada caracteristica pela formula:
+			FA = (SNI / 100) + 0.65
+			SNI = somatorio do nivel de influencia, i.e. soma de (cada caracteristica * seu fator)
+
+		intervalo de variacao: -35% a +35% (0.65 a 1.35)
+
+		lembrar que as caracteristicas sao SUBJETIVAS e DESATUALIZADAS
+
+	____________________________
+	5 - calcular os PF ajustados
+
+		PFA = PFNA * FA
+
+		pf ajustados = pf nao ajustados * FATOR DE AJUSTE
+
+
+
+NESMA - netherlands software metrics users association
+
+	IFPUG e NESMA diferem no calculo de Projetos de MELHORIA/MANUTENCAO
+	NESMA utiliza o conceito de DEFLATOR, artificio usado para reduzir distorcoes na contagem de PF de Melhoria/Manutencao
+	abrange 3 tipos de contagem:
+
+		detalhada
+
+		estimativa		determina que:
+						tipos de dados - complexidade baixa
+						tipos de transacao - complexidade media
+
+		indicativa		determina que pf nao ajustados eh dado pela formula: PFNA = 35*ALI + 15*AIE
+					> sendo que para cada ALI conta-se 3EE + 1CE + 2SE, para cada AIE conta-se 1CE + 1SE
