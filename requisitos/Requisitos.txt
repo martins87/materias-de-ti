@@ -1,0 +1,339 @@
+========================
+ENGENHARIA DE REQUISITOS
+
+requisito:
+	condicao que deve ser satisfeita para alcancar um objetivo
+	qualidade do sistema que deve ser provida para que este seja util
+	condicao que deve ser atendida
+	INDEPENDEM da tecnologia
+
+engenharia de requisitos:
+	abordagem sistematica para a formulacao, analise, documentacao e manutencao de requisitos de um sistema
+
+mudancas sao caras: quanto mais tarde rolam problemas com requisitos, maior o custo para corrigi-los
+	-> custo das mudancas aumenta com o tempo
+	-> influencia das partes interessadas diminui com o tempo. elas dao mais pitaco no inicio
+
+	requisitos descrevem um acordo ou contrato entre duas partes,
+	> especificando, entre outros aspectos, o que o sistema de sw deve fazer para ser aprovado em um teste de aceitacao
+
+	eng de requisitos do SISTEMA DE INFORMACOES vem antes da eng de requisitos de sw,
+	> pq o sistema eh um todo, global = hardware + software + sistema...
+
+	analise de requisitos esta mais proxima da engenharia de sistemas, qndo comparada 'a area de analise e projeto de sw
+
+!	etapas:
+		- elicitacao (coleta)
+		- analise
+		- especificacao
+		- validacao
+
+
+_____________________
+Requisitos FUNCIONAIS
+
+	o que fazer
+	como o sistema deve reagir
+	como o sistema deve ou nao se comportar em situacoes particulares
+	acoes, coisas a fazer
+	funcionalidade!
+	qualitativos
+	ex: o sistema deve ser capaz de debitar e creditar uma conta corrente
+
+
+_________________________
+Requisitos NAO-FUNCIONAIS
+
+	expressam RESTRICOES sob as quais o sistema deve operar
+	qualidades especificas que o sistema deve ter:
+		tempo de resposta, disponibilidade, desempenho, capacidade, usabilidade,
+		> deadline de entrega do software, confiabilidade, manutenibilidade, escalabilidade, portabilidade...
+	ex: o sistema deve suportar pelo menos 20 transacoes por segundo
+
+	devem ser verificaveis (QUANTITATIVOS), usando alguma medida que possa ser objetivamente testada
+!!	possuem relacao com as funcionalidades do sistema, a diferenca eh que sao RESTRICOES a essas funcionalidades	
+	problema:
+		RNFs sao, muitas vezes, conflitantes!
+		ex: ganho de [portabilidade] do Java perde em [velocidade de execucao] para linguagens compiladas direto na plataforma
+
+	http://s21.postimg.org/bohl9jsx3/requisitos.png
+
+	requisitos de PRODUTO:
+		especificam o comportamento do produto
+		ex: qnto de memoria, portabilidade, ser robusto, rapido...
+		- portabilidade
+		- confiabilidade
+		- usabilidade
+		- eficiencia:
+			. desempenho
+			. espaco
+
+	requisitos ORGANIZACIONAIS:
+		derivados de politicas e procedimentos da organizacao
+		ex: padroes, processos, operacionais, implementacao
+		- entrega
+		- implementacao
+		- padroes
+
+	requisitos EXTERNOS:
+		derivados de fatores externos ao sistema e seu processo de desenvolvimento
+		ex: requisitos legais, eticos, de contabilidade..
+		ex: INTEROPERABILIDADE
+		- interoperabilidade
+		- eticos
+		- legais (reguladores):
+			. privacidade
+			. seguranca
+
+
+_____________________
+Requisitos de DOMINIO
+
+	vem do dominio da aplicacao do sistema
+	sao expressados na linguagem do dominio da aplicacao
+!!	segundo sommerville, acabam se transformando em funcionais OU nao-funcionais
+	conhecimento tacito:
+		os especialistas de dominio entendem tanto da sua area que mtas vezes nao pensam em tornar os reqs de dominio explicitos
+		ex de um Tribunal: pro analista nao eh obvio quem senta 'a direita de quem na sessao, pro desembargador eh
+
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Classificacao segundo a Manutencao
+
+	permanentes (estaveis)
+		derivados da atividade principal da organizacao
+		nao mudam
+		ex: em um hospital sempre havera requisitos relativos aos medicos, pacientes..
+
+	volateis
+		se modificam durante o desenvolvimento ou quando o sistema esta em uso
+		ex: software de tributos que pode mudar de acordo com leis
+		divisao:
+			mutaveis		se modificam por causa do ambiente do sistema. ex: software de imposto
+			emergentes		surgem 'a medida que a compreensao do cliente sobre o sistema se desenvolve
+			consequentes		acabam surgindo por consequencia da introducao do sistema no ambiente do usuario. ex: novas demandas
+			de compatibilidade	dependem de outro equipamento ou processo. se eles mudarem, o requisito tbm muda
+
+
+
+=-=-=-=-=-=-
+STAKEHOLDERS
+
+	pessoas interessadas (em geral) no projeto do sistema
+	possuem alta participacao na etapa de desenvolvimento de requisitos
+
+
+
+Problemas com requisitos:
+	virem de varias fontes
+	nao refletirem as reais necessidades dos usuarios do sistema
+	serem inconsistentes ou incompletos
+	ter alto custo para mudancas, depois de acordados
+	mal entendidos entre clientes e desenvolvedores
+
+
+__________
+ELICITACAO
+
+problemas:
+	os stakeholders nao sabem exatamente o que querem
+	interessados descrevem o problema cada um na sua linguagem
+	requisitos de cada parte interessada podem ser conflitantes
+	fatores politicos e organizacionais podem influenciar os requisitos do sistema
+
+tecnicas:
+	entrevistas				formais ou informais. abertas: nao ha roteiro, fechada: ha roteiro
+	questionarios				FORMULARIOS com perguntas pre-definidas. facil de aplicar e rapido feedback, mas [falta de interacao]
+	leitura de documentos			coleta de informacoes por meio de observacoes da organizacao. utilizadas em sistemas legados
+	etnografia (lembrar de "etnia")		coloca-se o analista dentro dos usuarios para observar o trabalho diario
+	*cenarios de caso de uso		explicam como um sistema podera ser usado. expoe interacoes possiveis, revela as facilidades	
+	pontos de vista				considera as perspectivas de diversas partes. tenta descobrir conflitos
+	analise de protocolos			protocolo passo a passo, possibilita elicitar fatos nao facilmente observaveis
+	*prototipacao				visualizacao do sistema pelos usuarios, identifica-se requisitos reais e fluxos de trabalho do sistema
+	workshop de requisitos			reuniao INTENSIVA entre stakeholders. papel: facilitador (cuida da logistica). outras tecnicas podem ser usadas
+	reuso de requisitos			estudo e reutilizacao de especificacoes e glossarios de sistemas similares
+	participacao ativa de usuarios		incorporacao dos usuarios ao grupo de engenharia. necessita de treinamento dos usuarios
+	JAD (desenvolvida pela IBM)		reuniao paz e amor dos analistas e usuarios. tomada de decisoes por dinamicas de grupo. interativa!
+	QFD - quality function deployment	busca transformar os requisitos tecnicos do cliente em especificacoes tecnicas de qualidade
+	brainstorming				busca explorar a CRIATIVIDADE do grupo
+
+
+============
+Casos de Uso
+
+	descricoes textuais das funcionalidades do sistema a partir da perspectiva do usuario
+	usados para mostrar quais funcionalidades o sistema oferece
+	cenario:
+		cada uma das execucoes possiveis de um caso de uso
+
+	quem usa Casos de Uso?
+		clientes e usuarios
+		arquitetos
+		analistas, projetistas e implementadores
+		testadores
+		gerentes
+		escritores de documentacao...
+
+	inclusao:
+		usar quando o mesmo comportamento se repete em mais de um Caso de Uso
+		  > e o processo de realizar X SEMPRE envolve realizar Y pelo menos uma vez
+		ex: [Verificar Pedido] e [Cancelar Pedido] precisam incluir [Pesquisar Pedido]
+
+	extensao:
+		usar quando quiser modelar um [comportamento] OPCIONAL de um Caso de Uso
+
+tipos:
+	Concreto
+		eh [iniciado por um ator] e constitui um fluxo completo de eventos
+		assim, atores "enxergam" apenas casos de uso concretos
+		atores NUNCA se relacionam com casos de uso abstratos
+
+	Abstrato (nome em Italico)
+		nunca eh instanciado diretamente
+		geralmente sao:
+			incluidos em outros casos de uso
+			estendidos de outros casos de uso
+			generalizacoes de outros casos de uso
+
+Modelo de Casos de Uso:
+	modelo completo das funcoes do sistema em termos de Casos de Uso
+	a finalidade mais importante eh comunicar, de forma facil de entender, o comportamento do sistema ao usuario final
+	a construcao de um modelo de casos de uso eh um meio para [capturar requisitos FUNCIONAIS] com foco no valor dos requisitos para os usuarios
+!!	alem de tipos de usuarios, atores podem representar outros sistemas ou hardwares que interagem com o sistema a ser desenvolvido
+	contem:
+		casos de uso, atores, relacionamentos, pacotes de casos de uso, diagramas de casos de uso, especificacoes...
+	beneficios:
+		pode ser usado no levantamento, elicitacao e validacao dos requisitos, conectando todas as etapas
+
+
+_______
+ANALISE
+
+	ocorre apos a coleta (elicitacao) dos requisitos
+	a analise visa:
+		descobrir alguns problemas
+		tornar os requisitos mais consistentes antes da especificacao formal
+
+atividades:
+
+	- classificacao e organizacao:
+		agrupar requisitos relacionados e organiza-los em conjuntos coerentes
+
+	- checagens de:
+		consistencia
+		ambiguidade
+		omissoes
+		relacionamentos entre requisitos
+
+	- priorizacao:
+		priorizar requisitos em funcao de sua importancia
+
+	- negociacao:
+		importante para que o analista possa conciliar os *conflitos entre os stakeholders*
+		eles pedem mais do que pode ser feito
+		ou podem tem "necessidades especiais": pedir muita firula desnecessaria
+		papel do analista entao eh:
+			balancear todas essas demandas!
+		requer grande capacidade de interacao social
+
+
+_____________
+ESPECIFICACAO
+
+	pega o que foi elicitado e o que foi analisado e [coloca num documento]
+
+	especificacao pode ser:
+		documento escrito, modelo grafico, modelo matematico formal, colecao de cenarios de casos de uso...
+
+	a abordagem utilizada depende da necessidade de cada projeto
+		ex: documentos escritos combinados com modelos graficos para sistemas maiores..
+		ex: cenarios de casos de uso para sistemas mais simples..
+
+!	eh o PRODUTO FINAL produzido pelo engenheiro de requisitos
+	serve como base para a
+		engenharia de software
+		engenharia de hardware
+		engenharia de banco de dados
+	descreve a funcao de um sistema de software e as restricoes impostas a ele
+	tambem descreve as funcoes que entram e saem do sistema
+
+
+_________
+VALIDACAO
+
+	objetivo: demonstrar que os requisitos definem o sistema que o usuario realmente deseja
+
+	visa assegurar que
+		. a versao do documento de requisitos descreve as funcionalidades (requisitos funcionais) e caracteristicas do sistema satisfatoriamente
+		. os requisitos sao consistentes e de alta qualidade
+		. o documento de requisitos prove uma base adequada para Projeto e Implementacao
+
+	entradas:
+		o documento preliminar de requisitos
+		padroes organizacionais
+		conhecimento implicito da organizacao
+	saidas:
+		lista de problemas com os requisitos - tudo aquilo que nao rola de fazer
+		acoes acordadas para resolver esses problemas
+		Documento de Requisitos aprovado (final)
+
+Principais tecnicas:
+	Revisoes (inspecoes)
+		a galera se reune, le e analisa o documento de requisitos para identificar problemas e suas possiveis solucoes
+
+	Prototipagem
+		um prototipo EXECUTAVEL demonstra os requisitos para os stakeholders
+		ai entao, apos usar na pratica o prototipo, eles podem descobrir problemas
+
+	Geracao de Casos de Teste
+		casos de teste podem ser usados para cada cenario de casos de uso
+		sao usados aqui entao para ajudar a mostrar se os requisitos estao ambiguos ou incompletos
+
+
+
+=-=-=-=-=-=-=-=-=-=-
+GESTAO DE REQUISITOS
+
+	processo de gerenciar as mudancas nos requisitos durante o processo de engenharia de requisitos
+	requisitos sempre vao acabar mudando, ser incompletos e inconsistentes:
+		novos requisitos surgem 'a medida que as necessidades de negocios mudam e ha um melhor entendimento do sistema
+		prioridade de cada requisito muda ao longo do projeto
+		cliente (quem paga) nao eh a mesma coisa que usuario -> os dois tem perspectivas diferentes
+		o ambiente de negocios e ambiente tecnologico do projeto podem mudar
+		diferentes pontos de vista normalmente tem requisitos diferentes (e conflitantes)
+
+Rastreabilidade
+
+	tecnica de gestao de requisitos
+	usa a Matriz de Rastreabilidade:
+		liga os requisitos 'as suas origens e os rastreia durante todo o ciclo de vida do projeto
+
+	-> rastreabilidade de fonte:
+		ligacao entre o requisito e o stakeholder que o propos (e sua necessidade original)
+
+	-> rastreabilidade de requisitos:
+		ligacao [entre requisitos que dependem de si]
+
+	-> rastreabilidade de projeto:
+		ligacao entre o requisito e o projeto de software (arquitetura, modulos, codigo..)
+
+	ferramentas CASE* ajudam na rastreabilidade de requisitos
+	ela deve:
+		armazenar os requisitos em um ambiente seguro e gerenciado
+		dar suporte ao gerenciamento de mudanca dos requisitos
+		permitir recuperar automaticamente a ligacao (rastreabilidade) dos requisitos
+
+	*CASE = Computer-Aided Software Engineering
+		ferramenta que auxilia atividades de engenharia de software
+		ex: analise de requisitos, modelagem, programacao, testes..
+
+
+_______________________________________
+GERENCIAMENTO DE MUDANCAS DE REQUISITOS
+
+	esse processo possui 3 estagios principais:
+		- analise do problema e especificacao de mudancas
+		- analise da mudanca e estimativa de custo
+		- implementacao da mudanca
+
