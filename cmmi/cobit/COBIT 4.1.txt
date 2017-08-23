@@ -1,0 +1,309 @@
+=====
+COBIT 4.1
+
+	= Control objectives for information and related technology
+
+	Objetivos de Controle:
+		um objetivo de controle eh um "resultado esperado" de um processo
+		"declaracao do resultado desejado ou do proposito a ser atingido
+		 com a implementacao de um procedimento de controle em um determinado processo"
+		sao detalhados atraves de praticas de controle
+
+	guia de boas praticas
+	baseado em objetivos de controle
+	diz O QUE tem que ser feito
+
+	deve ser utilizado em alto nivel
+	deve prover uma metodologia de controle geral com base em um modelo de processos de TI que deve servir para toda a empresa
+	praticas e padroes podem prover um material de orientacao
+
+q	ESAF: o COBIT organiza as atividades de TI em um modelo de processos generico (=boas praticas)
+	assim,
+		modelo de processos generico = boas praticas
+
+
+atende aos 5 requisitos de um framework de controle:
+	define uma LINGUAGEM COMUM para a area de TI e negocio
+	ajuda a atender os requisitos regulatorios (ex: SOX, Acordo de Basileia II...)
+	eh um padrao aceito pelas empresas
+	orientado a PROCESSOS
+	focado nos requisitos de negocio
+
+COBIT eh mantido pela ISACA, e esta na sua versao 5
+
+reduzir custos de processos:
+	eficiencia
+	perspectiva INTERNA
+
+caracteristicas:
+	implantacao modular da governanca de TI -> divide em 4 dominios (PO, AI, DS e ME)
+	realizacao de benchmarking (buscas de melhores praticas)
+	alinhamento da TI aos requisitos do negocio
+	medicao do desempenho contra os requisitos de forma transparente (por meio do modelo de maturidade)
+	organizacao das atividades em um modelo de processos (boas praticas)
+	identificacao dos PRINCIPAIS recursos de TI a serem gerenciados
+	definicao dos OBJETIVOS DE CONTROLE a serem considerados
+	orientado a entrega de valor
+	orientado a gerenciamento de riscos
+	estabelecimento de responsabilidades entre as partes envolvidas na governanca de TI
+
+	baseado em OBJETIVOS DE CONTROLE
+	suas praticas influenciam diversas areas de uma organizacao, sem se restringir 'a TI
+	orientado a processos
+	avalia a organizacao em relacao 'as suas praticas gerenciais relacionadas 'a TI
+	enfase em CONTROLES
+	orientado para negocios
+
+diz O QUE deve ser feito
+
+sugere uma serie de processos a serem seguidos, chamados de OBJETIVOS DE CONTROLE:
+	gerenciamento de incidentes
+	gerenciamento de problemas
+	gerenciamento de seguranca da informacao
+	gerenciamento de indicadores
+	auditoria externa
+
+objetivo principal da Governanca de TI:
+	alinhar a TI aos requisitos do negocio
+
+
+				!!!	a governanca de TI eh de responsabilidade: DOS EXECUTIVOS E DA ALTA DIRECAO	!!!
+
+
+objetivos de controle estao DIRETAMENTE associados 'as
+	atividades de TI
+
+
+CUBO DO COBIT:
+http://www.internalaudit.iastate.edu/sites/default/files/files/COBIT_Cube.jpg
+
+
+recursos de TI
+	(sao gerenciados pelos)   processos de TI   (para atingir os objetivos de TI que correspondem aos)   requisitos de negocios
+
+
+______________
+Analise de gap
+
+	avalia a estrutura da organizacao para identificar seu grau de maturidade
+	analisa
+		pontos vulneraveis
+		pontos redundantes
+		pontos fortes
+		nivel atual de maturidade
+
+
+_______________________
+CRITERIOS DE INFORMACAO
+
+para atender a esses requisitos, o COBIT adota 7 criterios de informacao:
+
+	confidencialidade	protecao das informacoes, que soh podem ser vistas por quem tenha permissao
+	integridade		fidedignidade e totalidade da informacao bem como sua validade. a informacao nao pode ser corrompida/alterada
+	disponibilidade		informacao deve estar disponivel quando necessaria
+
+	efetividade		informacao ser entregue em tempo, DE MANEIRA CORRETA, consistente e utilizavel
+	eficiencia		entrega da informacao atraves do melhor uso dos recursos
+
+	conformidade		aderencia a leis, contratos, criterios
+	confiabilidade		entrega da informacao apropriada
+
+
+--------
+	requisitos de qualidade
+		qualidade
+		custo
+		entrega
+	requisitos fiduciarios (relatorios do COSO)
+		conformidade com leis e regulamentos
+		confiabilidade das informacoes
+		eficacia e eficiencia das operacoes
+	requisitos de seguranca
+		confidencialidade
+		integridade
+		disponibilidade
+
+recursos de TI:
+	aplicacoes		[sistemas automatizados] e [procedimentos manuais] para processar informacoes
+	informacao		dados de todo formulario de entrada, processados e exibidos pelos SIs, podendo ser qq formulario usado pelo negocio
+	infraestrutura		tudo que eh necessario para o funcionamento das aplicacoes
+	pessoas			podem ser internos ou terceirizados
+
+
+________
+DOMINIOS
+
+COBIT eh dividido em 4 dominios:
+
+
+	--------------------
+	Planejar e organizar (PO)
+	> planejamento
+
+		-> cobre a estrategia e as taticas
+
+		perguntas:
+			- Como a TI pode contribuir para os OBJETIVOS DE NEGOCIO da organizacao?
+			- As estrategias de TI e de negocio estao alinhadas?
+			- A empresa esta obtendo um otimo uso dos seus recursos?
+			- Todos na organizacao entendem os objetivos de TI?
+			- Os riscos de TI sao entendidos e estao sendo gerenciados?
+			- A qualidade dos sistemas de TI eh adequada 'as necessidades de negocios?
+
+		definir um plano estrategico de TI
+			cria-se portfolio de planos taticos de TI
+			objetivos de controle:
+				plano estrategico de TI
+				avaliacao da capacidade e desempenho correntes
+				modelo de arquitetura de informacao da organizacao
+				gerenciamento de valor da TI
+
+		definir a arquitetura da informacao
+			endereca as questoes relacionadas 'a informacao
+
+		gerenciar o investimento de TI
+			melhora continua e visivel da relacao custo-beneficio da TI e sua contribuicao
+			> para a lucratividade do negocio, de forma a atender as expectativas do usuario final
+
+		determinar as diretrizes de tecnologia
+		gerenciar projetos
+		definir os processos, organizacao e os relacionamentos de TI
+		comunicar as diretrizes e expectativas da diretoria
+		gerenciar os recursos humanos de TI
+	!!	gerenciar a QUALIDADE
+	!!	avaliar e gerenciar os riscos de TI
+
+	----------------------
+	Adquirir e implementar (AI)
+	> construcao
+
+		-> para executar a estrategia, as solucoes precisam ser identificadas, adquiridas ou desenvolvidas
+
+		perguntas:
+			- Os novos projetos fornecerao solucoes que atendam 'as necessidades de negocios?
+			- Os novos projetos serao entregues no tempo e orcamento previstos?
+			- Os novos sistemas funcionarao apropriadamente quando implementados?
+			- As alteracoes ocorrerao sem afetar as operacoes de negocio atuais?
+
+	!!	identificar solucoes automatizadas		analise previa pra ver se adquire ou implementa
+		adquirir e manter software aplicativo
+		adquirir e manter infraestr. de tecnologia
+		adquirir recursos de TI				recursos de TI, INCLUINDO pessoas, hardware, software e servicos precisam ser adquiridos
+	!!	gerenciar mudancas				engloba TODAS as mudancas, incluindo manutencoes de emergencia relacionadas com INFRAESTRUTURA
+	!!	habilitar operacao e uso			conhecimento sobre novos sistemas deve estar disponivel
+		instalar e homologar solucoes e mudancas
+		
+	-------------------
+	Entregar e suportar (DS)
+	> processamento
+
+		-> trata da entrega dos servicos SOLICITADOS
+		-> receber as solucoes + as tornar PASSIVEIS DE USO pelos usuarios finais
+
+		perguntas:
+			- Os servicos de TI estao sendo entregues de acordo com as prioridades de negocios?
+			- Os custos de TI estao otimizados?
+			- A forca de trabalho esta habilitada para utilizar os sistemas de TI de maneira produtiva e segura?
+			- Os aspectos de confidencialidade, integridade e disponibilidade estao sendo comtemplados para garantir a seguranca da informacao?
+
+	!!	definir e gerenciar niveis de servicos
+		assegurar continuidade de servicos
+		assegurar a seguranca dos servicos
+	!!	identificar e alocar custos
+		gerenciar servicos de terceiros
+		gerenciar a central de servico e os incidentes
+		gerenciar os problemas
+		gerenciar os dados
+		gerenciar o ambiente fisico
+		gerenciar a capacidade e o desempenho
+		gerenciar as operacoes
+	!!	gerenciar a configuracao
+		educar e treinar os usuarios
+
+	-------------------
+	Monitorar e avaliar (ME)
+	> monitoramento
+
+		-> todos os processos precisam ser avaliados com o passar do tempo para assegurar QUALIDADE e CONFORMIDADE
+
+		perguntas:
+			- A performance de TI eh mensurada para detectar problemas antes que seja muito tarde?
+			- O gerenciamento assegura que os controles internos sejam efetivos e eficientes?
+			- O desempenho da TI pode ser associado aos objetivos de negocio?
+			- Existem controles adequados para garantir confidencialidade, integridade e disponibilidade das informacoes?
+
+		monitorar e avaliar o desempenho
+		monitorar e avaliar os controles internos
+		assegurar a CONFORMIDADE com requisitos externos
+	!!	prover a governanca de TI
+
+
+_______________
+5 AREAS DE FOCO
+
+	alinhamento estrategico			garantir a ligacao entre planos de negocio e TI, alinhando operacoes de TI com as da organizacao
+	entrega de valor			execucao da proposta de valor de TI. concentra-se em otimizar custos
+	gestao de recursos			melhor utilizacao possivel dos investimentos e apropriado gerenciamento dos recursos criticos de TI
+	gestao de risco				preocupacao com riscos pelos FUNCIONARIOS MAIS EXPERIENTES da corporacao
+	mensuracao de desempenho		acompanha e monitora a implementacao da estrategia
+
+
+
+KGI - Key Goal indicators		indica se um processo de TI alcancou sua meta. usado APOS a execucao do processo
+
+KPI - Key Performance indicators	determinam QUANTO o processo de TI conseguiu atingir. permite tomar acoes corretivas DURANTE
+
+CSF - Critical Success Factors		sao as coisas QUE DEVEM ACONTECER durante o curso do projeto/desenvolvimento
+					sao as coisas mais importantes a fazer no processo
+
+
+
+=-=-=-=-=-=-=-=-=-=-=
+Modelos de maturidade:
+
+	0 - Inexistente				completa falta de um processo reconhecido. empresa sabe de nada, inocente
+	1 - Inicial / Ad hoc			nao existe processo padronizado, apesar da empresa reconhecer que existem questoes a ser trabalhadas
+	2 - Repetitivo (mas intuitivo)		procedimentos similares sao seguidos por diferentes pessoas fazendo a mesma tarefa
+	3 - Definido				procedimentos foram [padronizados, documentados e comunicados]. desvios nao sao detectados. treinamento de pessoal
+	4 - Gerenciado e mensuravel		processos em aprimoramento/aperfeicoamento. porem, automacao e ferramentas utilizadas de forma limitada
+	5 - Otimizado				processos refinados a nivel de boas praticas. TI eh utilizada para automatizar o fluxo de trabalho
+
+
+
+=-=-=-=-=-=-=-=-=-=-
+COMPONENTES DO COBIT
+
+todos os componentes estao inter-relacionados: http://s24.postimg.org/yah7k12z9/componentes_cobit.png
+
+	objetivos de negocios
+	processos de TI
+	atividades chave			esta relacionado com responsabilidades (Matriz RACI) e accountability
+	tabela de responsabilidade (Matriz RACI)
+	indicadores de performance		KGI, KPI
+	resultados das medicoes
+	modelos de maturidade (0 a 5)
+	controle resultado dos testes
+	objetivo de controles			proporcionam conjunto de requisitos de alto nivel, considerados para o controle efetivo de processos de TI
+	controle dos testes de desenho
+	praticas de controle
+
+explicacao:
+	tudo acontece em funcao da necessidade de negocio. assim, o topo da figura eh a necessidade do negocio
+	para atender a essas necessidades sao necessarios processos de TI
+	com base nisso, existem basicamente 3 linhas de atuacao:
+		1a - para atender o negocio eh necessario executar algumas [ATIVIDADES] e dizer quem eh responsavel pelo que
+		2a - para garantir que o processo atinja suas metas sao necessarias [MEDICOES] (indicadores, resultados e modelo de maturidade)
+		3a - para [CONTROLE DOS PROCESSOS], sao necessarios Objetivos de Controle (estes sao detalhados atraves de praticas de controle)
+
+
+___________
+Matriz RACI:
+	eh uma tabela ou matriz de responsabilidades
+	as atividades chave estao relacionadas ao elemento "Tabela de Responsabilidade"
+	Tabela RACI = mostra quem eh responsavel (responsible), responsabilizado (accountable), consultado e informado dentro de uma estrutura organizacional
+
+	Responsible	pessoa que precisa garantir que as atividades serao executadas com sucesso
+	Accountable	pessoa ou grupo que tem autoridade de aprovar ou aceitar a execucao de uma atividade
+	Consulted	pessoas cuja opiniao sera consultada em uma atividade
+	Informed	pessoas que sao mantidas informadas sobre o andamento de uma atividade
+
