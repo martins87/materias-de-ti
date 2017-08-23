@@ -1,0 +1,345 @@
+======
+TESTES (verificacao dinamica)
+
+	objetivo: apenas ENCONTRAR erros
+	um bom caso de teste eh aquele que tem ALTA PROBABILIDADE* de encontrar erros (tipo jogar uma rede pra catar varios peixes)
+	teste de sucesso: aquele que descobre um erro [ainda nao descoberto]
+!!!	processos de testes [nao garantem] que o software esta livre de erros, apenas podem mostrar que erros estao presentes
+
+Principios:
+	testes devem ser feitos com foco nos requisitos do cliente
+	devem ser planejados muito antes de serem executados
+	Principio de Pareto se aplica (80-20):
+		-> a maioria dos erros esta em partes criticas do software
+	devem comecar "pequenos" (desenvolvedor) e progredir para pedacos maiores (sistema)
+	testes exaustivos nao sao possiveis: IMPOSSIVEL executar todos os caminhos possiveis em um programa
+	devem ser executados por terceiros
+		>> motivo: com independencia, devem ter o maximo de efetividade
+
+O que constitui um bom teste?
+	* deve ter [alta probabilidade de encontrar erros]
+	nao deve ser redundante: todo teste deve ter um proposito diferente
+	deve ser representativo da sua classe
+
+
+__________
+Abordagens
+
+	CAIXA PRETA
+		= Abordagem Funcional = Teste Comportamental
+		focada nas entradas e saidas *especificadas nos requisitos funcionais*
+		se preocupa com O QUE FAZ
+		pode-se conduzir testes focados nos resultados esperados
+
+	CAIXA BRANCA
+		= Abordagem Estrutural = Teste de Caixa de Vidro (ve-se por dentro)
+		focada nas estruturas internas dos procedimentos do sistema
+		exs:
+			fluxos do programa
+			decisoes logicas
+			executar todos os laços
+			estruturas de dados internas
+		analisa caminhos logicos possiveis de serem executados
+		eh necessario ter conhecimento sobre o funcionamento interno dos componentes
+		busca garantir que todos os caminhos independentes de um modulo sejam [executados pelo menos uma vez]
+		trata todas as decisoes logicas para valores verdadeiro/falso
+
+		!!!!!!!!!!!!!!!!!!!!!!!!!
+		Complexidade Ciclomatica:
+			metrica que fornece uma medida quantitativa da complexidade logica de um programa
+			metrica que mede a complexidade por meio da quantidade de caminhos de execucao independentes
+			quando usada no contexto de testes de caixa branca, denota [o numero de caminhos possiveis] dentro de um modulo
+			nos da uma ideia do limite [superior] necessario
+
+	Caixa Cinza
+		meio termo entre caixa preta e caixa branca
+		algum conhecimento sobre estruturas internas eh utilizado para executar testes mais bem informados
+		vc sabe um pouco sobre como funciona, ai vc faz um teste mais completo
+		tanto estruturas internas quanto E/S dos requisitos funcionais
+
+
+___________
+CAIXA PRETA
+
+	baseada em pres e pros condicoes
+	geralmente utilizada nas etapas posteriores da disciplina de testes
+	busca erros nas seguintes categorias, dentre outras:
+		- funcoes incorretas ou inexistentes
+		- erros de comportamento ou desempenho
+		- erros de inicializacao e termino, erros de interface
+	principais tecnicas:
+		particionamento de equivalencias
+		matriz ortogonal
+		analise de valores limitrofes
+		testes baseados em grafo
+	-------
+	Grafos:
+		toda aplicacao eh constituida por "objetos"
+		a tecnica identifica todos esses objetos e gera grafos para representa-los
+		os objetos e relacionamentos sao testados para descobrir erros e comportamentos inesperados
+
+	---------------------------------
+	Particionamento de equivalencias:
+		baseia-se em dividir o dominio de entradas de um programa em classes de dados
+		cada classe de dados eh chamada: "particao de equivalencia"
+		casos de teste sao entao gerados considerando cada particao de equivalencia
+		como guia, deve-se considerar entradas do tipo:
+			faixa de valores			ex: numeros positivos de 10 a 100	1 particao valida, 2 invalidas
+			valor especifico			ex: somente o numero 69			1 particao valida, 2 invalidas
+			conjunto especifico de valores		ex: somente numeros pares		1 particao valida, 1 invalida
+			entrada booleana			ex: true or false			1 particao valida, 1 invalida
+
+	------------------------------
+	Analise de valores limitrofes:
+		a maioria dos erros acontece no limite dos dominios de entrada, e nao no centro
+		os testes devem ser gerados considerando esses valores limitrofes:
+			numeros maximos e minimos
+			um a mais que o maximo
+			um a menos que o minimo
+		eh utilizada em conjunto com a tecnica de Particao de Equivalencias
+
+
+____________
+CAIXA BRANCA
+
+	testes sao gerados a partir de uma analise dos caminhos logicos possiveis de serem executados
+	eh necessario conhecimento do funcionamento interno dos componentes do software
+	objetivos:
+		garantir que todos os caminhos independentes de um modulo sejam executados PELO MENOS UMA VEZ
+		realizar TODAS as decisoes logicas para valores falso e verdadeiro
+		executar lacos dentro dos valores limites  -->>  for(i=0; i<10; i++) executar o laço qndo i=9
+		avaliar as estruturas de dados internas
+	principais tecnicas:
+		testes de caminho (basis path testing)			-> garante que cada comando tenha sido exercitado pelo menos uma vez
+		testes de estruturas de controle			   ou seja, exercitar, a cada novo teste, partes do sw ainda nao cobertas anteriormente
+			- teste de laços (looping testing)
+			- teste de fluxo de dados (data flow testing)
+			- teste de condicao (condition testing)
+		complexidade ciclomatica (metrica)
+	
+
+
+niveis de teste:
+	quando testar
+	teste de unidade, teste de integracao, teste de aceitacao, teste de sistema
+
+tipos de teste:
+	o que testar
+	seguranca, funcional, integridade, regressao, usabilidade, configuracao, instalacao...
+
+
+
+
+testes Baixo Nivel / 1o Nivel:	feitos pelo programador. Testes de Unidade e Testes de Integracao
+testes Alto Nivel / 2o Nivel:	nao eh necessario conhecimento da estrutura interna do sw. Testes de Sistema e Testes de Validacao
+
+
+_____________________
+ESTRATEGIAS DE TESTES - UIAS - Lembrar de "SAIU" ao contrario
+
+	sao agrupados de acordo com o momento no qual sao executados ou pelo nivel de especificidade do teste
+
+	_______
+	unidade			verificacao da menor unidade de sw
+	(codigo)		pode ser feito antes ou depois do codigo-fonte ter sido gerado  -->>  exemplo de feito antes: TDD
+				geralmente feitos pelos proprios desenvolvedores
+				possibilita encontrar problemas mais cedo, facilita mudancas, auxilia a documentacao
+				testa componentes isolados
+				ferramenta mais utilizada: JUnit
+					framework de codigo aberto, que prove o ambiente necessario para testar codigos Java
+					eh necessario escrever codigo adicional!
+					http://s17.postimg.org/8iiix6clb/JUnit.png (ou no fim do arquivo)
+				teste unitario = teste de desenvolvimento
+				de responsabilidade dos desenvolvedores
+
+	__________
+	integracao		verificacao em uma [combinacao de componentes] para ver se funcionam corretamente juntos
+	(design)		rola depois do teste de unidade
+				entrada do teste de integracao: resultados dos testes de unidade
+				descobre erros na integracao entre os componentes
+
+				integracao Top-Down:
+					desenvolve o esqueleto do sistema e o preenche com seus componentes
+				integracao Bottom-Up:
+					integra os componentes de infraestrutura e depois adiciona componentes funcionais
+
+				integracao gradual x integracao Big Bang:
+					na gradual se testa os componentes aos poucos. faz testes pra A e B, soh depois pra A, B e C e assim por diante
+					na Big Bag se testa todos os componentes de uma vez
+					eh recomendavel utilizar a integracao gradual, pois assim fica mais facil descobrir de onde vem os erros
+
+				pode ser necessario usar stubs e drivers:
+					stubs:
+						-> esqueletos para simular componentes [ainda nao implementados]
+						simulam o comportamento de componentes (ou modulos) que sao chamados pelos drivers
+						substituem componentes que sao subordinados ao componente a ser testado
+						prove fluxo de downSTream <- DECORAR
+					drivers:
+						-> chamadores de stubs
+						tambem chamado de pseudocontrolador
+						nada mais sao do que um programa principal, que aceita dados do caso de teste
+						prove fluxo de upstream
+
+				pode ser dividido em 2 tipos:
+					- integracao de subsistema	ou componentes
+					- integracao de sistema 	ou integracao final
+
+				apos os testes de integracao, faz-se o Smoke Testing:
+					verifica se o funcionamento basico do sistema esta ok
+					verifica "se nao vaza nenhuma fumaca"
+
+	_________
+	aceitacao/validacao	objetivo de demonstrar a conformidade com os REQUISITOS de sw
+	(requisitos)		eh bem sucedido qndo o [sw funciona de maneira esperada pelo usuario]
+				rola depois do teste de integracao
+				ambiente de teste deve ser o mais proximo possivel do ambiente real
+				objetivo eh decidir se o sw eh bom o suficiente para ser implantado e usado em seu ambiente operacional
+				meta: receber uma homologacao do cliente que o sistema atende a demanda requerida
+
+				tipos mais comuns:
+					alfa
+						"vem aqui testar, cliente"
+						rola em um ambiente simulado
+						o cliente/usuario faz o teste, mas nas instalacoes do desenvolvedor
+						desenvolvedor fica observando, registrando erros e problemas
+					beta
+						"testa ai, cliente, e me fala qq ta pegando"
+						AMBIENTE REAL de utilizacao, realizado pelo usuario
+						conduzido no local do cliente, pelo proprio usuario do produto
+						o desenvolvedor geralmente nao esta presente
+						usuario anota todos os problemas e vai enviando para o desenvolvedor
+						ex: jogo Beta que os usuarios testam e dao feedbak
+
+	_______
+	sistema			objetivo de demonstrar o funcionamento do Sistema como um todo
+	(engenharia		rola dentro de um ambiente OPERACIONAL controlado
+	 de sistema)		utilizam-se dados de teste, a fim de evitar ocorrencia de defeitos em ambiente de producao
+				eh necessario testar o software no ambiente operacional, onde sao considerados:
+					- hardware e pessoas
+					- processos e informacoes
+					- outros sistemas, etc.
+				sao conduzidos em um ambiente completo e integrado, por varias pessoas (nao soh desenvolvedores)
+_______________
+TIPOS DE TESTES
+
+	Teste de Regressao
+		rola quando se muda alguma coisa no software, ai tem que executar todos os testes ja feitos anteriormente
+		objetivo: garantir que essa mudanca nao afetou nada que tinha sido feito anteriormente
+		"rodava antes da mudanca, agora nao roda mais"
+
+	Smoke Testing (Teste de Fumaça)
+		primeiro teste depois do teste de integracao
+		verifica se o funcionamento basico do sistema esta ok
+	!	objetivo: encontrar erros que tem maior probabilidade de atrasar o projeto
+
+	Teste de Recuperacao
+		muitos sistemas devem [se recuperar de falhas] e voltar ao funcionamento dentro de um tempo pre-estabelecido
+		este teste FORCA O SOFTWARE FALHAR, para verificar se a recuperacao rolou de boa
+		recuperacao pode ser automatica ou manual
+
+	Teste de Seguranca
+		objetivo de verificar se os mecanismos de protecao irao, de fato, proteger o sistema
+		o proprio testador tenta penetrar no sistema, explorar suas vulnerabilidades
+	!!	nenhum sistema eh impenetravel! assim, dado tempo e recursos suficientes, um teste de seguranca ira penetrar no sistema
+		eh papel entao do desenvolvedor garantir que o custo seja maior que o beneficio da invasao
+		podem ser feitos pentests (penetration test)
+
+	Teste de Carga (estresse)
+		objetivo de achar o ponto de colapso do sistema, onde ele "num guenta mais"
+		visa confrontar programas com situacoes anormais
+		tem carater destrutivo. "ate onde meu sistema aguenta?"
+		podem ser estressados:
+			memoria (varios objetos criados)
+			I/O (muitas interrupcoes por segundo)
+			Disco (busca por dados)
+			etc.
+
+	Teste de Desempenho
+		pode ocorrer durante todos os estagios de testes
+		visa garantir que o sistema [atende aos niveis de desempenho e tempo de resposta acordados] com o usuario e definidos nos requisitos
+
+	Teste de Usabilidade
+		testa o quao usavel o sistema eh
+		avalia o sistema do ponto de vista do usuario final
+		enfatiza o seguinte:
+			fatores humanos
+			estetica
+			consistencia na interface do usuario
+			...
+
+
+_____________________
+DEBUGGING - Depuracao
+
+	processo que resulta na remocao de um erro encontrado
+	consequencia de um teste de sucesso (aquele que encontrou um erro novo)
+	envolve formular uma hipotese sobre o comportamento do sistema e testar essa hipotese para achar erros
+	http://s7.postimg.org/a5ypb59dn/debugging.png
+abordagens:
+
+	Forca Bruta
+		famoso mandar imprimir em todo lugar pra achar o erro
+		metodo menos eficiente de todos
+
+	Backtracking
+		comecando A PARTIR DE ONDE O ERRO OCORREU, deve-se rastrear o codigo manualmente ATE A FONTE DO ERRO
+
+	Eliminacao de causa
+		se usa a cabeca para elaborar uma hipotese sobre o que pode estar acontecendo
+		uma "hipotese de causa" eh elaborada e [os dados relacionados ao erro] sao utilizados para prova-la
+
+
+
+# Break Point:
+	aquele negocio de botar um ponto de parada no codigo durante a execucao no RAD, que faziamos no CECOM
+	usa-se para ajudar a debugar o codigo
+
+
+
+Como gerar Casos de teste a partir de Casos de Uso?
+	casos de uso possuem CENARIOS, que sao [diferentes execucoes do caso de uso]
+	teremos entao diversos cenarios diferentes
+	para cada um desses cenarios, gerar um caso de teste
+
+
+
+Automacao de testes:
+	nao eh indicada logo no inicio do processo de desenvolvimento do software
+	deve ser usada quando o software tiver [certa estabilidade]
+
+
+________
+ISOLADAS:
+	primeiro faz-se a construcao de casos de teste, depois a producao de scripts de teste (codigo do teste)
+	plano de testes:
+		escopo
+		abordagens
+		recursos
+		cronograma das atividades..
+
+
+
+
+/* codigo exemplo Junit */
+
+public class Calculadora{
+	public static int somar(int a, int b){
+		return a + b;
+	}
+	public static int multiplicar(int a, int b){
+		return a*b;
+	}
+}
+
+import junit.framework.*;
+
+public class CalculadoraTest extends TestCase{
+	public void testSomar(){
+		int a = 1;
+		int b = 2;
+		int total = 3;
+		int resultado = 0;
+		resultado = Calculadora.somar(a, b);
+		assertEquals(resultado, total);		// verifica se o metodo somar() agiu como esperado
+	}
+}
