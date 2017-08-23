@@ -1,0 +1,35 @@
+XP
+	metodologia agil
+	equipes pequenas, projetos pequenos e simples
+!	requisitos expressos como cenarios (historias de usuario)
+	programacao em pares - um verifica o codigo do outro - mesmo pc!
+	teste antes do codigo: TDD!
+	propriedade coletiva - qualquer um pode realizar alteracoes
+	nao ha especializacao de pessoal, e sim multidisciplinariedade
+	releases do sistema pequenos e frequentes
+	integracao continua: terminou incremento, integra ao sistema!
+	ritmo sustentavel - mtas horas reduz a produtividade e qualidade do codigo
+	comunicacao por metaforas entre a equipe (facilitar comunicacao)
+!	requisitos registrados em cartoes de historias de usuarios (cenarios)
+	cliente on-site - representante do usuario final presente em tempo integral
+	abordagem orientada a objetos
+	incrementos entregues a cada 2 semanas
+	nao antecipar mudancas: foco no presente!
+	refatoramento: melhoria constante
+	reunioes em pe - para produzir mais rapido e nao perder o foco
+	5 valores fundamentais: Coragem, Simplicidade, Comunicacao, Feedback, Respeito
+	jogo do planejamento - planejamento baseado nas historias de usuarios
+	a gerencia eh dividida em 2 papeis: treinador (coach) e rastreador (tracker)
+	5 principios basicos:
+		feedback rapido		retorno tempestivo do cliente
+		abracar mudancas	ocorrem de acordo com o melhor entendimento do projeto
+		presumir simplicidade	problemas devem ser resolvidos da forma mais simples possivel
+		mudancas incrementais	solucao final eh resultado de diversas iteracoes incrementais
+		trabalho de qualidade	a qualidade jamais deve ser comprometida - TDD! testes antes da codificacao
+
+	praticas:
+		planejamento incremental	propriedade coletiva	time coeso
+		releases pequenos e frequentes	integracao continua	jogo do planejamento
+		projeto simples			ritmo sustentavel	refactoring
+		desenvolvimento test-first	metaforas		cliente on-site
+		programacao em pares		reunioes em pe
