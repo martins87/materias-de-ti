@@ -1,0 +1,47 @@
+formato para intercambio de dados, assim como XML
+
+JSON: javascript object notation
+
+	completamente independente de linguagem
+	formato mais leve
+	mais facil de ler/entender
+	JavaScript Object Notation
+	estrutura de dados em Javascript
+	tem formato simples e eh utilizada para transferir dados
+
+comparacao com xml:
+
+<banda>
+	<musico> <nome>Daniel</nome> <sobrenome>Martins</sobrenome> <musico>
+	<musico> <nome>Daniel</nome> <sobrenome>Savio</sobrenome> <musico>
+	<musico> <nome>Nikolas</nome> <sobrenome>Thorun</sobrenome> <musico>
+</banda>
+
+{"banda":[
+	{"nome":"Daniel", "sobrenome":"Martins"}
+	{"nome":"Daniel", "sobrenome":"Savio"}
+	{"nome":"Nikolas", "sobrenome":"Thorun"}
+]}
+
+
+XML ainda eh mais usado porque os navegadores estao cada vez mais integrados a essa tecnologia
+
+JSON eh utilizado em ambientes cujo tamanho do fluxo de dados entre cliente/servidor eh IMENSO
+ou seja, JSON tem desempenho maior pra maior fluxo de dados
+
+XML tem que ter sua analise sintatica feita por um parser XML
+JSON soh precisa de uma funcao javascript
+
+ambos sao:
+	autodescritiveis
+	facilmente entendiveis
+	hierarquicos
+	independentes de linguagem
+
+JSON esta constituido em duas estruturas:
+	colecao de pares nome/valor		"nome":"Daniel"
+	lista ordenada de valores		famoso array
+
+
+eval()
+	funcao que converte um texto JSON em um objeto Javascript

@@ -1,0 +1,509 @@
+===
+JEE
+	a base para essa plataforma eh o padrao JSE - Java Standard Edition (aplicacoes desktop)
+	plataforma que define um padrao para desenvolvimento de aplicacoes empresariais em [multiplas camadas]
+	oferece um ambiente totalmente seguro e robusto para aplicacoes de negocios
+	o ambiente de desenvolvimento JEE refere-se ao conjunto de APIs disponibilizadas pela arquitetura
+
+
+caracteristicas que formam a base do modelo de aplicacao JEE:
+	portabilidade
+	seguranca
+	produtividade
+
+
+o modelo JEE divide as aplicacoes corporativas em
+	componentes
+	containers
+	conectores (camada EIS)
+
+
+_______________________
+Modelo de Aplicacao JEE
+
+	fazem parte do modelo as camadas:
+		cliente
+		web
+		negocio
+		EIS - Enterprise Information System
+
+	apesar de serem divididas em 3 ou 4 camadas, sao consideradas como [aplicacoes de 3 camadas]:
+		na maquina do cliente
+		no servidor JEE  -->>  web + negocio
+		nas maquinas onde residem bancos de dados e sistemas legados  -->>  EIS
+ex:
+	maquina do cliente
+		aplicacao cliente + paginas web dinamicas
+	servidor JEE
+		camada web:		Servlet + JSP + JSF
+		camada de negocios:	EJBs
+	servidor de BD
+		camada EIS
+
+	http://s10.postimg.org/ani50hbrt/jeett_dt_001.png
+
+
+__________________________
+Stateless e Stateful Beans
+
+	Stateless	nao existe memoria que eh mantida pelo programa
+	Stateful	o programa tem memoria (estado)
+
+	exemplo de Stateful eh o conceito de sessao de usuario em um site
+	outro exemplo:
+
+		//Stateless
+		int addOne(int number){
+			return number + 1;
+		}
+
+		//Stateful
+		int _number = 0;
+		int addOne(){
+			_number++;
+			return _number;
+		}
+
+
+___
+EJB
+	implementam a logica de negocios
+	2 tipos: Session Beans e Message-driven beans
+
+	_____________
+	Session Beans
+		executam alguma tarefa para o cliente
+		podem implementar um servico Web
+		encapsula a logica de negocio que pode ser invocada de forma local, remota ou via Web services
+		para acessar uma aplicacao que eh implantada no servidor, o cliente invoca metodos de um Session Bean
+		realiza um trabalho para seus clientes, protegendo-os da complexidade de execucao de tarefas de negocios dentro do servidor
+		3 tipos:
+			Stateful session bean		mantem o estado conversacional entre cliente e o bean. qndo removido, a sessao termina e o estado desaparece
+			Stateless session bean		nao mantem o estado conversacional. pode implementar um Web Service
+			Singleton session bean		instanciado uma unica vez pela aplicacao, existe para o ciclo de vida dela
+
+	____________________
+	Message-driven beans
+		atua como monitor para um tipo especifico de mensagem
+		combina caracteristicas de um session bean e uma escuta de mensagens
+		permite um componente de negocios receber mensagens de forma assincrona
+		JMS: geralmente quem prove essas mensagens
+
+	nos beans de entidade (entity beans) cuja persistencia eh gerenciada pelo container,
+		o desenvolvedor nao precisa escrever todo o codigo JDBC para a interacao com o banco de dados
+
+	no JEE 5 os entity beans foram substituidos por
+		entidades persistentes JPA (Java Persistence API)
+
+
+_______
+Servlet
+	programa que estende a funcionalidade de um Web Server
+	gera conteudo dinamico, interagindo com os clientes
+	utiliza o modelo request/response
+	eh utilizado em aplicacoes da arquitetura cliente/servidor, estendendo as funcionalidades do servidor
+
+
+___
+JSP - Java Server Pages
+
+	utilizada no desenvolvimento de aplicacoes Web
+	permite criar paginas dinamicas
+!!	os scripts sao executados no SERVIDOR
+
+	permite colocar trechos de codigos Servlet diretamente em paginas JSP
+	com JSP os designers Web e programadores podem rapidamente incorporar elementos dinamicos em paginas web usando:
+		- Java embutido
+		- algumas tags de marcacao simples
+			-> essas tags fornecem ao designer web um meio de acessar dados e logica de negocios
+			   > armazenados em objeto Java, sem ter que dominar as complexidades do desenvolvimento de aplicacao
+
+	conjunto de tags personalizadas que interagem com objetos Java no servidor,
+		sem a necessidade de que codigo Java apareca na pagina,
+		o que permite uma separacao entre a camada de apresentacao e a camada de logica de negocio
+
+	em uma pagina JSP ha 2 tipos de texto:
+		dados estaticos		qq formato baseado em texto: HTML, WML, XML
+		elementos JSP		determinam como a pagina constroi o conteudo dinamico
+
+
+___
+JSF - JavaServer Faces
+
+FCC:	especificacao para o desenvolvimento de interfaces web com Java,
+	> baseada em componentes e EVENTOS e especialmente integrada a ferramentas de desenvolvimento,
+	> o que facilita implementar recursos de
+		[validacao, navegacao e conversao]
+
+	palavras chave:
+		eventos
+		componentes
+		navegabilidade
+		interfaces web com Java
+
+	framework de interface de usuario para construcao de aplicacoes web
+	permite a inclusao de componentes graficos, como campos e botoes
+
+	principais componentes:
+		framework de componentes GUI
+		modelo flexivel para renderizacao de componentes em HTML (ou diferentes linguagens de marcacao)
+			-> objeto Renderer:
+				gera a marcacao para renderizar um componente
+				converte os dados armazenados em um objeto para os tipos que podem ser representados em uma exibicao
+		um padrao para geracao de marcacoes HTML 4.01
+
+	define uma API para
+		definicao de navegacao de pagina
+		manipulacao de eventos, conversao de dados, validacao de dados no lado do servidor
+		representacao de componentes e gerenciamento de seu estado
+		bibliotecas de tags (CECOM) para adicionar componentes em paginas, e para conectar componentes de objetos no lado do servidor
+
+	novidades no JEE 6:
+		anotacoes, em vez de arquivos de configuracao, para especificar beans gerenciados
+		suporte a AJAX
+		Facelets:
+			substitui JSP usando arquivos XHTML
+			possibilita a criacao de templates para paginas JSF -> (CECOM tinha os proprios templates)
+
+
+_____________________
+MODEL VIEW CONTROLLER
+
+	separacao de conceitos
+	reusabilidade de codigo
+
+	Model		dados + logica				EJB
+	View		saida de representacao de dados		JSP e JSF
+	Controller	cuida de requisicoes			Servlet
+		
+
+_______________
+Componentes JEE
+
+a especificacao JEE define os seguintes componentes:
+
+	Componentes que sao executados no cliente
+		aplicacoes cliente
+		applets
+
+	Componentes web que rodam no servidor
+		Servlets
+		JSP
+		JSF
+
+	Componentes de negocios que rodam no servidor
+		Enterprise JavaBeans - EJB
+
+
+	sao escritos na linguagem Java
+	sao COMPILADOS como qq outro programa Java
+
+
+______________
+Web containers:
+	Apache Tomcat
+	Red Hat JBOSS
+	IBM Websphere
+	Glass Fish
+	Web Logic
+
+
+____________
+Clientes JEE
+
+	Clientes web - cliente magro
+		paginas web dinamicas: linguagem de marcacao como HTML, XML
+		proprio navegador web: renderiza as paginas recebidas do servidor
+
+	Aplicacao cliente - cliente gordo
+		executada em uma maquina cliente
+		interface mais sofisticada do que uma simples linguagem de marcacao
+		normalmente eh uma GUI criada a partir de APIs como Swing ou AWT
+
+		pode acessar diretamente EJBs rodando na camada de negocios
+		pode abrir uma conexao HTTP para estabelecer comunicacao com um servlet
+
+interacao do cliente:
+	paginas web
+		desenvolvidas apenas com HTML; ou
+		suportando Applets; ou
+		geradas dinamicamente por Servlets, JSP ou JSF.
+	aplicacoes Java stand-alone
+
+
+Applets
+	pequeno aplicativo cliente escrito em Java que executa na JVM instalada no navegador
+	para que possa rodar em uma pagina web sao necessarios:
+		JVM instalada no navegador
+		um plug-in Java
+		possivelmente um aplicativo de politica de seguranca
+
+
+JavaBean
+	classe privada com atributos GET e SET
+
+
+_______________
+Componentes Web
+
+	Servlets
+		classes Java que processam requisicoes e constroem respostas
+		modelo request/response
+		tratam requisicoes de clientes Web:
+			ao receber uma requisicao, pode capturar seus parametros,
+			efetuar qq processamento inerente a uma classe Java e devolver uma pagina HTML
+
+	Paginas JSP
+		criacao de conteudo dinamico
+		documentos baseados em texto que sao executados como servlets
+		possui tambem codigo Java
+		eh como se fosse PHP, que realiza a parte dinamica da pagina
+
+	JavaServer Faces
+		baseia-se nos Servlets e JSP
+		fornece um FRAMEWORK de componentes de interface de usuario para aplicacoes web
+
+
+______________________
+Componentes de Negocio
+
+	um EJB:
+		recebe dados de programas do cliente
+		processa-os (se necessario)
+		envia para a camada EIS para armazenamento
+
+	tambem faz o inverso:
+		recupera dados armazenados
+		processa-os (se necessario)
+		envia de volta para o programa cliente
+
+	EJB suporta
+		gerenciamento de transacoes
+		controle de concorrencia
+		seguranca
+
+
+__________
+Camada EIS - SIs Corporativos (Enterprise Information Systems)
+
+inclui sistemas de infraestrutura empresarial, tais como:
+	ERP - Enterprise Resource Planning
+	processamento de transacoes de mainframe
+	sistemas de banco de dados
+	outros sistemas legados de informacao
+
+
+______________
+Containers JEE
+
+	existem containers para cada componente
+	um container eh a [interface] entre
+		-> o componente
+		-> a funcionalidade de baixo nivel especifica da plataforma que o suporta
+	oferece servicos para os componentes, tais como
+		- seguranca
+		- ciclo de vida
+		- transacoes
+		- persistencia
+	isso tudo de forma transparente para o desenvolvedor
+	tambem gerencia os servicos nao gerenciaveis:
+		ciclo de vida de EJBs, Servlets..
+		pooling de conexoes de banco de dados
+		persistencia de dados
+		acesso 'as APIs da plataforma
+	tipos:
+		Container de applet			gerencia a execucao de Applets. consiste da execucao conjunta de navegador web & Java plug-in
+		Container da aplicacao cliente		gerencia a execucao de componentes da aplicacao cliente. roda no cliente
+		Container Web				gerencia a execucao de paginas JSP, Servlets, e ate alguns componentes EJB. roda no servidor
+		Container EJB				gerencia a execucao de EJBs. roda no servidor
+
+
+
+Containers JEE x Colmeia de abelhas
+	um componente eh como se fosse uma abelha
+	um container eh como se fosse uma colmeia
+	um servidor contem entao diversas colmeias (um apiario)
+
+
+!!	podem existir aplicacoes JEE que nao possuem Containers EJB, no caso implementariam somente a parte Web		!!
+!!	uma mesma JVM pode conter e executar conjuntamente Containers Web e Containers EJB	!!
+
+
+_______________
+Caracteristicas/termos relacionados a JEE
+
+	remote method invocation	conexao transparente entre cliente e servidor pela rede
+	load balancing			clientes sao redirecionados para o servidor menos carregado
+	fail-over			se um servidor para, clientes sao redirecionados para outros servidores sem interromper o servico	
+	transactions			garantir o ACID: atomicidade, consistencia, isolamento e durabilidade
+	clustering			servidores que proveem uma visao unificada dos servicos que oferecem individualmente,
+						> aumentando disponibilidade e confiabilidade do sistema
+	dynamic redeployment		fazer upgrade de software com o servidor rodando
+	clean shutdown			desligar o servidor de forma segura, sem interromper o servico para clientes que estao usando corretamente o servidor
+	threading			servidor deve ser capaz de processar requisicoes de multiplos clientes simultaneamente
+	message-oriented request	infraestrutura para acomodar requisicoes assincronas baseadas em mensagem
+	resource pooling		se cliente nao esta mais usando o recurso, este recurso pode retornar a um pool para ser usado por outros clientes
+	caching				armazenar em memoria dados que os clientes compartilham e fazem uso
+
+
+
+import java.sql
+	interface que permite executar operacoes de conexao e manipulacao de dados em um BD relacional
+
+
+_______________________
+Servidores de aplicacao
+
+	WebSphere Application Server (IBM)
+	Tomcat					container de software livre
+
+	softwares onde sao hospedados os componentes responsaveis por implementar as diversas camadas da aplicacao
+	fornecem servicos que permitem a persistencia e interacao com outros aplicativos
+	permitem o desenvolvimento de aplicacoes distribuidas multi-camadas
+	oferecem APIs de gerenciamento de recursos e multiplas aplicacoes a partir de um mesmo servidor
+	permite ao desenvolvedor focar na logica de negocio. a infraestrutura fica entao com o servidor de aplicacao
+	agem como uma interface entre
+		os clientes
+		as bases de dados e sistemas de informacao corporativos
+
+
+________
+Portlets
+	basicamente sao classes java que adicionam algo como um miniaplicativo dentro das paginas web
+	aplicacoes web agrupaveis em paginas de portais que compoem o nucleo dos servicos destes portais
+
+	um aplicativo de portlet existe como uma hierarquia estruturada de diretorios:
+
+		/
+			diretorio raiz da estrutura de arquivos do portlet
+		/images
+			localizacao de qq imagem exibida pelo portlet
+		/WEB-INF
+			todos os recursos protegidos
+			armazena o documento descritor de portlet (arquivo portlet.xml)  -->>  este arquivo contem as informacoes basicas do portlet
+			tambem contem todos os arquivos JAR executaveis de tempo de execucao, assim como classes que o portlet empacotado exige
+		/WEB-INF/lib
+			armazena os arquivos JAR do portlet
+		/WEB-INF/jsp
+			localizacao dos arquivos JSP
+			eh um nome de caminho sugerido, pois estes arquivos JSP podem ser compactados em qq local
+		/WEB-INF/classes
+			localizacao dos arquivos de classe do portlet
+			arquivos de classes individuais devem ser armazenados em uma estrutura de diretorios
+				> com os nomes correnpondentes dentro de /WEB-INF/classes, de forma a refletir o pacote de classe
+
+	podem ser distribuidos em varios formatos, mas o mais comum deles eh em arquivos WAR
+	WAR:
+		web archive
+		normalmente contem um diretorio WEB-INF com o arquivo portlet.xml, no qual sao colocadas as configuracoes basicas do portlet
+
+
+_________________________
+Empacotamento de arquivos
+
+	tende a ser menor que o codigo original -> compactacao!
+
+	JAR		Java archive
+	WAR		Web archive		JAR com extensao .war
+	EAR		Enterprise archive	JAR com extensao .ear
+
+	nenhuma codificacao extra eh necessaria
+	apenas uma questao de [montagem de varios modulos em um arquivo] JAR, WAR ou EAR
+
+
+existem dois tipos de descritores de aplicacao:
+	Descritor JEE
+	Descritor Runtime
+
+	descritores de aplicacao sao opcionais!
+
+
+Descritor JEE
+	independente de servidor de aplicacao
+	eh definido por uma especificacao JEE
+	pode ser utilizado para configurar as definicoes de implantacao em qualquer servidor de aplicacao aderente ao JEE
+
+
+Descritor Runtime
+	ESPECIFICO por servidor de aplicacao
+	configura parametros especificos do servidor de aplicacao onde a aplicacao sera implantada
+	ex:
+		o descritor do GlassFish Server contem informacoes especificas deste servidor de aplicacao
+		este descritor do GlassFish eh chamado glassfish-tipoModulo.xml e se localiza no META-INF, onde tambem fica o Descritor JEE
+
+
+
+um modulo JEE consiste em
+	um ou mais componentes JEE para o mesmo tipo de container
+	opcionalmente, um descritor de implantacao do componente
+
+
+-----------
+Modulos EJB
+	sao empacotados como arquivos JAR com extensao .jar
+	contem:
+		classes EJB
+		descritor de implantacao EJB
+
+-----------
+Modulos Web
+	sao empacotados como arquivos JAR com extensao .war
+	contem:
+		classes servlets, paginas JSP, arquivos GIF e HTML
+		um descritor de implantacao de aplicativos web
+
+------------------------------
+Modulos de Aplicacoes Clientes
+	sao empacotados como arquivos JAR com extensao .jar
+	contem:
+		classes
+		um descritor de implantacao de aplicacao cliente
+
+----------------------------------
+Modulos de Adaptadores de Recursos
+	sao empacotados como arquivos JAR com extensao .rar (Resource Adapter Archive)
+	contem:
+		todas as interfaces Java, classes, bibliotecas nativas e outras documentacoes
+		um descritor de implantacao de adaptadores de recursos
+
+___
+EAR
+	opcional!
+	sao documentos XML que descrevem as configuracoes de implantacao de
+		uma aplicacao
+		um modulo
+		um componente
+	podem ser alterados sem necessidade de modificar o codigo fonte
+	em tempo de execucao o servidor le o descritor e age sobre a aplicacao, modulo ou componente
+
+	questao pratica de EAR:
+		componentes EJB e modulos Web podem ser empacotados em um arquivo EAR
+		esse arquivo EAR vai conter entao os arquivos WAR (modulos Web) e arquivos JAR (componentes EJB)
+
+
+
+No JEE 6 houve uma simplificacao do deployment
+
+	descritores de deployment passaram a ser opcionais, podendo ate nao ser usados
+	ex: web.xml
+		descritor de deployment que a especificacao de Servlets necessita
+		se vc usar [anotacoes] em Servlets ou apenas paginas HTML e JSP ele pode ser removido
+		.
+		ate o JEE 5 as configuracoes de Servlets eram feitas no web.xml
+		no JEE 6 as configuracoes de Servlets sao feitas por [anotacoes]
+
+	torna desnecessario o descritor ejb-jar.xml
+
+	anotacoes simplificam o deployment, pois ajuda a configurar as definicoes de implantacao
+	anotacoes sao modificadores Java, semelhantes aos publicos e privados, que devem ser especificados [no codigo]
+	ex: @Stateless, @Stateful
+	sao usadas tambem para, por exemplo:
+		gerar artefatos
+		documentar codigo
+	a especificacao EJB 3 define anotacoes para, por exemplo:
+		tipo de Bean
+		tipo de Interface
+		referencias de recurso
+		atributos de transacao
+		seguranca
+

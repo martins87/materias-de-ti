@@ -1,0 +1,49 @@
+Tomcat eh um servidor de aplicacao JEE?
+	sim, eh
+		servidor web
+		container web
+		servidor de aplicacao
+
+Tomcat eh um servidor de aplicacao JEE completo?
+	nao! nao suporta EJB, JMS, JAAS, etc.
+
+
+caracteristicas:
+
+	mantido pela Apache
+	container de Servlets
+	software livre, de codigo aberto (open-source)
+	escrito em java  -->>  portanto, necessita de uma JVM para ser executado
+	eh tambem um container web/servlet
+	nao eh completo pq nao suporta EJB, JMS, etc.
+	eh para aplicacoes simples, nao suporta JAAS
+	hoje nao eh mais endossado como implementacao de referencia para as tecnologias Java Servlet e JSP
+	o GlassFish eh hoje a (RI) Reference Implementation
+
+!!	Servidor de Aplicacao Java EE	   !!
+
+	roda na porta 8080 -> http://localhost:8080
+	prove uma interface web amigavel para verificar o status do servidor, listar aplicacoes instaladas, etc.
+
+
+Tomcat manager:
+
+	ferramenta web based que permite ao admin
+		verificar o status do servidor
+		listar as aplicacoes web instaladas
+		instalar, desinstalar, iniciar, parar e recarregar cada uma das aplicacoes web implantadas
+
+
+Realms:
+	sao um banco de dados de login/senha para identificar usuarios validos de uma aplicacao Web
+	assim, desenvolvedores nao precisam escrever codigo para autenticacao e autorizacao (LDAP)
+
+Arvore de diretorios:
+	bin/		scripts para controlar o servidor
+	conf/		contem arquivos de configuracao (server.xml, web.xml, etc.)
+	lib/		contem arquivos .jar compartilhados
+	logs/
+	temp/
+	webapps/	contem pastas de contexto (aplicacoes Web .war)
+	work/		contem as servlets geradas por arquivos JSP
+

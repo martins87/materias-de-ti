@@ -1,0 +1,64 @@
+-=-=-=-=-=-=-=-=-
+PERGUNTAS CORINGA
+
+como o servidor de aplicacao JEE fornece servicos?
+	na forma de um container para cada tipo de componente
+
+o que sao containers JEE?
+	eh uma interface entre
+		o componente
+		e a funcionalidade de baixo nivel especifica da plataforma que suporta o componente
+
+para que um componente seja executado, ele precisa ser montado em um modulo JEE?
+	sim, para que um componente seja executado, ele deve ser
+		montado em um modulo JEE
+		implantado em seu container
+
+o processo de montagem (assembly) envolve a especificacao de definicao de containers para o que?
+	containers para
+		cada componente
+		a aplicacao em si
+
+como a arquitetura JEE prove servicos configuraveis,
+	componentes dentro de uma aplicacao JEE podem se comportar de forma diferente, dependendo de onde estao implantados
+
+tanto o ciclo de vida de um EJB quanto de um Servlet sao servicos nao-configuraveis -> o container gerencia
+	-> nao configuraveis porque uma pessoa nao consegue configura-los, somente o container consegue
+
+o que os containers EJB, web, aplicacao cliente e applet gerenciam, respectivamente?
+
+	EJB			container EJB gerencia a execucao de EJBs (Session Beans e Message-driven Beans)
+	Web			container Web gerencia a execucao de Servlets, paginas JSP e alguns componentes EJB
+	aplicacao cliente	container da aplicacao cliente gerencia a execucao de componentes da aplicacao cliente
+	applet			container applet gerencia a execucao de applets
+
+quais os containers que rodam no servidor JEE e no cliente?
+	no servidor JEE:
+		container EJB
+		container Web
+	no cliente:
+		container applet
+		container da aplicacao cliente
+
+como uma aplicacao JEE eh distribuida?
+	em um dos arquivos
+		JAR		Java archive
+		EAR		Enterprise archive: arquivo no padrao JAR com extensao .ear
+		WAR		Web archive: arquivo no padrao JAR com extensao .war
+
+o que um arquivo EAR contem?
+	modulos JEE
+	descritores de implantacao
+
+quais os tipos de descritores de aplicacao?
+	Descritor JEE		independente de servidor de aplicacao
+	Descritor Runtime	especifico para cada servidor de aplicacao
+
+quais sao os tipos de Modulos JEE?
+	modulos EJB
+	modulos Web
+	modulos de aplicacoes cliente
+	modulos de adaptadores de recursos
+
+qual a extensao dos arquivos JAR, que empacotam os modulos EJB?
+	.jar

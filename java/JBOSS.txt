@@ -1,0 +1,39 @@
+caracteristicas:
+	servidor de aplicacao
+	de codigo aberto
+	da RedHat (comprado por ela em 2006)
+	compativel com a J2EE
+	implementado completamente em Java -> requer JVM!
+	mais utilizado no mercado
+	multiplataforma (portavel) pois roda em qq sistema q contenha uma JVM
+	possui suporte a diversos SGBDs
+	inicializacao:
+		standalone.bat  ou
+		standalone.sh
+
+Possui a JMX - Java Management Extension
+	possui interfaces que auxiliam a gerenciar componentes, integrar modulos, containers e plugins
+
+
+JBOSS possui 2 modelos de trabalho:
+
+	Standalone Mode		trabalha-se com uma unica instancia
+	Domain Mode		permite inicializar varias instancias
+
+
+Um Servidor de Aplicacao J2EE contem:
+	Container Web - para aplicacoes Web
+	Container EJB - para aplicacoes de NEGOCIO
+
+suporta:
+	EJB
+	failover
+	Hibernate
+	JAAS			Java Authentication and Authorization Service
+	JMS			Java Message Service
+	JNDI			Java Naming and Directory Interface
+	JTA			Java Transaction API
+	JSF
+	JSP
+	JDBC			Java Database Connectivity
+	SAAJ			SOAP and Attachments API for Java

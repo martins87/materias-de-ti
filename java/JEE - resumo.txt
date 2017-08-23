@@ -1,0 +1,46 @@
+===
+JEE
+
+	Camadas:
+		cliente		-> maquina do cliente
+		web + negocios	-> servidor JEE
+		EIS		-> maquinas de Banco de Dados
+
+	Rodam no cliente:
+		applets			-> necessitam JVM instalada no browser
+		aplicacoes cliente
+
+	web container: Servlets, JSP, JSF
+	EJB container: EJBs (Enterprise Java Beans)
+
+
+	EJB:
+		encapsula a logica de negocio da aplicacao
+		tambem suporta tratamento de transacoes
+		2 tipos de EJBs: [Session Beans] e [Message-driven Beans]
+
+	JPA: persistencia de informacoes no banco. mapeia objetos em tabelas
+	JMS: servico de mensagens
+	JAAS: logica de autenticacao e autorizacao
+
+	_______
+	Servlet
+		classes Java que processam requisicoes e constroem respostas
+
+	___________
+	Paginas JSP
+		criacao de conteudo dinamico
+		tambem possuem codigo Java
+
+	___
+	JSF
+		fornece um framework de componentes de interface de usuario p/ aplicacoes web
+
+	Web profile:
+		somente web = Servlet, JSP, JSF, EJB, JPA..
+
+	Full profile:
+		web + ferramentas Desktop + tecnologias p/ Web services
+
+	Tomcat
+		-> nao suporta EJB, JMS, JAAS!
