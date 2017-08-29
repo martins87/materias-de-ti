@@ -8,7 +8,8 @@ VPN
  |
  ----->	L2TP (Layer 2 tunneling protocol)
  |		protocolo de encapsulamento da Internet padrao da industria
- |		nao prove confidencialidade nem autenticidade nem integridade, assim, deve ser usado junto com o IPsec, que provê essas 3 qualidades
+ |		nao prove CIA: confidencialidade, integridade, autenticidade
+ |		assim, deve ser usado junto com o IPsec, que prove essas 3 qualidades
  |		o tunel L2TP pode carregar quadros Ethernet, PPP ou datagramas IP
  |		o pacote L2TP eh enviado por meio de pacote UDP
  ----->	IPsec
@@ -20,7 +21,7 @@ VPN
 		permite escolher [qualquer algoritmo de criptografia], ate mesmo nenhum algoritmo (sem seguranca)
 
 		AH: cabecalho de autenticacao
-			proporciona autenticacao e integridade, utilizando algoritmos como MD5 ou SHA-1
+			proporciona [autenticacao + integridade], utilizando algoritmos como MD5 ou SHA-1 (algoritmos criptograficos de hash)
 			NAO PROPORCIONA Confidencialidade
 
 		ESP: encapsulamento seguro do payload
